@@ -1,0 +1,6 @@
+framework module Pods_All_pgoapi {
+  umbrella header "Pods-All-pgoapi-umbrella.h"
+
+  export *
+  module * { export * }
+}

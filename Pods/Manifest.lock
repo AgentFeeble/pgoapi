@@ -1,0 +1,15 @@
+PODS:
+  - Alamofire (3.4.1)
+  - Bolts-Swift (1.1.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.4.1)
+  - Bolts-Swift (~> 1.1.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  Bolts-Swift: 63ef77f967f795415531da45eef419eab79ec730
+
+PODFILE CHECKSUM: 53b1f72f6f4881fdc2b2577f5fc99eacd8822607
+
+COCOAPODS: 1.0.0
