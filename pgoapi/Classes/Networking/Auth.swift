@@ -28,7 +28,6 @@ public class Auth
     {
         // Note: self is captured strongly to keep a strong reference to self
         // during the API calls
-        network.setUserAgent("niantic")
         return network.getJSON(EndPoint.LoginInfo)
         .continueOnSuccessWithTask(network.processingExecutor, continuation:
         {

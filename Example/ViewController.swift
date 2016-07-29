@@ -19,10 +19,16 @@ class ViewController: UIViewController
     {
         super.viewDidLoad()
         
+        let network = self.network
         Auth(network: network).login("username", password: "password")
+        .continueOnSuccessWithTask(.MainThread)
+        {
+            result in
+            return PgoApi(network: network, authToken: result).login()
+        }
         .continueWith(.MainThread)
         {
-            (task: Task<AuthToken>) -> () in
+            (task: Task<(PgoApi, ApiResponse)>) -> () in
             print(task)
         }
     }

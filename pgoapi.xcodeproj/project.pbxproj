@@ -17,7 +17,6 @@
 		6DE6C8121D4695CE00A91011 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE6C8101D4695CE00A91011 /* Auth.swift */; };
 		6DE6C8131D4695CE00A91011 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE6C8111D4695CE00A91011 /* Network.swift */; };
 		6DE6C8151D4695DB00A91011 /* AuthToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE6C8141D4695DB00A91011 /* AuthToken.swift */; };
-		6DE8661C1D48186D00FB4CDA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8661B1D48186D00FB4CDA /* EndPoint.swift */; };
 		6DE866211D481A8A00FB4CDA /* NSRange+pgoapi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866201D481A8A00FB4CDA /* NSRange+pgoapi.swift */; };
 		6DE866241D481D7900FB4CDA /* AlamoFireNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866231D481D7900FB4CDA /* AlamoFireNetwork.swift */; };
 		6DE8663B1D494D0200FB4CDA /* Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866271D494D0200FB4CDA /* Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift */; };
@@ -41,6 +40,19 @@
 		6DE8664D1D494D0200FB4CDA /* Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemon.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866391D494D0200FB4CDA /* Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemon.proto.swift */; };
 		6DE8664E1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8663A1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift */; };
 		6DE866501D494E6400FB4CDA /* Pogoprotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8664F1D494E6400FB4CDA /* Pogoprotos.swift */; };
+		6DE866521D4963B700FB4CDA /* RpcRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866511D4963B700FB4CDA /* RpcRequest.swift */; };
+		6DE866561D4964FB00FB4CDA /* RequestMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866551D4964FB00FB4CDA /* RequestMessage.swift */; };
+		6DE866581D49652700FB4CDA /* EndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866571D49652700FB4CDA /* EndPoint.swift */; };
+		6DE8665D1D49736500FB4CDA /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8665C1D49736500FB4CDA /* NetworkError.swift */; };
+		6DE8665F1D49756600FB4CDA /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8665E1D49756600FB4CDA /* Constant.swift */; };
+		6DE866611D49766200FB4CDA /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866601D49766200FB4CDA /* Location.swift */; };
+		6DE866631D4976A300FB4CDA /* RpcParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866621D4976A300FB4CDA /* RpcParams.swift */; };
+		6DE866651D49788900FB4CDA /* PgoApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866641D49788900FB4CDA /* PgoApi.swift */; };
+		6DE8666B1D49E1FF00FB4CDA /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE8666A1D49E1FF00FB4CDA /* ApiResponse.swift */; };
+		6DE866A91D4B5EE600FB4CDA /* DataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866A81D4B5EE600FB4CDA /* DataConverter.swift */; };
+		6DE866AB1D4B5F2900FB4CDA /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */; };
+		6DE866AF1D4B603D00FB4CDA /* ApiResponseDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */; };
+		6DE866B11D4B60D000FB4CDA /* ProtoBufDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */; };
 		E18CD13D259764666E4CEDA9 /* Pods_All_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73530AB17D6C7F060713D355 /* Pods_All_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,7 +74,6 @@
 		6DE6C8101D4695CE00A91011 /* Auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		6DE6C8111D4695CE00A91011 /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		6DE6C8141D4695DB00A91011 /* AuthToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthToken.swift; sourceTree = "<group>"; };
-		6DE8661B1D48186D00FB4CDA /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
 		6DE866201D481A8A00FB4CDA /* NSRange+pgoapi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSRange+pgoapi.swift"; sourceTree = "<group>"; };
 		6DE866231D481D7900FB4CDA /* AlamoFireNetwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamoFireNetwork.swift; sourceTree = "<group>"; };
 		6DE866271D494D0200FB4CDA /* Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift; sourceTree = "<group>"; };
@@ -86,6 +97,19 @@
 		6DE866391D494D0200FB4CDA /* Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemon.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemon.proto.swift; sourceTree = "<group>"; };
 		6DE8663A1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pogoprotos.Settings.PogoprotosSettings.proto.swift; sourceTree = "<group>"; };
 		6DE8664F1D494E6400FB4CDA /* Pogoprotos.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pogoprotos.swift; sourceTree = "<group>"; };
+		6DE866511D4963B700FB4CDA /* RpcRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RpcRequest.swift; sourceTree = "<group>"; };
+		6DE866551D4964FB00FB4CDA /* RequestMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestMessage.swift; sourceTree = "<group>"; };
+		6DE866571D49652700FB4CDA /* EndPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EndPoint.swift; sourceTree = "<group>"; };
+		6DE8665C1D49736500FB4CDA /* NetworkError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		6DE8665E1D49756600FB4CDA /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6DE866601D49766200FB4CDA /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		6DE866621D4976A300FB4CDA /* RpcParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RpcParams.swift; sourceTree = "<group>"; };
+		6DE866641D49788900FB4CDA /* PgoApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PgoApi.swift; sourceTree = "<group>"; };
+		6DE8666A1D49E1FF00FB4CDA /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
+		6DE866A81D4B5EE600FB4CDA /* DataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataConverter.swift; sourceTree = "<group>"; };
+		6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseDataConverter.swift; sourceTree = "<group>"; };
+		6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufDataConverter.swift; sourceTree = "<group>"; };
 		73530AB17D6C7F060713D355 /* Pods_All_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30C107C5B876978BF23C994 /* Pods-All-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-Example/Pods-All-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +180,7 @@
 		6DE6C8091D4694D300A91011 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				6DE866591D49653F00FB4CDA /* Data */,
 				6DE8661D1D481A5E00FB4CDA /* Extension */,
 				6DE6C80F1D4695BB00A91011 /* Model */,
 				6DE6C80E1D4695AE00A91011 /* Networking */,
@@ -170,7 +195,9 @@
 				6DE866221D481D6600FB4CDA /* AlamoFire */,
 				6DE6C8101D4695CE00A91011 /* Auth.swift */,
 				6DE6C8111D4695CE00A91011 /* Network.swift */,
-				6DE8661B1D48186D00FB4CDA /* EndPoint.swift */,
+				6DE8665C1D49736500FB4CDA /* NetworkError.swift */,
+				6DE866641D49788900FB4CDA /* PgoApi.swift */,
+				6DE866511D4963B700FB4CDA /* RpcRequest.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -178,7 +205,13 @@
 		6DE6C80F1D4695BB00A91011 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6DE8666A1D49E1FF00FB4CDA /* ApiResponse.swift */,
 				6DE6C8141D4695DB00A91011 /* AuthToken.swift */,
+				6DE8665E1D49756600FB4CDA /* Constant.swift */,
+				6DE866571D49652700FB4CDA /* EndPoint.swift */,
+				6DE866601D49766200FB4CDA /* Location.swift */,
+				6DE866551D4964FB00FB4CDA /* RequestMessage.swift */,
+				6DE866621D4976A300FB4CDA /* RpcParams.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -225,6 +258,17 @@
 				6DE8663A1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift */,
 			);
 			path = Protos;
+			sourceTree = "<group>";
+		};
+		6DE866591D49653F00FB4CDA /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				6DE866A81D4B5EE600FB4CDA /* DataConverter.swift */,
+				6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */,
+				6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */,
+				6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		7D703C62D06459194748F608 /* Pods */ = {
@@ -446,28 +490,40 @@
 				6DE8663D1D494D0200FB4CDA /* Pogoprotos.Data.Gym.PogoprotosDataGym.proto.swift in Sources */,
 				6DE866491D494D0200FB4CDA /* Pogoprotos.Networking.Requests.PogoprotosNetworkingRequests.proto.swift in Sources */,
 				6DE866471D494D0200FB4CDA /* Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopes.proto.swift in Sources */,
-				6DE866211D481A8A00FB4CDA /* NSRange+pgoapi.swift in Sources */,
 				6DE866441D494D0200FB4CDA /* Pogoprotos.Map.Fort.PogoprotosMapFort.proto.swift in Sources */,
 				6DE866461D494D0200FB4CDA /* Pogoprotos.Map.Pokemon.PogoprotosMapPokemon.proto.swift in Sources */,
 				6DE866411D494D0200FB4CDA /* Pogoprotos.Enums.PogoprotosEnums.proto.swift in Sources */,
-				6DE8664B1D494D0200FB4CDA /* Pogoprotos.Settings.Master.Item.PogoprotosSettingsMasterItem.proto.swift in Sources */,
-				6DE866241D481D7900FB4CDA /* AlamoFireNetwork.swift in Sources */,
 				6DE8664D1D494D0200FB4CDA /* Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemon.proto.swift in Sources */,
 				6DE866421D494D0200FB4CDA /* Pogoprotos.Inventory.Item.PogoprotosInventoryItem.proto.swift in Sources */,
-				6DE6C8131D4695CE00A91011 /* Network.swift in Sources */,
+				6DE8664B1D494D0200FB4CDA /* Pogoprotos.Settings.Master.Item.PogoprotosSettingsMasterItem.proto.swift in Sources */,
 				6DE8663E1D494D0200FB4CDA /* Pogoprotos.Data.Logs.PogoprotosDataLogs.proto.swift in Sources */,
+				6DE866AF1D4B603D00FB4CDA /* ApiResponseDataConverter.swift in Sources */,
 				6DE8663B1D494D0200FB4CDA /* Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift in Sources */,
 				6DE8663C1D494D0200FB4CDA /* Pogoprotos.Data.Capture.PogoprotosDataCapture.proto.swift in Sources */,
 				6DE8664C1D494D0200FB4CDA /* Pogoprotos.Settings.Master.PogoprotosSettingsMaster.proto.swift in Sources */,
 				6DE866401D494D0200FB4CDA /* Pogoprotos.Data.PogoprotosData.proto.swift in Sources */,
 				6DE8663F1D494D0200FB4CDA /* Pogoprotos.Data.Player.PogoprotosDataPlayer.proto.swift in Sources */,
 				6DE866431D494D0200FB4CDA /* Pogoprotos.Inventory.PogoprotosInventory.proto.swift in Sources */,
-				6DE6C8121D4695CE00A91011 /* Auth.swift in Sources */,
 				6DE866481D494D0200FB4CDA /* Pogoprotos.Networking.Requests.Messages.PogoprotosNetworkingRequestsMessages.proto.swift in Sources */,
-				6DE8661C1D48186D00FB4CDA /* EndPoint.swift in Sources */,
 				6DE866501D494E6400FB4CDA /* Pogoprotos.swift in Sources */,
-				6DE6C8151D4695DB00A91011 /* AuthToken.swift in Sources */,
+				6DE866B11D4B60D000FB4CDA /* ProtoBufDataConverter.swift in Sources */,
 				6DE8664E1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift in Sources */,
+				6DE866631D4976A300FB4CDA /* RpcParams.swift in Sources */,
+				6DE866611D49766200FB4CDA /* Location.swift in Sources */,
+				6DE866561D4964FB00FB4CDA /* RequestMessage.swift in Sources */,
+				6DE866A91D4B5EE600FB4CDA /* DataConverter.swift in Sources */,
+				6DE8665D1D49736500FB4CDA /* NetworkError.swift in Sources */,
+				6DE866211D481A8A00FB4CDA /* NSRange+pgoapi.swift in Sources */,
+				6DE866241D481D7900FB4CDA /* AlamoFireNetwork.swift in Sources */,
+				6DE866581D49652700FB4CDA /* EndPoint.swift in Sources */,
+				6DE6C8131D4695CE00A91011 /* Network.swift in Sources */,
+				6DE8665F1D49756600FB4CDA /* Constant.swift in Sources */,
+				6DE866651D49788900FB4CDA /* PgoApi.swift in Sources */,
+				6DE8666B1D49E1FF00FB4CDA /* ApiResponse.swift in Sources */,
+				6DE6C8121D4695CE00A91011 /* Auth.swift in Sources */,
+				6DE866521D4963B700FB4CDA /* RpcRequest.swift in Sources */,
+				6DE866AB1D4B5F2900FB4CDA /* Decoder.swift in Sources */,
+				6DE6C8151D4695DB00A91011 /* AuthToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

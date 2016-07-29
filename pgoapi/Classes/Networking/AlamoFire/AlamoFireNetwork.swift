@@ -21,23 +21,13 @@ public class AlamoFireNetwork: Network
         return Executor.OperationQueue(queue)
     }()
     
-    public var userAgent: String?
-    {
-        didSet
-        {
-            var headers = manager.session.configuration.HTTPAdditionalHeaders ?? [:]
-            headers["User-Agent"] = userAgent
-            
-            manager.session.configuration.HTTPAdditionalHeaders = headers
-        }
-    }
-    
     public class func defaultFireNetwork() -> AlamoFireNetwork
     {
         let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        let defaultHeaders = Manager.defaultHTTPHeaders
+        var headers = Manager.defaultHTTPHeaders
         
-        configuration.HTTPAdditionalHeaders = defaultHeaders
+        headers["User-Agent"] = getUserAgent()
+        configuration.HTTPAdditionalHeaders = headers
         
         let manager = Manager(configuration: configuration)
         manager.delegate.taskWillPerformHTTPRedirection = { session, task, response, request in return nil }
@@ -49,37 +39,40 @@ public class AlamoFireNetwork: Network
         self.manager = manager
     }
     
-    public func setUserAgent(userAgent: String)
-    {
-        self.userAgent = userAgent
-    }
-    
     public func getJSON(endPoint: String) -> Task<NetworkResponse<AnyObject>>
     {
         let responseMethod = ResponseMethod { $0.responseJSON(queue: $1, completionHandler: $2) }
-        return self.request(.GET, endPoint: endPoint, params: nil, responseMethod: responseMethod)
+        return self.request(.GET, endPoint: endPoint, params: nil, body: nil, responseMethod: responseMethod)
     }
     
-    public func postData(endPoint: String, params: [String: AnyObject]?) -> Task<NetworkResponse<NSData>>
+    public func postData(endPoint: String, params: [String: AnyObject]?, body: NSData?) -> Task<NetworkResponse<NSData>>
     {
         let responseMethod = ResponseMethod { $0.responseData(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, params: params, responseMethod: responseMethod)
+        return self.request(.POST, endPoint: endPoint, params: params, body: body, responseMethod: responseMethod)
     }
     
-    public func postString(endPoint: String, params: [String: AnyObject]?) -> Task<NetworkResponse<String>>
+    public func postString(endPoint: String, params: [String: AnyObject]?, body: NSData?) -> Task<NetworkResponse<String>>
     {
         let responseMethod = ResponseMethod { $0.responseString(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, params: params, responseMethod: responseMethod)
+        return self.request(.POST, endPoint: endPoint, params: params, body: body, responseMethod: responseMethod)
     }
     
     private func request<T>(method: Alamofire.Method,
                             endPoint: String,
                             params: [String: AnyObject]?,
+                            body: NSData?,
                             responseMethod: ResponseMethod<T>) -> Task<NetworkResponse<T>>
     {
         let taskSource = TaskCompletionSource<NetworkResponse<T>>()
+        let encoding = body == nil ? ParameterEncoding.URL : ParameterEncoding.Custom(
+        {
+            (convertible: URLRequestConvertible, params: [String : AnyObject]?) -> (NSMutableURLRequest, NSError?) in
+            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
+            mutableRequest.HTTPBody = body
+            return (mutableRequest, nil)
+        })
         
-        let request = manager.request(method, endPoint, parameters: params)
+        let request = manager.request(method, endPoint, parameters: params, encoding: encoding)
         responseMethod.invocation(request: request, queue: callbackQueue)
         {
             (response: Response<T, NSError>) in
@@ -87,7 +80,9 @@ public class AlamoFireNetwork: Network
             switch response.result
             {
             case .Success(let value):
-                taskSource.setResult(NetworkResponse(response: value, responseHeaders: response.response?.allHeaderFields))
+                taskSource.setResult(NetworkResponse(statusCode: response.response?.statusCode ?? 0,
+                                                     response: value,
+                                                     responseHeaders: response.response?.allHeaderFields))
             case .Failure(let error):
                 taskSource.setError(error)
             }
