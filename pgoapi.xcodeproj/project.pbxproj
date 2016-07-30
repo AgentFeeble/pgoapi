@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		60B46E7DBA498380D9CC38FB /* Pods_All_pgoapi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328E66669DD2CF78A451D183 /* Pods_All_pgoapi.framework */; };
+		6D194F941D4CA080005479F3 /* CellIDUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D194F931D4CA080005479F3 /* CellIDUtility.swift */; };
 		6DD679DB1D4BB18100704D97 /* basictypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DD679A31D4BB18100704D97 /* basictypes.h */; };
 		6DD679DC1D4BB18100704D97 /* casts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DD679A41D4BB18100704D97 /* casts.h */; };
 		6DD679DD1D4BB18100704D97 /* commandlineflags.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DD679A51D4BB18100704D97 /* commandlineflags.h */; };
@@ -196,6 +197,7 @@
 		328E66669DD2CF78A451D183 /* Pods_All_pgoapi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_pgoapi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		622E14F9648F04132057B335 /* Pods-All-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-Example/Pods-All-Example.release.xcconfig"; sourceTree = "<group>"; };
 		6490F2FE80D6050A6703512C /* Pods-All-pgoapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-pgoapi.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-pgoapi/Pods-All-pgoapi.release.xcconfig"; sourceTree = "<group>"; };
+		6D194F931D4CA080005479F3 /* CellIDUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIDUtility.swift; sourceTree = "<group>"; };
 		6DD679A31D4BB18100704D97 /* basictypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basictypes.h; sourceTree = "<group>"; };
 		6DD679A41D4BB18100704D97 /* casts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = casts.h; sourceTree = "<group>"; };
 		6DD679A51D4BB18100704D97 /* commandlineflags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = commandlineflags.h; sourceTree = "<group>"; };
@@ -371,6 +373,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D194F921D4CA058005479F3 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				6D194F931D4CA080005479F3 /* CellIDUtility.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		6DD679A01D4BB12F00704D97 /* 3rd Party */ = {
 			isa = PBXGroup;
 			children = (
@@ -603,6 +613,7 @@
 				6DE6C80E1D4695AE00A91011 /* Networking */,
 				6DD67AEB1D4C0A5B00704D97 /* Objc */,
 				6DE866261D494CD700FB4CDA /* Protos */,
+				6D194F921D4CA058005479F3 /* Utility */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1041,6 +1052,7 @@
 				6DE8663B1D494D0200FB4CDA /* Pogoprotos.Data.Battle.PogoprotosDataBattle.proto.swift in Sources */,
 				6DE8663C1D494D0200FB4CDA /* Pogoprotos.Data.Capture.PogoprotosDataCapture.proto.swift in Sources */,
 				6DE8664C1D494D0200FB4CDA /* Pogoprotos.Settings.Master.PogoprotosSettingsMaster.proto.swift in Sources */,
+				6D194F941D4CA080005479F3 /* CellIDUtility.swift in Sources */,
 				6DE866401D494D0200FB4CDA /* Pogoprotos.Data.PogoprotosData.proto.swift in Sources */,
 				6DD67AF81D4C0D0B00704D97 /* MCS2CellID.mm in Sources */,
 				6DE8663F1D494D0200FB4CDA /* Pogoprotos.Data.Player.PogoprotosDataPlayer.proto.swift in Sources */,

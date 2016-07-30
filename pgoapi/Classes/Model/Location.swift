@@ -10,7 +10,14 @@ import Foundation
 
 public struct Location
 {
-    let latitude: Double
-    let longitude: Double
-    let altitude: Double
+    public let latitude: Double
+    public let longitude: Double
+    public let altitude: Double
+    
+    public init(latitude: Double, longitude: Double, altitude: Double = 0.0)
+    {
+        self.latitude = latitude
+        self.longitude = longitude
+        self.altitude = 0
+    }    
 }

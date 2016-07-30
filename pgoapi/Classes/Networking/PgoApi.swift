@@ -25,12 +25,13 @@ public class PgoApi
         
         private var responseConverterBuilder = ApiResponseDataConverter.Builder()
         
-        var location: Location?
+        private let location: Location?
         
-        private init(api: PgoApi, authToken: AuthToken)
+        private init(api: PgoApi, authToken: AuthToken, location: Location?)
         {
             self.api = api
             self.authToken = authToken
+            self.location = location
         }
     }
     
@@ -46,9 +47,9 @@ public class PgoApi
         self.authToken = authToken
     }
     
-    public func builder() -> Builder
+    public func builder(location: Location? = nil) -> Builder
     {
-        return Builder(api: self, authToken: authToken)
+        return Builder(api: self, authToken: authToken, location: location)
     }
     
     public func login() -> Task<(PgoApi, ApiResponse)>
@@ -60,7 +61,7 @@ public class PgoApi
         .continueOnSuccessWith(.MainThread)
         {
             response in
-            self.apiEndpoint = response.response.apiUrl
+            self.apiEndpoint = "https://\(response.response.apiUrl)/rpc"
             self.loggedIn = true
             return (self, response)
         }
@@ -107,6 +108,7 @@ private extension PgoApi.Builder
     }
 }
 
+// This extensions adds all the methods to build up the response
 public extension PgoApi.Builder
 {
     private typealias RequestType = Pogoprotos.Networking.Requests.RequestType
@@ -147,6 +149,25 @@ public extension PgoApi.Builder
         messageBuilder.hash = Constant.SettingsHash
         let responseType = Pogoprotos.Networking.Responses.DownloadSettingsResponse.self
         return addMessage(try! messageBuilder.build(), type: .DownloadSettings, responseType: responseType)
+    }
+    
+    func getMapObjects() -> PgoApi.Builder
+    {
+        guard let location = location else
+        {
+            precondition(false, "location must be set to get map objects")
+        }
+        
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetMapObjectsMessage.Builder()
+        let responseType = Pogoprotos.Networking.Responses.GetMapObjectsResponse.self
+        let cellIDs = getCellIDs(location)
+        
+        messageBuilder.cellId = cellIDs
+        messageBuilder.sinceTimestampMs = [Int64](count: cellIDs.count, repeatedValue: 0)
+        messageBuilder.latitude = location.latitude
+        messageBuilder.longitude = location.longitude
+        
+        return addMessage(try! messageBuilder.build(), type: .GetMapObjects, responseType: responseType)
     }
     
     private func addMessage<T: GeneratedMessage where T: GeneratedMessageProtocol>
