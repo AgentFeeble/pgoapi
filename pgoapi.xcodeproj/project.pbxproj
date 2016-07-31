@@ -71,7 +71,6 @@
 		6DD67AC91D4C09AB00704D97 /* strtoint.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679B41D4BB18100704D97 /* strtoint.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6DD67ACA1D4C09AF00704D97 /* ascii_ctype.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679B91D4BB18100704D97 /* ascii_ctype.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6DD67ACB1D4C09AF00704D97 /* split.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679BB1D4BB18100704D97 /* split.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
-		6DD67ACC1D4C09AF00704D97 /* stringprintf.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679BD1D4BB18100704D97 /* stringprintf.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6DD67ACD1D4C09AF00704D97 /* strutil.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679BF1D4BB18100704D97 /* strutil.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6DD67ACE1D4C09B500704D97 /* coder.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679C31D4BB18100704D97 /* coder.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		6DD67ACF1D4C09B500704D97 /* varint.cc in Sources */ = {isa = PBXBuildFile; fileRef = 6DD679C51D4BB18100704D97 /* varint.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -223,7 +222,6 @@
 		6DD679BA1D4BB18100704D97 /* ascii_ctype.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ascii_ctype.h; sourceTree = "<group>"; };
 		6DD679BB1D4BB18100704D97 /* split.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = split.cc; sourceTree = "<group>"; };
 		6DD679BC1D4BB18100704D97 /* split.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = split.h; sourceTree = "<group>"; };
-		6DD679BD1D4BB18100704D97 /* stringprintf.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = stringprintf.cc; sourceTree = "<group>"; };
 		6DD679BF1D4BB18100704D97 /* strutil.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = strutil.cc; sourceTree = "<group>"; };
 		6DD679C01D4BB18100704D97 /* strutil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = strutil.h; sourceTree = "<group>"; };
 		6DD679C31D4BB18100704D97 /* coder.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = coder.cc; sourceTree = "<group>"; };
@@ -477,7 +475,6 @@
 				6DD679BA1D4BB18100704D97 /* ascii_ctype.h */,
 				6DD679BB1D4BB18100704D97 /* split.cc */,
 				6DD679BC1D4BB18100704D97 /* split.h */,
-				6DD679BD1D4BB18100704D97 /* stringprintf.cc */,
 				6DD679BF1D4BB18100704D97 /* strutil.cc */,
 				6DD679C01D4BB18100704D97 /* strutil.h */,
 			);
@@ -1024,7 +1021,6 @@
 				6DD67AE61D4C09C200704D97 /* s2regionintersection.cc in Sources */,
 				6DD67AD61D4C09C200704D97 /* s2cap.cc in Sources */,
 				6DD67AC81D4C09AB00704D97 /* stringprintf.cc in Sources */,
-				6DD67ACC1D4C09AF00704D97 /* stringprintf.cc in Sources */,
 				6DD67ADC1D4C09C200704D97 /* s2latlng.cc in Sources */,
 				6DD67AD51D4C09C200704D97 /* s2.cc in Sources */,
 				6DD67AE21D4C09C200704D97 /* s2polyline.cc in Sources */,
