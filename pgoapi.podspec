@@ -8,11 +8,13 @@ Pod::Spec.new do |s|
   player data, hatched eggs, inventory, badges, settings, & map objects.
                    DESC
 
-  s.homepage     = "https://github.com/AgentFeeble/pgoapi"
-  s.license      = "Apache"
+  s.homepage = "https://github.com/AgentFeeble/pgoapi"
+  s.license  = "Apache"
 
-  s.author    = "Rayman Rosevear"
-  s.platform     = :ios, "8.0"
+  s.author = "Rayman Rosevear"
+
+  s.ios.deployment_target = '8.0'
+  s.osx.deployment_target = '10.10'
 
   s.source       = { :git => "https://github.com/AgentFeeble/pgoapi.git", :tag => "#{s.version}" }
   s.source_files = "pgoapi/Classes/**/*.{swift,h,mm}", "pgoapi/3rd Party/S2/**/*.{h,cc}"
