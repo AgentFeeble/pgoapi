@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (3.4.1)
-  - Bolts-Swift (1.1.0)
+  - Bolts-Swift (1.2.0)
   - ProtocolBuffers-Swift (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.4.1)
-  - Bolts-Swift (~> 1.1.0)
+  - Bolts-Swift (~> 1.2.0)
   - ProtocolBuffers-Swift (from `https://github.com/alexeyxo/protobuf-swift`, branch `ProtoBuf3.0-Swift2.0`)
 
 EXTERNAL SOURCES:
@@ -20,9 +20,9 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Bolts-Swift: 63ef77f967f795415531da45eef419eab79ec730
+  Bolts-Swift: ac4e7d26719ed0f73aa85b9310da1648105fbde3
   ProtocolBuffers-Swift: 948824656ef9f507348481655d409628b0219be0
 
-PODFILE CHECKSUM: be58b6b3b869d91f76cb9d6fccc9a797b501a478
+PODFILE CHECKSUM: 1ecfcd6efbab3d554df81c8defd7215c4444b155
 
 COCOAPODS: 1.0.0

@@ -80,11 +80,11 @@ public class AlamoFireNetwork: Network
             switch response.result
             {
             case .Success(let value):
-                taskSource.setResult(NetworkResponse(statusCode: response.response?.statusCode ?? 0,
-                                                     response: value,
-                                                     responseHeaders: response.response?.allHeaderFields))
+                taskSource.set(result: NetworkResponse(statusCode: response.response?.statusCode ?? 0,
+                                                       response: value,
+                                                       responseHeaders: response.response?.allHeaderFields))
             case .Failure(let error):
-                taskSource.setError(error)
+                taskSource.set(error: error)
             }
         }
         

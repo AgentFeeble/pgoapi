@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   s.dependency "Alamofire", "~> 3.4.1"
-  s.dependency "Bolts-Swift", "~> 1.1.0"
+  s.dependency "Bolts-Swift", "~> 1.2.0"
   s.dependency "ProtocolBuffers-Swift"
 
 end
