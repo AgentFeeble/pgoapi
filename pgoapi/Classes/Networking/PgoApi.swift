@@ -171,7 +171,7 @@ public extension PgoApi.Builder
     {
         guard let location = location else
         {
-            precondition(false, "location must be set to get map objects")
+            fatalError("location must be set to get map objects")
         }
         
         let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetMapObjectsMessage.Builder()
