@@ -35,7 +35,7 @@ public class PgoApi
         }
     }
     
-    let network: Network
+    public let network: Network
     let authToken: AuthToken
     
     private var apiEndpoint: String?
