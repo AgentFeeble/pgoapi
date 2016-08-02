@@ -40,6 +40,7 @@ public class PgoApi
     
     private var apiEndpoint: String?
     private(set) var loggedIn = false
+    private var lock: OSSpinLock = OS_SPINLOCK_INIT
     
     public init(network: Network, authToken: AuthToken)
     {
@@ -54,29 +55,30 @@ public class PgoApi
     
     public func login() -> Task<(PgoApi, ApiResponse)>
     {
-        precondition(NSThread.isMainThread(), "\(#function) should only be called from the main thread")
-        
         // Capture self strongly, so that the instance stays alive until the login call finishes
         return executeInternal(builder: getLoginBuilder())
-        .continueOnSuccessWith(.MainThread)
+        .continueOnSuccessWith(network.processingExecutor)
         {
             response in
-            self.apiEndpoint = "https://\(response.response.apiUrl)/rpc"
-            self.loggedIn = true
+            self.sync
+            {
+                self.apiEndpoint = "https://\(response.response.apiUrl)/rpc"
+                self.loggedIn = true
+            }
             return (self, response)
         }
     }
     
     public func execute(builder: Builder) -> Task<ApiResponse>
     {
-        precondition(NSThread.isMainThread(), "\(#function) should only be called from the main thread")
+        let (isLoggedIn, endPoint) = sync { return (loggedIn, apiEndpoint) }
         
-        guard loggedIn else
+        guard isLoggedIn else
         {
             return Task(error: ApiError.NotLoggedIn)
         }
         // Explicityly force unwrap apiEndpoint. If we don't have one after being logged in, the app is in an inconsistent state
-        return executeInternal(apiEndpoint!, builder: builder)
+        return executeInternal(endPoint!, builder: builder)
     }
     
     private func executeInternal(endPoint: String = EndPoint.Rpc, builder: Builder) -> Task<ApiResponse>
@@ -93,6 +95,20 @@ public class PgoApi
               .getInventory()
               .checkAwardedBadges()
               .downloadSettings()
+    }
+    
+    private func sync(@noescape closure: () -> ())
+    {
+        OSSpinLockLock(&lock)
+        defer { OSSpinLockUnlock(&lock) }
+        closure()
+    }
+    
+    private func sync<T>(@noescape closure: () -> T) -> T
+    {
+        OSSpinLockLock(&lock)
+        defer { OSSpinLockUnlock(&lock) }
+        return closure()
     }
 }
 
