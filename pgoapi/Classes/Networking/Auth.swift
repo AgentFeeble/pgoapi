@@ -9,6 +9,28 @@
 import Foundation
 import BoltsSwift
 
+private class AuthID: Synchronizable
+{
+    private var id: Int = 0
+    let synchronizationLock: Lockable = SpinLock()
+    
+    private static let globalAuthId = AuthID()
+
+    static func newAuthId() -> Int
+    {
+        return globalAuthId.newId()
+    }
+    
+    private func newId() -> Int
+    {
+        return sync
+        {
+            id += 1
+            return id
+        }
+    }
+}
+
 public class Auth
 {
     public enum AuthError: ErrorType
@@ -18,6 +40,7 @@ public class Auth
     }
     
     private let network: Network
+    private let sessionId = "Auth Session \(AuthID.newAuthId())"
     
     public init(network: Network)
     {
@@ -28,25 +51,35 @@ public class Auth
     {
         // Note: self is captured strongly to keep a strong reference to self
         // during the API calls
-        return network.getJSON(EndPoint.LoginInfo)
+        
+        let sessionId = self.sessionId
+        return network.getJSON(EndPoint.LoginInfo, args: RequestArgs(sessionId: sessionId))
         .continueOnSuccessWithTask(network.processingExecutor, continuation:
         {
             (response: NetworkResponse<AnyObject>) -> Task<String> in
             
             // Note strong capture to keep self alive during request
-            return try self.getTicket(jsonResponse: response.response, username: username, password: password)
+            return try self.getTicket(response: response, username: username, password: password)
         })
         .continueOnSuccessWithTask(network.processingExecutor, continuation:
         {
             (ticket: String) -> Task<AuthToken> in
             return try self.loginViaOauth(ticket: ticket)
         })
+        .continueWithTask(continuation:
+        {
+            [weak self] task in
+            self?.network.resetSessionWithID(sessionID: sessionId)
+            return task
+        })
     }
 
-    private func getTicket(jsonResponse response: AnyObject?, username: String, password: String) throws -> Task<String>
+    private func getTicket(response response: NetworkResponse<AnyObject>, username: String, password: String) throws -> Task<String>
     {
-        guard let lt = response?["lt"] as? String,
-        let execution = response?["execution"] as? String else
+        
+        guard let json = response.response,
+        let lt = json["lt"] as? String,
+        let execution = json["execution"] as? String else
         {
             throw AuthError.InvalidResponse
         }
@@ -59,12 +92,12 @@ public class Auth
             "password": password
         ]
         
-        return network.postData(EndPoint.LoginInfo, params: parameters)
+        return network.postData(EndPoint.LoginInfo, args: RequestArgs(params: parameters, sessionId: sessionId))
         .continueOnSuccessWith(network.processingExecutor, continuation:
         {
             (response: NetworkResponse<NSData>) -> String in
             
-            guard let location = response.responseHeaders?["Location"] as? String,
+            guard let location = response.responseHeaders?["Location"],
             let ticketRange = location.rangeOfString("?ticket=") else
             {
                 throw self.getError(forInvalidTicketResponse: response)
@@ -89,7 +122,7 @@ public class Auth
             "code": ticket
         ]
         
-        return network.postString(EndPoint.LoginOAuth, params: parameters)
+        return network.postString(EndPoint.LoginOAuth, args: RequestArgs(params: parameters, sessionId: sessionId))
         .continueOnSuccessWith(network.processingExecutor, continuation:
         {
             (response: NetworkResponse<String>) -> AuthToken in
@@ -133,7 +166,7 @@ public class Auth
     {
         let formatter = NSDateFormatter()
         
-        if let dateString = response.responseHeaders?["Date"] as? String,
+        if let dateString = response.responseHeaders?["Date"],
         let date = formatter.dateFromString(dateString)
         {
             return date

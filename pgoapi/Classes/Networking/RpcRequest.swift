@@ -37,7 +37,7 @@ class RpcRequest
         .continueOnSuccessWithTask(continuation:
         {
             (requestData: NSData) -> Task<NetworkResponse<NSData>> in
-            return self.network.postData(endPoint, params: [:], body: requestData)
+            return self.network.postData(endPoint, args: RequestArgs(params: [:], body: requestData))
         })
         .continueOnSuccessWith(network.processingExecutor, continuation:
         {

@@ -10,10 +10,13 @@ import Foundation
 import Alamofire
 import BoltsSwift
 
-public class AlamoFireNetwork: Network
+public class AlamoFireNetwork: Network, Synchronizable
 {
-    private let manager: Manager
+    private let defaultManager: Manager
+    private var isolatedManagerMap: [String: Manager] = [:] // maps sessionID to manager
     private let callbackQueue = dispatch_queue_create("AlamoFire Network Callback Queue", DISPATCH_QUEUE_CONCURRENT)
+    
+    let synchronizationLock: dispatch_queue_t = dispatch_queue_create("AlamoFireNetwork Synchronization", nil)
     
     public var processingExecutor: Executor = {
         let queue = NSOperationQueue()
@@ -36,43 +39,49 @@ public class AlamoFireNetwork: Network
     
     public init(manager: Manager)
     {
-        self.manager = manager
+        self.defaultManager = manager
     }
     
-    public func getJSON(endPoint: String) -> Task<NetworkResponse<AnyObject>>
+    public func resetSessionWithID(sessionID sessionID: String)
+    {
+        sync{ self.isolatedManagerMap.removeValueForKey(sessionID) }
+    }
+    
+    public func getJSON(endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<AnyObject>>
     {
         let responseMethod = ResponseMethod { $0.responseJSON(queue: $1, completionHandler: $2) }
-        return self.request(.GET, endPoint: endPoint, params: nil, body: nil, responseMethod: responseMethod)
+        return self.request(.GET, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    public func postData(endPoint: String, params: [String: AnyObject]?, body: NSData?) -> Task<NetworkResponse<NSData>>
+    public func postData(endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<NSData>>
     {
         let responseMethod = ResponseMethod { $0.responseData(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, params: params, body: body, responseMethod: responseMethod)
+        return self.request(.POST, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    public func postString(endPoint: String, params: [String: AnyObject]?, body: NSData?) -> Task<NetworkResponse<String>>
+    public func postString(endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<String>>
     {
         let responseMethod = ResponseMethod { $0.responseString(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, params: params, body: body, responseMethod: responseMethod)
+        return self.request(.POST, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
     private func request<T>(method: Alamofire.Method,
                             endPoint: String,
-                            params: [String: AnyObject]?,
-                            body: NSData?,
+                            args: RequestArgs?,
                             responseMethod: ResponseMethod<T>) -> Task<NetworkResponse<T>>
     {
+        let manager = managerFor(args)
+        
         let taskSource = TaskCompletionSource<NetworkResponse<T>>()
-        let encoding = body == nil ? ParameterEncoding.URL : ParameterEncoding.Custom(
+        let encoding = args?.body == nil ? ParameterEncoding.URL : ParameterEncoding.Custom(
         {
             (convertible: URLRequestConvertible, params: [String : AnyObject]?) -> (NSMutableURLRequest, NSError?) in
             let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = body
+            mutableRequest.HTTPBody = args?.body
             return (mutableRequest, nil)
         })
         
-        let request = manager.request(method, endPoint, parameters: params, encoding: encoding)
+        let request = manager.request(method, endPoint, parameters: args?.params, encoding: encoding)
         responseMethod.invocation(request: request, queue: callbackQueue)
         {
             (response: Response<T, NSError>) in
@@ -80,15 +89,42 @@ public class AlamoFireNetwork: Network
             switch response.result
             {
             case .Success(let value):
-                taskSource.set(result: NetworkResponse(statusCode: response.response?.statusCode ?? 0,
+                taskSource.set(result: NetworkResponse(url: response.response?.URL,
+                                                       statusCode: response.response?.statusCode ?? 0,
                                                        response: value,
-                                                       responseHeaders: response.response?.allHeaderFields))
+                                                       responseHeaders: response.response?.allHeaderFields as? [String: String]))
             case .Failure(let error):
                 taskSource.set(error: error)
             }
         }
         
         return taskSource.task
+    }
+    
+    private func managerFor(args: RequestArgs?) -> Manager
+    {
+        guard let sessionId = args?.sessionId else
+        {
+            return defaultManager
+        }
+        
+        return sync
+        {
+            if let manager = self.isolatedManagerMap[sessionId]
+            {
+                return manager
+            }
+            
+            let sessionConfig = self.defaultManager.session.configuration.copy() as! NSURLSessionConfiguration
+            sessionConfig.HTTPCookieStorage = MemoryCookieStorage()
+            
+            let manager = Manager(configuration: sessionConfig)
+            manager.delegate.taskWillPerformHTTPRedirection = { session, task, response, request in return nil }
+            
+            self.isolatedManagerMap[sessionId] = manager
+            
+            return manager
+        }
     }
 }
 

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		60B46E7DBA498380D9CC38FB /* Pods_All_pgoapi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 328E66669DD2CF78A451D183 /* Pods_All_pgoapi.framework */; };
+		6D1512F51D5330E00035D6E6 /* Synchronizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1512F41D5330E00035D6E6 /* Synchronizable.swift */; };
+		6D1512F81D537C890035D6E6 /* MemoryCookieStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1512F71D537C890035D6E6 /* MemoryCookieStorage.swift */; };
 		6D194F941D4CA080005479F3 /* CellIDUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D194F931D4CA080005479F3 /* CellIDUtility.swift */; };
 		6DD679DB1D4BB18100704D97 /* basictypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DD679A31D4BB18100704D97 /* basictypes.h */; };
 		6DD679DC1D4BB18100704D97 /* casts.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DD679A41D4BB18100704D97 /* casts.h */; };
@@ -196,6 +198,8 @@
 		328E66669DD2CF78A451D183 /* Pods_All_pgoapi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_pgoapi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		622E14F9648F04132057B335 /* Pods-All-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-Example/Pods-All-Example.release.xcconfig"; sourceTree = "<group>"; };
 		6490F2FE80D6050A6703512C /* Pods-All-pgoapi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-pgoapi.release.xcconfig"; path = "Pods/Target Support Files/Pods-All-pgoapi/Pods-All-pgoapi.release.xcconfig"; sourceTree = "<group>"; };
+		6D1512F41D5330E00035D6E6 /* Synchronizable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Synchronizable.swift; sourceTree = "<group>"; };
+		6D1512F71D537C890035D6E6 /* MemoryCookieStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryCookieStorage.swift; sourceTree = "<group>"; };
 		6D194F931D4CA080005479F3 /* CellIDUtility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellIDUtility.swift; sourceTree = "<group>"; };
 		6DD679A31D4BB18100704D97 /* basictypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basictypes.h; sourceTree = "<group>"; };
 		6DD679A41D4BB18100704D97 /* casts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = casts.h; sourceTree = "<group>"; };
@@ -620,6 +624,7 @@
 			children = (
 				6DE866221D481D6600FB4CDA /* AlamoFire */,
 				6DE6C8101D4695CE00A91011 /* Auth.swift */,
+				6D1512F71D537C890035D6E6 /* MemoryCookieStorage.swift */,
 				6DE6C8111D4695CE00A91011 /* Network.swift */,
 				6DE8665C1D49736500FB4CDA /* NetworkError.swift */,
 				6DE866641D49788900FB4CDA /* PgoApi.swift */,
@@ -689,10 +694,11 @@
 		6DE866591D49653F00FB4CDA /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */,
 				6DE866A81D4B5EE600FB4CDA /* DataConverter.swift */,
 				6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */,
-				6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */,
 				6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */,
+				6D1512F41D5330E00035D6E6 /* Synchronizable.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1067,7 +1073,9 @@
 				6DE866581D49652700FB4CDA /* EndPoint.swift in Sources */,
 				6DE6C8131D4695CE00A91011 /* Network.swift in Sources */,
 				6DE8665F1D49756600FB4CDA /* Constant.swift in Sources */,
+				6D1512F81D537C890035D6E6 /* MemoryCookieStorage.swift in Sources */,
 				6DE866651D49788900FB4CDA /* PgoApi.swift in Sources */,
+				6D1512F51D5330E00035D6E6 /* Synchronizable.swift in Sources */,
 				6DE8666B1D49E1FF00FB4CDA /* ApiResponse.swift in Sources */,
 				6DE6C8121D4695CE00A91011 /* Auth.swift in Sources */,
 				6DE866521D4963B700FB4CDA /* RpcRequest.swift in Sources */,

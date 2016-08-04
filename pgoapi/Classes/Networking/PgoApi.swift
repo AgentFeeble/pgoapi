@@ -10,7 +10,7 @@ import Foundation
 import BoltsSwift
 import ProtocolBuffers
 
-public class PgoApi
+public class PgoApi: Synchronizable
 {
     public enum ApiError: ErrorType
     {
@@ -40,7 +40,7 @@ public class PgoApi
     
     private var apiEndpoint: String?
     private(set) var loggedIn = false
-    private var lock: OSSpinLock = OS_SPINLOCK_INIT
+    let synchronizationLock: Lockable = SpinLock()
     
     public init(network: Network, authToken: AuthToken)
     {
@@ -95,21 +95,7 @@ public class PgoApi
               .getInventory()
               .checkAwardedBadges()
               .downloadSettings()
-    }
-    
-    private func sync(@noescape closure: () -> ())
-    {
-        OSSpinLockLock(&lock)
-        defer { OSSpinLockUnlock(&lock) }
-        closure()
-    }
-    
-    private func sync<T>(@noescape closure: () -> T) -> T
-    {
-        OSSpinLockLock(&lock)
-        defer { OSSpinLockUnlock(&lock) }
-        return closure()
-    }
+    }    
 }
 
 private extension PgoApi.Builder
