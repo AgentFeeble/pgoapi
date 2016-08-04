@@ -351,7 +351,7 @@ public func == (lhs: Pogoprotos.Networking.Responses.GetIncensePokemonResponse, 
   }
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
-  fieldCheck = fieldCheck && (lhs.hasPokemonTypeId == rhs.hasPokemonTypeId) && (!lhs.hasPokemonTypeId || lhs.pokemonTypeId == rhs.pokemonTypeId)
+  fieldCheck = fieldCheck && (lhs.hasPokemonId == rhs.hasPokemonId) && (!lhs.hasPokemonId || lhs.pokemonId == rhs.pokemonId)
   fieldCheck = fieldCheck && (lhs.hasLatitude == rhs.hasLatitude) && (!lhs.hasLatitude || lhs.latitude == rhs.latitude)
   fieldCheck = fieldCheck && (lhs.hasLongitude == rhs.hasLongitude) && (!lhs.hasLongitude || lhs.longitude == rhs.longitude)
   fieldCheck = fieldCheck && (lhs.hasEncounterLocation == rhs.hasEncounterLocation) && (!lhs.hasEncounterLocation || lhs.encounterLocation == rhs.encounterLocation)
@@ -13093,10 +13093,8 @@ public extension Pogoprotos.Networking.Responses {
 
     public private(set) var result:Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Result = Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Result.IncenseEncounterUnknown
     public private(set) var hasResult:Bool = false
-    // TODO: PokemonType.proto or PokemonId.proto
-    public private(set) var hasPokemonTypeId:Bool = false
-    public private(set) var pokemonTypeId:Int32 = Int32(0)
-
+    public private(set) var pokemonId:Pogoprotos.Enums.PokemonId = Pogoprotos.Enums.PokemonId.Missingno
+    public private(set) var hasPokemonId:Bool = false
     public private(set) var hasLatitude:Bool = false
     public private(set) var latitude:Double = Double(0)
 
@@ -13122,8 +13120,8 @@ public extension Pogoprotos.Networking.Responses {
       if hasResult {
         try output.writeEnum(1, value:result.rawValue)
       }
-      if hasPokemonTypeId {
-        try output.writeInt32(2, value:pokemonTypeId)
+      if hasPokemonId {
+        try output.writeEnum(2, value:pokemonId.rawValue)
       }
       if hasLatitude {
         try output.writeDouble(3, value:latitude)
@@ -13152,8 +13150,8 @@ public extension Pogoprotos.Networking.Responses {
       if (hasResult) {
         serialize_size += result.rawValue.computeEnumSize(1)
       }
-      if hasPokemonTypeId {
-        serialize_size += pokemonTypeId.computeInt32Size(2)
+      if (hasPokemonId) {
+        serialize_size += pokemonId.rawValue.computeEnumSize(2)
       }
       if hasLatitude {
         serialize_size += latitude.computeDoubleSize(3)
@@ -13229,8 +13227,8 @@ public extension Pogoprotos.Networking.Responses {
       if hasResult {
         jsonMap["result"] = result.toString()
       }
-      if hasPokemonTypeId {
-        jsonMap["pokemonTypeId"] = NSNumber(int:pokemonTypeId)
+      if hasPokemonId {
+        jsonMap["pokemonId"] = pokemonId.toString()
       }
       if hasLatitude {
         jsonMap["latitude"] = NSNumber(double:latitude)
@@ -13260,8 +13258,8 @@ public extension Pogoprotos.Networking.Responses {
       if (hasResult) {
         output += "\(indent) result: \(result.description)\n"
       }
-      if hasPokemonTypeId {
-        output += "\(indent) pokemonTypeId: \(pokemonTypeId) \n"
+      if (hasPokemonId) {
+        output += "\(indent) pokemonId: \(pokemonId.description)\n"
       }
       if hasLatitude {
         output += "\(indent) latitude: \(latitude) \n"
@@ -13287,8 +13285,8 @@ public extension Pogoprotos.Networking.Responses {
             if hasResult {
                hashCode = (hashCode &* 31) &+ Int(result.rawValue)
             }
-            if hasPokemonTypeId {
-               hashCode = (hashCode &* 31) &+ pokemonTypeId.hashValue
+            if hasPokemonId {
+               hashCode = (hashCode &* 31) &+ Int(pokemonId.rawValue)
             }
             if hasLatitude {
                hashCode = (hashCode &* 31) &+ latitude.hashValue
@@ -13356,29 +13354,29 @@ public extension Pogoprotos.Networking.Responses {
            builderResult.result = .IncenseEncounterUnknown
            return self
         }
-      public var hasPokemonTypeId:Bool {
-           get {
-                return builderResult.hasPokemonTypeId
-           }
-      }
-      public var pokemonTypeId:Int32 {
-           get {
-                return builderResult.pokemonTypeId
-           }
-           set (value) {
-               builderResult.hasPokemonTypeId = true
-               builderResult.pokemonTypeId = value
-           }
-      }
-      public func setPokemonTypeId(value:Int32) -> Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Builder {
-        self.pokemonTypeId = value
-        return self
-      }
-      public func clearPokemonTypeId() -> Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Builder{
-           builderResult.hasPokemonTypeId = false
-           builderResult.pokemonTypeId = Int32(0)
+        public var hasPokemonId:Bool{
+            get {
+                return builderResult.hasPokemonId
+            }
+        }
+        public var pokemonId:Pogoprotos.Enums.PokemonId {
+            get {
+                return builderResult.pokemonId
+            }
+            set (value) {
+                builderResult.hasPokemonId = true
+                builderResult.pokemonId = value
+            }
+        }
+        public func setPokemonId(value:Pogoprotos.Enums.PokemonId) -> Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Builder {
+          self.pokemonId = value
+          return self
+        }
+        public func clearPokemonId() -> Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Builder {
+           builderResult.hasPokemonId = false
+           builderResult.pokemonId = .Missingno
            return self
-      }
+        }
       public var hasLatitude:Bool {
            get {
                 return builderResult.hasLatitude
@@ -13521,8 +13519,8 @@ public extension Pogoprotos.Networking.Responses {
         if other.hasResult {
              result = other.result
         }
-        if other.hasPokemonTypeId {
-             pokemonTypeId = other.pokemonTypeId
+        if other.hasPokemonId {
+             pokemonId = other.pokemonId
         }
         if other.hasLatitude {
              latitude = other.latitude
@@ -13563,7 +13561,12 @@ public extension Pogoprotos.Networking.Responses {
             }
 
           case 16:
-            pokemonTypeId = try input.readInt32()
+            let valueIntpokemonId = try input.readEnum()
+            if let enumspokemonId = Pogoprotos.Enums.PokemonId(rawValue:valueIntpokemonId){
+                 pokemonId = enumspokemonId
+            } else {
+                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntpokemonId))
+            }
 
           case 25:
             latitude = try input.readDouble()
@@ -13593,8 +13596,8 @@ public extension Pogoprotos.Networking.Responses {
         if let jsonValueResult = jsonMap["result"] as? String {
           resultDecodedBuilder.result = try Pogoprotos.Networking.Responses.GetIncensePokemonResponse.Result.fromString(jsonValueResult)
         }
-        if let jsonValuePokemonTypeId = jsonMap["pokemonTypeId"] as? NSNumber {
-          resultDecodedBuilder.pokemonTypeId = jsonValuePokemonTypeId.intValue
+        if let jsonValuePokemonId = jsonMap["pokemonId"] as? String {
+          resultDecodedBuilder.pokemonId = try Pogoprotos.Enums.PokemonId.fromString(jsonValuePokemonId)
         }
         if let jsonValueLatitude = jsonMap["latitude"] as? NSNumber {
           resultDecodedBuilder.latitude = jsonValueLatitude.doubleValue

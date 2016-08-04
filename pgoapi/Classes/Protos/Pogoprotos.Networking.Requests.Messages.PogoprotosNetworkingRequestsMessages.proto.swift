@@ -523,7 +523,7 @@ public func == (lhs: Pogoprotos.Networking.Requests.Messages.UseItemCaptureMessa
   var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
   fieldCheck = fieldCheck && (lhs.hasItemId == rhs.hasItemId) && (!lhs.hasItemId || lhs.itemId == rhs.itemId)
   fieldCheck = fieldCheck && (lhs.hasEncounterId == rhs.hasEncounterId) && (!lhs.hasEncounterId || lhs.encounterId == rhs.encounterId)
-  fieldCheck = fieldCheck && (lhs.hasSpawnPointGuid == rhs.hasSpawnPointGuid) && (!lhs.hasSpawnPointGuid || lhs.spawnPointGuid == rhs.spawnPointGuid)
+  fieldCheck = fieldCheck && (lhs.hasSpawnPointId == rhs.hasSpawnPointId) && (!lhs.hasSpawnPointId || lhs.spawnPointId == rhs.spawnPointId)
   fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
   return fieldCheck
 }
@@ -5547,7 +5547,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         try output.writeString(1, value:fortId)
       }
       if hasPokemonId {
-        try output.writeUInt64(2, value:pokemonId)
+        try output.writeFixed64(2, value:pokemonId)
       }
       if hasPlayerLatitude {
         try output.writeDouble(3, value:playerLatitude)
@@ -5568,7 +5568,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         serialize_size += fortId.computeStringSize(1)
       }
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(2)
+        serialize_size += pokemonId.computeFixed64Size(2)
       }
       if hasPlayerLatitude {
         serialize_size += playerLatitude.computeDoubleSize(3)
@@ -5858,8 +5858,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
           case 10:
             fortId = try input.readString()
 
-          case 16:
-            pokemonId = try input.readUInt64()
+          case 17:
+            pokemonId = try input.readFixed64()
 
           case 25:
             playerLatitude = try input.readDouble()
@@ -6255,7 +6255,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         try output.writeString(1, value:fortId)
       }
       if hasPokemonId {
-        try output.writeUInt64(2, value:pokemonId)
+        try output.writeFixed64(2, value:pokemonId)
       }
       if hasPlayerLatitude {
         try output.writeDouble(3, value:playerLatitude)
@@ -6276,7 +6276,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         serialize_size += fortId.computeStringSize(1)
       }
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(2)
+        serialize_size += pokemonId.computeFixed64Size(2)
       }
       if hasPlayerLatitude {
         serialize_size += playerLatitude.computeDoubleSize(3)
@@ -6566,8 +6566,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
           case 10:
             fortId = try input.readString()
 
-          case 16:
-            pokemonId = try input.readUInt64()
+          case 17:
+            pokemonId = try input.readFixed64()
 
           case 25:
             playerLatitude = try input.readDouble()
@@ -9873,7 +9873,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
   final public class IncenseEncounterMessage : GeneratedMessage, GeneratedMessageProtocol {
     public private(set) var hasEncounterId:Bool = false
-    public private(set) var encounterId:Int64 = Int64(0)
+    public private(set) var encounterId:UInt64 = UInt64(0)
 
     public private(set) var hasEncounterLocation:Bool = false
     public private(set) var encounterLocation:String = ""
@@ -9886,7 +9886,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasEncounterId {
-        try output.writeInt64(1, value:encounterId)
+        try output.writeUInt64(1, value:encounterId)
       }
       if hasEncounterLocation {
         try output.writeString(2, value:encounterLocation)
@@ -9901,7 +9901,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
       serialize_size = 0
       if hasEncounterId {
-        serialize_size += encounterId.computeInt64Size(1)
+        serialize_size += encounterId.computeUInt64Size(1)
       }
       if hasEncounterLocation {
         serialize_size += encounterLocation.computeStringSize(2)
@@ -10029,7 +10029,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
                 return builderResult.hasEncounterId
            }
       }
-      public var encounterId:Int64 {
+      public var encounterId:UInt64 {
            get {
                 return builderResult.encounterId
            }
@@ -10038,13 +10038,13 @@ public extension Pogoprotos.Networking.Requests.Messages {
                builderResult.encounterId = value
            }
       }
-      public func setEncounterId(value:Int64) -> Pogoprotos.Networking.Requests.Messages.IncenseEncounterMessage.Builder {
+      public func setEncounterId(value:UInt64) -> Pogoprotos.Networking.Requests.Messages.IncenseEncounterMessage.Builder {
         self.encounterId = value
         return self
       }
       public func clearEncounterId() -> Pogoprotos.Networking.Requests.Messages.IncenseEncounterMessage.Builder{
            builderResult.hasEncounterId = false
-           builderResult.encounterId = Int64(0)
+           builderResult.encounterId = UInt64(0)
            return self
       }
       public var hasEncounterLocation:Bool {
@@ -10116,7 +10116,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
             return self
 
           case 8:
-            encounterId = try input.readInt64()
+            encounterId = try input.readUInt64()
 
           case 18:
             encounterLocation = try input.readString()
@@ -10132,7 +10132,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
       override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Networking.Requests.Messages.IncenseEncounterMessage.Builder {
         let resultDecodedBuilder = Pogoprotos.Networking.Requests.Messages.IncenseEncounterMessage.Builder()
         if let jsonValueEncounterId = jsonMap["encounterId"] as? String {
-          resultDecodedBuilder.encounterId = Int64(jsonValueEncounterId)!
+          resultDecodedBuilder.encounterId = UInt64(jsonValueEncounterId)!
         }
         if let jsonValueEncounterLocation = jsonMap["encounterLocation"] as? String {
           resultDecodedBuilder.encounterLocation = jsonValueEncounterLocation
@@ -12330,8 +12330,9 @@ public extension Pogoprotos.Networking.Requests.Messages {
   }
 
   final public class SetFavoritePokemonMessage : GeneratedMessage, GeneratedMessageProtocol {
+    // Do not change https://github.com/AeonLucid/POGOProtos/pull/126
     public private(set) var hasPokemonId:Bool = false
-    public private(set) var pokemonId:UInt64 = UInt64(0)
+    public private(set) var pokemonId:Int64 = Int64(0)
 
     public private(set) var hasIsFavorite:Bool = false
     public private(set) var isFavorite:Bool = false
@@ -12344,7 +12345,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasPokemonId {
-        try output.writeUInt64(1, value:pokemonId)
+        try output.writeInt64(1, value:pokemonId)
       }
       if hasIsFavorite {
         try output.writeBool(2, value:isFavorite)
@@ -12359,7 +12360,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
       serialize_size = 0
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(1)
+        serialize_size += pokemonId.computeInt64Size(1)
       }
       if hasIsFavorite {
         serialize_size += isFavorite.computeBoolSize(2)
@@ -12487,7 +12488,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
                 return builderResult.hasPokemonId
            }
       }
-      public var pokemonId:UInt64 {
+      public var pokemonId:Int64 {
            get {
                 return builderResult.pokemonId
            }
@@ -12496,13 +12497,13 @@ public extension Pogoprotos.Networking.Requests.Messages {
                builderResult.pokemonId = value
            }
       }
-      public func setPokemonId(value:UInt64) -> Pogoprotos.Networking.Requests.Messages.SetFavoritePokemonMessage.Builder {
+      public func setPokemonId(value:Int64) -> Pogoprotos.Networking.Requests.Messages.SetFavoritePokemonMessage.Builder {
         self.pokemonId = value
         return self
       }
       public func clearPokemonId() -> Pogoprotos.Networking.Requests.Messages.SetFavoritePokemonMessage.Builder{
            builderResult.hasPokemonId = false
-           builderResult.pokemonId = UInt64(0)
+           builderResult.pokemonId = Int64(0)
            return self
       }
       public var hasIsFavorite:Bool {
@@ -12574,7 +12575,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
             return self
 
           case 8:
-            pokemonId = try input.readUInt64()
+            pokemonId = try input.readInt64()
 
           case 16:
             isFavorite = try input.readBool()
@@ -12590,7 +12591,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
       override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Networking.Requests.Messages.SetFavoritePokemonMessage.Builder {
         let resultDecodedBuilder = Pogoprotos.Networking.Requests.Messages.SetFavoritePokemonMessage.Builder()
         if let jsonValuePokemonId = jsonMap["pokemonId"] as? String {
-          resultDecodedBuilder.pokemonId = UInt64(jsonValuePokemonId)!
+          resultDecodedBuilder.pokemonId = Int64(jsonValuePokemonId)!
         }
         if let jsonValueIsFavorite = jsonMap["isFavorite"] as? Bool {
           resultDecodedBuilder.isFavorite = jsonValueIsFavorite
@@ -13027,6 +13028,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
     public private(set) var attackingPokemonIds:Array<UInt64> = Array<UInt64>()
     private var attackingPokemonIdsMemoizedSerializedSize:Int32 = -1
+    // needs to be fixed64, tested by Grover
     public private(set) var hasDefendingPokemonId:Bool = false
     public private(set) var defendingPokemonId:UInt64 = UInt64(0)
 
@@ -13054,7 +13056,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         }
       }
       if hasDefendingPokemonId {
-        try output.writeUInt64(3, value:defendingPokemonId)
+        try output.writeFixed64(3, value:defendingPokemonId)
       }
       if hasPlayerLatitude {
         try output.writeDouble(4, value:playerLatitude)
@@ -13083,7 +13085,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
       }
       attackingPokemonIdsMemoizedSerializedSize = dataSizeAttackingPokemonIds
       if hasDefendingPokemonId {
-        serialize_size += defendingPokemonId.computeUInt64Size(3)
+        serialize_size += defendingPokemonId.computeFixed64Size(3)
       }
       if hasPlayerLatitude {
         serialize_size += playerLatitude.computeDoubleSize(4)
@@ -13415,8 +13417,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
             }
             input.popLimit(limit)
 
-          case 24:
-            defendingPokemonId = try input.readUInt64()
+          case 25:
+            defendingPokemonId = try input.readFixed64()
 
           case 33:
             playerLatitude = try input.readDouble()
@@ -13478,7 +13480,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
     }
     override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
       if hasPokemonId {
-        try output.writeUInt64(1, value:pokemonId)
+        try output.writeFixed64(1, value:pokemonId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -13490,7 +13492,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
       serialize_size = 0
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(1)
+        serialize_size += pokemonId.computeFixed64Size(1)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -13666,8 +13668,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
-          case 8:
-            pokemonId = try input.readUInt64()
+          case 9:
+            pokemonId = try input.readFixed64()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -13934,8 +13936,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
     public private(set) var hasEncounterId:Bool = false
     public private(set) var encounterId:UInt64 = UInt64(0)
 
-    public private(set) var hasSpawnPointGuid:Bool = false
-    public private(set) var spawnPointGuid:String = ""
+    public private(set) var hasSpawnPointId:Bool = false
+    public private(set) var spawnPointId:String = ""
 
     required public init() {
          super.init()
@@ -13950,8 +13952,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
       if hasEncounterId {
         try output.writeFixed64(2, value:encounterId)
       }
-      if hasSpawnPointGuid {
-        try output.writeString(3, value:spawnPointGuid)
+      if hasSpawnPointId {
+        try output.writeString(3, value:spawnPointId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -13968,8 +13970,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
       if hasEncounterId {
         serialize_size += encounterId.computeFixed64Size(2)
       }
-      if hasSpawnPointGuid {
-        serialize_size += spawnPointGuid.computeStringSize(3)
+      if hasSpawnPointId {
+        serialize_size += spawnPointId.computeStringSize(3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -14033,8 +14035,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
       if hasEncounterId {
         jsonMap["encounterId"] = "\(encounterId)"
       }
-      if hasSpawnPointGuid {
-        jsonMap["spawnPointGuid"] = spawnPointGuid
+      if hasSpawnPointId {
+        jsonMap["spawnPointId"] = spawnPointId
       }
       return jsonMap
     }
@@ -14052,8 +14054,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
       if hasEncounterId {
         output += "\(indent) encounterId: \(encounterId) \n"
       }
-      if hasSpawnPointGuid {
-        output += "\(indent) spawnPointGuid: \(spawnPointGuid) \n"
+      if hasSpawnPointId {
+        output += "\(indent) spawnPointId: \(spawnPointId) \n"
       }
       output += unknownFields.getDescription(indent)
       return output
@@ -14067,8 +14069,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
             if hasEncounterId {
                hashCode = (hashCode &* 31) &+ encounterId.hashValue
             }
-            if hasSpawnPointGuid {
-               hashCode = (hashCode &* 31) &+ spawnPointGuid.hashValue
+            if hasSpawnPointId {
+               hashCode = (hashCode &* 31) &+ spawnPointId.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -14144,27 +14146,27 @@ public extension Pogoprotos.Networking.Requests.Messages {
            builderResult.encounterId = UInt64(0)
            return self
       }
-      public var hasSpawnPointGuid:Bool {
+      public var hasSpawnPointId:Bool {
            get {
-                return builderResult.hasSpawnPointGuid
+                return builderResult.hasSpawnPointId
            }
       }
-      public var spawnPointGuid:String {
+      public var spawnPointId:String {
            get {
-                return builderResult.spawnPointGuid
+                return builderResult.spawnPointId
            }
            set (value) {
-               builderResult.hasSpawnPointGuid = true
-               builderResult.spawnPointGuid = value
+               builderResult.hasSpawnPointId = true
+               builderResult.spawnPointId = value
            }
       }
-      public func setSpawnPointGuid(value:String) -> Pogoprotos.Networking.Requests.Messages.UseItemCaptureMessage.Builder {
-        self.spawnPointGuid = value
+      public func setSpawnPointId(value:String) -> Pogoprotos.Networking.Requests.Messages.UseItemCaptureMessage.Builder {
+        self.spawnPointId = value
         return self
       }
-      public func clearSpawnPointGuid() -> Pogoprotos.Networking.Requests.Messages.UseItemCaptureMessage.Builder{
-           builderResult.hasSpawnPointGuid = false
-           builderResult.spawnPointGuid = ""
+      public func clearSpawnPointId() -> Pogoprotos.Networking.Requests.Messages.UseItemCaptureMessage.Builder{
+           builderResult.hasSpawnPointId = false
+           builderResult.spawnPointId = ""
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -14197,8 +14199,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
         if other.hasEncounterId {
              encounterId = other.encounterId
         }
-        if other.hasSpawnPointGuid {
-             spawnPointGuid = other.spawnPointGuid
+        if other.hasSpawnPointId {
+             spawnPointId = other.spawnPointId
         }
         try mergeUnknownFields(other.unknownFields)
         return self
@@ -14227,7 +14229,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
             encounterId = try input.readFixed64()
 
           case 26:
-            spawnPointGuid = try input.readString()
+            spawnPointId = try input.readString()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -14245,8 +14247,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
         if let jsonValueEncounterId = jsonMap["encounterId"] as? String {
           resultDecodedBuilder.encounterId = UInt64(jsonValueEncounterId)!
         }
-        if let jsonValueSpawnPointGuid = jsonMap["spawnPointGuid"] as? String {
-          resultDecodedBuilder.spawnPointGuid = jsonValueSpawnPointGuid
+        if let jsonValueSpawnPointId = jsonMap["spawnPointId"] as? String {
+          resultDecodedBuilder.spawnPointId = jsonValueSpawnPointId
         }
         return resultDecodedBuilder
       }
@@ -14940,7 +14942,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         try output.writeEnum(1, value:itemId.rawValue)
       }
       if hasPokemonId {
-        try output.writeUInt64(2, value:pokemonId)
+        try output.writeFixed64(2, value:pokemonId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -14955,7 +14957,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         serialize_size += itemId.rawValue.computeEnumSize(1)
       }
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(2)
+        serialize_size += pokemonId.computeFixed64Size(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -15174,8 +15176,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
                  try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntitemId))
             }
 
-          case 16:
-            pokemonId = try input.readUInt64()
+          case 17:
+            pokemonId = try input.readFixed64()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -15223,7 +15225,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         try output.writeEnum(1, value:itemId.rawValue)
       }
       if hasPokemonId {
-        try output.writeUInt64(2, value:pokemonId)
+        try output.writeFixed64(2, value:pokemonId)
       }
       try unknownFields.writeToCodedOutputStream(output)
     }
@@ -15238,7 +15240,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
         serialize_size += itemId.rawValue.computeEnumSize(1)
       }
       if hasPokemonId {
-        serialize_size += pokemonId.computeUInt64Size(2)
+        serialize_size += pokemonId.computeFixed64Size(2)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -15457,8 +15459,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
                  try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntitemId))
             }
 
-          case 16:
-            pokemonId = try input.readUInt64()
+          case 17:
+            pokemonId = try input.readFixed64()
 
           default:
             if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
