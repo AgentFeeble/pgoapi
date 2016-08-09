@@ -55,6 +55,6 @@ public extension Network
 {
     static func getUserAgent() -> String
     {
-        return "niantic"
+        return "Niantic App"
     }
 }

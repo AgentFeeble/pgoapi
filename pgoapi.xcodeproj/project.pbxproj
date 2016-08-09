@@ -150,6 +150,17 @@
 		6DE866AB1D4B5F2900FB4CDA /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */; };
 		6DE866AF1D4B603D00FB4CDA /* ApiResponseDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */; };
 		6DE866B11D4B60D000FB4CDA /* ProtoBufDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */; };
+		6DFE599A1D586720008A20CF /* Hashing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE59991D586720008A20CF /* Hashing.swift */; };
+		6DFE599C1D58674A008A20CF /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE599B1D58674A008A20CF /* Hex.swift */; };
+		6DFE59BA1D589CE3008A20CF /* hash.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE59B81D589CE3008A20CF /* hash.c */; };
+		6DFE59BB1D589CE3008A20CF /* hash.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFE59B91D589CE3008A20CF /* hash.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6DFE59BE1D58A978008A20CF /* AuthTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE59BD1D58A978008A20CF /* AuthTicket.swift */; };
+		6DFE5A0E1D59408F008A20CF /* pgo_xxhash.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A091D59408F008A20CF /* pgo_xxhash.c */; };
+		6DFE5A0F1D59408F008A20CF /* pgo_xxhash.h in Headers */ = {isa = PBXBuildFile; fileRef = 6DFE5A0A1D59408F008A20CF /* pgo_xxhash.h */; };
+		6DFE5A101D59408F008A20CF /* pgo_xxhsum.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A0B1D59408F008A20CF /* pgo_xxhsum.c */; };
+		6DFE5A131D594192008A20CF /* PgoEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A121D594192008A20CF /* PgoEncryption.swift */; };
+		6DFE5A1C1D5944CA008A20CF /* encrypt.c in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A1A1D5944CA008A20CF /* encrypt.c */; settings = {COMPILER_FLAGS = "-w"; }; };
+		6DFE5A1E1D594A5C008A20CF /* Encrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A1D1D594A5C008A20CF /* Encrypt.swift */; };
 		E18CD13D259764666E4CEDA9 /* Pods_All_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73530AB17D6C7F060713D355 /* Pods_All_Example.framework */; };
 /* End PBXBuildFile section */
 
@@ -342,6 +353,20 @@
 		6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseDataConverter.swift; sourceTree = "<group>"; };
 		6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufDataConverter.swift; sourceTree = "<group>"; };
+		6DFE59991D586720008A20CF /* Hashing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashing.swift; sourceTree = "<group>"; };
+		6DFE599B1D58674A008A20CF /* Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
+		6DFE59B81D589CE3008A20CF /* hash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = hash.c; sourceTree = "<group>"; };
+		6DFE59B91D589CE3008A20CF /* hash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hash.h; sourceTree = "<group>"; };
+		6DFE59BD1D58A978008A20CF /* AuthTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTicket.swift; sourceTree = "<group>"; };
+		6DFE5A091D59408F008A20CF /* pgo_xxhash.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pgo_xxhash.c; sourceTree = "<group>"; };
+		6DFE5A0A1D59408F008A20CF /* pgo_xxhash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pgo_xxhash.h; sourceTree = "<group>"; };
+		6DFE5A0B1D59408F008A20CF /* pgo_xxhsum.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pgo_xxhsum.c; sourceTree = "<group>"; };
+		6DFE5A0C1D59408F008A20CF /* Readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = Readme.md; sourceTree = "<group>"; };
+		6DFE5A121D594192008A20CF /* PgoEncryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PgoEncryption.swift; sourceTree = "<group>"; };
+		6DFE5A191D5944C9008A20CF /* Example-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Example-Bridging-Header.h"; sourceTree = "<group>"; };
+		6DFE5A1A1D5944CA008A20CF /* encrypt.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = encrypt.c; sourceTree = "<group>"; };
+		6DFE5A1B1D5944CA008A20CF /* encrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = encrypt.h; sourceTree = "<group>"; };
+		6DFE5A1D1D594A5C008A20CF /* Encrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Encrypt.swift; sourceTree = "<group>"; };
 		73530AB17D6C7F060713D355 /* Pods_All_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_All_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C30C107C5B876978BF23C994 /* Pods-All-Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-All-Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-All-Example/Pods-All-Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -387,6 +412,7 @@
 			isa = PBXGroup;
 			children = (
 				6DD679A11D4BB12F00704D97 /* S2 */,
+				6DFE5A071D59408F008A20CF /* xxHash */,
 			);
 			path = "3rd Party";
 			sourceTree = "<group>";
@@ -595,6 +621,7 @@
 		6DE6C7F81D4693A700A91011 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				6DFE5A181D5944AD008A20CF /* Encrypt */,
 				6DE6C7F91D4693A700A91011 /* AppDelegate.swift */,
 				6DE6C7FB1D4693A700A91011 /* ViewController.swift */,
 				6DE6C7FD1D4693A700A91011 /* Main.storyboard */,
@@ -610,6 +637,7 @@
 			children = (
 				6DE866591D49653F00FB4CDA /* Data */,
 				6DE8661D1D481A5E00FB4CDA /* Extension */,
+				6DFE59931D57A763008A20CF /* Hashing */,
 				6DE6C80F1D4695BB00A91011 /* Model */,
 				6DE6C80E1D4695AE00A91011 /* Networking */,
 				6DD67AEB1D4C0A5B00704D97 /* Objc */,
@@ -638,6 +666,7 @@
 			children = (
 				6DE8666A1D49E1FF00FB4CDA /* ApiResponse.swift */,
 				6DE6C8141D4695DB00A91011 /* AuthToken.swift */,
+				6DFE59BD1D58A978008A20CF /* AuthTicket.swift */,
 				6DE8665E1D49756600FB4CDA /* Constant.swift */,
 				6DE866571D49652700FB4CDA /* EndPoint.swift */,
 				6DE866601D49766200FB4CDA /* Location.swift */,
@@ -703,6 +732,40 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		6DFE59931D57A763008A20CF /* Hashing */ = {
+			isa = PBXGroup;
+			children = (
+				6DFE59B91D589CE3008A20CF /* hash.h */,
+				6DFE59B81D589CE3008A20CF /* hash.c */,
+				6DFE59991D586720008A20CF /* Hashing.swift */,
+				6DFE599B1D58674A008A20CF /* Hex.swift */,
+				6DFE5A121D594192008A20CF /* PgoEncryption.swift */,
+			);
+			path = Hashing;
+			sourceTree = "<group>";
+		};
+		6DFE5A071D59408F008A20CF /* xxHash */ = {
+			isa = PBXGroup;
+			children = (
+				6DFE5A0C1D59408F008A20CF /* Readme.md */,
+				6DFE5A0A1D59408F008A20CF /* pgo_xxhash.h */,
+				6DFE5A091D59408F008A20CF /* pgo_xxhash.c */,
+				6DFE5A0B1D59408F008A20CF /* pgo_xxhsum.c */,
+			);
+			path = xxHash;
+			sourceTree = "<group>";
+		};
+		6DFE5A181D5944AD008A20CF /* Encrypt */ = {
+			isa = PBXGroup;
+			children = (
+				6DFE5A1B1D5944CA008A20CF /* encrypt.h */,
+				6DFE5A1A1D5944CA008A20CF /* encrypt.c */,
+				6DFE5A191D5944C9008A20CF /* Example-Bridging-Header.h */,
+				6DFE5A1D1D594A5C008A20CF /* Encrypt.swift */,
+			);
+			path = Encrypt;
+			sourceTree = "<group>";
+		};
 		7D703C62D06459194748F608 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -730,8 +793,11 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6DE6C7EC1D46938900A91011 /* pgoapi.h in Headers */,
+				6DD67AF71D4C0D0B00704D97 /* MCS2CellID.h in Headers */,
 				6DD67A5A1D4BB1A300704D97 /* s2cap.h in Headers */,
 				6DD679E01D4BB18100704D97 /* int128.h in Headers */,
+				6DFE59BB1D589CE3008A20CF /* hash.h in Headers */,
 				6DD67A601D4BB1A300704D97 /* s2cellid.h in Headers */,
 				6DD679DD1D4BB18100704D97 /* commandlineflags.h in Headers */,
 				6DD679E71D4BB18100704D97 /* stl_decl.h in Headers */,
@@ -748,7 +814,6 @@
 				6DD679DC1D4BB18100704D97 /* casts.h in Headers */,
 				6DD679ED1D4BB18100704D97 /* strtoint.h in Headers */,
 				6DD679FD1D4BB18100704D97 /* hash_jenkins_lookup2.h in Headers */,
-				6DE6C7EC1D46938900A91011 /* pgoapi.h in Headers */,
 				6DD67A7E1D4BB1A300704D97 /* s2polyline.h in Headers */,
 				6DD679E51D4BB18100704D97 /* port.h in Headers */,
 				6DD67A511D4BB1A300704D97 /* s1angle.h in Headers */,
@@ -761,6 +826,7 @@
 				6DD67A811D4BB1A300704D97 /* s2r2rect.h in Headers */,
 				6DD67A8B1D4BB1A300704D97 /* s2regionunion.h in Headers */,
 				6DD679DE1D4BB18100704D97 /* docid.h in Headers */,
+				6DFE5A0F1D59408F008A20CF /* pgo_xxhash.h in Headers */,
 				6DD67A751D4BB1A300704D97 /* s2pointregion.h in Headers */,
 				6DD67A881D4BB1A300704D97 /* s2regionintersection.h in Headers */,
 				6DD67A781D4BB1A300704D97 /* s2polygon.h in Headers */,
@@ -768,7 +834,6 @@
 				6DD679F71D4BB18100704D97 /* strutil.h in Headers */,
 				6DD67A051D4BB18100704D97 /* matrix3x3.h in Headers */,
 				6DD679E31D4BB18100704D97 /* logging.h in Headers */,
-				6DD67AF71D4C0D0B00704D97 /* MCS2CellID.h in Headers */,
 				6DD67A571D4BB1A300704D97 /* s2.h in Headers */,
 				6DD679FB1D4BB18100704D97 /* varint.h in Headers */,
 				6DD67A061D4BB18100704D97 /* vector2-inl.h in Headers */,
@@ -1056,6 +1121,7 @@
 				6DE8664C1D494D0200FB4CDA /* Pogoprotos.Settings.Master.PogoprotosSettingsMaster.proto.swift in Sources */,
 				6D194F941D4CA080005479F3 /* CellIDUtility.swift in Sources */,
 				6DE866401D494D0200FB4CDA /* Pogoprotos.Data.PogoprotosData.proto.swift in Sources */,
+				6DFE59BE1D58A978008A20CF /* AuthTicket.swift in Sources */,
 				6DD67AF81D4C0D0B00704D97 /* MCS2CellID.mm in Sources */,
 				6DE8663F1D494D0200FB4CDA /* Pogoprotos.Data.Player.PogoprotosDataPlayer.proto.swift in Sources */,
 				6DE866431D494D0200FB4CDA /* Pogoprotos.Inventory.PogoprotosInventory.proto.swift in Sources */,
@@ -1065,6 +1131,8 @@
 				6DE8664E1D494D0200FB4CDA /* Pogoprotos.Settings.PogoprotosSettings.proto.swift in Sources */,
 				6DE866631D4976A300FB4CDA /* RpcParams.swift in Sources */,
 				6DE866611D49766200FB4CDA /* Location.swift in Sources */,
+				6DFE5A101D59408F008A20CF /* pgo_xxhsum.c in Sources */,
+				6DFE59BA1D589CE3008A20CF /* hash.c in Sources */,
 				6DE866561D4964FB00FB4CDA /* RequestMessage.swift in Sources */,
 				6DE866A91D4B5EE600FB4CDA /* DataConverter.swift in Sources */,
 				6DE8665D1D49736500FB4CDA /* NetworkError.swift in Sources */,
@@ -1072,14 +1140,18 @@
 				6DE866241D481D7900FB4CDA /* AlamoFireNetwork.swift in Sources */,
 				6DE866581D49652700FB4CDA /* EndPoint.swift in Sources */,
 				6DE6C8131D4695CE00A91011 /* Network.swift in Sources */,
+				6DFE5A131D594192008A20CF /* PgoEncryption.swift in Sources */,
 				6DE8665F1D49756600FB4CDA /* Constant.swift in Sources */,
 				6D1512F81D537C890035D6E6 /* MemoryCookieStorage.swift in Sources */,
 				6DE866651D49788900FB4CDA /* PgoApi.swift in Sources */,
+				6DFE599C1D58674A008A20CF /* Hex.swift in Sources */,
 				6D1512F51D5330E00035D6E6 /* Synchronizable.swift in Sources */,
 				6DE8666B1D49E1FF00FB4CDA /* ApiResponse.swift in Sources */,
 				6DE6C8121D4695CE00A91011 /* Auth.swift in Sources */,
 				6DE866521D4963B700FB4CDA /* RpcRequest.swift in Sources */,
 				6DE866AB1D4B5F2900FB4CDA /* Decoder.swift in Sources */,
+				6DFE5A0E1D59408F008A20CF /* pgo_xxhash.c in Sources */,
+				6DFE599A1D586720008A20CF /* Hashing.swift in Sources */,
 				6DE6C8151D4695DB00A91011 /* AuthToken.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1089,7 +1161,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE6C7FC1D4693A700A91011 /* ViewController.swift in Sources */,
+				6DFE5A1E1D594A5C008A20CF /* Encrypt.swift in Sources */,
 				6DE6C7FA1D4693A700A91011 /* AppDelegate.swift in Sources */,
+				6DFE5A1C1D5944CA008A20CF /* encrypt.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1249,6 +1323,10 @@
 				INFOPLIST_FILE = pgoapi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pgoapi/Classes/Hashing",
+				);
 				MODULEMAP_PRIVATE_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agentf.pgoapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1271,6 +1349,10 @@
 				INFOPLIST_FILE = pgoapi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/pgoapi/Classes/Hashing",
+				);
 				MODULEMAP_PRIVATE_FILE = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agentf.pgoapi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1286,10 +1368,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agentf.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/Encrypt/Example-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1299,10 +1384,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = NO;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.agentf.Example;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Example/Encrypt/Example-Bridging-Header.h";
 			};
 			name = Release;
 		};

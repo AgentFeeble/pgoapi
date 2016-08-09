@@ -18,6 +18,6 @@ public struct Location
     {
         self.latitude = latitude
         self.longitude = longitude
-        self.altitude = 0
+        self.altitude = altitude
     }    
 }

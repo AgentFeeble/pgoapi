@@ -21,15 +21,15 @@ class ViewController: UIViewController
         
         let network = self.network
         Auth(network: network).login("username", password: "password")
-        .continueOnSuccessWithTask(.MainThread)
+        .continueOnSuccessWith(.MainThread)
         {
             result in
-            return PgoApi(network: network, authToken: result).login()
+            return PgoApi(network: network, authToken: result)
         }
         .continueOnSuccessWithTask(.MainThread)
         {
-            (api, response) -> Task<ApiResponse> in
-            let location = Location(latitude: -26.147102, longitude: 28.139760)
+            api -> Task<ApiResponse> in
+            let location = Location(latitude: 40.783027, longitude: -73.965130, altitude: 10.1)
             return api.builder(location).getMapObjects().execute()
         }
         .continueOnSuccessWith(.MainThread)

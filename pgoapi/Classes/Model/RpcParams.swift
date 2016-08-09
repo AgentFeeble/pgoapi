@@ -11,5 +11,8 @@ import Foundation
 struct RpcParams
 {
     let authToken: AuthToken
+    let requestId: UInt64
+    let sessionStartTime: UInt64
+    let authTicket: AuthTicket?
     let location: Location?
 }

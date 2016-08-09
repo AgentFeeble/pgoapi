@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.10'
 
   s.source       = { :git => "https://github.com/AgentFeeble/pgoapi.git", :tag => "#{s.version}" }
-  s.source_files = "pgoapi/Classes/**/*.{swift,h,mm}", "pgoapi/3rd Party/S2/**/*.{h,cc}"
+  s.source_files = "pgoapi/Classes/**/*.{swift,h,c,mm}", "pgoapi/3rd Party/**/*.{h,c,cc}"
   s.public_header_files = "pgoapi/Classes/**/*.h"
 
   s.requires_arc = true
