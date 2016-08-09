@@ -8,21 +8,19 @@
 
 import Foundation
 
-func getCellIDs(location: Location, radius: Int = 10) -> [UInt64]
+func getCellIDs(location: Location, radius: Int = 1000) -> [UInt64]
 {
-    let origin = MCS2CellID(forLat: location.latitude, long: location.longitude).parentForLevel(15)
-    var left = origin.prev()
-    var right = origin.next()
+    // Max values allowed by server according to this comment:
+    // https://github.com/AeonLucid/POGOProtos/issues/83#issuecomment-235612285
+    let r = min(radius, 1500)
+    let level = Int32(15)
+    let maxCells = Int32(100) //100 is max allowed by the server
     
-    var walk = [origin.cellID]
-    for _ in 0 ..< radius
-    {
-        walk.append(left.cellID)
-        walk.append(right.cellID)
-        
-        left = left.prev()
-        right = right.next()
-    }
+    let cells = MCS2CellID.cellIDsForRegionAtLat(location.latitude,
+                                                 long: location.longitude,
+                                                 radius: Double(r),
+                                                 level: level,
+                                                 maxCellCount: maxCells)
     
-    return walk.sort()
+    return cells.map({ $0.cellID }).sort()
 }
