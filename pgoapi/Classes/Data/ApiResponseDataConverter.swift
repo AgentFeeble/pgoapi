@@ -40,8 +40,9 @@ struct ApiResponseDataConverter: DataConverter
     
     private func parseSubResponses(response: Pogoprotos.Networking.Envelopes.ResponseEnvelope) throws -> [ApiResponse.RequestType : GeneratedMessage]
     {
+        let subresponseCount = min(subResponseConverters.count, response.returns.count)
         var subresponses: [ApiResponse.RequestType : GeneratedMessage] = [:]
-        for (idx, subresponseData) in response.returns.enumerate()
+        for (idx, subresponseData) in response.returns[0..<subresponseCount].enumerate()
         {
             let (requestType, converter) = subResponseConverters[idx]
             subresponses[requestType] = try converter.convert(subresponseData)
