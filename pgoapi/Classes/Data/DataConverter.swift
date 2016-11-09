@@ -11,5 +11,5 @@ import Foundation
 protocol DataConverter
 {
     associatedtype OutputType
-    func convert(data: NSData) throws -> OutputType
+    func convert(_ data: Data) throws -> OutputType
 }

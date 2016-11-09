@@ -1,6 +1,7 @@
 # Bolts in Swift
 
 ![Platforms][platforms-svg]
+![Swift Version][swift-version-svg]
 
 [![Podspec][podspec-svg]][podspec-link]
 [![Carthage compatible][carthage-svg]](carthage-link)
@@ -93,7 +94,7 @@ fetchProfile(user).continueOnSuccessWithTask { task in
 ## Creating Tasks
 
 To create a task - you would need a `TaskCompletionSource`, which is a consumer end of any `Task`, which gives you an ability to control whether the task is completed/faulted or cancelled.
-After you create a `TaskCompletionSource`, you need to call `setResult()`/`setError()`/`setCancelled` to trigger its continuations and change its state.
+After you create a `TaskCompletionSource`, you need to call `setResult()`/`setError()`/`cancel()` to trigger its continuations and change its state.
 ```swift
 func fetch(object: PFObject) -> Task<PFObject> {
   let taskCompletionSource = TaskCompletionSource<PFObject>()
@@ -103,7 +104,7 @@ func fetch(object: PFObject) -> Task<PFObject> {
     } else if let object = object {
       taskCompletionSource.setResult(object)
     } else {
-      taskCompletionSource.setCancelled()
+      taskCompletionSource.cancel()
     }
   }
   return taskCompletionSource.task
@@ -160,3 +161,4 @@ We want to make contributing to this project as easy and transparent as possible
  [carthage-link]: https://github.com/carthage/carthage
 
  [platforms-svg]: http://img.shields.io/cocoapods/p/Bolts-Swift.svg?style=flat
+ [swift-version-svg]: https://img.shields.io/badge/Swift-3.0.x-orange.svg

@@ -8,35 +8,35 @@
 
 import Foundation
 
-enum UnHexlifyError: ErrorType
+enum UnHexlifyError: Error
 {
-    case NonHexStringProvided
+    case nonHexStringProvided
 }
 
 /// Ported from the Python binascii module
-func unhexlify(string: String) throws -> NSData
+func unhexlify(_ string: String) throws -> Data
 {
     let input = string.characters.count % 2 == 0 ? string : "0\(string)"
     let inputScalars = input.unicodeScalars
     
-    let output = NSMutableData(capacity: inputScalars.count / 2)!
+    var output = Data(capacity: inputScalars.count / 2)
     
     var inIdx = inputScalars.startIndex
-    for _ in 0.stride(to: input.characters.count, by: 2)
+    for _ in stride(from: 0, to: input.characters.count, by: 2)
     {
-        let t = hexInt(forChar: inputScalars[inIdx]); inIdx = inIdx.successor()
-        let b = hexInt(forChar: inputScalars[inIdx]); inIdx = inIdx.successor()
+        let t = hexInt(forChar: inputScalars[inIdx]); inIdx = inputScalars.index(after: inIdx)
+        let b = hexInt(forChar: inputScalars[inIdx]); inIdx = inputScalars.index(after: inIdx)
         
         guard let top = t, let bot = b else
         {
-            throw UnHexlifyError.NonHexStringProvided
+            throw UnHexlifyError.nonHexStringProvided
         }
         
         let byte = UInt8((top << 4) + bot)
-        output.appendBytes([byte], length: 1)
+        output.append([byte], count: 1)
     }
     
-    return output
+    return output as Data
 }
 
 private func hexInt(forChar char: UnicodeScalar) -> Int?

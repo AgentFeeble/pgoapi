@@ -9,11 +9,11 @@
 import Foundation
 
 /// This is basically a generic concrete wrapper around the DataConverter protocol
-struct Decoder<T, C: DataConverter where C.OutputType == T>
+struct Decoder<T, C: DataConverter> where C.OutputType == T
 {
     let converter: C
     
-    func decode(data: NSData) throws -> T
+    func decode(_ data: Data) throws -> T
     {
         return try converter.convert(data)
     }

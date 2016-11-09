@@ -5,66 +5,37 @@
 import Foundation
 import ProtocolBuffers
 
-public func == (lhs: Pogoprotos.Data.Logs.ActionLogEntry, rhs: Pogoprotos.Data.Logs.ActionLogEntry) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasTimestampMs == rhs.hasTimestampMs) && (!lhs.hasTimestampMs || lhs.timestampMs == rhs.timestampMs)
-  fieldCheck = fieldCheck && (lhs.hasSfida == rhs.hasSfida) && (!lhs.hasSfida || lhs.sfida == rhs.sfida)
-  fieldCheck = fieldCheck && (lhs.hasCatchPokemon == rhs.hasCatchPokemon) && (!lhs.hasCatchPokemon || lhs.catchPokemon == rhs.catchPokemon)
-  fieldCheck = fieldCheck && (lhs.hasFortSearch == rhs.hasFortSearch) && (!lhs.hasFortSearch || lhs.fortSearch == rhs.fortSearch)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Logs.CatchPokemonLogEntry, rhs: Pogoprotos.Data.Logs.CatchPokemonLogEntry) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
-  fieldCheck = fieldCheck && (lhs.hasPokemonId == rhs.hasPokemonId) && (!lhs.hasPokemonId || lhs.pokemonId == rhs.pokemonId)
-  fieldCheck = fieldCheck && (lhs.hasCombatPoints == rhs.hasCombatPoints) && (!lhs.hasCombatPoints || lhs.combatPoints == rhs.combatPoints)
-  fieldCheck = fieldCheck && (lhs.hasPokemonDataId == rhs.hasPokemonDataId) && (!lhs.hasPokemonDataId || lhs.pokemonDataId == rhs.pokemonDataId)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Logs.FortSearchLogEntry, rhs: Pogoprotos.Data.Logs.FortSearchLogEntry) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
-  fieldCheck = fieldCheck && (lhs.hasFortId == rhs.hasFortId) && (!lhs.hasFortId || lhs.fortId == rhs.fortId)
-  fieldCheck = fieldCheck && (lhs.items == rhs.items)
-  fieldCheck = fieldCheck && (lhs.hasEggs == rhs.hasEggs) && (!lhs.hasEggs || lhs.eggs == rhs.eggs)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public extension Pogoprotos.Data.Logs {
   public struct PogoprotosDataLogsRoot {
-    public static var sharedInstance : PogoprotosDataLogsRoot {
-     struct Static {
-         static let instance : PogoprotosDataLogsRoot = PogoprotosDataLogsRoot()
-     }
-     return Static.instance
-    }
+    public static let `default` = PogoprotosDataLogsRoot()
     public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
-      registerAllExtensions(extensionRegistry)
-      Pogoprotos.Enums.PogoprotosEnumsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Pogoprotos.Inventory.Item.PogoprotosInventoryItemRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Enums.PogoprotosEnumsRoot.default.registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Inventory.Item.PogoprotosInventoryItemRoot.default.registerAllExtensions(registry: extensionRegistry)
     }
-    public func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry: ExtensionRegistry) {
     }
   }
 
-  final public class ActionLogEntry : GeneratedMessage, GeneratedMessageProtocol {
+  final public class ActionLogEntry : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Data.Logs.ActionLogEntry, rhs: Pogoprotos.Data.Logs.ActionLogEntry) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasTimestampMs == rhs.hasTimestampMs) && (!lhs.hasTimestampMs || lhs.timestampMs == rhs.timestampMs)
+      fieldCheck = fieldCheck && (lhs.hasSfida == rhs.hasSfida) && (!lhs.hasSfida || lhs.sfida == rhs.sfida)
+      fieldCheck = fieldCheck && (lhs.hasCatchPokemon == rhs.hasCatchPokemon) && (!lhs.hasCatchPokemon || lhs.catchPokemon == rhs.catchPokemon)
+      fieldCheck = fieldCheck && (lhs.hasFortSearch == rhs.hasFortSearch) && (!lhs.hasFortSearch || lhs.fortSearch == rhs.fortSearch)
+      fieldCheck = fieldCheck && (lhs.hasBuddyPokemon == rhs.hasBuddyPokemon) && (!lhs.hasBuddyPokemon || lhs.buddyPokemon == rhs.buddyPokemon)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
 
 
     //OneOf declaration start
@@ -82,7 +53,7 @@ public extension Pogoprotos.Data.Logs {
       }
       case CatchPokemon(Pogoprotos.Data.Logs.CatchPokemonLogEntry)
 
-      public static func getCatchPokemon(value:Action) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry? {
+      public static func getCatchPokemon(_ value:Action) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry? {
            switch value {
            case .CatchPokemon(let enumValue):
                 return enumValue
@@ -92,9 +63,19 @@ public extension Pogoprotos.Data.Logs {
       }
       case FortSearch(Pogoprotos.Data.Logs.FortSearchLogEntry)
 
-      public static func getFortSearch(value:Action) -> Pogoprotos.Data.Logs.FortSearchLogEntry? {
+      public static func getFortSearch(_ value:Action) -> Pogoprotos.Data.Logs.FortSearchLogEntry? {
            switch value {
            case .FortSearch(let enumValue):
+                return enumValue
+           default:
+                return nil
+           }
+      }
+      case BuddyPokemon(Pogoprotos.Data.Logs.BuddyPokemonLogEntry)
+
+      public static func getBuddyPokemon(_ value:Action) -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry? {
+           switch value {
+           case .BuddyPokemon(let enumValue):
                 return enumValue
            default:
                 return nil
@@ -103,18 +84,26 @@ public extension Pogoprotos.Data.Logs {
     }
     //OneOf declaration end
 
-    private var storageAction:ActionLogEntry.Action =  ActionLogEntry.Action.OneOfActionNotSet
+    fileprivate var storageAction:ActionLogEntry.Action =  ActionLogEntry.Action.OneOfActionNotSet
     public func getOneOfAction() ->  ActionLogEntry.Action {
         let copyObjectAction = storageAction
         return copyObjectAction
     }
-    public private(set) var hasTimestampMs:Bool = false
-    public private(set) var timestampMs:Int64 = Int64(0)
+    public fileprivate(set) var timestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasTimestampMs:Bool = false
 
-    public private(set) var hasSfida:Bool = false
-    public private(set) var sfida:Bool = false
+    public fileprivate(set) var sfida:Bool = false
+    public fileprivate(set) var hasSfida:Bool = false
 
-    public private(set) var hasCatchPokemon:Bool {
+    public fileprivate(set) var catchPokemon:Pogoprotos.Data.Logs.CatchPokemonLogEntry!{
+         get {
+              return ActionLogEntry.Action.getCatchPokemon(storageAction)
+         }
+         set (newvalue) {
+              storageAction = ActionLogEntry.Action.CatchPokemon(newvalue)
+         }
+    }
+    public fileprivate(set) var hasCatchPokemon:Bool {
           get {
                 guard let _ = ActionLogEntry.Action.getCatchPokemon(storageAction) else {
                     return false
@@ -124,15 +113,15 @@ public extension Pogoprotos.Data.Logs {
           set(newValue) {
           }
     }
-    public private(set) var catchPokemon:Pogoprotos.Data.Logs.CatchPokemonLogEntry!{
+    public fileprivate(set) var fortSearch:Pogoprotos.Data.Logs.FortSearchLogEntry!{
          get {
-              return ActionLogEntry.Action.getCatchPokemon(storageAction)
+              return ActionLogEntry.Action.getFortSearch(storageAction)
          }
          set (newvalue) {
-              storageAction = ActionLogEntry.Action.CatchPokemon(newvalue)
+              storageAction = ActionLogEntry.Action.FortSearch(newvalue)
          }
     }
-    public private(set) var hasFortSearch:Bool {
+    public fileprivate(set) var hasFortSearch:Bool {
           get {
                 guard let _ = ActionLogEntry.Action.getFortSearch(storageAction) else {
                     return false
@@ -142,13 +131,23 @@ public extension Pogoprotos.Data.Logs {
           set(newValue) {
           }
     }
-    public private(set) var fortSearch:Pogoprotos.Data.Logs.FortSearchLogEntry!{
+    public fileprivate(set) var buddyPokemon:Pogoprotos.Data.Logs.BuddyPokemonLogEntry!{
          get {
-              return ActionLogEntry.Action.getFortSearch(storageAction)
+              return ActionLogEntry.Action.getBuddyPokemon(storageAction)
          }
          set (newvalue) {
-              storageAction = ActionLogEntry.Action.FortSearch(newvalue)
+              storageAction = ActionLogEntry.Action.BuddyPokemon(newvalue)
          }
+    }
+    public fileprivate(set) var hasBuddyPokemon:Bool {
+          get {
+                guard let _ = ActionLogEntry.Action.getBuddyPokemon(storageAction) else {
+                    return false
+                }
+                return true
+          }
+          set(newValue) {
+          }
     }
     required public init() {
          super.init()
@@ -156,20 +155,23 @@ public extension Pogoprotos.Data.Logs {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasTimestampMs {
-        try output.writeInt64(1, value:timestampMs)
+        try codedOutputStream.writeInt64(fieldNumber: 1, value:timestampMs)
       }
       if hasSfida {
-        try output.writeBool(2, value:sfida)
+        try codedOutputStream.writeBool(fieldNumber: 2, value:sfida)
       }
       if hasCatchPokemon {
-        try output.writeMessage(3, value:catchPokemon)
+        try codedOutputStream.writeMessage(fieldNumber: 3, value:catchPokemon)
       }
       if hasFortSearch {
-        try output.writeMessage(4, value:fortSearch)
+        try codedOutputStream.writeMessage(fieldNumber: 4, value:fortSearch)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      if hasBuddyPokemon {
+        try codedOutputStream.writeMessage(fieldNumber: 5, value:buddyPokemon)
+      }
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -179,52 +181,29 @@ public extension Pogoprotos.Data.Logs {
 
       serialize_size = 0
       if hasTimestampMs {
-        serialize_size += timestampMs.computeInt64Size(1)
+        serialize_size += timestampMs.computeInt64Size(fieldNumber: 1)
       }
       if hasSfida {
-        serialize_size += sfida.computeBoolSize(2)
+        serialize_size += sfida.computeBoolSize(fieldNumber: 2)
       }
       if hasCatchPokemon {
-          if let varSizecatchPokemon = catchPokemon?.computeMessageSize(3) {
+          if let varSizecatchPokemon = catchPokemon?.computeMessageSize(fieldNumber: 3) {
               serialize_size += varSizecatchPokemon
           }
       }
       if hasFortSearch {
-          if let varSizefortSearch = fortSearch?.computeMessageSize(4) {
+          if let varSizefortSearch = fortSearch?.computeMessageSize(fieldNumber: 4) {
               serialize_size += varSizefortSearch
+          }
+      }
+      if hasBuddyPokemon {
+          if let varSizebuddyPokemon = buddyPokemon?.computeMessageSize(fieldNumber: 5) {
+              serialize_size += varSizebuddyPokemon
           }
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Logs.ActionLogEntry> {
-      var mergedArray = Array<Pogoprotos.Data.Logs.ActionLogEntry>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry? {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
       return Pogoprotos.Data.Logs.ActionLogEntry.classBuilder() as! Pogoprotos.Data.Logs.ActionLogEntry.Builder
@@ -232,24 +211,24 @@ public extension Pogoprotos.Data.Logs {
     public func getBuilder() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
       return classBuilder() as! Pogoprotos.Data.Logs.ActionLogEntry.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.ActionLogEntry.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.ActionLogEntry.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.builderWithPrototype(self)
+      return try Pogoprotos.Data.Logs.ActionLogEntry.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Logs.ActionLogEntry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasTimestampMs {
         jsonMap["timestampMs"] = "\(timestampMs)"
       }
@@ -262,13 +241,16 @@ public extension Pogoprotos.Data.Logs {
       if hasFortSearch {
         jsonMap["fortSearch"] = try fortSearch.encode()
       }
+      if hasBuddyPokemon {
+        jsonMap["buddyPokemon"] = try buddyPokemon.encode()
+      }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
-      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+      return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -281,18 +263,25 @@ public extension Pogoprotos.Data.Logs {
       if hasCatchPokemon {
         output += "\(indent) catchPokemon {\n"
         if let outDescCatchPokemon = catchPokemon {
-          output += try outDescCatchPokemon.getDescription("\(indent)  ")
+          output += try outDescCatchPokemon.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       if hasFortSearch {
         output += "\(indent) fortSearch {\n"
         if let outDescFortSearch = fortSearch {
-          output += try outDescFortSearch.getDescription("\(indent)  ")
+          output += try outDescFortSearch.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
-      output += unknownFields.getDescription(indent)
+      if hasBuddyPokemon {
+        output += "\(indent) buddyPokemon {\n"
+        if let outDescBuddyPokemon = buddyPokemon {
+          output += try outDescBuddyPokemon.getDescription(indent: "\(indent)  ")
+        }
+        output += "\(indent) }\n"
+      }
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -314,6 +303,11 @@ public extension Pogoprotos.Data.Logs {
                     hashCode = (hashCode &* 31) &+ hashValuefortSearch
                 }
             }
+            if hasBuddyPokemon {
+                if let hashValuebuddyPokemon = buddyPokemon?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuebuddyPokemon
+                }
+            }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
         }
@@ -328,13 +322,10 @@ public extension Pogoprotos.Data.Logs {
     override public func className() -> String {
         return "Pogoprotos.Data.Logs.ActionLogEntry"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Logs.ActionLogEntry.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Logs.ActionLogEntry = Pogoprotos.Data.Logs.ActionLogEntry()
+      fileprivate var builderResult:Pogoprotos.Data.Logs.ActionLogEntry = Pogoprotos.Data.Logs.ActionLogEntry()
       public func getMessage() -> Pogoprotos.Data.Logs.ActionLogEntry {
           return builderResult
       }
@@ -356,10 +347,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.timestampMs = value
            }
       }
-      public func setTimestampMs(value:Int64) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+      @discardableResult
+      public func setTimestampMs(_ value:Int64) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         self.timestampMs = value
         return self
       }
+      @discardableResult
       public func clearTimestampMs() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder{
            builderResult.hasTimestampMs = false
            builderResult.timestampMs = Int64(0)
@@ -379,10 +372,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.sfida = value
            }
       }
-      public func setSfida(value:Bool) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+      @discardableResult
+      public func setSfida(_ value:Bool) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         self.sfida = value
         return self
       }
+      @discardableResult
       public func clearSfida() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder{
            builderResult.hasSfida = false
            builderResult.sfida = false
@@ -405,7 +400,7 @@ public extension Pogoprotos.Data.Logs {
                builderResult.catchPokemon = value
            }
       }
-      private var catchPokemonBuilder_:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder! {
+      fileprivate var catchPokemonBuilder_:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder! {
            didSet {
               builderResult.hasCatchPokemon = true
            }
@@ -415,24 +410,27 @@ public extension Pogoprotos.Data.Logs {
            catchPokemonBuilder_ = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder()
            builderResult.catchPokemon = catchPokemonBuilder_.getMessage()
            if catchPokemon != nil {
-              try! catchPokemonBuilder_.mergeFrom(catchPokemon)
+              try! catchPokemonBuilder_.mergeFrom(other: catchPokemon)
            }
         }
         return catchPokemonBuilder_
       }
-      public func setCatchPokemon(value:Pogoprotos.Data.Logs.CatchPokemonLogEntry!) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+      @discardableResult
+      public func setCatchPokemon(_ value:Pogoprotos.Data.Logs.CatchPokemonLogEntry!) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         self.catchPokemon = value
         return self
       }
+      @discardableResult
       public func mergeCatchPokemon(value:Pogoprotos.Data.Logs.CatchPokemonLogEntry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         if builderResult.hasCatchPokemon {
-          builderResult.catchPokemon = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(builderResult.catchPokemon).mergeFrom(value).buildPartial()
+          builderResult.catchPokemon = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(prototype:builderResult.catchPokemon).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.catchPokemon = value
         }
         builderResult.hasCatchPokemon = true
         return self
       }
+      @discardableResult
       public func clearCatchPokemon() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         catchPokemonBuilder_ = nil
         builderResult.hasCatchPokemon = false
@@ -456,7 +454,7 @@ public extension Pogoprotos.Data.Logs {
                builderResult.fortSearch = value
            }
       }
-      private var fortSearchBuilder_:Pogoprotos.Data.Logs.FortSearchLogEntry.Builder! {
+      fileprivate var fortSearchBuilder_:Pogoprotos.Data.Logs.FortSearchLogEntry.Builder! {
            didSet {
               builderResult.hasFortSearch = true
            }
@@ -466,28 +464,85 @@ public extension Pogoprotos.Data.Logs {
            fortSearchBuilder_ = Pogoprotos.Data.Logs.FortSearchLogEntry.Builder()
            builderResult.fortSearch = fortSearchBuilder_.getMessage()
            if fortSearch != nil {
-              try! fortSearchBuilder_.mergeFrom(fortSearch)
+              try! fortSearchBuilder_.mergeFrom(other: fortSearch)
            }
         }
         return fortSearchBuilder_
       }
-      public func setFortSearch(value:Pogoprotos.Data.Logs.FortSearchLogEntry!) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+      @discardableResult
+      public func setFortSearch(_ value:Pogoprotos.Data.Logs.FortSearchLogEntry!) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         self.fortSearch = value
         return self
       }
+      @discardableResult
       public func mergeFortSearch(value:Pogoprotos.Data.Logs.FortSearchLogEntry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         if builderResult.hasFortSearch {
-          builderResult.fortSearch = try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(builderResult.fortSearch).mergeFrom(value).buildPartial()
+          builderResult.fortSearch = try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(prototype:builderResult.fortSearch).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.fortSearch = value
         }
         builderResult.hasFortSearch = true
         return self
       }
+      @discardableResult
       public func clearFortSearch() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         fortSearchBuilder_ = nil
         builderResult.hasFortSearch = false
         builderResult.fortSearch = nil
+        return self
+      }
+      public var hasBuddyPokemon:Bool {
+           get {
+               return builderResult.hasBuddyPokemon
+           }
+      }
+      public var buddyPokemon:Pogoprotos.Data.Logs.BuddyPokemonLogEntry! {
+           get {
+               if buddyPokemonBuilder_ != nil {
+                  builderResult.buddyPokemon = buddyPokemonBuilder_.getMessage()
+               }
+               return builderResult.buddyPokemon
+           }
+           set (value) {
+               builderResult.hasBuddyPokemon = true
+               builderResult.buddyPokemon = value
+           }
+      }
+      fileprivate var buddyPokemonBuilder_:Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder! {
+           didSet {
+              builderResult.hasBuddyPokemon = true
+           }
+      }
+      public func getBuddyPokemonBuilder() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        if buddyPokemonBuilder_ == nil {
+           buddyPokemonBuilder_ = Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder()
+           builderResult.buddyPokemon = buddyPokemonBuilder_.getMessage()
+           if buddyPokemon != nil {
+              try! buddyPokemonBuilder_.mergeFrom(other: buddyPokemon)
+           }
+        }
+        return buddyPokemonBuilder_
+      }
+      @discardableResult
+      public func setBuddyPokemon(_ value:Pogoprotos.Data.Logs.BuddyPokemonLogEntry!) -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+        self.buddyPokemon = value
+        return self
+      }
+      @discardableResult
+      public func mergeBuddyPokemon(value:Pogoprotos.Data.Logs.BuddyPokemonLogEntry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+        if builderResult.hasBuddyPokemon {
+          builderResult.buddyPokemon = try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.builderWithPrototype(prototype:builderResult.buddyPokemon).mergeFrom(other: value).buildPartial()
+        } else {
+          builderResult.buddyPokemon = value
+        }
+        builderResult.hasBuddyPokemon = true
+        return self
+      }
+      @discardableResult
+      public func clearBuddyPokemon() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+        buddyPokemonBuilder_ = nil
+        builderResult.hasBuddyPokemon = false
+        builderResult.buddyPokemon = nil
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -495,12 +550,13 @@ public extension Pogoprotos.Data.Logs {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         builderResult = Pogoprotos.Data.Logs.ActionLogEntry()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-        return try Pogoprotos.Data.Logs.ActionLogEntry.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Logs.ActionLogEntry.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Logs.ActionLogEntry {
            try checkInitialized()
@@ -510,6 +566,7 @@ public extension Pogoprotos.Data.Logs {
         let returnMe:Pogoprotos.Data.Logs.ActionLogEntry = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Logs.ActionLogEntry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         if other == Pogoprotos.Data.Logs.ActionLogEntry() {
          return self
@@ -521,57 +578,70 @@ public extension Pogoprotos.Data.Logs {
              sfida = other.sfida
         }
         if (other.hasCatchPokemon) {
-            try mergeCatchPokemon(other.catchPokemon)
+            try mergeCatchPokemon(value: other.catchPokemon)
         }
         if (other.hasFortSearch) {
-            try mergeFortSearch(other.fortSearch)
+            try mergeFortSearch(value: other.fortSearch)
         }
-        try mergeUnknownFields(other.unknownFields)
+        if (other.hasBuddyPokemon) {
+            try mergeBuddyPokemon(value: other.buddyPokemon)
+        }
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            timestampMs = try input.readInt64()
+            timestampMs = try codedInputStream.readInt64()
 
           case 16:
-            sfida = try input.readBool()
+            sfida = try codedInputStream.readBool()
 
           case 26:
             let subBuilder:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder()
             if hasCatchPokemon {
-              try subBuilder.mergeFrom(catchPokemon)
+              try subBuilder.mergeFrom(other: catchPokemon)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             catchPokemon = subBuilder.buildPartial()
 
           case 34:
             let subBuilder:Pogoprotos.Data.Logs.FortSearchLogEntry.Builder = Pogoprotos.Data.Logs.FortSearchLogEntry.Builder()
             if hasFortSearch {
-              try subBuilder.mergeFrom(fortSearch)
+              try subBuilder.mergeFrom(other: fortSearch)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             fortSearch = subBuilder.buildPartial()
 
+          case 42:
+            let subBuilder:Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder = Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder()
+            if hasBuddyPokemon {
+              try subBuilder.mergeFrom(other: buddyPokemon)
+            }
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
+            buddyPokemon = subBuilder.buildPartial()
+
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Logs.ActionLogEntry.Builder()
         if let jsonValueTimestampMs = jsonMap["timestampMs"] as? String {
           resultDecodedBuilder.timestampMs = Int64(jsonValueTimestampMs)!
@@ -579,73 +649,83 @@ public extension Pogoprotos.Data.Logs {
         if let jsonValueSfida = jsonMap["sfida"] as? Bool {
           resultDecodedBuilder.sfida = jsonValueSfida
         }
-        if let jsonValueCatchPokemon = jsonMap["catchPokemon"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.catchPokemon = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsonValueCatchPokemon).build()
+        if let jsonValueCatchPokemon = jsonMap["catchPokemon"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.catchPokemon = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsonValueCatchPokemon).build()
 
         }
-        if let jsonValueFortSearch = jsonMap["fortSearch"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.fortSearch = try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsonValueFortSearch).build()
+        if let jsonValueFortSearch = jsonMap["fortSearch"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.fortSearch = try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsonMap:jsonValueFortSearch).build()
+
+        }
+        if let jsonValueBuddyPokemon = jsonMap["buddyPokemon"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.buddyPokemon = try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsonValueBuddyPokemon).build()
 
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Logs.ActionLogEntry.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Logs.ActionLogEntry.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class CatchPokemonLogEntry : GeneratedMessage, GeneratedMessageProtocol {
+  final public class BuddyPokemonLogEntry : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Data.Logs.BuddyPokemonLogEntry, rhs: Pogoprotos.Data.Logs.BuddyPokemonLogEntry) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
+      fieldCheck = fieldCheck && (lhs.hasPokemonId == rhs.hasPokemonId) && (!lhs.hasPokemonId || lhs.pokemonId == rhs.pokemonId)
+      fieldCheck = fieldCheck && (lhs.hasAmount == rhs.hasAmount) && (!lhs.hasAmount || lhs.amount == rhs.amount)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
 
 
       //Enum type declaration start 
 
       public enum Result:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-        case Unset = 0
-        case PokemonCaptured = 1
-        case PokemonFled = 2
+        case unset = 0
+        case candyFound = 1
         public func toString() -> String {
           switch self {
-          case .Unset: return "UNSET"
-          case .PokemonCaptured: return "POKEMON_CAPTURED"
-          case .PokemonFled: return "POKEMON_FLED"
+          case .unset: return "UNSET"
+          case .candyFound: return "CANDY_FOUND"
           }
         }
-        public static func fromString(str:String) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result {
+        public static func fromString(str:String) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result {
           switch str {
-          case "UNSET":  return .Unset
-          case "POKEMON_CAPTURED":  return .PokemonCaptured
-          case "POKEMON_FLED":  return .PokemonFled
-          default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+          case "UNSET":  return .unset
+          case "CANDY_FOUND":  return .candyFound
+          default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
           }
         }
         public var debugDescription:String { return getDescription() }
         public var description:String { return getDescription() }
         private func getDescription() -> String { 
-            switch self {
-                case .Unset: return ".Unset"
-                case .PokemonCaptured: return ".PokemonCaptured"
-                case .PokemonFled: return ".PokemonFled"
-            }
+          switch self {
+          case .unset: return ".unset"
+          case .candyFound: return ".candyFound"
+          }
         }
       }
 
       //Enum type declaration end 
 
-    public private(set) var result:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result.Unset
-    public private(set) var hasResult:Bool = false
-    public private(set) var pokemonId:Pogoprotos.Enums.PokemonId = Pogoprotos.Enums.PokemonId.Missingno
-    public private(set) var hasPokemonId:Bool = false
-    public private(set) var hasCombatPoints:Bool = false
-    public private(set) var combatPoints:Int32 = Int32(0)
-
-    public private(set) var hasPokemonDataId:Bool = false
-    public private(set) var pokemonDataId:UInt64 = UInt64(0)
+    public fileprivate(set) var result:Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result = Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result.unset
+    public fileprivate(set) var hasResult:Bool = false
+    public fileprivate(set) var pokemonId:Pogoprotos.Enums.PokemonId = Pogoprotos.Enums.PokemonId.missingno
+    public fileprivate(set) var hasPokemonId:Bool = false
+    public fileprivate(set) var amount:Int32 = Int32(0)
+    public fileprivate(set) var hasAmount:Bool = false
 
     required public init() {
          super.init()
@@ -653,20 +733,17 @@ public extension Pogoprotos.Data.Logs {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasResult {
-        try output.writeEnum(1, value:result.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 1, value:result.rawValue)
       }
       if hasPokemonId {
-        try output.writeEnum(2, value:pokemonId.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 2, value:pokemonId.rawValue)
       }
-      if hasCombatPoints {
-        try output.writeInt32(3, value:combatPoints)
+      if hasAmount {
+        try codedOutputStream.writeInt32(fieldNumber: 3, value:amount)
       }
-      if hasPokemonDataId {
-        try output.writeUInt64(4, value:pokemonDataId)
-      }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -676,48 +753,396 @@ public extension Pogoprotos.Data.Logs {
 
       serialize_size = 0
       if (hasResult) {
-        serialize_size += result.rawValue.computeEnumSize(1)
+        serialize_size += result.rawValue.computeEnumSize(fieldNumber: 1)
       }
       if (hasPokemonId) {
-        serialize_size += pokemonId.rawValue.computeEnumSize(2)
+        serialize_size += pokemonId.rawValue.computeEnumSize(fieldNumber: 2)
       }
-      if hasCombatPoints {
-        serialize_size += combatPoints.computeInt32Size(3)
-      }
-      if hasPokemonDataId {
-        serialize_size += pokemonDataId.computeUInt64Size(4)
+      if hasAmount {
+        serialize_size += amount.computeInt32Size(fieldNumber: 3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Logs.CatchPokemonLogEntry> {
-      var mergedArray = Array<Pogoprotos.Data.Logs.CatchPokemonLogEntry>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
+    public class func getBuilder() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+      return Pogoprotos.Data.Logs.BuddyPokemonLogEntry.classBuilder() as! Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder
+    }
+    public func getBuilder() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+      return classBuilder() as! Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder
+    }
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
+      return Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder()
+    }
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
+      return Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder()
+    }
+    public func toBuilder() throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+      return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.builderWithPrototype(prototype:self)
+    }
+    public class func builderWithPrototype(prototype:Pogoprotos.Data.Logs.BuddyPokemonLogEntry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+      return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(other:prototype)
+    }
+    override public func encode() throws -> Dictionary<String,Any> {
+      guard isInitialized() else {
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
-      return mergedArray
+
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+      if hasResult {
+        jsonMap["result"] = result.toString()
+      }
+      if hasPokemonId {
+        jsonMap["pokemonId"] = pokemonId.toString()
+      }
+      if hasAmount {
+        jsonMap["amount"] = Int(amount)
+      }
+      return jsonMap
     }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry? {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeDelimitedFromInputStream(input)?.build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+      return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.sharedInstance.extensionRegistry).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+      return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder.fromJSONToBuilder(data:data).build()
     }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
+    override public func getDescription(indent:String) throws -> String {
+      var output = ""
+      if (hasResult) {
+        output += "\(indent) result: \(result.description)\n"
+      }
+      if (hasPokemonId) {
+        output += "\(indent) pokemonId: \(pokemonId.description)\n"
+      }
+      if hasAmount {
+        output += "\(indent) amount: \(amount) \n"
+      }
+      output += unknownFields.getDescription(indent: indent)
+      return output
     }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromInputStream(input).build()
+    override public var hashValue:Int {
+        get {
+            var hashCode:Int = 7
+            if hasResult {
+               hashCode = (hashCode &* 31) &+ Int(result.rawValue)
+            }
+            if hasPokemonId {
+               hashCode = (hashCode &* 31) &+ Int(pokemonId.rawValue)
+            }
+            if hasAmount {
+               hashCode = (hashCode &* 31) &+ amount.hashValue
+            }
+            hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+            return hashCode
+        }
     }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
+
+
+    //Meta information declaration start
+
+    override public class func className() -> String {
+        return "Pogoprotos.Data.Logs.BuddyPokemonLogEntry"
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromCodedInputStream(input).build()
+    override public func className() -> String {
+        return "Pogoprotos.Data.Logs.BuddyPokemonLogEntry"
     }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
+    //Meta information declaration end
+
+    final public class Builder : GeneratedMessageBuilder {
+      fileprivate var builderResult:Pogoprotos.Data.Logs.BuddyPokemonLogEntry = Pogoprotos.Data.Logs.BuddyPokemonLogEntry()
+      public func getMessage() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+          return builderResult
+      }
+
+      required override public init () {
+         super.init()
+      }
+        public var hasResult:Bool{
+            get {
+                return builderResult.hasResult
+            }
+        }
+        public var result:Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result {
+            get {
+                return builderResult.result
+            }
+            set (value) {
+                builderResult.hasResult = true
+                builderResult.result = value
+            }
+        }
+      @discardableResult
+        public func setResult(_ value:Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result) -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+          self.result = value
+          return self
+        }
+      @discardableResult
+        public func clearResult() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+           builderResult.hasResult = false
+           builderResult.result = .unset
+           return self
+        }
+        public var hasPokemonId:Bool{
+            get {
+                return builderResult.hasPokemonId
+            }
+        }
+        public var pokemonId:Pogoprotos.Enums.PokemonId {
+            get {
+                return builderResult.pokemonId
+            }
+            set (value) {
+                builderResult.hasPokemonId = true
+                builderResult.pokemonId = value
+            }
+        }
+      @discardableResult
+        public func setPokemonId(_ value:Pogoprotos.Enums.PokemonId) -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+          self.pokemonId = value
+          return self
+        }
+      @discardableResult
+        public func clearPokemonId() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+           builderResult.hasPokemonId = false
+           builderResult.pokemonId = .missingno
+           return self
+        }
+      public var hasAmount:Bool {
+           get {
+                return builderResult.hasAmount
+           }
+      }
+      public var amount:Int32 {
+           get {
+                return builderResult.amount
+           }
+           set (value) {
+               builderResult.hasAmount = true
+               builderResult.amount = value
+           }
+      }
+      @discardableResult
+      public func setAmount(_ value:Int32) -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        self.amount = value
+        return self
+      }
+      @discardableResult
+      public func clearAmount() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder{
+           builderResult.hasAmount = false
+           builderResult.amount = Int32(0)
+           return self
+      }
+      override public var internalGetResult:GeneratedMessage {
+           get {
+              return builderResult
+           }
+      }
+      @discardableResult
+      override public func clear() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        builderResult = Pogoprotos.Data.Logs.BuddyPokemonLogEntry()
+        return self
+      }
+      override public func clone() throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.builderWithPrototype(prototype:builderResult)
+      }
+      override public func build() throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+           try checkInitialized()
+           return buildPartial()
+      }
+      public func buildPartial() -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+        let returnMe:Pogoprotos.Data.Logs.BuddyPokemonLogEntry = builderResult
+        return returnMe
+      }
+      @discardableResult
+      public func mergeFrom(other:Pogoprotos.Data.Logs.BuddyPokemonLogEntry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        if other == Pogoprotos.Data.Logs.BuddyPokemonLogEntry() {
+         return self
+        }
+        if other.hasResult {
+             result = other.result
+        }
+        if other.hasPokemonId {
+             pokemonId = other.pokemonId
+        }
+        if other.hasAmount {
+             amount = other.amount
+        }
+        _ = try merge(unknownField: other.unknownFields)
+        return self
+      }
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
+      }
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
+        while (true) {
+          let protobufTag = try codedInputStream.readTag()
+          switch protobufTag {
+          case 0: 
+            self.unknownFields = try unknownFieldsBuilder.build()
+            return self
+
+          case 8:
+            let valueIntresult = try codedInputStream.readEnum()
+            if let enumsresult = Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result(rawValue:valueIntresult){
+                 result = enumsresult
+            } else {
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 1, value:Int64(valueIntresult))
+            }
+
+          case 16:
+            let valueIntpokemonId = try codedInputStream.readEnum()
+            if let enumspokemonId = Pogoprotos.Enums.PokemonId(rawValue:valueIntpokemonId){
+                 pokemonId = enumspokemonId
+            } else {
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 2, value:Int64(valueIntpokemonId))
+            }
+
+          case 24:
+            amount = try codedInputStream.readInt32()
+
+          default:
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+               unknownFields = try unknownFieldsBuilder.build()
+               return self
+            }
+          }
+        }
+      }
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        let resultDecodedBuilder = Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder()
+        if let jsonValueResult = jsonMap["result"] as? String {
+          resultDecodedBuilder.result = try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Result.fromString(str: jsonValueResult)
+        }
+        if let jsonValuePokemonId = jsonMap["pokemonId"] as? String {
+          resultDecodedBuilder.pokemonId = try Pogoprotos.Enums.PokemonId.fromString(str: jsonValuePokemonId)
+        }
+        if let jsonValueAmount = jsonMap["amount"] as? Int {
+          resultDecodedBuilder.amount = Int32(jsonValueAmount)
+        }
+        return resultDecodedBuilder
+      }
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
+        }
+        return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsDataCast)
+      }
+    }
+
+  }
+
+  final public class CatchPokemonLogEntry : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Data.Logs.CatchPokemonLogEntry, rhs: Pogoprotos.Data.Logs.CatchPokemonLogEntry) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
+      fieldCheck = fieldCheck && (lhs.hasPokemonId == rhs.hasPokemonId) && (!lhs.hasPokemonId || lhs.pokemonId == rhs.pokemonId)
+      fieldCheck = fieldCheck && (lhs.hasCombatPoints == rhs.hasCombatPoints) && (!lhs.hasCombatPoints || lhs.combatPoints == rhs.combatPoints)
+      fieldCheck = fieldCheck && (lhs.hasPokemonDataId == rhs.hasPokemonDataId) && (!lhs.hasPokemonDataId || lhs.pokemonDataId == rhs.pokemonDataId)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
+
+
+      //Enum type declaration start 
+
+      public enum Result:Int32, CustomDebugStringConvertible, CustomStringConvertible {
+        case unset = 0
+        case pokemonCaptured = 1
+        case pokemonFled = 2
+        case pokemonHatched = 3
+        public func toString() -> String {
+          switch self {
+          case .unset: return "UNSET"
+          case .pokemonCaptured: return "POKEMON_CAPTURED"
+          case .pokemonFled: return "POKEMON_FLED"
+          case .pokemonHatched: return "POKEMON_HATCHED"
+          }
+        }
+        public static func fromString(str:String) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result {
+          switch str {
+          case "UNSET":  return .unset
+          case "POKEMON_CAPTURED":  return .pokemonCaptured
+          case "POKEMON_FLED":  return .pokemonFled
+          case "POKEMON_HATCHED":  return .pokemonHatched
+          default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
+          }
+        }
+        public var debugDescription:String { return getDescription() }
+        public var description:String { return getDescription() }
+        private func getDescription() -> String { 
+          switch self {
+          case .unset: return ".unset"
+          case .pokemonCaptured: return ".pokemonCaptured"
+          case .pokemonFled: return ".pokemonFled"
+          case .pokemonHatched: return ".pokemonHatched"
+          }
+        }
+      }
+
+      //Enum type declaration end 
+
+    public fileprivate(set) var result:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result.unset
+    public fileprivate(set) var hasResult:Bool = false
+    public fileprivate(set) var pokemonId:Pogoprotos.Enums.PokemonId = Pogoprotos.Enums.PokemonId.missingno
+    public fileprivate(set) var hasPokemonId:Bool = false
+    public fileprivate(set) var combatPoints:Int32 = Int32(0)
+    public fileprivate(set) var hasCombatPoints:Bool = false
+
+    public fileprivate(set) var pokemonDataId:UInt64 = UInt64(0)
+    public fileprivate(set) var hasPokemonDataId:Bool = false
+
+    required public init() {
+         super.init()
+    }
+    override public func isInitialized() -> Bool {
+     return true
+    }
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
+      if hasResult {
+        try codedOutputStream.writeEnum(fieldNumber: 1, value:result.rawValue)
+      }
+      if hasPokemonId {
+        try codedOutputStream.writeEnum(fieldNumber: 2, value:pokemonId.rawValue)
+      }
+      if hasCombatPoints {
+        try codedOutputStream.writeInt32(fieldNumber: 3, value:combatPoints)
+      }
+      if hasPokemonDataId {
+        try codedOutputStream.writeFixed64(fieldNumber: 4, value:pokemonDataId)
+      }
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
+    }
+    override public func serializedSize() -> Int32 {
+      var serialize_size:Int32 = memoizedSerializedSize
+      if serialize_size != -1 {
+       return serialize_size
+      }
+
+      serialize_size = 0
+      if (hasResult) {
+        serialize_size += result.rawValue.computeEnumSize(fieldNumber: 1)
+      }
+      if (hasPokemonId) {
+        serialize_size += pokemonId.rawValue.computeEnumSize(fieldNumber: 2)
+      }
+      if hasCombatPoints {
+        serialize_size += combatPoints.computeInt32Size(fieldNumber: 3)
+      }
+      if hasPokemonDataId {
+        serialize_size += pokemonDataId.computeFixed64Size(fieldNumber: 4)
+      }
+      serialize_size += unknownFields.serializedSize()
+      memoizedSerializedSize = serialize_size
+      return serialize_size
     }
     public class func getBuilder() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
       return Pogoprotos.Data.Logs.CatchPokemonLogEntry.classBuilder() as! Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder
@@ -725,24 +1150,24 @@ public extension Pogoprotos.Data.Logs {
     public func getBuilder() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
       return classBuilder() as! Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(self)
+      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Logs.CatchPokemonLogEntry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasResult {
         jsonMap["result"] = result.toString()
       }
@@ -750,18 +1175,18 @@ public extension Pogoprotos.Data.Logs {
         jsonMap["pokemonId"] = pokemonId.toString()
       }
       if hasCombatPoints {
-        jsonMap["combatPoints"] = NSNumber(int:combatPoints)
+        jsonMap["combatPoints"] = Int(combatPoints)
       }
       if hasPokemonDataId {
         jsonMap["pokemonDataId"] = "\(pokemonDataId)"
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
-      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+      return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -777,7 +1202,7 @@ public extension Pogoprotos.Data.Logs {
       if hasPokemonDataId {
         output += "\(indent) pokemonDataId: \(pokemonDataId) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -809,13 +1234,10 @@ public extension Pogoprotos.Data.Logs {
     override public func className() -> String {
         return "Pogoprotos.Data.Logs.CatchPokemonLogEntry"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Logs.CatchPokemonLogEntry.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Logs.CatchPokemonLogEntry = Pogoprotos.Data.Logs.CatchPokemonLogEntry()
+      fileprivate var builderResult:Pogoprotos.Data.Logs.CatchPokemonLogEntry = Pogoprotos.Data.Logs.CatchPokemonLogEntry()
       public func getMessage() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
           return builderResult
       }
@@ -837,13 +1259,15 @@ public extension Pogoprotos.Data.Logs {
                 builderResult.result = value
             }
         }
-        public func setResult(value:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+      @discardableResult
+        public func setResult(_ value:Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
           self.result = value
           return self
         }
+      @discardableResult
         public func clearResult() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
            builderResult.hasResult = false
-           builderResult.result = .Unset
+           builderResult.result = .unset
            return self
         }
         public var hasPokemonId:Bool{
@@ -860,13 +1284,15 @@ public extension Pogoprotos.Data.Logs {
                 builderResult.pokemonId = value
             }
         }
-        public func setPokemonId(value:Pogoprotos.Enums.PokemonId) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+      @discardableResult
+        public func setPokemonId(_ value:Pogoprotos.Enums.PokemonId) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
           self.pokemonId = value
           return self
         }
+      @discardableResult
         public func clearPokemonId() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
            builderResult.hasPokemonId = false
-           builderResult.pokemonId = .Missingno
+           builderResult.pokemonId = .missingno
            return self
         }
       public var hasCombatPoints:Bool {
@@ -883,10 +1309,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.combatPoints = value
            }
       }
-      public func setCombatPoints(value:Int32) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+      @discardableResult
+      public func setCombatPoints(_ value:Int32) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
         self.combatPoints = value
         return self
       }
+      @discardableResult
       public func clearCombatPoints() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder{
            builderResult.hasCombatPoints = false
            builderResult.combatPoints = Int32(0)
@@ -906,10 +1334,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.pokemonDataId = value
            }
       }
-      public func setPokemonDataId(value:UInt64) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+      @discardableResult
+      public func setPokemonDataId(_ value:UInt64) -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
         self.pokemonDataId = value
         return self
       }
+      @discardableResult
       public func clearPokemonDataId() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder{
            builderResult.hasPokemonDataId = false
            builderResult.pokemonDataId = UInt64(0)
@@ -920,12 +1350,13 @@ public extension Pogoprotos.Data.Logs {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
         builderResult = Pogoprotos.Data.Logs.CatchPokemonLogEntry()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-        return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
            try checkInitialized()
@@ -935,6 +1366,7 @@ public extension Pogoprotos.Data.Logs {
         let returnMe:Pogoprotos.Data.Logs.CatchPokemonLogEntry = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Logs.CatchPokemonLogEntry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
         if other == Pogoprotos.Data.Logs.CatchPokemonLogEntry() {
          return self
@@ -951,119 +1383,135 @@ public extension Pogoprotos.Data.Logs {
         if other.hasPokemonDataId {
              pokemonDataId = other.pokemonDataId
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            let valueIntresult = try input.readEnum()
+            let valueIntresult = try codedInputStream.readEnum()
             if let enumsresult = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result(rawValue:valueIntresult){
                  result = enumsresult
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntresult))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 1, value:Int64(valueIntresult))
             }
 
           case 16:
-            let valueIntpokemonId = try input.readEnum()
+            let valueIntpokemonId = try codedInputStream.readEnum()
             if let enumspokemonId = Pogoprotos.Enums.PokemonId(rawValue:valueIntpokemonId){
                  pokemonId = enumspokemonId
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntpokemonId))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 2, value:Int64(valueIntpokemonId))
             }
 
           case 24:
-            combatPoints = try input.readInt32()
+            combatPoints = try codedInputStream.readInt32()
 
-          case 32:
-            pokemonDataId = try input.readUInt64()
+          case 33:
+            pokemonDataId = try codedInputStream.readFixed64()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder()
         if let jsonValueResult = jsonMap["result"] as? String {
-          resultDecodedBuilder.result = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result.fromString(jsonValueResult)
+          resultDecodedBuilder.result = try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Result.fromString(str: jsonValueResult)
         }
         if let jsonValuePokemonId = jsonMap["pokemonId"] as? String {
-          resultDecodedBuilder.pokemonId = try Pogoprotos.Enums.PokemonId.fromString(jsonValuePokemonId)
+          resultDecodedBuilder.pokemonId = try Pogoprotos.Enums.PokemonId.fromString(str: jsonValuePokemonId)
         }
-        if let jsonValueCombatPoints = jsonMap["combatPoints"] as? NSNumber {
-          resultDecodedBuilder.combatPoints = jsonValueCombatPoints.intValue
+        if let jsonValueCombatPoints = jsonMap["combatPoints"] as? Int {
+          resultDecodedBuilder.combatPoints = Int32(jsonValueCombatPoints)
         }
         if let jsonValuePokemonDataId = jsonMap["pokemonDataId"] as? String {
           resultDecodedBuilder.pokemonDataId = UInt64(jsonValuePokemonDataId)!
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class FortSearchLogEntry : GeneratedMessage, GeneratedMessageProtocol {
+  final public class FortSearchLogEntry : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Data.Logs.FortSearchLogEntry, rhs: Pogoprotos.Data.Logs.FortSearchLogEntry) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasResult == rhs.hasResult) && (!lhs.hasResult || lhs.result == rhs.result)
+      fieldCheck = fieldCheck && (lhs.hasFortId == rhs.hasFortId) && (!lhs.hasFortId || lhs.fortId == rhs.fortId)
+      fieldCheck = fieldCheck && (lhs.items == rhs.items)
+      fieldCheck = fieldCheck && (lhs.hasEggs == rhs.hasEggs) && (!lhs.hasEggs || lhs.eggs == rhs.eggs)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
 
 
       //Enum type declaration start 
 
       public enum Result:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-        case Unset = 0
-        case Success = 1
+        case unset = 0
+        case success = 1
         public func toString() -> String {
           switch self {
-          case .Unset: return "UNSET"
-          case .Success: return "SUCCESS"
+          case .unset: return "UNSET"
+          case .success: return "SUCCESS"
           }
         }
         public static func fromString(str:String) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Result {
           switch str {
-          case "UNSET":  return .Unset
-          case "SUCCESS":  return .Success
-          default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+          case "UNSET":  return .unset
+          case "SUCCESS":  return .success
+          default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
           }
         }
         public var debugDescription:String { return getDescription() }
         public var description:String { return getDescription() }
         private func getDescription() -> String { 
-            switch self {
-                case .Unset: return ".Unset"
-                case .Success: return ".Success"
-            }
+          switch self {
+          case .unset: return ".unset"
+          case .success: return ".success"
+          }
         }
       }
 
       //Enum type declaration end 
 
-    public private(set) var result:Pogoprotos.Data.Logs.FortSearchLogEntry.Result = Pogoprotos.Data.Logs.FortSearchLogEntry.Result.Unset
-    public private(set) var hasResult:Bool = false
-    public private(set) var hasFortId:Bool = false
-    public private(set) var fortId:String = ""
+    public fileprivate(set) var result:Pogoprotos.Data.Logs.FortSearchLogEntry.Result = Pogoprotos.Data.Logs.FortSearchLogEntry.Result.unset
+    public fileprivate(set) var hasResult:Bool = false
+    public fileprivate(set) var fortId:String = ""
+    public fileprivate(set) var hasFortId:Bool = false
 
-    public private(set) var items:Array<Pogoprotos.Inventory.Item.ItemData>  = Array<Pogoprotos.Inventory.Item.ItemData>()
-    public private(set) var hasEggs:Bool = false
-    public private(set) var eggs:Int32 = Int32(0)
+    public fileprivate(set) var items:Array<Pogoprotos.Inventory.Item.ItemData>  = Array<Pogoprotos.Inventory.Item.ItemData>()
+    public fileprivate(set) var eggs:Int32 = Int32(0)
+    public fileprivate(set) var hasEggs:Bool = false
 
     required public init() {
          super.init()
@@ -1071,20 +1519,20 @@ public extension Pogoprotos.Data.Logs {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasResult {
-        try output.writeEnum(1, value:result.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 1, value:result.rawValue)
       }
       if hasFortId {
-        try output.writeString(2, value:fortId)
+        try codedOutputStream.writeString(fieldNumber: 2, value:fortId)
       }
       for oneElementItems in items {
-          try output.writeMessage(3, value:oneElementItems)
+          try codedOutputStream.writeMessage(fieldNumber: 3, value:oneElementItems)
       }
       if hasEggs {
-        try output.writeInt32(4, value:eggs)
+        try codedOutputStream.writeInt32(fieldNumber: 4, value:eggs)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -1094,48 +1542,20 @@ public extension Pogoprotos.Data.Logs {
 
       serialize_size = 0
       if (hasResult) {
-        serialize_size += result.rawValue.computeEnumSize(1)
+        serialize_size += result.rawValue.computeEnumSize(fieldNumber: 1)
       }
       if hasFortId {
-        serialize_size += fortId.computeStringSize(2)
+        serialize_size += fortId.computeStringSize(fieldNumber: 2)
       }
       for oneElementItems in items {
-          serialize_size += oneElementItems.computeMessageSize(3)
+          serialize_size += oneElementItems.computeMessageSize(fieldNumber: 3)
       }
       if hasEggs {
-        serialize_size += eggs.computeInt32Size(4)
+        serialize_size += eggs.computeInt32Size(fieldNumber: 4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Logs.FortSearchLogEntry> {
-      var mergedArray = Array<Pogoprotos.Data.Logs.FortSearchLogEntry>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry? {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
       return Pogoprotos.Data.Logs.FortSearchLogEntry.classBuilder() as! Pogoprotos.Data.Logs.FortSearchLogEntry.Builder
@@ -1143,24 +1563,24 @@ public extension Pogoprotos.Data.Logs {
     public func getBuilder() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
       return classBuilder() as! Pogoprotos.Data.Logs.FortSearchLogEntry.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.FortSearchLogEntry.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Logs.FortSearchLogEntry.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(self)
+      return try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Logs.FortSearchLogEntry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasResult {
         jsonMap["result"] = result.toString()
       }
@@ -1168,23 +1588,23 @@ public extension Pogoprotos.Data.Logs {
         jsonMap["fortId"] = fortId
       }
       if !items.isEmpty {
-        var jsonArrayItems:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayItems:Array<Dictionary<String,Any>> = []
           for oneValueItems in items {
             let ecodedMessageItems = try oneValueItems.encode()
-            jsonArrayItems += [ecodedMessageItems]
+            jsonArrayItems.append(ecodedMessageItems)
           }
         jsonMap["items"] = jsonArrayItems
       }
       if hasEggs {
-        jsonMap["eggs"] = NSNumber(int:eggs)
+        jsonMap["eggs"] = Int(eggs)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
-      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+      return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -1197,14 +1617,14 @@ public extension Pogoprotos.Data.Logs {
       var itemsElementIndex:Int = 0
       for oneElementItems in items {
           output += "\(indent) items[\(itemsElementIndex)] {\n"
-          output += try oneElementItems.getDescription("\(indent)  ")
+          output += try oneElementItems.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           itemsElementIndex += 1
       }
       if hasEggs {
         output += "\(indent) eggs: \(eggs) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -1236,13 +1656,10 @@ public extension Pogoprotos.Data.Logs {
     override public func className() -> String {
         return "Pogoprotos.Data.Logs.FortSearchLogEntry"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Logs.FortSearchLogEntry.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Logs.FortSearchLogEntry = Pogoprotos.Data.Logs.FortSearchLogEntry()
+      fileprivate var builderResult:Pogoprotos.Data.Logs.FortSearchLogEntry = Pogoprotos.Data.Logs.FortSearchLogEntry()
       public func getMessage() -> Pogoprotos.Data.Logs.FortSearchLogEntry {
           return builderResult
       }
@@ -1264,13 +1681,15 @@ public extension Pogoprotos.Data.Logs {
                 builderResult.result = value
             }
         }
-        public func setResult(value:Pogoprotos.Data.Logs.FortSearchLogEntry.Result) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+      @discardableResult
+        public func setResult(_ value:Pogoprotos.Data.Logs.FortSearchLogEntry.Result) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
           self.result = value
           return self
         }
+      @discardableResult
         public func clearResult() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
            builderResult.hasResult = false
-           builderResult.result = .Unset
+           builderResult.result = .unset
            return self
         }
       public var hasFortId:Bool {
@@ -1287,10 +1706,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.fortId = value
            }
       }
-      public func setFortId(value:String) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+      @discardableResult
+      public func setFortId(_ value:String) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         self.fortId = value
         return self
       }
+      @discardableResult
       public func clearFortId() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder{
            builderResult.hasFortId = false
            builderResult.fortId = ""
@@ -1304,12 +1725,14 @@ public extension Pogoprotos.Data.Logs {
                builderResult.items = value
            }
       }
-      public func setItems(value:Array<Pogoprotos.Inventory.Item.ItemData>) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+      @discardableResult
+      public func setItems(_ value:Array<Pogoprotos.Inventory.Item.ItemData>) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         self.items = value
         return self
       }
+      @discardableResult
       public func clearItems() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-        builderResult.items.removeAll(keepCapacity: false)
+        builderResult.items.removeAll(keepingCapacity: false)
         return self
       }
       public var hasEggs:Bool {
@@ -1326,10 +1749,12 @@ public extension Pogoprotos.Data.Logs {
                builderResult.eggs = value
            }
       }
-      public func setEggs(value:Int32) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+      @discardableResult
+      public func setEggs(_ value:Int32) -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         self.eggs = value
         return self
       }
+      @discardableResult
       public func clearEggs() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder{
            builderResult.hasEggs = false
            builderResult.eggs = Int32(0)
@@ -1340,12 +1765,13 @@ public extension Pogoprotos.Data.Logs {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         builderResult = Pogoprotos.Data.Logs.FortSearchLogEntry()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-        return try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Logs.FortSearchLogEntry.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
            try checkInitialized()
@@ -1355,6 +1781,7 @@ public extension Pogoprotos.Data.Logs {
         let returnMe:Pogoprotos.Data.Logs.FortSearchLogEntry = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Logs.FortSearchLogEntry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         if other == Pogoprotos.Data.Logs.FortSearchLogEntry() {
          return self
@@ -1371,81 +1798,203 @@ public extension Pogoprotos.Data.Logs {
         if other.hasEggs {
              eggs = other.eggs
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            let valueIntresult = try input.readEnum()
+            let valueIntresult = try codedInputStream.readEnum()
             if let enumsresult = Pogoprotos.Data.Logs.FortSearchLogEntry.Result(rawValue:valueIntresult){
                  result = enumsresult
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntresult))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 1, value:Int64(valueIntresult))
             }
 
           case 18:
-            fortId = try input.readString()
+            fortId = try codedInputStream.readString()
 
           case 26:
             let subBuilder = Pogoprotos.Inventory.Item.ItemData.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            items += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            items.append(subBuilder.buildPartial())
 
           case 32:
-            eggs = try input.readInt32()
+            eggs = try codedInputStream.readInt32()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Logs.FortSearchLogEntry.Builder()
         if let jsonValueResult = jsonMap["result"] as? String {
-          resultDecodedBuilder.result = try Pogoprotos.Data.Logs.FortSearchLogEntry.Result.fromString(jsonValueResult)
+          resultDecodedBuilder.result = try Pogoprotos.Data.Logs.FortSearchLogEntry.Result.fromString(str: jsonValueResult)
         }
         if let jsonValueFortId = jsonMap["fortId"] as? String {
           resultDecodedBuilder.fortId = jsonValueFortId
         }
-        if let jsonValueItems = jsonMap["items"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueItems = jsonMap["items"] as? Array<Dictionary<String,Any>> {
           var jsonArrayItems:Array<Pogoprotos.Inventory.Item.ItemData> = []
           for oneValueItems in jsonValueItems {
-            let messageFromStringItems = try Pogoprotos.Inventory.Item.ItemData.Builder.decodeToBuilder(oneValueItems).build()
+            let messageFromStringItems = try Pogoprotos.Inventory.Item.ItemData.Builder.decodeToBuilder(jsonMap:oneValueItems).build()
 
-            jsonArrayItems += [messageFromStringItems]
+            jsonArrayItems.append(messageFromStringItems)
           }
           resultDecodedBuilder.items = jsonArrayItems
         }
-        if let jsonValueEggs = jsonMap["eggs"] as? NSNumber {
-          resultDecodedBuilder.eggs = jsonValueEggs.intValue
+        if let jsonValueEggs = jsonMap["eggs"] as? Int {
+          resultDecodedBuilder.eggs = Int32(jsonValueEggs)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
+}
+extension Pogoprotos.Data.Logs.ActionLogEntry: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Logs.ActionLogEntry> {
+    var mergedArray = Array<Pogoprotos.Data.Logs.ActionLogEntry>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry? {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.ActionLogEntry {
+    return try Pogoprotos.Data.Logs.ActionLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Logs.BuddyPokemonLogEntry: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Logs.BuddyPokemonLogEntry> {
+    var mergedArray = Array<Pogoprotos.Data.Logs.BuddyPokemonLogEntry>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry? {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.BuddyPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.BuddyPokemonLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Logs.CatchPokemonLogEntry: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Logs.CatchPokemonLogEntry> {
+    var mergedArray = Array<Pogoprotos.Data.Logs.CatchPokemonLogEntry>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry? {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.CatchPokemonLogEntry {
+    return try Pogoprotos.Data.Logs.CatchPokemonLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Logs.FortSearchLogEntry: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Logs.FortSearchLogEntry> {
+    var mergedArray = Array<Pogoprotos.Data.Logs.FortSearchLogEntry>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry? {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Logs.PogoprotosDataLogsRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Logs.FortSearchLogEntry {
+    return try Pogoprotos.Data.Logs.FortSearchLogEntry.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
 }
 
 // @@protoc_insertion_point(global_scope)

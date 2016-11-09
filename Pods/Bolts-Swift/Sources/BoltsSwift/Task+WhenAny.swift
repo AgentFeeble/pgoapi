@@ -25,7 +25,7 @@ extension Task {
 
      - returns: A new task that will complete when any of the `tasks` are completed.
      */
-    public class func whenAny(tasks: [Task]) -> Task<Void> {
+    public class func whenAny(_ tasks: [Task]) -> Task<Void> {
         if tasks.isEmpty {
             return Task.emptyTask()
         }
@@ -52,7 +52,7 @@ extension Task {
 
      - returns: A new task that will complete when any of the `tasks` are completed.
      */
-    public class func whenAny(tasks: Task...) -> Task<Void> {
+    public class func whenAny(_ tasks: Task...) -> Task<Void> {
         return whenAny(tasks)
     }
 }

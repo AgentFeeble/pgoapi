@@ -8,17 +8,18 @@
 
 import Foundation
 
-func pgoEncrypt(input: NSData, iv: NSData) -> NSData
+func pgoEncrypt(_ input: Data, iv: Data) -> Data
 {
     var outputSize: size_t = 0
-    encryptMethod(UnsafePointer<UInt8>(input.bytes), input.length,
-                  UnsafePointer<UInt8>(iv.bytes), iv.length, nil, &outputSize)
+    encryptMethod((input as NSData).bytes.bindMemory(to: UInt8.self, capacity: input.count), input.count,
+                  (iv as NSData).bytes.bindMemory(to: UInt8.self, capacity: iv.count), iv.count, nil, &outputSize)
     
-    let output: NSData = NSMutableData(length: outputSize)!
-    encryptMethod(UnsafePointer<UInt8>(input.bytes), input.length,
-                  UnsafePointer<UInt8>(iv.bytes), iv.length,
-                  UnsafeMutablePointer<UInt8>(output.bytes), &outputSize)
+    let output: Data = NSMutableData(length: outputSize)! as Data
+    encryptMethod((input as NSData).bytes.bindMemory(to: UInt8.self, capacity: input.count), input.count,
+                  (iv as NSData).bytes.bindMemory(to: UInt8.self, capacity: iv.count), iv.count,
+                  UnsafeMutablePointer<UInt8>(mutating: (output as NSData).bytes.bindMemory(to: UInt8.self, capacity: output.count)), &outputSize)
     
-    let usedOutput = outputSize < output.length ? output.subdataWithRange(NSMakeRange(0, outputSize)) : output
+    let range = Range<Int>(uncheckedBounds: (lower: 0, upper: outputSize))
+    let usedOutput = outputSize < output.count ? output.subdata(in: range) : output
     return usedOutput
 }

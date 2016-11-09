@@ -9,9 +9,9 @@
 import Foundation
 
 extension NSRange {
-    func rangeForString(str: String) -> Range<String.Index>?
+    func rangeForString(_ str: String) -> Range<String.Index>?
     {
         guard location != NSNotFound else { return nil }
-        return str.startIndex.advancedBy(location) ..< str.startIndex.advancedBy(location + length)
+        return str.characters.index(str.startIndex, offsetBy: location) ..< str.characters.index(str.startIndex, offsetBy: location + length)
     }
 }

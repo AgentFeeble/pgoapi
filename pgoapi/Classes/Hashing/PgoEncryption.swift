@@ -10,6 +10,6 @@ import Foundation
 
 public struct PgoEncryption
 {
-    public typealias EncryptFunction = (input: NSData, iv: NSData) -> NSData
+    public typealias EncryptFunction = (_ input: Data, _ iv: Data) -> Data
     public static var encrypt: EncryptFunction?
 }

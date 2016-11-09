@@ -22,7 +22,7 @@ extension Task {
 
      - returns: A new task that will complete after all `tasks` are completed.
      */
-    public class func whenAll(tasks: [Task]) -> Task<Void> {
+    public class func whenAll(_ tasks: [Task]) -> Task<Void> {
         if tasks.isEmpty {
             return Task.emptyTask()
         }
@@ -61,7 +61,7 @@ extension Task {
 
      - returns: A new task that will complete after all `tasks` are completed.
      */
-    public class func whenAll(tasks: Task...) -> Task<Void> {
+    public class func whenAll(_ tasks: Task...) -> Task<Void> {
         return whenAll(tasks)
     }
 
@@ -73,7 +73,7 @@ extension Task {
      - returns: A new task that will complete after all `tasks` are completed.
      The result of the task is going an array of results of all tasks in the same order as they were provided.
      */
-    public class func whenAllResult(tasks: [Task]) -> Task<[TResult]> {
+    public class func whenAllResult(_ tasks: [Task]) -> Task<[TResult]> {
         return whenAll(tasks).continueOnSuccessWithTask { task -> Task<[TResult]> in
             let results: [TResult] = tasks.map { task in
                 guard let result = task.result else {
@@ -99,7 +99,7 @@ extension Task {
      - returns: A new task that will complete after all `tasks` are completed.
      The result of the task is going an array of results of all tasks in the same order as they were provided.
      */
-    public class func whenAllResult(tasks: Task...) -> Task<[TResult]> {
+    public class func whenAllResult(_ tasks: Task...) -> Task<[TResult]> {
         return whenAllResult(tasks)
     }
 }

@@ -8,9 +8,9 @@
 
 import Foundation
 
-public enum NetworkError: ErrorType
+public enum NetworkError: Error
 {
-    case InvalidResponse
-    case InvalidStatusCode(Int)
-    case DeserializationError(ErrorType)
+    case invalidResponse
+    case invalidStatusCode(Int)
+    case deserializationError(Error)
 }

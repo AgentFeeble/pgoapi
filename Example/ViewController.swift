@@ -13,7 +13,7 @@ import BoltsSwift
 
 class ViewController: UIViewController
 {
-    private let network: Network = AlamoFireNetwork.defaultFireNetwork()
+    fileprivate let network: Network = AlamoFireNetwork.defaultFireNetwork()
     
     override func viewDidLoad()
     {
@@ -21,25 +21,25 @@ class ViewController: UIViewController
         
         let network = self.network
         Auth(network: network).login("username", password: "password")
-        .continueOnSuccessWith(.MainThread)
+        .continueOnSuccessWith(.mainThread)
         {
             result in
             return PgoApi(network: network, authToken: result)
         }
-        .continueOnSuccessWithTask(.MainThread)
+        .continueOnSuccessWithTask(.mainThread)
         {
             api -> Task<ApiResponse> in
             let location = Location(latitude: 40.783027, longitude: -73.965130, altitude: 10.1)
             return api.builder(location).getMapObjects().execute()
         }
-        .continueOnSuccessWith(.MainThread)
+        .continueOnSuccessWith(.mainThread)
         {
             response in
-            let mapObjects = response.subresponses[.GetMapObjects] as? pgoapi.Pogoprotos.Networking.Responses.GetMapObjectsResponse
-            print(mapObjects)
+            let mapObjects = response.subresponses[.getMapObjects] as? pgoapi.Pogoprotos.Networking.Responses.GetMapObjectsResponse
+            print(mapObjects as Any)
             return ()
         }
-        .continueWith(.MainThread)
+        .continueWith(.mainThread)
         {
             (task: Task<()>) -> () in
             print(task)

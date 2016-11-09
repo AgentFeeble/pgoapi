@@ -26,11 +26,11 @@ class RpcRequest
         self.params = params
     }
     
-    func execute<T, C>(endPoint: String, decoder: Decoder<T, C>) -> Task<T>
+    func execute<T, C>(_ endPoint: String, decoder: Decoder<T, C>) -> Task<T>
     {
         guard let encryptFunc = PgoEncryption.encrypt else
         {
-            return Task(error: PgoApi.ApiError.NoEncryptionFuncProvided)
+            return Task(error: PgoApi.ApiError.noEncryptionFuncProvided)
         }
         self.encryptFunc = encryptFunc
         
@@ -42,28 +42,28 @@ class RpcRequest
         })
         .continueOnSuccessWithTask(continuation:
         {
-            (requestData: NSData) -> Task<NetworkResponse<NSData>> in
-            return self.network.postData(endPoint, args: RequestArgs(params: [:], body: requestData))
+            (requestData: Data) -> Task<NetworkResponse<Data>> in
+            let args = RequestArgs(params: [:], body: requestData)
+            return self.network.postData(endPoint, args: args)
         })
         .continueOnSuccessWith(network.processingExecutor, continuation:
         {
-            (response: NetworkResponse<NSData>) -> T in
-            return try self.process(response, decoder: decoder)
+            (response: NetworkResponse<Data>) -> T in
+            return try self.process(response: response, decoder: decoder)
         })
     }
     
-    private func buildRequestEnvelope() -> Pogoprotos.Networking.Envelopes.RequestEnvelope
+    fileprivate func buildRequestEnvelope() -> Pogoprotos.Networking.Envelopes.RequestEnvelope
     {
         let requestBuilder = Pogoprotos.Networking.Envelopes.RequestEnvelope.Builder()
         requestBuilder.statusCode = 2
         requestBuilder.requestId = params.requestId
-        requestBuilder.unknown12 = Constant.Unknown12
+        requestBuilder.accuracy = 10
         
         if let location = params.location
         {
             requestBuilder.latitude = location.latitude
             requestBuilder.longitude = location.longitude
-            requestBuilder.altitude = location.altitude
         }
         
         // Force unwrap try statements - we want the app to crash if the request can't be generated
@@ -81,27 +81,28 @@ class RpcRequest
             sigBuilder.locationHash1 = generateLocation1(ticket: ticketData,
                                                          lat: requestBuilder.latitude,
                                                          lng: requestBuilder.longitude,
-                                                         altitude: requestBuilder.altitude)
+                                                         altitude: params.location?.altitude ?? 0.0)
             sigBuilder.locationHash2 = generateLocation2(lat: requestBuilder.latitude,
                                                          lng: requestBuilder.longitude,
-                                                         altitude: requestBuilder.altitude)
+                                                         altitude: params.location?.altitude ?? 0.0)
             
             for request in requestBuilder.requests
             {
                 let hash = generateRequestHash(ticket: ticketData, requestData: request.data())
                 sigBuilder.requestHash.append(hash)
             }
-            
-            sigBuilder.unknown22 = randomBytes(length: 32)
-            sigBuilder.timestamp = UInt64(NSDate().timeIntervalSince1970 * 1000.0)
-            sigBuilder.timestampSinceStart = (sigBuilder.timestamp > params.sessionStartTime) ? sigBuilder.timestamp - params.sessionStartTime : 0
-            
-            let signature = try! sigBuilder.build()
-            let u6Builder = requestBuilder.getUnknown6Builder()
-            let u2Builder = u6Builder.getUnknown2Builder()
-            
-            u6Builder.requestType = Constant.unknown6RequestId
-            u2Builder.encryptedSignature = generateSignatureData(signature)
+
+            // TODO: update for compatibility with API version 0.43.3
+//            sigBuilder.field22 = randomBytes(length: 32)
+//            sigBuilder.timestamp = UInt64(Date().timeIntervalSince1970 * 1000.0)
+//            sigBuilder.timestampSinceStart = (sigBuilder.timestamp > params.sessionStartTime) ? sigBuilder.timestamp - params.sessionStartTime : 0
+//            
+//            let signature = try! sigBuilder.build()
+//            let u6Builder = requestBuilder.getUnknown6Builder()
+//            let u2Builder = u6Builder.getUnknown2Builder()
+//            
+//            u6Builder.requestType = Constant.unknown6RequestId
+//            u2Builder.encryptedSignature = generateSignatureData(signature)
         }
         else
         {
@@ -117,7 +118,7 @@ class RpcRequest
         return try! requestBuilder.build()
     }
     
-    private func buildMessages(forRequest request: Pogoprotos.Networking.Envelopes.RequestEnvelope.Builder) throws
+    fileprivate func buildMessages(forRequest request: Pogoprotos.Networking.Envelopes.RequestEnvelope.Builder) throws
     {
         for message in messages
         {
@@ -128,24 +129,24 @@ class RpcRequest
         }
     }
     
-    private func generateSignatureData(signature: Pogoprotos.Networking.Envelopes.Signature) -> NSData
+    fileprivate func generateSignatureData(_ signature: Pogoprotos.Networking.Envelopes.Signature) -> Data
     {
         let signatureData = signature.data()
         let iv = randomBytes(length: 32)
         
         let encryptFunc = self.encryptFunc!
-        return encryptFunc(input: signatureData, iv: iv)
+        return encryptFunc(signatureData, iv)
     }
     
-    private func process<T, C>(response: NetworkResponse<NSData>, decoder: Decoder<T, C>) throws -> T
+    fileprivate func process<T, C>(response: NetworkResponse<Data>, decoder: Decoder<T, C>) throws -> T
     {
         guard response.statusCode == 200 else
         {
-            throw NetworkError.InvalidStatusCode(response.statusCode)
+            throw NetworkError.invalidStatusCode(response.statusCode)
         }
         guard let responseData = response.response else
         {
-            throw NetworkError.InvalidResponse
+            throw NetworkError.invalidResponse
         }
         
         do
@@ -154,7 +155,7 @@ class RpcRequest
         }
         catch let error
         {
-            throw NetworkError.DeserializationError(error)
+            throw NetworkError.deserializationError(error)
         }
     }
 }

@@ -23,46 +23,46 @@ extension Task {
 
      - returns: The task resulting from the continuation
      */
-    private func continueWithTask<S>(executor: Executor,
+    fileprivate func continueWithTask<S>(_ executor: Executor,
                                   options: TaskContinuationOptions,
-                                  continuation: (Task throws -> Task<S>)
+                                  continuation: @escaping ((Task) throws -> Task<S>)
         ) -> Task<S> {
         let taskCompletionSource = TaskCompletionSource<S>()
         let wrapperContinuation = {
             switch self.state {
-            case .Success where options.contains(.RunOnSuccess): fallthrough
-            case .Error where options.contains(.RunOnError): fallthrough
-            case .Cancelled where options.contains(.RunOnCancelled):
+            case .success where options.contains(.RunOnSuccess): fallthrough
+            case .error where options.contains(.RunOnError): fallthrough
+            case .cancelled where options.contains(.RunOnCancelled):
                 executor.execute {
                     let wrappedState = TaskState<Task<S>>.fromClosure {
                         try continuation(self)
                     }
                     switch wrappedState {
-                    case .Success(let nextTask):
+                    case .success(let nextTask):
                         switch nextTask.state {
-                        case .Pending:
+                        case .pending:
                             nextTask.continueWith { nextTask in
                                 taskCompletionSource.setState(nextTask.state)
                             }
                         default:
                             taskCompletionSource.setState(nextTask.state)
                         }
-                    case .Error(let error):
+                    case .error(let error):
                         taskCompletionSource.set(error: error)
-                    case .Cancelled:
+                    case .cancelled:
                         taskCompletionSource.cancel()
                     default: abort() // This should never happen.
                     }
                 }
 
-            case .Success(let result as S):
+            case .success(let result as S):
                 // This is for continueOnErrorWith - the type of the result doesn't change, so we can pass it through
                 taskCompletionSource.set(result: result)
 
-            case .Error(let error):
+            case .error(let error):
                 taskCompletionSource.set(error: error)
 
-            case .Cancelled:
+            case .cancelled:
                 taskCompletionSource.cancel()
 
             default:
@@ -81,7 +81,8 @@ extension Task {
 
      - returns: A task that will be completed with a result from a given closure.
      */
-    public func continueWith<S>(executor: Executor = .Default, continuation: (Task throws -> S)) -> Task<S> {
+    @discardableResult
+    public func continueWith<S>(_ executor: Executor = .default, continuation: @escaping ((Task) throws -> S)) -> Task<S> {
         return continueWithTask(executor) { task in
             let state = TaskState.fromClosure({
                 try continuation(task)
@@ -98,7 +99,8 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueWithTask<S>(executor: Executor = .Default, continuation: (Task throws -> Task<S>)) -> Task<S> {
+    @discardableResult
+    public func continueWithTask<S>(_ executor: Executor = .default, continuation: @escaping ((Task) throws -> Task<S>)) -> Task<S> {
         return continueWithTask(executor, options: .RunAlways, continuation: continuation)
     }
 }
@@ -116,7 +118,9 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnSuccessWith<S>(executor: Executor = .Default, continuation: (TResult throws -> S)) -> Task<S> {
+    @discardableResult
+    public func continueOnSuccessWith<S>(_ executor: Executor = .default,
+                                      continuation: @escaping ((TResult) throws -> S)) -> Task<S> {
         return continueOnSuccessWithTask(executor) { taskResult in
             let state = TaskState.fromClosure({
                 try continuation(taskResult)
@@ -133,7 +137,9 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnSuccessWithTask<S>(executor: Executor = .Default, continuation: (TResult throws -> Task<S>)) -> Task<S> {
+    @discardableResult
+    public func continueOnSuccessWithTask<S>(_ executor: Executor = .default,
+                                          continuation: @escaping ((TResult) throws -> Task<S>)) -> Task<S> {
         return continueWithTask(executor, options: .RunOnSuccess) { task in
             return try continuation(task.result!)
         }
@@ -153,7 +159,8 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnErrorWith<E: ErrorType>(executor: Executor = .Default, continuation: (E throws -> TResult)) -> Task {
+    @discardableResult
+    public func continueOnErrorWith<E: Error>(_ executor: Executor = .default, continuation: @escaping ((E) throws -> TResult)) -> Task {
         return continueOnErrorWithTask(executor) { (error: E) in
             let state = TaskState.fromClosure({
                 try continuation(error)
@@ -170,8 +177,9 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnErrorWith(executor: Executor = .Default, continuation: (ErrorType throws -> TResult)) -> Task {
-        return continueOnErrorWithTask(executor) { (error: ErrorType) in
+    @discardableResult
+    public func continueOnErrorWith(_ executor: Executor = .default, continuation: @escaping ((Error) throws -> TResult)) -> Task {
+        return continueOnErrorWithTask(executor) { (error: Error) in
             let state = TaskState.fromClosure({
                 try continuation(error)
             })
@@ -187,12 +195,13 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnErrorWithTask<E: ErrorType>(executor: Executor = .Default, continuation: (E throws -> Task)) -> Task {
-        return continueOnErrorWithTask(executor) { (error: ErrorType) in
+    @discardableResult
+    public func continueOnErrorWithTask<E: Error>(_ executor: Executor = .default, continuation: @escaping ((E) throws -> Task)) -> Task {
+        return continueOnErrorWithTask(executor) { (error: Error) in
             if let error = error as? E {
                 return try continuation(error)
             }
-            return Task(state: .Error(error))
+            return Task(state: .error(error))
         }
     }
 
@@ -204,7 +213,8 @@ extension Task {
 
      - returns: A task that will be completed when a task returned from a closure is completed.
      */
-    public func continueOnErrorWithTask(executor: Executor = .Default, continuation: (ErrorType throws -> Task)) -> Task {
+    @discardableResult
+    public func continueOnErrorWithTask(_ executor: Executor = .default, continuation: @escaping ((Error) throws -> Task)) -> Task {
         return continueWithTask(executor, options: .RunOnError) { task in
             return try continuation(task.error!)
         }

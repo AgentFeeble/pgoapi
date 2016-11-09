@@ -10,23 +10,23 @@
 import Foundation
 
 enum TaskState<TResult> {
-    case Pending()
-    case Success(TResult)
-    case Error(ErrorType)
-    case Cancelled
+    case pending()
+    case success(TResult)
+    case error(Error)
+    case cancelled
 
-    static func fromClosure(@noescape closure: () throws -> TResult) -> TaskState {
+    static func fromClosure(_ closure: () throws -> TResult) -> TaskState {
         do {
-            return .Success(try closure())
+            return .success(try closure())
         } catch is CancelledError {
-            return .Cancelled
+            return .cancelled
         } catch {
-            return .Error(error)
+            return .error(error)
         }
     }
 }
 
-struct TaskContinuationOptions: OptionSetType {
+struct TaskContinuationOptions: OptionSet {
     let rawValue: Int
     init(rawValue: Int) {
         self.rawValue = rawValue
@@ -50,11 +50,11 @@ struct TaskContinuationOptions: OptionSetType {
 public final class Task<TResult> {
     public typealias Continuation = () -> Void
 
-    private let synchronizationQueue = dispatch_queue_create("com.bolts.task", DISPATCH_QUEUE_CONCURRENT)
-    private var _completedCondition: NSCondition?
+    fileprivate let synchronizationQueue = DispatchQueue(label: "com.bolts.task", attributes: DispatchQueue.Attributes.concurrent)
+    fileprivate var _completedCondition: NSCondition?
 
-    private var _state: TaskState<TResult> = .Pending()
-    private var _continuations: [Continuation] = Array()
+    fileprivate var _state: TaskState<TResult> = .pending()
+    fileprivate var _continuations: [Continuation] = Array()
 
     // MARK: Initializers
 
@@ -70,7 +70,7 @@ public final class Task<TResult> {
      - parameter result: The task result.
      */
     public init(_ result: TResult) {
-        _state = .Success(result)
+        _state = .success(result)
     }
 
     /**
@@ -78,8 +78,8 @@ public final class Task<TResult> {
 
      - parameter error: The task error.
      */
-    public init(error: ErrorType) {
-        _state = .Error(error)
+    public init(error: Error) {
+        _state = .error(error)
     }
 
     /**
@@ -89,11 +89,11 @@ public final class Task<TResult> {
      */
     public class func cancelledTask() -> Self {
         // Swift prevents this method from being called `cancelled` due to the `cancelled` instance var. This is most likely a bug.
-        return self.init(state: .Cancelled)
+        return self.init(state: .cancelled)
     }
 
     class func emptyTask() -> Task<Void> {
-        return Task<Void>(state: .Success())
+        return Task<Void>(state: .success())
     }
 
     // MARK: Execute
@@ -107,8 +107,8 @@ public final class Task<TResult> {
      - parameter closure:  The closure that returns the result of the task.
      The returned task will complete when the closure completes.
      */
-    public convenience init(_ executor: Executor = .Default, closure: (Void throws -> TResult)) {
-        self.init(state: .Pending())
+    public convenience init(_ executor: Executor = .default, closure: @escaping ((Void) throws -> TResult)) {
+        self.init(state: .pending())
         executor.execute {
             self.trySet(state: TaskState.fromClosure(closure))
         }
@@ -123,7 +123,7 @@ public final class Task<TResult> {
 
      - returns: A task that will continue with the task returned by the given closure.
      */
-    public class func execute(executor: Executor = .Default, closure: (Void throws -> TResult)) -> Task {
+    public class func execute(_ executor: Executor = .default, closure: @escaping ((Void) throws -> TResult)) -> Task {
         return Task(executor, closure: closure)
     }
 
@@ -136,7 +136,7 @@ public final class Task<TResult> {
 
      - returns: A task that will continue with the task returned by the given closure.
      */
-    public class func executeWithTask(executor: Executor = .Default, closure: (() throws -> Task)) -> Task {
+    public class func executeWithTask(_ executor: Executor = .default, closure: @escaping (() throws -> Task)) -> Task {
         return emptyTask().continueWithTask(executor) { _ in
             return try closure()
         }
@@ -147,7 +147,7 @@ public final class Task<TResult> {
     ///  Whether this task is completed. A completed task can also be faulted or cancelled.
     public var completed: Bool {
         switch state {
-        case .Pending:
+        case .pending:
             return false
         default:
             return true
@@ -157,7 +157,7 @@ public final class Task<TResult> {
     ///  Whether this task has completed due to an error or exception. A `faulted` task is also completed.
     public var faulted: Bool {
         switch state {
-        case .Error:
+        case .error:
             return true
         default:
             return false
@@ -167,7 +167,7 @@ public final class Task<TResult> {
     /// Whether this task has been cancelled. A `cancelled` task is also completed.
     public var cancelled: Bool {
         switch state {
-        case .Cancelled:
+        case .cancelled:
             return true
         default:
             return false
@@ -177,7 +177,7 @@ public final class Task<TResult> {
     /// The result of a successful task. Won't be set until the task completes with a `result`.
     public var result: TResult? {
         switch state {
-        case .Success(let result):
+        case .success(let result):
             return result
         default:
             break
@@ -186,9 +186,9 @@ public final class Task<TResult> {
     }
 
     /// The error of a errored task. Won't be set until the task completes with `error`.
-    public var error: ErrorType? {
+    public var error: Error? {
         switch state {
-        case .Error(let error):
+        case .error(let error):
             return error
         default:
             break
@@ -203,17 +203,17 @@ public final class Task<TResult> {
      It should be avoided. This method logs a warning message if it is used on the main thread.
      */
     public func waitUntilCompleted() {
-        if NSThread.isMainThread() {
+        if Thread.isMainThread {
             debugPrint("Warning: A long-running operation is being executed on the main thread waiting on \(self).")
         }
 
         var conditon: NSCondition?
-        dispatch_barrier_sync(synchronizationQueue) {
-            if case .Pending = self._state {
+        synchronizationQueue.sync(flags: .barrier, execute: {
+            if case .pending = self._state {
                 conditon = self._completedCondition ?? NSCondition()
                 self._completedCondition = conditon
             }
-        }
+        })
 
         guard let condition = conditon else {
             // Task should have been completed
@@ -227,21 +227,22 @@ public final class Task<TResult> {
         }
         condition.unlock()
 
-        dispatch_barrier_sync(synchronizationQueue) {
+        synchronizationQueue.sync(flags: .barrier, execute: {
             self._completedCondition = nil
-        }
+        })
     }
 
     // MARK: State Change
 
-    func trySet(state state: TaskState<TResult>) -> Bool {
+    @discardableResult
+    func trySet(state: TaskState<TResult>) -> Bool {
         var stateChanged = false
 
         var continuations: [Continuation]?
         var completedCondition: NSCondition?
-        dispatch_barrier_sync(synchronizationQueue) {
+        synchronizationQueue.sync(flags: .barrier, execute: {
             switch self._state {
-            case .Pending():
+            case .pending():
                 stateChanged = true
                 self._state = state
                 continuations = self._continuations
@@ -250,7 +251,7 @@ public final class Task<TResult> {
             default:
                 break
             }
-        }
+        })
         if stateChanged {
             completedCondition?.lock()
             completedCondition?.broadcast()
@@ -266,17 +267,16 @@ public final class Task<TResult> {
 
     // MARK: Internal
 
-    func appendOrRunContinuation(continuation: Continuation) {
+    func appendOrRunContinuation(_ continuation: @escaping Continuation) {
         var runContinuation = false
-        dispatch_barrier_sync(synchronizationQueue) {
+        synchronizationQueue.sync(flags: .barrier, execute: {
             switch self._state {
-            case .Pending:
+            case .pending:
                 self._continuations.append(continuation)
             default:
                 runContinuation = true
             }
-
-        }
+        })
         if runContinuation {
             continuation()
         }
@@ -284,7 +284,7 @@ public final class Task<TResult> {
 
     var state: TaskState<TResult> {
         var value: TaskState<TResult>?
-        dispatch_sync(synchronizationQueue) {
+        synchronizationQueue.sync {
             value = self._state
         }
         return value!

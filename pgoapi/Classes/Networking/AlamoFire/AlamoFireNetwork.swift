@@ -10,62 +10,62 @@ import Foundation
 import Alamofire
 import BoltsSwift
 
-public class AlamoFireNetwork: Network, Synchronizable
+open class AlamoFireNetwork: Network, Synchronizable
 {
-    private let defaultManager: Manager
-    private var isolatedManagerMap: [String: Manager] = [:] // maps sessionID to manager
-    private let callbackQueue = dispatch_queue_create("AlamoFire Network Callback Queue", DISPATCH_QUEUE_CONCURRENT)
+    fileprivate let defaultManager: SessionManager
+    fileprivate var isolatedManagerMap: [String: SessionManager] = [:] // maps sessionID to manager
+    fileprivate let callbackQueue = DispatchQueue(label: "AlamoFire Network Callback Queue", attributes: DispatchQueue.Attributes.concurrent)
     
-    let synchronizationLock: dispatch_queue_t = dispatch_queue_create("AlamoFireNetwork Synchronization", nil)
+    let synchronizationLock: DispatchQueue = DispatchQueue(label: "AlamoFireNetwork Synchronization", attributes: [])
     
-    public var processingExecutor: Executor = {
-        let queue = NSOperationQueue()
+    open var processingExecutor: Executor = {
+        let queue = OperationQueue()
         queue.name = "AlamoFire Network Process Queue"
-        return Executor.OperationQueue(queue)
+        return Executor.operationQueue(queue)
     }()
     
-    public class func defaultFireNetwork() -> AlamoFireNetwork
+    open class func defaultFireNetwork() -> AlamoFireNetwork
     {
-        let configuration = NSURLSessionConfiguration.defaultSessionConfiguration()
-        var headers = Manager.defaultHTTPHeaders
+        let configuration = URLSessionConfiguration.default
+        var headers = SessionManager.defaultHTTPHeaders
         
         headers["User-Agent"] = getUserAgent()
-        configuration.HTTPAdditionalHeaders = headers
+        configuration.httpAdditionalHeaders = headers
         
-        let manager = Manager(configuration: configuration)
+        let manager = SessionManager(configuration: configuration)
         manager.delegate.taskWillPerformHTTPRedirection = { session, task, response, request in return nil }
         return AlamoFireNetwork(manager: manager)
     }
     
-    public init(manager: Manager)
+    public init(manager: SessionManager)
     {
         self.defaultManager = manager
     }
     
-    public func resetSessionWithID(sessionID sessionID: String)
+    open func resetSessionWithID(sessionID: String)
     {
-        sync{ self.isolatedManagerMap.removeValueForKey(sessionID) }
+        sync{ self.isolatedManagerMap.removeValue(forKey: sessionID) }
     }
     
-    public func getJSON(endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<AnyObject>>
+    open func getJSON(_ endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<Any>>
     {
-        let responseMethod = ResponseMethod { $0.responseJSON(queue: $1, completionHandler: $2) }
-        return self.request(.GET, endPoint: endPoint, args: args, responseMethod: responseMethod)
+        let responseMethod = ResponseMethod { (request, queue, handler) in request.responseJSON(queue: queue, completionHandler: handler) }
+        return self.request(.get, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    public func postData(endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<NSData>>
+    open func postData(_ endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<Data>>
     {
-        let responseMethod = ResponseMethod { $0.responseData(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, args: args, responseMethod: responseMethod)
+        let responseMethod = ResponseMethod { (request, queue, handler) in request.responseData(queue: queue, completionHandler: handler) }
+        return self.request(.post, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    public func postString(endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<String>>
+    open func postString(_ endPoint: String,  args: RequestArgs?) -> Task<NetworkResponse<String>>
     {
-        let responseMethod = ResponseMethod { $0.responseString(queue: $1, completionHandler: $2) }
-        return self.request(.POST, endPoint: endPoint, args: args, responseMethod: responseMethod)
+        let responseMethod = ResponseMethod { (request, queue, handler) in request.responseString(queue: queue, completionHandler: handler) }
+        return self.request(.post, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    private func request<T>(method: Alamofire.Method,
+    fileprivate func request<T>(_ method: HTTPMethod,
                             endPoint: String,
                             args: RequestArgs?,
                             responseMethod: ResponseMethod<T>) -> Task<NetworkResponse<T>>
@@ -73,27 +73,21 @@ public class AlamoFireNetwork: Network, Synchronizable
         let manager = managerFor(args)
         
         let taskSource = TaskCompletionSource<NetworkResponse<T>>()
-        let encoding = args?.body == nil ? ParameterEncoding.URL : ParameterEncoding.Custom(
-        {
-            (convertible: URLRequestConvertible, params: [String : AnyObject]?) -> (NSMutableURLRequest, NSError?) in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = args?.body
-            return (mutableRequest, nil)
-        })
+        let encoding = encodingFor(args: args)
         
-        let request = manager.request(method, endPoint, parameters: args?.params, encoding: encoding)
-        responseMethod.invocation(request: request, queue: callbackQueue)
+        let request = manager.request(endPoint, method: method, parameters: args?.params, encoding: encoding)
+        responseMethod.invocation(request, callbackQueue)
         {
-            (response: Response<T, NSError>) in
+            (response: DataResponse<T>) in
             
             switch response.result
             {
-            case .Success(let value):
-                taskSource.set(result: NetworkResponse(url: response.response?.URL,
+            case .success(let value):
+                taskSource.set(result: NetworkResponse(url: response.response?.url,
                                                        statusCode: response.response?.statusCode ?? 0,
                                                        response: value,
                                                        responseHeaders: response.response?.allHeaderFields as? [String: String]))
-            case .Failure(let error):
+            case .failure(let error):
                 taskSource.set(error: error)
             }
         }
@@ -101,7 +95,16 @@ public class AlamoFireNetwork: Network, Synchronizable
         return taskSource.task
     }
     
-    private func managerFor(args: RequestArgs?) -> Manager
+    fileprivate func encodingFor(args: RequestArgs?) -> ParameterEncoding
+    {
+        if let body = args?.body
+        {
+            return DataBodyParameterEncoding(body: body)
+        }
+        return URLEncoding(destination: .methodDependent)
+    }
+    
+    fileprivate func managerFor(_ args: RequestArgs?) -> SessionManager
     {
         guard let sessionId = args?.sessionId else
         {
@@ -115,10 +118,10 @@ public class AlamoFireNetwork: Network, Synchronizable
                 return manager
             }
             
-            let sessionConfig = self.defaultManager.session.configuration.copy() as! NSURLSessionConfiguration
-            sessionConfig.HTTPCookieStorage = MemoryCookieStorage()
+            let sessionConfig = self.defaultManager.session.configuration.copy() as! URLSessionConfiguration
+            sessionConfig.httpCookieStorage = MemoryCookieStorage()
             
-            let manager = Manager(configuration: sessionConfig)
+            let manager = SessionManager(configuration: sessionConfig)
             manager.delegate.taskWillPerformHTTPRedirection = { session, task, response, request in return nil }
             
             self.isolatedManagerMap[sessionId] = manager
@@ -128,7 +131,18 @@ public class AlamoFireNetwork: Network, Synchronizable
     }
 }
 
+private struct DataBodyParameterEncoding: ParameterEncoding
+{
+    let body: Data
+    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest
+    {
+        var urlRequest = try urlRequest.asURLRequest()
+        urlRequest.httpBody = body
+        return urlRequest
+    }
+}
+
 private struct ResponseMethod<TResponse>
 {
-    let invocation: (request: Request, queue: dispatch_queue_t?, completionHandler: Response<TResponse, NSError> -> Void) -> ()
+    let invocation: (_ request: DataRequest, _ queue: DispatchQueue?, _ completionHandler: @escaping (DataResponse<TResponse>) -> Void) -> ()
 }

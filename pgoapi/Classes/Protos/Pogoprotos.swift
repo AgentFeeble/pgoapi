@@ -18,11 +18,13 @@ public struct Pogoprotos
 {
     public struct Data
     {
+        public struct Badge {}
         public struct Battle {}
         public struct Capture {}
         public struct Gym {}
         public struct Logs {}
         public struct Player {}
+        public struct Quests {}
     }
     
     public struct Enums {}
@@ -42,6 +44,12 @@ public struct Pogoprotos
     {
         public struct Envelopes {}
         public struct Responses {}
+        
+        public struct Platform
+        {
+            public struct Requests {}
+            public struct Responses {}
+        }
         
         public struct Requests
         {

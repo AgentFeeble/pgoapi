@@ -16,49 +16,49 @@ public enum Executor {
      Calls closures immediately unless the call stack gets too deep,
      in which case it dispatches the closure in the default priority queue.
      */
-    case Default
+    case `default`
 
     /**
      Calls closures immediately.
      Tasks continuations will be run in the thread of the previous task.
      */
-    case Immediate
+    case immediate
 
     /**
      Calls closures on the main thread.
      Will execute synchronously if already on the main thread, otherwise - will execute asynchronously.
      */
-    case MainThread
+    case mainThread
 
     /**
      Dispatches closures on a GCD queue.
      */
-    case Queue(dispatch_queue_t)
+    case queue(DispatchQueue)
 
     /**
      Adds closures to an operation queue.
      */
-    case OperationQueue(NSOperationQueue)
+    case operationQueue(Foundation.OperationQueue)
 
     /**
      Passes closures to an executing closure.
      */
-    case Closure((() -> Void) -> Void)
+    case closure((() -> Void) -> Void)
 
     /**
      Executes the given closure using the corresponding strategy.
 
      - parameter closure: The closure to execute.
      */
-    public func execute(closure: () -> Void) {
+    public func execute(_ closure: @escaping () -> Void) {
         switch self {
-        case .Default:
+        case .default:
             struct Static {
                 static let taskDepthKey = "com.bolts.TaskDepthKey"
                 static let maxTaskDepth = 20
             }
 
-            let localThreadDictionary = NSThread.currentThread().threadDictionary
+            let localThreadDictionary = Thread.current.threadDictionary
 
             var previousDepth: Int
             if let depth = localThreadDictionary[Static.taskDepthKey] as? Int {
@@ -68,25 +68,25 @@ public enum Executor {
             }
 
             if previousDepth > Static.maxTaskDepth {
-                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), closure)
+                DispatchQueue.global(qos: .default).async(execute: closure)
             } else {
                 localThreadDictionary[Static.taskDepthKey] = previousDepth + 1
                 closure()
                 localThreadDictionary[Static.taskDepthKey] = previousDepth
             }
-        case .Immediate:
+        case .immediate:
             closure()
-        case .MainThread:
-            if NSThread.isMainThread() {
+        case .mainThread:
+            if Thread.isMainThread {
                 closure()
             } else {
-                dispatch_async(dispatch_get_main_queue(), closure)
+                DispatchQueue.main.async(execute: closure)
             }
-        case .Queue(let queue):
-            dispatch_async(queue, closure)
-        case .OperationQueue(let operationQueue):
-            operationQueue.addOperationWithBlock(closure)
-        case .Closure(let executingClosure):
+        case .queue(let queue):
+            queue.async(execute: closure)
+        case .operationQueue(let operationQueue):
+            operationQueue.addOperation(closure)
+        case .closure(let executingClosure):
             executingClosure(closure)
         }
     }
@@ -96,17 +96,17 @@ extension Executor : CustomStringConvertible, CustomDebugStringConvertible {
     /// A textual representation of `self`.
     public var description: String {
         switch self {
-        case .Default:
+        case .default:
             return "Default Executor"
-        case .Immediate:
+        case .immediate:
             return "Immediate Executor"
-        case .MainThread:
+        case .mainThread:
             return "MainThread Executor"
-        case .Queue:
+        case .queue:
             return "Executor with dispatch_queue"
-        case .OperationQueue:
+        case .operationQueue:
             return "Executor with NSOperationQueue"
-        case .Closure:
+        case .closure:
             return "Executor with custom closure"
         }
     }
@@ -114,11 +114,11 @@ extension Executor : CustomStringConvertible, CustomDebugStringConvertible {
     /// A textual representation of `self`, suitable for debugging.
     public var debugDescription: String {
         switch self {
-        case .Queue(let object):
+        case .queue(let object):
             return "\(description): \(object)"
-        case .OperationQueue(let queue):
+        case .operationQueue(let queue):
             return "\(description): \(queue)"
-        case .Closure(let closure):
+        case .closure(let closure):
             return "\(description): \(closure)"
         default:
             return description

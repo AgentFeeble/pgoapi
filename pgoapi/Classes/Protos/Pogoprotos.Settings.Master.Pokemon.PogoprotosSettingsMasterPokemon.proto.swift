@@ -5,85 +5,50 @@
 import Foundation
 import ProtocolBuffers
 
-public func == (lhs: Pogoprotos.Settings.Master.Pokemon.CameraAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.CameraAttributes) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasDiskRadiusM == rhs.hasDiskRadiusM) && (!lhs.hasDiskRadiusM || lhs.diskRadiusM == rhs.diskRadiusM)
-  fieldCheck = fieldCheck && (lhs.hasCylinderRadiusM == rhs.hasCylinderRadiusM) && (!lhs.hasCylinderRadiusM || lhs.cylinderRadiusM == rhs.cylinderRadiusM)
-  fieldCheck = fieldCheck && (lhs.hasCylinderHeightM == rhs.hasCylinderHeightM) && (!lhs.hasCylinderHeightM || lhs.cylinderHeightM == rhs.cylinderHeightM)
-  fieldCheck = fieldCheck && (lhs.hasCylinderGroundM == rhs.hasCylinderGroundM) && (!lhs.hasCylinderGroundM || lhs.cylinderGroundM == rhs.cylinderGroundM)
-  fieldCheck = fieldCheck && (lhs.hasShoulderModeScale == rhs.hasShoulderModeScale) && (!lhs.hasShoulderModeScale || lhs.shoulderModeScale == rhs.shoulderModeScale)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Settings.Master.Pokemon.EncounterAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.EncounterAttributes) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasBaseCaptureRate == rhs.hasBaseCaptureRate) && (!lhs.hasBaseCaptureRate || lhs.baseCaptureRate == rhs.baseCaptureRate)
-  fieldCheck = fieldCheck && (lhs.hasBaseFleeRate == rhs.hasBaseFleeRate) && (!lhs.hasBaseFleeRate || lhs.baseFleeRate == rhs.baseFleeRate)
-  fieldCheck = fieldCheck && (lhs.hasCollisionRadiusM == rhs.hasCollisionRadiusM) && (!lhs.hasCollisionRadiusM || lhs.collisionRadiusM == rhs.collisionRadiusM)
-  fieldCheck = fieldCheck && (lhs.hasCollisionHeightM == rhs.hasCollisionHeightM) && (!lhs.hasCollisionHeightM || lhs.collisionHeightM == rhs.collisionHeightM)
-  fieldCheck = fieldCheck && (lhs.hasCollisionHeadRadiusM == rhs.hasCollisionHeadRadiusM) && (!lhs.hasCollisionHeadRadiusM || lhs.collisionHeadRadiusM == rhs.collisionHeadRadiusM)
-  fieldCheck = fieldCheck && (lhs.hasMovementType == rhs.hasMovementType) && (!lhs.hasMovementType || lhs.movementType == rhs.movementType)
-  fieldCheck = fieldCheck && (lhs.hasMovementTimerS == rhs.hasMovementTimerS) && (!lhs.hasMovementTimerS || lhs.movementTimerS == rhs.movementTimerS)
-  fieldCheck = fieldCheck && (lhs.hasJumpTimeS == rhs.hasJumpTimeS) && (!lhs.hasJumpTimeS || lhs.jumpTimeS == rhs.jumpTimeS)
-  fieldCheck = fieldCheck && (lhs.hasAttackTimerS == rhs.hasAttackTimerS) && (!lhs.hasAttackTimerS || lhs.attackTimerS == rhs.attackTimerS)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Settings.Master.Pokemon.StatsAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.StatsAttributes) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasBaseStamina == rhs.hasBaseStamina) && (!lhs.hasBaseStamina || lhs.baseStamina == rhs.baseStamina)
-  fieldCheck = fieldCheck && (lhs.hasBaseAttack == rhs.hasBaseAttack) && (!lhs.hasBaseAttack || lhs.baseAttack == rhs.baseAttack)
-  fieldCheck = fieldCheck && (lhs.hasBaseDefense == rhs.hasBaseDefense) && (!lhs.hasBaseDefense || lhs.baseDefense == rhs.baseDefense)
-  fieldCheck = fieldCheck && (lhs.hasDodgeEnergyDelta == rhs.hasDodgeEnergyDelta) && (!lhs.hasDodgeEnergyDelta || lhs.dodgeEnergyDelta == rhs.dodgeEnergyDelta)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public extension Pogoprotos.Settings.Master.Pokemon {
   public struct PogoprotosSettingsMasterPokemonRoot {
-    public static var sharedInstance : PogoprotosSettingsMasterPokemonRoot {
-     struct Static {
-         static let instance : PogoprotosSettingsMasterPokemonRoot = PogoprotosSettingsMasterPokemonRoot()
-     }
-     return Static.instance
-    }
+    public static let `default` = PogoprotosSettingsMasterPokemonRoot()
     public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
-      registerAllExtensions(extensionRegistry)
-      Pogoprotos.Enums.PogoprotosEnumsRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Enums.PogoprotosEnumsRoot.default.registerAllExtensions(registry: extensionRegistry)
     }
-    public func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry: ExtensionRegistry) {
     }
   }
 
-  final public class CameraAttributes : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasDiskRadiusM:Bool = false
-    public private(set) var diskRadiusM:Float = Float(0)
+  final public class CameraAttributes : GeneratedMessage {
 
-    public private(set) var hasCylinderRadiusM:Bool = false
-    public private(set) var cylinderRadiusM:Float = Float(0)
+    public static func == (lhs: Pogoprotos.Settings.Master.Pokemon.CameraAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.CameraAttributes) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasDiskRadiusM == rhs.hasDiskRadiusM) && (!lhs.hasDiskRadiusM || lhs.diskRadiusM == rhs.diskRadiusM)
+      fieldCheck = fieldCheck && (lhs.hasCylinderRadiusM == rhs.hasCylinderRadiusM) && (!lhs.hasCylinderRadiusM || lhs.cylinderRadiusM == rhs.cylinderRadiusM)
+      fieldCheck = fieldCheck && (lhs.hasCylinderHeightM == rhs.hasCylinderHeightM) && (!lhs.hasCylinderHeightM || lhs.cylinderHeightM == rhs.cylinderHeightM)
+      fieldCheck = fieldCheck && (lhs.hasCylinderGroundM == rhs.hasCylinderGroundM) && (!lhs.hasCylinderGroundM || lhs.cylinderGroundM == rhs.cylinderGroundM)
+      fieldCheck = fieldCheck && (lhs.hasShoulderModeScale == rhs.hasShoulderModeScale) && (!lhs.hasShoulderModeScale || lhs.shoulderModeScale == rhs.shoulderModeScale)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
 
-    public private(set) var hasCylinderHeightM:Bool = false
-    public private(set) var cylinderHeightM:Float = Float(0)
+    public fileprivate(set) var diskRadiusM:Float = Float(0)
+    public fileprivate(set) var hasDiskRadiusM:Bool = false
 
-    public private(set) var hasCylinderGroundM:Bool = false
-    public private(set) var cylinderGroundM:Float = Float(0)
+    public fileprivate(set) var cylinderRadiusM:Float = Float(0)
+    public fileprivate(set) var hasCylinderRadiusM:Bool = false
 
-    public private(set) var hasShoulderModeScale:Bool = false
-    public private(set) var shoulderModeScale:Float = Float(0)
+    public fileprivate(set) var cylinderHeightM:Float = Float(0)
+    public fileprivate(set) var hasCylinderHeightM:Bool = false
+
+    public fileprivate(set) var cylinderGroundM:Float = Float(0)
+    public fileprivate(set) var hasCylinderGroundM:Bool = false
+
+    public fileprivate(set) var shoulderModeScale:Float = Float(0)
+    public fileprivate(set) var hasShoulderModeScale:Bool = false
 
     required public init() {
          super.init()
@@ -91,23 +56,23 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasDiskRadiusM {
-        try output.writeFloat(1, value:diskRadiusM)
+        try codedOutputStream.writeFloat(fieldNumber: 1, value:diskRadiusM)
       }
       if hasCylinderRadiusM {
-        try output.writeFloat(2, value:cylinderRadiusM)
+        try codedOutputStream.writeFloat(fieldNumber: 2, value:cylinderRadiusM)
       }
       if hasCylinderHeightM {
-        try output.writeFloat(3, value:cylinderHeightM)
+        try codedOutputStream.writeFloat(fieldNumber: 3, value:cylinderHeightM)
       }
       if hasCylinderGroundM {
-        try output.writeFloat(4, value:cylinderGroundM)
+        try codedOutputStream.writeFloat(fieldNumber: 4, value:cylinderGroundM)
       }
       if hasShoulderModeScale {
-        try output.writeFloat(5, value:shoulderModeScale)
+        try codedOutputStream.writeFloat(fieldNumber: 5, value:shoulderModeScale)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -117,51 +82,23 @@ public extension Pogoprotos.Settings.Master.Pokemon {
 
       serialize_size = 0
       if hasDiskRadiusM {
-        serialize_size += diskRadiusM.computeFloatSize(1)
+        serialize_size += diskRadiusM.computeFloatSize(fieldNumber: 1)
       }
       if hasCylinderRadiusM {
-        serialize_size += cylinderRadiusM.computeFloatSize(2)
+        serialize_size += cylinderRadiusM.computeFloatSize(fieldNumber: 2)
       }
       if hasCylinderHeightM {
-        serialize_size += cylinderHeightM.computeFloatSize(3)
+        serialize_size += cylinderHeightM.computeFloatSize(fieldNumber: 3)
       }
       if hasCylinderGroundM {
-        serialize_size += cylinderGroundM.computeFloatSize(4)
+        serialize_size += cylinderGroundM.computeFloatSize(fieldNumber: 4)
       }
       if hasShoulderModeScale {
-        serialize_size += shoulderModeScale.computeFloatSize(5)
+        serialize_size += shoulderModeScale.computeFloatSize(fieldNumber: 5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.CameraAttributes> {
-      var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.CameraAttributes>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes? {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
       return Pogoprotos.Settings.Master.Pokemon.CameraAttributes.classBuilder() as! Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder
@@ -169,46 +106,46 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     public func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
       return classBuilder() as! Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.builderWithPrototype(self)
+      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Settings.Master.Pokemon.CameraAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasDiskRadiusM {
-        jsonMap["diskRadiusM"] = NSNumber(float:diskRadiusM)
+        jsonMap["diskRadiusM"] = Float(diskRadiusM)
       }
       if hasCylinderRadiusM {
-        jsonMap["cylinderRadiusM"] = NSNumber(float:cylinderRadiusM)
+        jsonMap["cylinderRadiusM"] = Float(cylinderRadiusM)
       }
       if hasCylinderHeightM {
-        jsonMap["cylinderHeightM"] = NSNumber(float:cylinderHeightM)
+        jsonMap["cylinderHeightM"] = Float(cylinderHeightM)
       }
       if hasCylinderGroundM {
-        jsonMap["cylinderGroundM"] = NSNumber(float:cylinderGroundM)
+        jsonMap["cylinderGroundM"] = Float(cylinderGroundM)
       }
       if hasShoulderModeScale {
-        jsonMap["shoulderModeScale"] = NSNumber(float:shoulderModeScale)
+        jsonMap["shoulderModeScale"] = Float(shoulderModeScale)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -227,7 +164,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
       if hasShoulderModeScale {
         output += "\(indent) shoulderModeScale: \(shoulderModeScale) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -262,13 +199,10 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func className() -> String {
         return "Pogoprotos.Settings.Master.Pokemon.CameraAttributes"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Settings.Master.Pokemon.CameraAttributes.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Settings.Master.Pokemon.CameraAttributes = Pogoprotos.Settings.Master.Pokemon.CameraAttributes()
+      fileprivate var builderResult:Pogoprotos.Settings.Master.Pokemon.CameraAttributes = Pogoprotos.Settings.Master.Pokemon.CameraAttributes()
       public func getMessage() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
           return builderResult
       }
@@ -290,10 +224,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.diskRadiusM = value
            }
       }
-      public func setDiskRadiusM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      @discardableResult
+      public func setDiskRadiusM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         self.diskRadiusM = value
         return self
       }
+      @discardableResult
       public func clearDiskRadiusM() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder{
            builderResult.hasDiskRadiusM = false
            builderResult.diskRadiusM = Float(0)
@@ -313,10 +249,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.cylinderRadiusM = value
            }
       }
-      public func setCylinderRadiusM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      @discardableResult
+      public func setCylinderRadiusM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         self.cylinderRadiusM = value
         return self
       }
+      @discardableResult
       public func clearCylinderRadiusM() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder{
            builderResult.hasCylinderRadiusM = false
            builderResult.cylinderRadiusM = Float(0)
@@ -336,10 +274,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.cylinderHeightM = value
            }
       }
-      public func setCylinderHeightM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      @discardableResult
+      public func setCylinderHeightM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         self.cylinderHeightM = value
         return self
       }
+      @discardableResult
       public func clearCylinderHeightM() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder{
            builderResult.hasCylinderHeightM = false
            builderResult.cylinderHeightM = Float(0)
@@ -359,10 +299,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.cylinderGroundM = value
            }
       }
-      public func setCylinderGroundM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      @discardableResult
+      public func setCylinderGroundM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         self.cylinderGroundM = value
         return self
       }
+      @discardableResult
       public func clearCylinderGroundM() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder{
            builderResult.hasCylinderGroundM = false
            builderResult.cylinderGroundM = Float(0)
@@ -382,10 +324,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.shoulderModeScale = value
            }
       }
-      public func setShoulderModeScale(value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      @discardableResult
+      public func setShoulderModeScale(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         self.shoulderModeScale = value
         return self
       }
+      @discardableResult
       public func clearShoulderModeScale() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder{
            builderResult.hasShoulderModeScale = false
            builderResult.shoulderModeScale = Float(0)
@@ -396,12 +340,13 @@ public extension Pogoprotos.Settings.Master.Pokemon {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         builderResult = Pogoprotos.Settings.Master.Pokemon.CameraAttributes()
         return self
       }
       override public func clone() throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-        return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.builderWithPrototype(builderResult)
+        return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
            try checkInitialized()
@@ -411,6 +356,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         let returnMe:Pogoprotos.Settings.Master.Pokemon.CameraAttributes = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Settings.Master.Pokemon.CameraAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         if other == Pogoprotos.Settings.Master.Pokemon.CameraAttributes() {
          return self
@@ -430,100 +376,121 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         if other.hasShoulderModeScale {
              shoulderModeScale = other.shoulderModeScale
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 13:
-            diskRadiusM = try input.readFloat()
+            diskRadiusM = try codedInputStream.readFloat()
 
           case 21:
-            cylinderRadiusM = try input.readFloat()
+            cylinderRadiusM = try codedInputStream.readFloat()
 
           case 29:
-            cylinderHeightM = try input.readFloat()
+            cylinderHeightM = try codedInputStream.readFloat()
 
           case 37:
-            cylinderGroundM = try input.readFloat()
+            cylinderGroundM = try codedInputStream.readFloat()
 
           case 45:
-            shoulderModeScale = try input.readFloat()
+            shoulderModeScale = try codedInputStream.readFloat()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
         let resultDecodedBuilder = Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder()
-        if let jsonValueDiskRadiusM = jsonMap["diskRadiusM"] as? NSNumber {
-          resultDecodedBuilder.diskRadiusM = jsonValueDiskRadiusM.floatValue
+        if let jsonValueDiskRadiusM = jsonMap["diskRadiusM"] as? Float {
+          resultDecodedBuilder.diskRadiusM = Float(jsonValueDiskRadiusM)
         }
-        if let jsonValueCylinderRadiusM = jsonMap["cylinderRadiusM"] as? NSNumber {
-          resultDecodedBuilder.cylinderRadiusM = jsonValueCylinderRadiusM.floatValue
+        if let jsonValueCylinderRadiusM = jsonMap["cylinderRadiusM"] as? Float {
+          resultDecodedBuilder.cylinderRadiusM = Float(jsonValueCylinderRadiusM)
         }
-        if let jsonValueCylinderHeightM = jsonMap["cylinderHeightM"] as? NSNumber {
-          resultDecodedBuilder.cylinderHeightM = jsonValueCylinderHeightM.floatValue
+        if let jsonValueCylinderHeightM = jsonMap["cylinderHeightM"] as? Float {
+          resultDecodedBuilder.cylinderHeightM = Float(jsonValueCylinderHeightM)
         }
-        if let jsonValueCylinderGroundM = jsonMap["cylinderGroundM"] as? NSNumber {
-          resultDecodedBuilder.cylinderGroundM = jsonValueCylinderGroundM.floatValue
+        if let jsonValueCylinderGroundM = jsonMap["cylinderGroundM"] as? Float {
+          resultDecodedBuilder.cylinderGroundM = Float(jsonValueCylinderGroundM)
         }
-        if let jsonValueShoulderModeScale = jsonMap["shoulderModeScale"] as? NSNumber {
-          resultDecodedBuilder.shoulderModeScale = jsonValueShoulderModeScale.floatValue
+        if let jsonValueShoulderModeScale = jsonMap["shoulderModeScale"] as? Float {
+          resultDecodedBuilder.shoulderModeScale = Float(jsonValueShoulderModeScale)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class EncounterAttributes : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasBaseCaptureRate:Bool = false
-    public private(set) var baseCaptureRate:Float = Float(0)
+  final public class EncounterAttributes : GeneratedMessage {
 
-    public private(set) var hasBaseFleeRate:Bool = false
-    public private(set) var baseFleeRate:Float = Float(0)
+    public static func == (lhs: Pogoprotos.Settings.Master.Pokemon.EncounterAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.EncounterAttributes) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasBaseCaptureRate == rhs.hasBaseCaptureRate) && (!lhs.hasBaseCaptureRate || lhs.baseCaptureRate == rhs.baseCaptureRate)
+      fieldCheck = fieldCheck && (lhs.hasBaseFleeRate == rhs.hasBaseFleeRate) && (!lhs.hasBaseFleeRate || lhs.baseFleeRate == rhs.baseFleeRate)
+      fieldCheck = fieldCheck && (lhs.hasCollisionRadiusM == rhs.hasCollisionRadiusM) && (!lhs.hasCollisionRadiusM || lhs.collisionRadiusM == rhs.collisionRadiusM)
+      fieldCheck = fieldCheck && (lhs.hasCollisionHeightM == rhs.hasCollisionHeightM) && (!lhs.hasCollisionHeightM || lhs.collisionHeightM == rhs.collisionHeightM)
+      fieldCheck = fieldCheck && (lhs.hasCollisionHeadRadiusM == rhs.hasCollisionHeadRadiusM) && (!lhs.hasCollisionHeadRadiusM || lhs.collisionHeadRadiusM == rhs.collisionHeadRadiusM)
+      fieldCheck = fieldCheck && (lhs.hasMovementType == rhs.hasMovementType) && (!lhs.hasMovementType || lhs.movementType == rhs.movementType)
+      fieldCheck = fieldCheck && (lhs.hasMovementTimerS == rhs.hasMovementTimerS) && (!lhs.hasMovementTimerS || lhs.movementTimerS == rhs.movementTimerS)
+      fieldCheck = fieldCheck && (lhs.hasJumpTimeS == rhs.hasJumpTimeS) && (!lhs.hasJumpTimeS || lhs.jumpTimeS == rhs.jumpTimeS)
+      fieldCheck = fieldCheck && (lhs.hasAttackTimerS == rhs.hasAttackTimerS) && (!lhs.hasAttackTimerS || lhs.attackTimerS == rhs.attackTimerS)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
 
-    public private(set) var hasCollisionRadiusM:Bool = false
-    public private(set) var collisionRadiusM:Float = Float(0)
+    public fileprivate(set) var baseCaptureRate:Float = Float(0)
+    public fileprivate(set) var hasBaseCaptureRate:Bool = false
 
-    public private(set) var hasCollisionHeightM:Bool = false
-    public private(set) var collisionHeightM:Float = Float(0)
+    public fileprivate(set) var baseFleeRate:Float = Float(0)
+    public fileprivate(set) var hasBaseFleeRate:Bool = false
 
-    public private(set) var hasCollisionHeadRadiusM:Bool = false
-    public private(set) var collisionHeadRadiusM:Float = Float(0)
+    public fileprivate(set) var collisionRadiusM:Float = Float(0)
+    public fileprivate(set) var hasCollisionRadiusM:Bool = false
 
-    public private(set) var movementType:Pogoprotos.Enums.PokemonMovementType = Pogoprotos.Enums.PokemonMovementType.MovementStatic
-    public private(set) var hasMovementType:Bool = false
-    public private(set) var hasMovementTimerS:Bool = false
-    public private(set) var movementTimerS:Float = Float(0)
+    public fileprivate(set) var collisionHeightM:Float = Float(0)
+    public fileprivate(set) var hasCollisionHeightM:Bool = false
 
-    public private(set) var hasJumpTimeS:Bool = false
-    public private(set) var jumpTimeS:Float = Float(0)
+    public fileprivate(set) var collisionHeadRadiusM:Float = Float(0)
+    public fileprivate(set) var hasCollisionHeadRadiusM:Bool = false
 
-    public private(set) var hasAttackTimerS:Bool = false
-    public private(set) var attackTimerS:Float = Float(0)
+    public fileprivate(set) var movementType:Pogoprotos.Enums.PokemonMovementType = Pogoprotos.Enums.PokemonMovementType.movementStatic
+    public fileprivate(set) var hasMovementType:Bool = false
+    public fileprivate(set) var movementTimerS:Float = Float(0)
+    public fileprivate(set) var hasMovementTimerS:Bool = false
+
+    public fileprivate(set) var jumpTimeS:Float = Float(0)
+    public fileprivate(set) var hasJumpTimeS:Bool = false
+
+    public fileprivate(set) var attackTimerS:Float = Float(0)
+    public fileprivate(set) var hasAttackTimerS:Bool = false
 
     required public init() {
          super.init()
@@ -531,35 +498,35 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasBaseCaptureRate {
-        try output.writeFloat(1, value:baseCaptureRate)
+        try codedOutputStream.writeFloat(fieldNumber: 1, value:baseCaptureRate)
       }
       if hasBaseFleeRate {
-        try output.writeFloat(2, value:baseFleeRate)
+        try codedOutputStream.writeFloat(fieldNumber: 2, value:baseFleeRate)
       }
       if hasCollisionRadiusM {
-        try output.writeFloat(3, value:collisionRadiusM)
+        try codedOutputStream.writeFloat(fieldNumber: 3, value:collisionRadiusM)
       }
       if hasCollisionHeightM {
-        try output.writeFloat(4, value:collisionHeightM)
+        try codedOutputStream.writeFloat(fieldNumber: 4, value:collisionHeightM)
       }
       if hasCollisionHeadRadiusM {
-        try output.writeFloat(5, value:collisionHeadRadiusM)
+        try codedOutputStream.writeFloat(fieldNumber: 5, value:collisionHeadRadiusM)
       }
       if hasMovementType {
-        try output.writeEnum(6, value:movementType.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 6, value:movementType.rawValue)
       }
       if hasMovementTimerS {
-        try output.writeFloat(7, value:movementTimerS)
+        try codedOutputStream.writeFloat(fieldNumber: 7, value:movementTimerS)
       }
       if hasJumpTimeS {
-        try output.writeFloat(8, value:jumpTimeS)
+        try codedOutputStream.writeFloat(fieldNumber: 8, value:jumpTimeS)
       }
       if hasAttackTimerS {
-        try output.writeFloat(9, value:attackTimerS)
+        try codedOutputStream.writeFloat(fieldNumber: 9, value:attackTimerS)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -569,63 +536,35 @@ public extension Pogoprotos.Settings.Master.Pokemon {
 
       serialize_size = 0
       if hasBaseCaptureRate {
-        serialize_size += baseCaptureRate.computeFloatSize(1)
+        serialize_size += baseCaptureRate.computeFloatSize(fieldNumber: 1)
       }
       if hasBaseFleeRate {
-        serialize_size += baseFleeRate.computeFloatSize(2)
+        serialize_size += baseFleeRate.computeFloatSize(fieldNumber: 2)
       }
       if hasCollisionRadiusM {
-        serialize_size += collisionRadiusM.computeFloatSize(3)
+        serialize_size += collisionRadiusM.computeFloatSize(fieldNumber: 3)
       }
       if hasCollisionHeightM {
-        serialize_size += collisionHeightM.computeFloatSize(4)
+        serialize_size += collisionHeightM.computeFloatSize(fieldNumber: 4)
       }
       if hasCollisionHeadRadiusM {
-        serialize_size += collisionHeadRadiusM.computeFloatSize(5)
+        serialize_size += collisionHeadRadiusM.computeFloatSize(fieldNumber: 5)
       }
       if (hasMovementType) {
-        serialize_size += movementType.rawValue.computeEnumSize(6)
+        serialize_size += movementType.rawValue.computeEnumSize(fieldNumber: 6)
       }
       if hasMovementTimerS {
-        serialize_size += movementTimerS.computeFloatSize(7)
+        serialize_size += movementTimerS.computeFloatSize(fieldNumber: 7)
       }
       if hasJumpTimeS {
-        serialize_size += jumpTimeS.computeFloatSize(8)
+        serialize_size += jumpTimeS.computeFloatSize(fieldNumber: 8)
       }
       if hasAttackTimerS {
-        serialize_size += attackTimerS.computeFloatSize(9)
+        serialize_size += attackTimerS.computeFloatSize(fieldNumber: 9)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.EncounterAttributes> {
-      var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.EncounterAttributes>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes? {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
       return Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.classBuilder() as! Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder
@@ -633,58 +572,58 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     public func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
       return classBuilder() as! Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.builderWithPrototype(self)
+      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Settings.Master.Pokemon.EncounterAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasBaseCaptureRate {
-        jsonMap["baseCaptureRate"] = NSNumber(float:baseCaptureRate)
+        jsonMap["baseCaptureRate"] = Float(baseCaptureRate)
       }
       if hasBaseFleeRate {
-        jsonMap["baseFleeRate"] = NSNumber(float:baseFleeRate)
+        jsonMap["baseFleeRate"] = Float(baseFleeRate)
       }
       if hasCollisionRadiusM {
-        jsonMap["collisionRadiusM"] = NSNumber(float:collisionRadiusM)
+        jsonMap["collisionRadiusM"] = Float(collisionRadiusM)
       }
       if hasCollisionHeightM {
-        jsonMap["collisionHeightM"] = NSNumber(float:collisionHeightM)
+        jsonMap["collisionHeightM"] = Float(collisionHeightM)
       }
       if hasCollisionHeadRadiusM {
-        jsonMap["collisionHeadRadiusM"] = NSNumber(float:collisionHeadRadiusM)
+        jsonMap["collisionHeadRadiusM"] = Float(collisionHeadRadiusM)
       }
       if hasMovementType {
         jsonMap["movementType"] = movementType.toString()
       }
       if hasMovementTimerS {
-        jsonMap["movementTimerS"] = NSNumber(float:movementTimerS)
+        jsonMap["movementTimerS"] = Float(movementTimerS)
       }
       if hasJumpTimeS {
-        jsonMap["jumpTimeS"] = NSNumber(float:jumpTimeS)
+        jsonMap["jumpTimeS"] = Float(jumpTimeS)
       }
       if hasAttackTimerS {
-        jsonMap["attackTimerS"] = NSNumber(float:attackTimerS)
+        jsonMap["attackTimerS"] = Float(attackTimerS)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -715,7 +654,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
       if hasAttackTimerS {
         output += "\(indent) attackTimerS: \(attackTimerS) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -762,13 +701,10 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func className() -> String {
         return "Pogoprotos.Settings.Master.Pokemon.EncounterAttributes"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Settings.Master.Pokemon.EncounterAttributes = Pogoprotos.Settings.Master.Pokemon.EncounterAttributes()
+      fileprivate var builderResult:Pogoprotos.Settings.Master.Pokemon.EncounterAttributes = Pogoprotos.Settings.Master.Pokemon.EncounterAttributes()
       public func getMessage() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
           return builderResult
       }
@@ -790,10 +726,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.baseCaptureRate = value
            }
       }
-      public func setBaseCaptureRate(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setBaseCaptureRate(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.baseCaptureRate = value
         return self
       }
+      @discardableResult
       public func clearBaseCaptureRate() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasBaseCaptureRate = false
            builderResult.baseCaptureRate = Float(0)
@@ -813,10 +751,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.baseFleeRate = value
            }
       }
-      public func setBaseFleeRate(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setBaseFleeRate(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.baseFleeRate = value
         return self
       }
+      @discardableResult
       public func clearBaseFleeRate() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasBaseFleeRate = false
            builderResult.baseFleeRate = Float(0)
@@ -836,10 +776,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.collisionRadiusM = value
            }
       }
-      public func setCollisionRadiusM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setCollisionRadiusM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.collisionRadiusM = value
         return self
       }
+      @discardableResult
       public func clearCollisionRadiusM() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasCollisionRadiusM = false
            builderResult.collisionRadiusM = Float(0)
@@ -859,10 +801,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.collisionHeightM = value
            }
       }
-      public func setCollisionHeightM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setCollisionHeightM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.collisionHeightM = value
         return self
       }
+      @discardableResult
       public func clearCollisionHeightM() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasCollisionHeightM = false
            builderResult.collisionHeightM = Float(0)
@@ -882,10 +826,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.collisionHeadRadiusM = value
            }
       }
-      public func setCollisionHeadRadiusM(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setCollisionHeadRadiusM(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.collisionHeadRadiusM = value
         return self
       }
+      @discardableResult
       public func clearCollisionHeadRadiusM() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasCollisionHeadRadiusM = false
            builderResult.collisionHeadRadiusM = Float(0)
@@ -905,13 +851,15 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                 builderResult.movementType = value
             }
         }
-        public func setMovementType(value:Pogoprotos.Enums.PokemonMovementType) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+        public func setMovementType(_ value:Pogoprotos.Enums.PokemonMovementType) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
           self.movementType = value
           return self
         }
+      @discardableResult
         public func clearMovementType() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
            builderResult.hasMovementType = false
-           builderResult.movementType = .MovementStatic
+           builderResult.movementType = .movementStatic
            return self
         }
       public var hasMovementTimerS:Bool {
@@ -928,10 +876,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.movementTimerS = value
            }
       }
-      public func setMovementTimerS(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setMovementTimerS(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.movementTimerS = value
         return self
       }
+      @discardableResult
       public func clearMovementTimerS() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasMovementTimerS = false
            builderResult.movementTimerS = Float(0)
@@ -951,10 +901,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.jumpTimeS = value
            }
       }
-      public func setJumpTimeS(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setJumpTimeS(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.jumpTimeS = value
         return self
       }
+      @discardableResult
       public func clearJumpTimeS() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasJumpTimeS = false
            builderResult.jumpTimeS = Float(0)
@@ -974,10 +926,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.attackTimerS = value
            }
       }
-      public func setAttackTimerS(value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      @discardableResult
+      public func setAttackTimerS(_ value:Float) -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         self.attackTimerS = value
         return self
       }
+      @discardableResult
       public func clearAttackTimerS() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder{
            builderResult.hasAttackTimerS = false
            builderResult.attackTimerS = Float(0)
@@ -988,12 +942,13 @@ public extension Pogoprotos.Settings.Master.Pokemon {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         builderResult = Pogoprotos.Settings.Master.Pokemon.EncounterAttributes()
         return self
       }
       override public func clone() throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-        return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.builderWithPrototype(builderResult)
+        return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
            try checkInitialized()
@@ -1003,6 +958,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         let returnMe:Pogoprotos.Settings.Master.Pokemon.EncounterAttributes = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Settings.Master.Pokemon.EncounterAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         if other == Pogoprotos.Settings.Master.Pokemon.EncounterAttributes() {
          return self
@@ -1034,115 +990,131 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         if other.hasAttackTimerS {
              attackTimerS = other.attackTimerS
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 13:
-            baseCaptureRate = try input.readFloat()
+            baseCaptureRate = try codedInputStream.readFloat()
 
           case 21:
-            baseFleeRate = try input.readFloat()
+            baseFleeRate = try codedInputStream.readFloat()
 
           case 29:
-            collisionRadiusM = try input.readFloat()
+            collisionRadiusM = try codedInputStream.readFloat()
 
           case 37:
-            collisionHeightM = try input.readFloat()
+            collisionHeightM = try codedInputStream.readFloat()
 
           case 45:
-            collisionHeadRadiusM = try input.readFloat()
+            collisionHeadRadiusM = try codedInputStream.readFloat()
 
           case 48:
-            let valueIntmovementType = try input.readEnum()
+            let valueIntmovementType = try codedInputStream.readEnum()
             if let enumsmovementType = Pogoprotos.Enums.PokemonMovementType(rawValue:valueIntmovementType){
                  movementType = enumsmovementType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(6, value:Int64(valueIntmovementType))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 6, value:Int64(valueIntmovementType))
             }
 
           case 61:
-            movementTimerS = try input.readFloat()
+            movementTimerS = try codedInputStream.readFloat()
 
           case 69:
-            jumpTimeS = try input.readFloat()
+            jumpTimeS = try codedInputStream.readFloat()
 
           case 77:
-            attackTimerS = try input.readFloat()
+            attackTimerS = try codedInputStream.readFloat()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
         let resultDecodedBuilder = Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder()
-        if let jsonValueBaseCaptureRate = jsonMap["baseCaptureRate"] as? NSNumber {
-          resultDecodedBuilder.baseCaptureRate = jsonValueBaseCaptureRate.floatValue
+        if let jsonValueBaseCaptureRate = jsonMap["baseCaptureRate"] as? Float {
+          resultDecodedBuilder.baseCaptureRate = Float(jsonValueBaseCaptureRate)
         }
-        if let jsonValueBaseFleeRate = jsonMap["baseFleeRate"] as? NSNumber {
-          resultDecodedBuilder.baseFleeRate = jsonValueBaseFleeRate.floatValue
+        if let jsonValueBaseFleeRate = jsonMap["baseFleeRate"] as? Float {
+          resultDecodedBuilder.baseFleeRate = Float(jsonValueBaseFleeRate)
         }
-        if let jsonValueCollisionRadiusM = jsonMap["collisionRadiusM"] as? NSNumber {
-          resultDecodedBuilder.collisionRadiusM = jsonValueCollisionRadiusM.floatValue
+        if let jsonValueCollisionRadiusM = jsonMap["collisionRadiusM"] as? Float {
+          resultDecodedBuilder.collisionRadiusM = Float(jsonValueCollisionRadiusM)
         }
-        if let jsonValueCollisionHeightM = jsonMap["collisionHeightM"] as? NSNumber {
-          resultDecodedBuilder.collisionHeightM = jsonValueCollisionHeightM.floatValue
+        if let jsonValueCollisionHeightM = jsonMap["collisionHeightM"] as? Float {
+          resultDecodedBuilder.collisionHeightM = Float(jsonValueCollisionHeightM)
         }
-        if let jsonValueCollisionHeadRadiusM = jsonMap["collisionHeadRadiusM"] as? NSNumber {
-          resultDecodedBuilder.collisionHeadRadiusM = jsonValueCollisionHeadRadiusM.floatValue
+        if let jsonValueCollisionHeadRadiusM = jsonMap["collisionHeadRadiusM"] as? Float {
+          resultDecodedBuilder.collisionHeadRadiusM = Float(jsonValueCollisionHeadRadiusM)
         }
         if let jsonValueMovementType = jsonMap["movementType"] as? String {
-          resultDecodedBuilder.movementType = try Pogoprotos.Enums.PokemonMovementType.fromString(jsonValueMovementType)
+          resultDecodedBuilder.movementType = try Pogoprotos.Enums.PokemonMovementType.fromString(str: jsonValueMovementType)
         }
-        if let jsonValueMovementTimerS = jsonMap["movementTimerS"] as? NSNumber {
-          resultDecodedBuilder.movementTimerS = jsonValueMovementTimerS.floatValue
+        if let jsonValueMovementTimerS = jsonMap["movementTimerS"] as? Float {
+          resultDecodedBuilder.movementTimerS = Float(jsonValueMovementTimerS)
         }
-        if let jsonValueJumpTimeS = jsonMap["jumpTimeS"] as? NSNumber {
-          resultDecodedBuilder.jumpTimeS = jsonValueJumpTimeS.floatValue
+        if let jsonValueJumpTimeS = jsonMap["jumpTimeS"] as? Float {
+          resultDecodedBuilder.jumpTimeS = Float(jsonValueJumpTimeS)
         }
-        if let jsonValueAttackTimerS = jsonMap["attackTimerS"] as? NSNumber {
-          resultDecodedBuilder.attackTimerS = jsonValueAttackTimerS.floatValue
+        if let jsonValueAttackTimerS = jsonMap["attackTimerS"] as? Float {
+          resultDecodedBuilder.attackTimerS = Float(jsonValueAttackTimerS)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class StatsAttributes : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasBaseStamina:Bool = false
-    public private(set) var baseStamina:Int32 = Int32(0)
+  final public class StatsAttributes : GeneratedMessage {
 
-    public private(set) var hasBaseAttack:Bool = false
-    public private(set) var baseAttack:Int32 = Int32(0)
+    public static func == (lhs: Pogoprotos.Settings.Master.Pokemon.StatsAttributes, rhs: Pogoprotos.Settings.Master.Pokemon.StatsAttributes) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasBaseStamina == rhs.hasBaseStamina) && (!lhs.hasBaseStamina || lhs.baseStamina == rhs.baseStamina)
+      fieldCheck = fieldCheck && (lhs.hasBaseAttack == rhs.hasBaseAttack) && (!lhs.hasBaseAttack || lhs.baseAttack == rhs.baseAttack)
+      fieldCheck = fieldCheck && (lhs.hasBaseDefense == rhs.hasBaseDefense) && (!lhs.hasBaseDefense || lhs.baseDefense == rhs.baseDefense)
+      fieldCheck = fieldCheck && (lhs.hasDodgeEnergyDelta == rhs.hasDodgeEnergyDelta) && (!lhs.hasDodgeEnergyDelta || lhs.dodgeEnergyDelta == rhs.dodgeEnergyDelta)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
 
-    public private(set) var hasBaseDefense:Bool = false
-    public private(set) var baseDefense:Int32 = Int32(0)
+    public fileprivate(set) var baseStamina:Int32 = Int32(0)
+    public fileprivate(set) var hasBaseStamina:Bool = false
 
-    public private(set) var hasDodgeEnergyDelta:Bool = false
-    public private(set) var dodgeEnergyDelta:Int32 = Int32(0)
+    public fileprivate(set) var baseAttack:Int32 = Int32(0)
+    public fileprivate(set) var hasBaseAttack:Bool = false
+
+    public fileprivate(set) var baseDefense:Int32 = Int32(0)
+    public fileprivate(set) var hasBaseDefense:Bool = false
+
+    public fileprivate(set) var dodgeEnergyDelta:Int32 = Int32(0)
+    public fileprivate(set) var hasDodgeEnergyDelta:Bool = false
 
     required public init() {
          super.init()
@@ -1150,20 +1122,20 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasBaseStamina {
-        try output.writeInt32(1, value:baseStamina)
+        try codedOutputStream.writeInt32(fieldNumber: 1, value:baseStamina)
       }
       if hasBaseAttack {
-        try output.writeInt32(2, value:baseAttack)
+        try codedOutputStream.writeInt32(fieldNumber: 2, value:baseAttack)
       }
       if hasBaseDefense {
-        try output.writeInt32(3, value:baseDefense)
+        try codedOutputStream.writeInt32(fieldNumber: 3, value:baseDefense)
       }
       if hasDodgeEnergyDelta {
-        try output.writeInt32(8, value:dodgeEnergyDelta)
+        try codedOutputStream.writeInt32(fieldNumber: 8, value:dodgeEnergyDelta)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -1173,48 +1145,20 @@ public extension Pogoprotos.Settings.Master.Pokemon {
 
       serialize_size = 0
       if hasBaseStamina {
-        serialize_size += baseStamina.computeInt32Size(1)
+        serialize_size += baseStamina.computeInt32Size(fieldNumber: 1)
       }
       if hasBaseAttack {
-        serialize_size += baseAttack.computeInt32Size(2)
+        serialize_size += baseAttack.computeInt32Size(fieldNumber: 2)
       }
       if hasBaseDefense {
-        serialize_size += baseDefense.computeInt32Size(3)
+        serialize_size += baseDefense.computeInt32Size(fieldNumber: 3)
       }
       if hasDodgeEnergyDelta {
-        serialize_size += dodgeEnergyDelta.computeInt32Size(8)
+        serialize_size += dodgeEnergyDelta.computeInt32Size(fieldNumber: 8)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.StatsAttributes> {
-      var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.StatsAttributes>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes? {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
       return Pogoprotos.Settings.Master.Pokemon.StatsAttributes.classBuilder() as! Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder
@@ -1222,43 +1166,43 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     public func getBuilder() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
       return classBuilder() as! Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.builderWithPrototype(self)
+      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Settings.Master.Pokemon.StatsAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasBaseStamina {
-        jsonMap["baseStamina"] = NSNumber(int:baseStamina)
+        jsonMap["baseStamina"] = Int(baseStamina)
       }
       if hasBaseAttack {
-        jsonMap["baseAttack"] = NSNumber(int:baseAttack)
+        jsonMap["baseAttack"] = Int(baseAttack)
       }
       if hasBaseDefense {
-        jsonMap["baseDefense"] = NSNumber(int:baseDefense)
+        jsonMap["baseDefense"] = Int(baseDefense)
       }
       if hasDodgeEnergyDelta {
-        jsonMap["dodgeEnergyDelta"] = NSNumber(int:dodgeEnergyDelta)
+        jsonMap["dodgeEnergyDelta"] = Int(dodgeEnergyDelta)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
-      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+      return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -1274,7 +1218,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
       if hasDodgeEnergyDelta {
         output += "\(indent) dodgeEnergyDelta: \(dodgeEnergyDelta) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -1306,13 +1250,10 @@ public extension Pogoprotos.Settings.Master.Pokemon {
     override public func className() -> String {
         return "Pogoprotos.Settings.Master.Pokemon.StatsAttributes"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Settings.Master.Pokemon.StatsAttributes.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Settings.Master.Pokemon.StatsAttributes = Pogoprotos.Settings.Master.Pokemon.StatsAttributes()
+      fileprivate var builderResult:Pogoprotos.Settings.Master.Pokemon.StatsAttributes = Pogoprotos.Settings.Master.Pokemon.StatsAttributes()
       public func getMessage() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
           return builderResult
       }
@@ -1334,10 +1275,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.baseStamina = value
            }
       }
-      public func setBaseStamina(value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+      @discardableResult
+      public func setBaseStamina(_ value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         self.baseStamina = value
         return self
       }
+      @discardableResult
       public func clearBaseStamina() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder{
            builderResult.hasBaseStamina = false
            builderResult.baseStamina = Int32(0)
@@ -1357,10 +1300,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.baseAttack = value
            }
       }
-      public func setBaseAttack(value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+      @discardableResult
+      public func setBaseAttack(_ value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         self.baseAttack = value
         return self
       }
+      @discardableResult
       public func clearBaseAttack() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder{
            builderResult.hasBaseAttack = false
            builderResult.baseAttack = Int32(0)
@@ -1380,10 +1325,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.baseDefense = value
            }
       }
-      public func setBaseDefense(value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+      @discardableResult
+      public func setBaseDefense(_ value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         self.baseDefense = value
         return self
       }
+      @discardableResult
       public func clearBaseDefense() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder{
            builderResult.hasBaseDefense = false
            builderResult.baseDefense = Int32(0)
@@ -1403,10 +1350,12 @@ public extension Pogoprotos.Settings.Master.Pokemon {
                builderResult.dodgeEnergyDelta = value
            }
       }
-      public func setDodgeEnergyDelta(value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+      @discardableResult
+      public func setDodgeEnergyDelta(_ value:Int32) -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         self.dodgeEnergyDelta = value
         return self
       }
+      @discardableResult
       public func clearDodgeEnergyDelta() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder{
            builderResult.hasDodgeEnergyDelta = false
            builderResult.dodgeEnergyDelta = Int32(0)
@@ -1417,12 +1366,13 @@ public extension Pogoprotos.Settings.Master.Pokemon {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         builderResult = Pogoprotos.Settings.Master.Pokemon.StatsAttributes()
         return self
       }
       override public func clone() throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-        return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.builderWithPrototype(builderResult)
+        return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
            try checkInitialized()
@@ -1432,6 +1382,7 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         let returnMe:Pogoprotos.Settings.Master.Pokemon.StatsAttributes = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Settings.Master.Pokemon.StatsAttributes) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         if other == Pogoprotos.Settings.Master.Pokemon.StatsAttributes() {
          return self
@@ -1448,68 +1399,160 @@ public extension Pogoprotos.Settings.Master.Pokemon {
         if other.hasDodgeEnergyDelta {
              dodgeEnergyDelta = other.dodgeEnergyDelta
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            baseStamina = try input.readInt32()
+            baseStamina = try codedInputStream.readInt32()
 
           case 16:
-            baseAttack = try input.readInt32()
+            baseAttack = try codedInputStream.readInt32()
 
           case 24:
-            baseDefense = try input.readInt32()
+            baseDefense = try codedInputStream.readInt32()
 
           case 64:
-            dodgeEnergyDelta = try input.readInt32()
+            dodgeEnergyDelta = try codedInputStream.readInt32()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
         let resultDecodedBuilder = Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder()
-        if let jsonValueBaseStamina = jsonMap["baseStamina"] as? NSNumber {
-          resultDecodedBuilder.baseStamina = jsonValueBaseStamina.intValue
+        if let jsonValueBaseStamina = jsonMap["baseStamina"] as? Int {
+          resultDecodedBuilder.baseStamina = Int32(jsonValueBaseStamina)
         }
-        if let jsonValueBaseAttack = jsonMap["baseAttack"] as? NSNumber {
-          resultDecodedBuilder.baseAttack = jsonValueBaseAttack.intValue
+        if let jsonValueBaseAttack = jsonMap["baseAttack"] as? Int {
+          resultDecodedBuilder.baseAttack = Int32(jsonValueBaseAttack)
         }
-        if let jsonValueBaseDefense = jsonMap["baseDefense"] as? NSNumber {
-          resultDecodedBuilder.baseDefense = jsonValueBaseDefense.intValue
+        if let jsonValueBaseDefense = jsonMap["baseDefense"] as? Int {
+          resultDecodedBuilder.baseDefense = Int32(jsonValueBaseDefense)
         }
-        if let jsonValueDodgeEnergyDelta = jsonMap["dodgeEnergyDelta"] as? NSNumber {
-          resultDecodedBuilder.dodgeEnergyDelta = jsonValueDodgeEnergyDelta.intValue
+        if let jsonValueDodgeEnergyDelta = jsonMap["dodgeEnergyDelta"] as? Int {
+          resultDecodedBuilder.dodgeEnergyDelta = Int32(jsonValueDodgeEnergyDelta)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
+}
+extension Pogoprotos.Settings.Master.Pokemon.CameraAttributes: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.CameraAttributes> {
+    var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.CameraAttributes>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes? {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.CameraAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.CameraAttributes.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Settings.Master.Pokemon.EncounterAttributes: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.EncounterAttributes> {
+    var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.EncounterAttributes>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes? {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.EncounterAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.EncounterAttributes.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Settings.Master.Pokemon.StatsAttributes: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Settings.Master.Pokemon.StatsAttributes> {
+    var mergedArray = Array<Pogoprotos.Settings.Master.Pokemon.StatsAttributes>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes? {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Settings.Master.Pokemon.StatsAttributes {
+    return try Pogoprotos.Settings.Master.Pokemon.StatsAttributes.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
 }
 
 // @@protoc_insertion_point(global_scope)

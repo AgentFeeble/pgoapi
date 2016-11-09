@@ -11,17 +11,17 @@ import BoltsSwift
 
 private class AuthID: Synchronizable
 {
-    private var id: Int = 0
+    fileprivate var id: Int = 0
     let synchronizationLock: Lockable = SpinLock()
     
-    private static let globalAuthId = AuthID()
+    fileprivate static let globalAuthId = AuthID()
 
     static func newAuthId() -> Int
     {
         return globalAuthId.newId()
     }
     
-    private func newId() -> Int
+    fileprivate func newId() -> Int
     {
         return sync
         {
@@ -31,32 +31,33 @@ private class AuthID: Synchronizable
     }
 }
 
-public class Auth
+open class Auth
 {
-    public enum AuthError: ErrorType
+    public enum AuthError: Error
     {
-        case InvalidResponse
-        case ClientError(String)
+        case invalidResponse
+        case clientError(String)
     }
     
-    private let network: Network
-    private let sessionId = "Auth Session \(AuthID.newAuthId())"
+    fileprivate let network: Network
+    fileprivate let sessionId = "Auth Session \(AuthID.newAuthId())"
     
     public init(network: Network)
     {
         self.network = network
     }
     
-    public func login(username: String, password: String) -> Task<AuthToken>
+    open func login(_ username: String, password: String) -> Task<AuthToken>
     {
         // Note: self is captured strongly to keep a strong reference to self
         // during the API calls
         
         let sessionId = self.sessionId
-        return network.getJSON(EndPoint.LoginInfo, args: RequestArgs(sessionId: sessionId))
+        let args = RequestArgs(sessionId: sessionId)
+        return network.getJSON(EndPoint.LoginInfo, args: args)
         .continueOnSuccessWithTask(network.processingExecutor, continuation:
         {
-            (response: NetworkResponse<AnyObject>) -> Task<String> in
+            (response: NetworkResponse<Any>) in
             
             // Note strong capture to keep self alive during request
             return try self.getTicket(response: response, username: username, password: password)
@@ -74,17 +75,17 @@ public class Auth
         })
     }
 
-    private func getTicket(response response: NetworkResponse<AnyObject>, username: String, password: String) throws -> Task<String>
+    fileprivate func getTicket(response: NetworkResponse<Any>, username: String, password: String) throws -> Task<String>
     {
         
-        guard let json = response.response,
+        guard let json = response.response as? NSDictionary,
         let lt = json["lt"] as? String,
         let execution = json["execution"] as? String else
         {
-            throw AuthError.InvalidResponse
+            throw AuthError.invalidResponse
         }
         
-        let parameters = [
+        let parameters: [String: Any] = [
             "lt": lt,
             "execution": execution,
             "_eventId": "submit",
@@ -92,26 +93,27 @@ public class Auth
             "password": password
         ]
         
-        return network.postData(EndPoint.LoginInfo, args: RequestArgs(params: parameters, sessionId: sessionId))
+        let args = RequestArgs(params: parameters, sessionId: sessionId)
+        return network.postData(EndPoint.LoginInfo, args: args)
         .continueOnSuccessWith(network.processingExecutor, continuation:
         {
-            (response: NetworkResponse<NSData>) -> String in
+            (response: NetworkResponse<Data>) -> String in
             
             guard let location = response.responseHeaders?["Location"],
-            let ticketRange = location.rangeOfString("?ticket=") else
+                  let ticketRange = location.range(of: "?ticket=") else
             {
                 throw self.getError(forInvalidTicketResponse: response)
             }
             
-            return String(location.characters.suffixFrom(ticketRange.endIndex))
+            return String(location.characters.suffix(from: ticketRange.upperBound))
         })
     }
     
-    private func loginViaOauth(ticket ticket: String) throws -> Task<AuthToken>
+    fileprivate func loginViaOauth(ticket: String) throws -> Task<AuthToken>
     {
         if ticket.characters.count == 0
         {
-            throw AuthError.InvalidResponse
+            throw AuthError.invalidResponse
         }
         
         let parameters = [
@@ -130,61 +132,61 @@ public class Auth
             guard let value = response.response,
             let regex = try? NSRegularExpression(pattern: "access_token=([A-Za-z0-9\\-.]+)&expires=([0-9]+)", options: []) else
             {
-                throw AuthError.InvalidResponse
+                throw AuthError.invalidResponse
             }
             
-            let matches = regex.matchesInString(value, options: [], range: NSRange(location: 0, length: value.utf16.count))
+            let matches = regex.matches(in: value, options: [], range: NSRange(location: 0, length: value.utf16.count))
             
             // Extract the access_token
             guard matches.count > 0 && matches[0].numberOfRanges >= 3,
-            let tokenRange = matches[0].rangeAtIndex(1).rangeForString(value) else
+            let tokenRange = matches[0].rangeAt(1).rangeForString(value) else
             {
-                throw AuthError.InvalidResponse
+                throw AuthError.invalidResponse
             }
             
-            let token = value.substringWithRange(tokenRange)
+            let token = value.substring(with: tokenRange)
             
             // Extract the expiry date
-            guard let expiryRange = matches[0].rangeAtIndex(2).rangeForString(value) else
+            guard let expiryRange = matches[0].rangeAt(2).rangeForString(value) else
             {
-                throw AuthError.InvalidResponse
+                throw AuthError.invalidResponse
             }
             
             let date = self.getDate(fromResponse: response)
-            let expiryString = value.substringWithRange(expiryRange)
+            let expiryString = value.substring(with: expiryRange)
             guard let expiryTime = Int(expiryString) else
             {
-                throw AuthError.InvalidResponse
+                throw AuthError.invalidResponse
             }
             
-            let expiryDate = date.dateByAddingTimeInterval(NSTimeInterval(expiryTime))
+            let expiryDate = date.addingTimeInterval(TimeInterval(expiryTime))
             return AuthToken(token: token, expiry: expiryDate)
         })
     }
     
-    private func getDate<T>(fromResponse response: NetworkResponse<T>) -> NSDate
+    fileprivate func getDate<T>(fromResponse response: NetworkResponse<T>) -> Date
     {
-        let formatter = NSDateFormatter()
+        let formatter = DateFormatter()
         
         if let dateString = response.responseHeaders?["Date"],
-        let date = formatter.dateFromString(dateString)
+        let date = formatter.date(from: dateString)
         {
             return date
         }
         
-        return NSDate()
+        return Date()
     }
     
-    private func getError(forInvalidTicketResponse response: NetworkResponse<NSData>) -> AuthError
+    fileprivate func getError(forInvalidTicketResponse response: NetworkResponse<Data>) -> AuthError
     {
         if let responseData = response.response,
-        let json = try? NSJSONSerialization.JSONObjectWithData(responseData, options: NSJSONReadingOptions()),
+        let json = (try? JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions())) as? NSDictionary,
         let errors = json["errors"] as? [String],
         let error = errors.first
         {
-            return AuthError.ClientError(error)
+            return AuthError.clientError(error)
         }
         
-        return AuthError.InvalidResponse
+        return AuthError.invalidResponse
     }
 }

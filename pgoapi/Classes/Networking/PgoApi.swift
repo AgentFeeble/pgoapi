@@ -10,39 +10,32 @@ import Foundation
 import BoltsSwift
 import ProtocolBuffers
 
-public class PgoApi: Synchronizable
+open class PgoApi: Synchronizable
 {
-    public enum ApiError: ErrorType
+    public enum ApiError: Error
     {
-        case NotLoggedIn
-        case NoEncryptionFuncProvided
-        case InvalidStatusCode(ApiResponse)
-    }
-    
-    public enum ApiStatusCode: Int32
-    {
-        case AuthTokenExpired = 102
-        case RequestThrottled = 52
-        case RedirectRequest = 53
+        case notLoggedIn
+        case noEncryptionFuncProvided
+        case invalidStatusCode(ApiResponse)
     }
     
     final public class Builder
     {
-        private let api: PgoApi
-        private var messages: [RequestMessage] = []
+        fileprivate let api: PgoApi
+        fileprivate var messages: [RequestMessage] = []
         
-        private var responseConverterBuilder = ApiResponseDataConverter.Builder()
+        fileprivate var responseConverterBuilder = ApiResponseDataConverter.Builder()
         
-        private let location: Location?
+        fileprivate let location: Location?
         
-        private init(api: PgoApi, location: Location?)
+        fileprivate init(api: PgoApi, location: Location?)
         {
             self.api = api
             self.location = location
         }
         
         // Copy
-        private init(builder: Builder)
+        fileprivate init(builder: Builder)
         {
             self.api = builder.api
             self.location = builder.location
@@ -51,13 +44,13 @@ public class PgoApi: Synchronizable
         }
     }
     
-    public let network: Network
-    private let authToken: AuthToken
+    open let network: Network
+    fileprivate let authToken: AuthToken
     
-    private var requestId: UInt64?
-    private var sessionStartTime: UInt64?
-    private var authTicket: AuthTicket?
-    private var apiEndpoint: String?
+    fileprivate var requestId: UInt64?
+    fileprivate var sessionStartTime: UInt64?
+    fileprivate var authTicket: AuthTicket?
+    fileprivate var apiEndpoint: String?
     
     let synchronizationLock: Lockable = SpinLock()
     
@@ -67,13 +60,13 @@ public class PgoApi: Synchronizable
         self.authToken = authToken
     }
     
-    public func builder(location: Location? = nil) -> Builder
+    open func builder(_ location: Location? = nil) -> Builder
     {
         return Builder(api: self, location: location)
     }
     
     /// This function isn't needed anymore before other API calls can be made
-    public func login() -> Task<(PgoApi, ApiResponse)>
+    open func login() -> Task<(PgoApi, ApiResponse)>
     {
         // Capture self strongly, so that the instance stays alive until the login call finishes
         return executeInternal(builder: getLoginBuilder(), redirectsAllowed: 3)
@@ -84,7 +77,7 @@ public class PgoApi: Synchronizable
         }
     }
     
-    public func execute(builder: Builder) -> Task<ApiResponse>
+    open func execute(_ builder: Builder) -> Task<ApiResponse>
     {
         let endPoint = sync { return apiEndpoint } ?? EndPoint.Rpc
         let redirectsAllowed = 3
@@ -92,7 +85,7 @@ public class PgoApi: Synchronizable
         return executeInternal(endPoint, builder: builder, redirectsAllowed: redirectsAllowed)
     }
     
-    private func executeInternal(endPoint: String = EndPoint.Rpc, builder: Builder, redirectsAllowed: Int) -> Task<ApiResponse>
+    fileprivate func executeInternal(_ endPoint: String = EndPoint.Rpc, builder: Builder, redirectsAllowed: Int) -> Task<ApiResponse>
     {
         let network = self.network
         let builderCopy = Builder(builder: builder)
@@ -112,25 +105,26 @@ public class PgoApi: Synchronizable
                 response in
                 
                 self.extractAuthTicket(response)
-                if let status = ApiStatusCode(rawValue: response.response.statusCode)
+                switch (response.response.statusCode)
                 {
-                    if status == ApiStatusCode.RedirectRequest && redirectsAllowed > 0
-                    {
-                        self.processRedirect(response)
-                        return self.executeInternal(self.apiEndpoint ?? endPoint,
-                                                    builder: builderCopy,
-                                                    redirectsAllowed: redirectsAllowed - 1)
-                    }
+                case .ok, .okRpcUrlInResponse:
+                    return Task(response)
                     
-                    return Task(error: ApiError.InvalidStatusCode(response))
+                case .redirect where redirectsAllowed > 0:
+                    self.processRedirect(response)
+                    return self.executeInternal(self.apiEndpoint ?? endPoint,
+                                                builder: builderCopy,
+                                                redirectsAllowed: redirectsAllowed - 1)
+                    
+                default:
+                    return Task(error: ApiError.invalidStatusCode(response))
                 }
-                return Task(response)
             })
         })
     }
     
     // This method is not thread safe. Only invoke from within a thread safe context
-    private func getRequestId() -> UInt64
+    fileprivate func getRequestId() -> UInt64
     {
         if let requestId = requestId
         {
@@ -147,19 +141,19 @@ public class PgoApi: Synchronizable
     }
     
     // This method is not thread safe. Only invoke from within a thread safe context
-    private func getSessionStartTime() -> UInt64
+    fileprivate func getSessionStartTime() -> UInt64
     {
         if let startTime = sessionStartTime
         {
             return startTime
         }
         
-        let startTime = UInt64(NSDate().timeIntervalSince1970 * 1000.0)
+        let startTime = UInt64(Date().timeIntervalSince1970 * 1000.0)
         sessionStartTime = startTime
         return startTime
     }
     
-    private func getLoginBuilder() -> Builder
+    fileprivate func getLoginBuilder() -> Builder
     {
         return builder()
               .getPlayer()
@@ -169,18 +163,23 @@ public class PgoApi: Synchronizable
               .downloadSettings()
     }
     
-    private func extractAuthTicket(response: ApiResponse)
+    fileprivate func extractAuthTicket(_ response: ApiResponse)
     {
         if !response.response.hasAuthTicket
         {
             return
         }
         
-        let ticket = response.response.authTicket
-        sync { authTicket = AuthTicket(expireTimestamp_ms: ticket.expireTimestampMs, start: ticket.start, end: ticket.end) }
+        if let ticket = response.response.authTicket
+        {
+            sync
+            {
+                authTicket = AuthTicket(expireTimestamp_ms: ticket.expireTimestampMs, start: ticket.start, end: ticket.end)
+            }
+        }
     }
     
-    private func processRedirect(response: ApiResponse)
+    fileprivate func processRedirect(_ response: ApiResponse)
     {
         if response.response.hasApiUrl
         {
@@ -194,7 +193,7 @@ public class PgoApi: Synchronizable
 
 private extension PgoApi.Builder
 {
-    func build(requestId: UInt64, sessionStartTime: UInt64, ticket: AuthTicket?) -> (request: RpcRequest, decoder: Decoder<ApiResponse, ApiResponseDataConverter>)
+    func build(_ requestId: UInt64, sessionStartTime: UInt64, ticket: AuthTicket?) -> (request: RpcRequest, decoder: Decoder<ApiResponse, ApiResponseDataConverter>)
     {
         let params = RpcParams(authToken: api.authToken, requestId: requestId, sessionStartTime: sessionStartTime, authTicket: ticket, location: location)
         let request = RpcRequest(network: api.network, params: params, messages: messages)
@@ -207,44 +206,44 @@ private extension PgoApi.Builder
 // This extensions adds all the methods to build up the response
 public extension PgoApi.Builder
 {
-    private typealias RequestType = Pogoprotos.Networking.Requests.RequestType
+    fileprivate typealias RequestType = Pogoprotos.Networking.Requests.RequestType
     
     /// Force unwrap all building. It should be a runtime error for a builder not to build
     
     public func getPlayer() -> PgoApi.Builder
     {
-        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetPlayerMessage.Builder()
         let responseType = Pogoprotos.Networking.Responses.GetPlayerResponse.self
-        return addMessage(try! messageBuilder.build(), type: .GetPlayer, responseType: responseType)
+        let messageBuilder = responseType.Builder()
+        return addMessage(try! messageBuilder.build(), type: .getPlayer, responseType: responseType)
     }
 
     func getHatchedEggs() -> PgoApi.Builder
     {
-        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetHatchedEggsMessage.Builder()
         let responseType = Pogoprotos.Networking.Responses.GetHatchedEggsResponse.self
-        return addMessage(try! messageBuilder.build(), type: .GetHatchedEggs, responseType: responseType)
+        let messageBuilder = responseType.Builder()
+        return addMessage(try! messageBuilder.build(), type: .getHatchedEggs, responseType: responseType)
     }
 
     func getInventory() -> PgoApi.Builder
     {
-        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetInventoryMessage.Builder()
         let responseType = Pogoprotos.Networking.Responses.GetInventoryResponse.self
-        return addMessage(try! messageBuilder.build(), type: .GetInventory, responseType: responseType)
+        let messageBuilder = responseType.Builder()
+        return addMessage(try! messageBuilder.build(), type: .getInventory, responseType: responseType)
     }
     
     func checkAwardedBadges() -> PgoApi.Builder
     {
-        let messageBuilder = Pogoprotos.Networking.Requests.Messages.CheckAwardedBadgesMessage.Builder()
         let responseType = Pogoprotos.Networking.Responses.CheckAwardedBadgesResponse.self
-        return addMessage(try! messageBuilder.build(), type: .CheckAwardedBadges, responseType: responseType)
+        let messageBuilder = responseType.Builder()
+        return addMessage(try! messageBuilder.build(), type: .checkAwardedBadges, responseType: responseType)
     }
     
     func downloadSettings() -> PgoApi.Builder
     {
-        let messageBuilder = Pogoprotos.Networking.Requests.Messages.DownloadSettingsMessage.Builder()
-        messageBuilder.hash = Constant.SettingsHash
         let responseType = Pogoprotos.Networking.Responses.DownloadSettingsResponse.self
-        return addMessage(try! messageBuilder.build(), type: .DownloadSettings, responseType: responseType)
+        let messageBuilder = responseType.Builder()
+        messageBuilder.hash = Constant.SettingsHash
+        return addMessage(try! messageBuilder.build(), type: .downloadSettings, responseType: responseType)
     }
     
     func getMapObjects() -> PgoApi.Builder
@@ -259,18 +258,18 @@ public extension PgoApi.Builder
         let cellIDs = getCellIDs(location)
         
         messageBuilder.cellId = cellIDs
-        messageBuilder.sinceTimestampMs = [Int64](count: cellIDs.count, repeatedValue: 0)
+        messageBuilder.sinceTimestampMs = [Int64](repeating: 0, count: cellIDs.count)
         messageBuilder.latitude = location.latitude
         messageBuilder.longitude = location.longitude
         
-        return addMessage(try! messageBuilder.build(), type: .GetMapObjects, responseType: responseType)
+        return addMessage(try! messageBuilder.build(), type: .getMapObjects, responseType: responseType)
     }
     
-    private func addMessage<T: GeneratedMessage where T: GeneratedMessageProtocol>
-                           (message: GeneratedMessage, type: RequestType, responseType: T.Type) -> PgoApi.Builder
+    fileprivate func addMessage<T: GeneratedMessage>
+                           (_ message: GeneratedMessage, type: RequestType, responseType: T.Type) -> PgoApi.Builder where T: GeneratedMessageProtocol
     {
         let requestMessage = RequestMessage(type: type, message: message)
-        let convertMethod: (data: NSData) throws -> T = responseType.parseFromData
+        let convertMethod: (_ data: Data) throws -> T = responseType.parseFrom(data:)
         
         messages.append(requestMessage)
         responseConverterBuilder.addSubResponseConverter(type, converter: ProtoBufDataConverter(convertFunc: convertMethod))

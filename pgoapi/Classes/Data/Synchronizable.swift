@@ -20,17 +20,18 @@ protocol Lockable
     func unlock()
 }
 
-extension Synchronizable where LockType == dispatch_queue_t
+extension Synchronizable where LockType == DispatchQueue
 {
-    func sync(closure: () -> ())
+    func sync(_ closure: () -> ())
     {
-        dispatch_sync(synchronizationLock, closure)
+        synchronizationLock.sync(execute: closure)
     }
     
-    func sync<T>(closure: () -> T) -> T
+    @discardableResult
+    func sync<T>(_ closure: () -> T) -> T
     {
         var value: T? = nil
-        dispatch_sync(synchronizationLock)
+        synchronizationLock.sync
         {
             value = closure()
         }
@@ -40,14 +41,15 @@ extension Synchronizable where LockType == dispatch_queue_t
 
 extension Synchronizable where LockType == Lockable
 {
-    func sync(@noescape closure: () -> ())
+    func sync(_ closure: () -> ())
     {
         synchronizationLock.lock()
         defer { synchronizationLock.unlock() }
         closure()
     }
     
-    func sync<T>(@noescape closure: () -> T) -> T
+    @discardableResult
+    func sync<T>(_ closure: () -> T) -> T
     {
         synchronizationLock.lock()
         defer { synchronizationLock.unlock() }
@@ -57,7 +59,7 @@ extension Synchronizable where LockType == Lockable
 
 class SpinLock: Lockable
 {
-    private var spinLock: OSSpinLock = OS_SPINLOCK_INIT
+    fileprivate var spinLock: OSSpinLock = OS_SPINLOCK_INIT
     
     func lock()
     {

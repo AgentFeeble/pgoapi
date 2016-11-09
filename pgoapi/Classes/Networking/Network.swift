@@ -11,7 +11,7 @@ import BoltsSwift
 
 public struct NetworkResponse<TResponse>
 {
-    public let url: NSURL?
+    public let url: URL?
     public let statusCode: Int
     public let response: TResponse?
     public let responseHeaders: [String : String]?
@@ -21,15 +21,15 @@ public struct NetworkResponse<TResponse>
 public struct RequestArgs
 {
     let headers: [String: String]?
-    let params: [String: AnyObject]?
-    let body: NSData?
+    let params: [String: Any]?
+    let body: Data?
     
     // All requests with the same session ID will share the same cookies.
     // a value of nil will have cookies shared between all other requests
     // with a nil sessionID
     let sessionId: String?
     
-    init(headers: [String : String]? = nil, params: [String : AnyObject]? = nil, body: NSData? = nil, sessionId: String? = nil)
+    init(headers: [String : String]? = nil, params: [String : Any]? = nil, body: Data? = nil, sessionId: String? = nil)
     {
         self.headers = headers
         self.params = params
@@ -44,11 +44,11 @@ public protocol Network
     var processingExecutor: Executor { get }
     
     // Clear all cookies for a specific session
-    func resetSessionWithID(sessionID sessionID: String)
+    func resetSessionWithID(sessionID: String)
     
-    func getJSON(endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<AnyObject>>
-    func postData(endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<NSData>>
-    func postString(endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<String>>
+    func getJSON(_ endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<Any>>
+    func postData(_ endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<Data>>
+    func postString(_ endPoint: String, args: RequestArgs?) -> Task<NetworkResponse<String>>
 }
 
 public extension Network

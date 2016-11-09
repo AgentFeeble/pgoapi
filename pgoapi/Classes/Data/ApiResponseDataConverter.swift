@@ -16,9 +16,9 @@ struct ApiResponseDataConverter: DataConverter
     
     struct Builder
     {
-        private var subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)] = []
+        fileprivate var subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)] = []
         
-        mutating func addSubResponseConverter(type: ApiResponse.RequestType, converter: SubResponseConverter)
+        mutating func addSubResponseConverter(_ type: ApiResponse.RequestType, converter: SubResponseConverter)
         {
             subResponseConverters.append((type, converter))
         }
@@ -29,20 +29,20 @@ struct ApiResponseDataConverter: DataConverter
         }
     }
     
-    private let subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)]
+    fileprivate let subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)]
     
-    func convert(data: NSData) throws -> ApiResponse
+    func convert(_ data: Data) throws -> ApiResponse
     {
-        let response = try Pogoprotos.Networking.Envelopes.ResponseEnvelope.parseFromData(data)
+        let response = try Pogoprotos.Networking.Envelopes.ResponseEnvelope.parseFrom(data: data)
         let subresponses = try parseSubResponses(response)
         return ApiResponse(response: response, subresponses: subresponses)
     }
     
-    private func parseSubResponses(response: Pogoprotos.Networking.Envelopes.ResponseEnvelope) throws -> [ApiResponse.RequestType : GeneratedMessage]
+    fileprivate func parseSubResponses(_ response: Pogoprotos.Networking.Envelopes.ResponseEnvelope) throws -> [ApiResponse.RequestType : GeneratedMessage]
     {
         let subresponseCount = min(subResponseConverters.count, response.returns.count)
         var subresponses: [ApiResponse.RequestType : GeneratedMessage] = [:]
-        for (idx, subresponseData) in response.returns[0..<subresponseCount].enumerate()
+        for (idx, subresponseData) in response.returns[ 0..<subresponseCount ].enumerated()
         {
             let (requestType, converter) = subResponseConverters[idx]
             subresponses[requestType] = try converter.convert(subresponseData)

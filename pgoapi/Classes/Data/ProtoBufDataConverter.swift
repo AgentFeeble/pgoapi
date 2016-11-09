@@ -13,10 +13,10 @@ struct ProtoBufDataConverter<T: GeneratedMessage>: DataConverter
 {
     typealias OutputType = T
     
-    let convertFunc: (data: NSData) throws -> T
+    let convertFunc: (_ data: Data) throws -> T
     
-    func convert(data: NSData) throws -> T
+    func convert(_ data: Data) throws -> T
     {
-        return try convertFunc(data: data)
+        return try convertFunc(data)
     }
 }

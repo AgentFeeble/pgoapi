@@ -5,100 +5,19 @@
 import Foundation
 import ProtocolBuffers
 
-public func == (lhs: Pogoprotos.Data.Battle.BattleAction, rhs: Pogoprotos.Data.Battle.BattleAction) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasTypes == rhs.hasTypes) && (!lhs.hasTypes || lhs.types == rhs.types)
-  fieldCheck = fieldCheck && (lhs.hasActionStartMs == rhs.hasActionStartMs) && (!lhs.hasActionStartMs || lhs.actionStartMs == rhs.actionStartMs)
-  fieldCheck = fieldCheck && (lhs.hasDurationMs == rhs.hasDurationMs) && (!lhs.hasDurationMs || lhs.durationMs == rhs.durationMs)
-  fieldCheck = fieldCheck && (lhs.hasEnergyDelta == rhs.hasEnergyDelta) && (!lhs.hasEnergyDelta || lhs.energyDelta == rhs.energyDelta)
-  fieldCheck = fieldCheck && (lhs.hasAttackerIndex == rhs.hasAttackerIndex) && (!lhs.hasAttackerIndex || lhs.attackerIndex == rhs.attackerIndex)
-  fieldCheck = fieldCheck && (lhs.hasTargetIndex == rhs.hasTargetIndex) && (!lhs.hasTargetIndex || lhs.targetIndex == rhs.targetIndex)
-  fieldCheck = fieldCheck && (lhs.hasActivePokemonId == rhs.hasActivePokemonId) && (!lhs.hasActivePokemonId || lhs.activePokemonId == rhs.activePokemonId)
-  fieldCheck = fieldCheck && (lhs.hasPlayerJoined == rhs.hasPlayerJoined) && (!lhs.hasPlayerJoined || lhs.playerJoined == rhs.playerJoined)
-  fieldCheck = fieldCheck && (lhs.hasBattleResults == rhs.hasBattleResults) && (!lhs.hasBattleResults || lhs.battleResults == rhs.battleResults)
-  fieldCheck = fieldCheck && (lhs.hasDamageWindowsStartTimestampMss == rhs.hasDamageWindowsStartTimestampMss) && (!lhs.hasDamageWindowsStartTimestampMss || lhs.damageWindowsStartTimestampMss == rhs.damageWindowsStartTimestampMss)
-  fieldCheck = fieldCheck && (lhs.hasDamageWindowsEndTimestampMss == rhs.hasDamageWindowsEndTimestampMss) && (!lhs.hasDamageWindowsEndTimestampMss || lhs.damageWindowsEndTimestampMss == rhs.damageWindowsEndTimestampMss)
-  fieldCheck = fieldCheck && (lhs.hasPlayerLeft == rhs.hasPlayerLeft) && (!lhs.hasPlayerLeft || lhs.playerLeft == rhs.playerLeft)
-  fieldCheck = fieldCheck && (lhs.hasTargetPokemonId == rhs.hasTargetPokemonId) && (!lhs.hasTargetPokemonId || lhs.targetPokemonId == rhs.targetPokemonId)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Battle.BattleLog, rhs: Pogoprotos.Data.Battle.BattleLog) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
-  fieldCheck = fieldCheck && (lhs.hasBattleType == rhs.hasBattleType) && (!lhs.hasBattleType || lhs.battleType == rhs.battleType)
-  fieldCheck = fieldCheck && (lhs.hasServerMs == rhs.hasServerMs) && (!lhs.hasServerMs || lhs.serverMs == rhs.serverMs)
-  fieldCheck = fieldCheck && (lhs.battleActions == rhs.battleActions)
-  fieldCheck = fieldCheck && (lhs.hasBattleStartTimestampMs == rhs.hasBattleStartTimestampMs) && (!lhs.hasBattleStartTimestampMs || lhs.battleStartTimestampMs == rhs.battleStartTimestampMs)
-  fieldCheck = fieldCheck && (lhs.hasBattleEndTimestampMs == rhs.hasBattleEndTimestampMs) && (!lhs.hasBattleEndTimestampMs || lhs.battleEndTimestampMs == rhs.battleEndTimestampMs)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Battle.BattleParticipant, rhs: Pogoprotos.Data.Battle.BattleParticipant) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasActivePokemon == rhs.hasActivePokemon) && (!lhs.hasActivePokemon || lhs.activePokemon == rhs.activePokemon)
-  fieldCheck = fieldCheck && (lhs.hasTrainerPublicProfile == rhs.hasTrainerPublicProfile) && (!lhs.hasTrainerPublicProfile || lhs.trainerPublicProfile == rhs.trainerPublicProfile)
-  fieldCheck = fieldCheck && (lhs.reversePokemon == rhs.reversePokemon)
-  fieldCheck = fieldCheck && (lhs.defeatedPokemon == rhs.defeatedPokemon)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Battle.BattlePokemonInfo, rhs: Pogoprotos.Data.Battle.BattlePokemonInfo) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasPokemonData == rhs.hasPokemonData) && (!lhs.hasPokemonData || lhs.pokemonData == rhs.pokemonData)
-  fieldCheck = fieldCheck && (lhs.hasCurrentHealth == rhs.hasCurrentHealth) && (!lhs.hasCurrentHealth || lhs.currentHealth == rhs.currentHealth)
-  fieldCheck = fieldCheck && (lhs.hasCurrentEnergy == rhs.hasCurrentEnergy) && (!lhs.hasCurrentEnergy || lhs.currentEnergy == rhs.currentEnergy)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Data.Battle.BattleResults, rhs: Pogoprotos.Data.Battle.BattleResults) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasGymState == rhs.hasGymState) && (!lhs.hasGymState || lhs.gymState == rhs.gymState)
-  fieldCheck = fieldCheck && (lhs.attackers == rhs.attackers)
-  fieldCheck = fieldCheck && (lhs.playerExperienceAwarded == rhs.playerExperienceAwarded)
-  fieldCheck = fieldCheck && (lhs.hasNextDefenderPokemonId == rhs.hasNextDefenderPokemonId) && (!lhs.hasNextDefenderPokemonId || lhs.nextDefenderPokemonId == rhs.nextDefenderPokemonId)
-  fieldCheck = fieldCheck && (lhs.hasGymPointsDelta == rhs.hasGymPointsDelta) && (!lhs.hasGymPointsDelta || lhs.gymPointsDelta == rhs.gymPointsDelta)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public extension Pogoprotos.Data.Battle {
   public struct PogoprotosDataBattleRoot {
-    public static var sharedInstance : PogoprotosDataBattleRoot {
-     struct Static {
-         static let instance : PogoprotosDataBattleRoot = PogoprotosDataBattleRoot()
-     }
-     return Static.instance
-    }
+    public static let `default` = PogoprotosDataBattleRoot()
     public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
-      registerAllExtensions(extensionRegistry)
-      Pogoprotos.Data.Player.PogoprotosDataPlayerRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Pogoprotos.Data.PogoprotosDataRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Pogoprotos.Data.Gym.PogoprotosDataGymRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Data.Player.PogoprotosDataPlayerRoot.default.registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Data.PogoprotosDataRoot.default.registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Data.Gym.PogoprotosDataGymRoot.default.registerAllExtensions(registry: extensionRegistry)
     }
-    public func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry: ExtensionRegistry) {
     }
   }
 
@@ -107,64 +26,64 @@ public extension Pogoprotos.Data.Battle {
   //Enum type declaration start 
 
   public enum BattleActionType:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case ActionUnset = 0
-    case ActionAttack = 1
-    case ActionDodge = 2
-    case ActionSpecialAttack = 3
-    case ActionSwapPokemon = 4
-    case ActionFaint = 5
-    case ActionPlayerJoin = 6
-    case ActionPlayerQuit = 7
-    case ActionVictory = 8
-    case ActionDefeat = 9
-    case ActionTimedOut = 10
+    case actionUnset = 0
+    case actionAttack = 1
+    case actionDodge = 2
+    case actionSpecialAttack = 3
+    case actionSwapPokemon = 4
+    case actionFaint = 5
+    case actionPlayerJoin = 6
+    case actionPlayerQuit = 7
+    case actionVictory = 8
+    case actionDefeat = 9
+    case actionTimedOut = 10
     public func toString() -> String {
       switch self {
-      case .ActionUnset: return "ACTION_UNSET"
-      case .ActionAttack: return "ACTION_ATTACK"
-      case .ActionDodge: return "ACTION_DODGE"
-      case .ActionSpecialAttack: return "ACTION_SPECIAL_ATTACK"
-      case .ActionSwapPokemon: return "ACTION_SWAP_POKEMON"
-      case .ActionFaint: return "ACTION_FAINT"
-      case .ActionPlayerJoin: return "ACTION_PLAYER_JOIN"
-      case .ActionPlayerQuit: return "ACTION_PLAYER_QUIT"
-      case .ActionVictory: return "ACTION_VICTORY"
-      case .ActionDefeat: return "ACTION_DEFEAT"
-      case .ActionTimedOut: return "ACTION_TIMED_OUT"
+      case .actionUnset: return "ACTION_UNSET"
+      case .actionAttack: return "ACTION_ATTACK"
+      case .actionDodge: return "ACTION_DODGE"
+      case .actionSpecialAttack: return "ACTION_SPECIAL_ATTACK"
+      case .actionSwapPokemon: return "ACTION_SWAP_POKEMON"
+      case .actionFaint: return "ACTION_FAINT"
+      case .actionPlayerJoin: return "ACTION_PLAYER_JOIN"
+      case .actionPlayerQuit: return "ACTION_PLAYER_QUIT"
+      case .actionVictory: return "ACTION_VICTORY"
+      case .actionDefeat: return "ACTION_DEFEAT"
+      case .actionTimedOut: return "ACTION_TIMED_OUT"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Data.Battle.BattleActionType {
       switch str {
-      case "ACTION_UNSET":  return .ActionUnset
-      case "ACTION_ATTACK":  return .ActionAttack
-      case "ACTION_DODGE":  return .ActionDodge
-      case "ACTION_SPECIAL_ATTACK":  return .ActionSpecialAttack
-      case "ACTION_SWAP_POKEMON":  return .ActionSwapPokemon
-      case "ACTION_FAINT":  return .ActionFaint
-      case "ACTION_PLAYER_JOIN":  return .ActionPlayerJoin
-      case "ACTION_PLAYER_QUIT":  return .ActionPlayerQuit
-      case "ACTION_VICTORY":  return .ActionVictory
-      case "ACTION_DEFEAT":  return .ActionDefeat
-      case "ACTION_TIMED_OUT":  return .ActionTimedOut
-      default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+      case "ACTION_UNSET":  return .actionUnset
+      case "ACTION_ATTACK":  return .actionAttack
+      case "ACTION_DODGE":  return .actionDodge
+      case "ACTION_SPECIAL_ATTACK":  return .actionSpecialAttack
+      case "ACTION_SWAP_POKEMON":  return .actionSwapPokemon
+      case "ACTION_FAINT":  return .actionFaint
+      case "ACTION_PLAYER_JOIN":  return .actionPlayerJoin
+      case "ACTION_PLAYER_QUIT":  return .actionPlayerQuit
+      case "ACTION_VICTORY":  return .actionVictory
+      case "ACTION_DEFEAT":  return .actionDefeat
+      case "ACTION_TIMED_OUT":  return .actionTimedOut
+      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
     public var debugDescription:String { return getDescription() }
     public var description:String { return getDescription() }
     private func getDescription() -> String { 
-        switch self {
-            case .ActionUnset: return ".ActionUnset"
-            case .ActionAttack: return ".ActionAttack"
-            case .ActionDodge: return ".ActionDodge"
-            case .ActionSpecialAttack: return ".ActionSpecialAttack"
-            case .ActionSwapPokemon: return ".ActionSwapPokemon"
-            case .ActionFaint: return ".ActionFaint"
-            case .ActionPlayerJoin: return ".ActionPlayerJoin"
-            case .ActionPlayerQuit: return ".ActionPlayerQuit"
-            case .ActionVictory: return ".ActionVictory"
-            case .ActionDefeat: return ".ActionDefeat"
-            case .ActionTimedOut: return ".ActionTimedOut"
-        }
+      switch self {
+      case .actionUnset: return ".actionUnset"
+      case .actionAttack: return ".actionAttack"
+      case .actionDodge: return ".actionDodge"
+      case .actionSpecialAttack: return ".actionSpecialAttack"
+      case .actionSwapPokemon: return ".actionSwapPokemon"
+      case .actionFaint: return ".actionFaint"
+      case .actionPlayerJoin: return ".actionPlayerJoin"
+      case .actionPlayerQuit: return ".actionPlayerQuit"
+      case .actionVictory: return ".actionVictory"
+      case .actionDefeat: return ".actionDefeat"
+      case .actionTimedOut: return ".actionTimedOut"
+      }
     }
   }
 
@@ -175,40 +94,40 @@ public extension Pogoprotos.Data.Battle {
   //Enum type declaration start 
 
   public enum BattleState:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case StateUnset = 0
-    case Active = 1
-    case Victory = 2
-    case Defeated = 3
-    case TimedOut = 4
+    case stateUnset = 0
+    case active = 1
+    case victory = 2
+    case defeated = 3
+    case timedOut = 4
     public func toString() -> String {
       switch self {
-      case .StateUnset: return "STATE_UNSET"
-      case .Active: return "ACTIVE"
-      case .Victory: return "VICTORY"
-      case .Defeated: return "DEFEATED"
-      case .TimedOut: return "TIMED_OUT"
+      case .stateUnset: return "STATE_UNSET"
+      case .active: return "ACTIVE"
+      case .victory: return "VICTORY"
+      case .defeated: return "DEFEATED"
+      case .timedOut: return "TIMED_OUT"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Data.Battle.BattleState {
       switch str {
-      case "STATE_UNSET":  return .StateUnset
-      case "ACTIVE":  return .Active
-      case "VICTORY":  return .Victory
-      case "DEFEATED":  return .Defeated
-      case "TIMED_OUT":  return .TimedOut
-      default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+      case "STATE_UNSET":  return .stateUnset
+      case "ACTIVE":  return .active
+      case "VICTORY":  return .victory
+      case "DEFEATED":  return .defeated
+      case "TIMED_OUT":  return .timedOut
+      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
     public var debugDescription:String { return getDescription() }
     public var description:String { return getDescription() }
     private func getDescription() -> String { 
-        switch self {
-            case .StateUnset: return ".StateUnset"
-            case .Active: return ".Active"
-            case .Victory: return ".Victory"
-            case .Defeated: return ".Defeated"
-            case .TimedOut: return ".TimedOut"
-        }
+      switch self {
+      case .stateUnset: return ".stateUnset"
+      case .active: return ".active"
+      case .victory: return ".victory"
+      case .defeated: return ".defeated"
+      case .timedOut: return ".timedOut"
+      }
     }
   }
 
@@ -219,72 +138,95 @@ public extension Pogoprotos.Data.Battle {
   //Enum type declaration start 
 
   public enum BattleType:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case BattleTypeUnset = 0
-    case BattleTypeNormal = 1
-    case BattleTypeTraining = 2
+    case battleTypeUnset = 0
+    case battleTypeNormal = 1
+    case battleTypeTraining = 2
     public func toString() -> String {
       switch self {
-      case .BattleTypeUnset: return "BATTLE_TYPE_UNSET"
-      case .BattleTypeNormal: return "BATTLE_TYPE_NORMAL"
-      case .BattleTypeTraining: return "BATTLE_TYPE_TRAINING"
+      case .battleTypeUnset: return "BATTLE_TYPE_UNSET"
+      case .battleTypeNormal: return "BATTLE_TYPE_NORMAL"
+      case .battleTypeTraining: return "BATTLE_TYPE_TRAINING"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Data.Battle.BattleType {
       switch str {
-      case "BATTLE_TYPE_UNSET":  return .BattleTypeUnset
-      case "BATTLE_TYPE_NORMAL":  return .BattleTypeNormal
-      case "BATTLE_TYPE_TRAINING":  return .BattleTypeTraining
-      default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+      case "BATTLE_TYPE_UNSET":  return .battleTypeUnset
+      case "BATTLE_TYPE_NORMAL":  return .battleTypeNormal
+      case "BATTLE_TYPE_TRAINING":  return .battleTypeTraining
+      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
     public var debugDescription:String { return getDescription() }
     public var description:String { return getDescription() }
     private func getDescription() -> String { 
-        switch self {
-            case .BattleTypeUnset: return ".BattleTypeUnset"
-            case .BattleTypeNormal: return ".BattleTypeNormal"
-            case .BattleTypeTraining: return ".BattleTypeTraining"
-        }
+      switch self {
+      case .battleTypeUnset: return ".battleTypeUnset"
+      case .battleTypeNormal: return ".battleTypeNormal"
+      case .battleTypeTraining: return ".battleTypeTraining"
+      }
     }
   }
 
   //Enum type declaration end 
 
-  final public class BattleAction : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var types:Pogoprotos.Data.Battle.BattleActionType = Pogoprotos.Data.Battle.BattleActionType.ActionUnset
-    public private(set) var hasTypes:Bool = false
-    public private(set) var hasActionStartMs:Bool = false
-    public private(set) var actionStartMs:Int64 = Int64(0)
+  final public class BattleAction : GeneratedMessage {
 
-    public private(set) var hasDurationMs:Bool = false
-    public private(set) var durationMs:Int32 = Int32(0)
+    public static func == (lhs: Pogoprotos.Data.Battle.BattleAction, rhs: Pogoprotos.Data.Battle.BattleAction) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasType == rhs.hasType) && (!lhs.hasType || lhs.type == rhs.type)
+      fieldCheck = fieldCheck && (lhs.hasActionStartMs == rhs.hasActionStartMs) && (!lhs.hasActionStartMs || lhs.actionStartMs == rhs.actionStartMs)
+      fieldCheck = fieldCheck && (lhs.hasDurationMs == rhs.hasDurationMs) && (!lhs.hasDurationMs || lhs.durationMs == rhs.durationMs)
+      fieldCheck = fieldCheck && (lhs.hasEnergyDelta == rhs.hasEnergyDelta) && (!lhs.hasEnergyDelta || lhs.energyDelta == rhs.energyDelta)
+      fieldCheck = fieldCheck && (lhs.hasAttackerIndex == rhs.hasAttackerIndex) && (!lhs.hasAttackerIndex || lhs.attackerIndex == rhs.attackerIndex)
+      fieldCheck = fieldCheck && (lhs.hasTargetIndex == rhs.hasTargetIndex) && (!lhs.hasTargetIndex || lhs.targetIndex == rhs.targetIndex)
+      fieldCheck = fieldCheck && (lhs.hasActivePokemonId == rhs.hasActivePokemonId) && (!lhs.hasActivePokemonId || lhs.activePokemonId == rhs.activePokemonId)
+      fieldCheck = fieldCheck && (lhs.hasPlayerJoined == rhs.hasPlayerJoined) && (!lhs.hasPlayerJoined || lhs.playerJoined == rhs.playerJoined)
+      fieldCheck = fieldCheck && (lhs.hasBattleResults == rhs.hasBattleResults) && (!lhs.hasBattleResults || lhs.battleResults == rhs.battleResults)
+      fieldCheck = fieldCheck && (lhs.hasDamageWindowsStartTimestampMs == rhs.hasDamageWindowsStartTimestampMs) && (!lhs.hasDamageWindowsStartTimestampMs || lhs.damageWindowsStartTimestampMs == rhs.damageWindowsStartTimestampMs)
+      fieldCheck = fieldCheck && (lhs.hasDamageWindowsEndTimestampMs == rhs.hasDamageWindowsEndTimestampMs) && (!lhs.hasDamageWindowsEndTimestampMs || lhs.damageWindowsEndTimestampMs == rhs.damageWindowsEndTimestampMs)
+      fieldCheck = fieldCheck && (lhs.hasPlayerLeft == rhs.hasPlayerLeft) && (!lhs.hasPlayerLeft || lhs.playerLeft == rhs.playerLeft)
+      fieldCheck = fieldCheck && (lhs.hasTargetPokemonId == rhs.hasTargetPokemonId) && (!lhs.hasTargetPokemonId || lhs.targetPokemonId == rhs.targetPokemonId)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
 
-    public private(set) var hasEnergyDelta:Bool = false
-    public private(set) var energyDelta:Int32 = Int32(0)
+    public fileprivate(set) var type:Pogoprotos.Data.Battle.BattleActionType = Pogoprotos.Data.Battle.BattleActionType.actionUnset
+    public fileprivate(set) var hasType:Bool = false
+    public fileprivate(set) var actionStartMs:Int64 = Int64(0)
+    public fileprivate(set) var hasActionStartMs:Bool = false
 
-    public private(set) var hasAttackerIndex:Bool = false
-    public private(set) var attackerIndex:Int32 = Int32(0)
+    public fileprivate(set) var durationMs:Int32 = Int32(0)
+    public fileprivate(set) var hasDurationMs:Bool = false
 
-    public private(set) var hasTargetIndex:Bool = false
-    public private(set) var targetIndex:Int32 = Int32(0)
+    public fileprivate(set) var energyDelta:Int32 = Int32(0)
+    public fileprivate(set) var hasEnergyDelta:Bool = false
 
-    public private(set) var hasActivePokemonId:Bool = false
-    public private(set) var activePokemonId:UInt64 = UInt64(0)
+    public fileprivate(set) var attackerIndex:Int32 = Int32(0)
+    public fileprivate(set) var hasAttackerIndex:Bool = false
 
-    public private(set) var hasPlayerJoined:Bool = false
-    public private(set) var playerJoined:Pogoprotos.Data.Battle.BattleParticipant!
-    public private(set) var hasBattleResults:Bool = false
-    public private(set) var battleResults:Pogoprotos.Data.Battle.BattleResults!
-    public private(set) var hasDamageWindowsStartTimestampMss:Bool = false
-    public private(set) var damageWindowsStartTimestampMss:Int64 = Int64(0)
+    public fileprivate(set) var targetIndex:Int32 = Int32(0)
+    public fileprivate(set) var hasTargetIndex:Bool = false
 
-    public private(set) var hasDamageWindowsEndTimestampMss:Bool = false
-    public private(set) var damageWindowsEndTimestampMss:Int64 = Int64(0)
+    public fileprivate(set) var activePokemonId:UInt64 = UInt64(0)
+    public fileprivate(set) var hasActivePokemonId:Bool = false
 
-    public private(set) var hasPlayerLeft:Bool = false
-    public private(set) var playerLeft:Pogoprotos.Data.Battle.BattleParticipant!
-    public private(set) var hasTargetPokemonId:Bool = false
-    public private(set) var targetPokemonId:UInt64 = UInt64(0)
+    public fileprivate(set) var playerJoined:Pogoprotos.Data.Battle.BattleParticipant!
+    public fileprivate(set) var hasPlayerJoined:Bool = false
+    public fileprivate(set) var battleResults:Pogoprotos.Data.Battle.BattleResults!
+    public fileprivate(set) var hasBattleResults:Bool = false
+    public fileprivate(set) var damageWindowsStartTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasDamageWindowsStartTimestampMs:Bool = false
+
+    public fileprivate(set) var damageWindowsEndTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasDamageWindowsEndTimestampMs:Bool = false
+
+    public fileprivate(set) var playerLeft:Pogoprotos.Data.Battle.BattleParticipant!
+    public fileprivate(set) var hasPlayerLeft:Bool = false
+    public fileprivate(set) var targetPokemonId:UInt64 = UInt64(0)
+    public fileprivate(set) var hasTargetPokemonId:Bool = false
 
     required public init() {
          super.init()
@@ -292,47 +234,47 @@ public extension Pogoprotos.Data.Battle {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
-      if hasTypes {
-        try output.writeEnum(1, value:types.rawValue)
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
+      if hasType {
+        try codedOutputStream.writeEnum(fieldNumber: 1, value:type.rawValue)
       }
       if hasActionStartMs {
-        try output.writeInt64(2, value:actionStartMs)
+        try codedOutputStream.writeInt64(fieldNumber: 2, value:actionStartMs)
       }
       if hasDurationMs {
-        try output.writeInt32(3, value:durationMs)
+        try codedOutputStream.writeInt32(fieldNumber: 3, value:durationMs)
       }
       if hasEnergyDelta {
-        try output.writeInt32(5, value:energyDelta)
+        try codedOutputStream.writeInt32(fieldNumber: 5, value:energyDelta)
       }
       if hasAttackerIndex {
-        try output.writeInt32(6, value:attackerIndex)
+        try codedOutputStream.writeInt32(fieldNumber: 6, value:attackerIndex)
       }
       if hasTargetIndex {
-        try output.writeInt32(7, value:targetIndex)
+        try codedOutputStream.writeInt32(fieldNumber: 7, value:targetIndex)
       }
       if hasActivePokemonId {
-        try output.writeFixed64(8, value:activePokemonId)
+        try codedOutputStream.writeFixed64(fieldNumber: 8, value:activePokemonId)
       }
       if hasPlayerJoined {
-        try output.writeMessage(9, value:playerJoined)
+        try codedOutputStream.writeMessage(fieldNumber: 9, value:playerJoined)
       }
       if hasBattleResults {
-        try output.writeMessage(10, value:battleResults)
+        try codedOutputStream.writeMessage(fieldNumber: 10, value:battleResults)
       }
-      if hasDamageWindowsStartTimestampMss {
-        try output.writeInt64(11, value:damageWindowsStartTimestampMss)
+      if hasDamageWindowsStartTimestampMs {
+        try codedOutputStream.writeInt64(fieldNumber: 11, value:damageWindowsStartTimestampMs)
       }
-      if hasDamageWindowsEndTimestampMss {
-        try output.writeInt64(12, value:damageWindowsEndTimestampMss)
+      if hasDamageWindowsEndTimestampMs {
+        try codedOutputStream.writeInt64(fieldNumber: 12, value:damageWindowsEndTimestampMs)
       }
       if hasPlayerLeft {
-        try output.writeMessage(13, value:playerLeft)
+        try codedOutputStream.writeMessage(fieldNumber: 13, value:playerLeft)
       }
       if hasTargetPokemonId {
-        try output.writeFixed64(14, value:targetPokemonId)
+        try codedOutputStream.writeFixed64(fieldNumber: 14, value:targetPokemonId)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -341,82 +283,54 @@ public extension Pogoprotos.Data.Battle {
       }
 
       serialize_size = 0
-      if (hasTypes) {
-        serialize_size += types.rawValue.computeEnumSize(1)
+      if (hasType) {
+        serialize_size += type.rawValue.computeEnumSize(fieldNumber: 1)
       }
       if hasActionStartMs {
-        serialize_size += actionStartMs.computeInt64Size(2)
+        serialize_size += actionStartMs.computeInt64Size(fieldNumber: 2)
       }
       if hasDurationMs {
-        serialize_size += durationMs.computeInt32Size(3)
+        serialize_size += durationMs.computeInt32Size(fieldNumber: 3)
       }
       if hasEnergyDelta {
-        serialize_size += energyDelta.computeInt32Size(5)
+        serialize_size += energyDelta.computeInt32Size(fieldNumber: 5)
       }
       if hasAttackerIndex {
-        serialize_size += attackerIndex.computeInt32Size(6)
+        serialize_size += attackerIndex.computeInt32Size(fieldNumber: 6)
       }
       if hasTargetIndex {
-        serialize_size += targetIndex.computeInt32Size(7)
+        serialize_size += targetIndex.computeInt32Size(fieldNumber: 7)
       }
       if hasActivePokemonId {
-        serialize_size += activePokemonId.computeFixed64Size(8)
+        serialize_size += activePokemonId.computeFixed64Size(fieldNumber: 8)
       }
       if hasPlayerJoined {
-          if let varSizeplayerJoined = playerJoined?.computeMessageSize(9) {
+          if let varSizeplayerJoined = playerJoined?.computeMessageSize(fieldNumber: 9) {
               serialize_size += varSizeplayerJoined
           }
       }
       if hasBattleResults {
-          if let varSizebattleResults = battleResults?.computeMessageSize(10) {
+          if let varSizebattleResults = battleResults?.computeMessageSize(fieldNumber: 10) {
               serialize_size += varSizebattleResults
           }
       }
-      if hasDamageWindowsStartTimestampMss {
-        serialize_size += damageWindowsStartTimestampMss.computeInt64Size(11)
+      if hasDamageWindowsStartTimestampMs {
+        serialize_size += damageWindowsStartTimestampMs.computeInt64Size(fieldNumber: 11)
       }
-      if hasDamageWindowsEndTimestampMss {
-        serialize_size += damageWindowsEndTimestampMss.computeInt64Size(12)
+      if hasDamageWindowsEndTimestampMs {
+        serialize_size += damageWindowsEndTimestampMs.computeInt64Size(fieldNumber: 12)
       }
       if hasPlayerLeft {
-          if let varSizeplayerLeft = playerLeft?.computeMessageSize(13) {
+          if let varSizeplayerLeft = playerLeft?.computeMessageSize(fieldNumber: 13) {
               serialize_size += varSizeplayerLeft
           }
       }
       if hasTargetPokemonId {
-        serialize_size += targetPokemonId.computeFixed64Size(14)
+        serialize_size += targetPokemonId.computeFixed64Size(fieldNumber: 14)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Battle.BattleAction> {
-      var mergedArray = Array<Pogoprotos.Data.Battle.BattleAction>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleAction? {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Battle.BattleAction.Builder {
       return Pogoprotos.Data.Battle.BattleAction.classBuilder() as! Pogoprotos.Data.Battle.BattleAction.Builder
@@ -424,41 +338,41 @@ public extension Pogoprotos.Data.Battle {
     public func getBuilder() -> Pogoprotos.Data.Battle.BattleAction.Builder {
       return classBuilder() as! Pogoprotos.Data.Battle.BattleAction.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleAction.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleAction.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-      return try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(self)
+      return try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Battle.BattleAction) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
-      if hasTypes {
-        jsonMap["type"] = types.toString()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+      if hasType {
+        jsonMap["type"] = type.toString()
       }
       if hasActionStartMs {
         jsonMap["actionStartMs"] = "\(actionStartMs)"
       }
       if hasDurationMs {
-        jsonMap["durationMs"] = NSNumber(int:durationMs)
+        jsonMap["durationMs"] = Int(durationMs)
       }
       if hasEnergyDelta {
-        jsonMap["energyDelta"] = NSNumber(int:energyDelta)
+        jsonMap["energyDelta"] = Int(energyDelta)
       }
       if hasAttackerIndex {
-        jsonMap["attackerIndex"] = NSNumber(int:attackerIndex)
+        jsonMap["attackerIndex"] = Int(attackerIndex)
       }
       if hasTargetIndex {
-        jsonMap["targetIndex"] = NSNumber(int:targetIndex)
+        jsonMap["targetIndex"] = Int(targetIndex)
       }
       if hasActivePokemonId {
         jsonMap["activePokemonId"] = "\(activePokemonId)"
@@ -469,11 +383,11 @@ public extension Pogoprotos.Data.Battle {
       if hasBattleResults {
         jsonMap["battleResults"] = try battleResults.encode()
       }
-      if hasDamageWindowsStartTimestampMss {
-        jsonMap["damageWindowsStartTimestampMss"] = "\(damageWindowsStartTimestampMss)"
+      if hasDamageWindowsStartTimestampMs {
+        jsonMap["damageWindowsStartTimestampMs"] = "\(damageWindowsStartTimestampMs)"
       }
-      if hasDamageWindowsEndTimestampMss {
-        jsonMap["damageWindowsEndTimestampMss"] = "\(damageWindowsEndTimestampMss)"
+      if hasDamageWindowsEndTimestampMs {
+        jsonMap["damageWindowsEndTimestampMs"] = "\(damageWindowsEndTimestampMs)"
       }
       if hasPlayerLeft {
         jsonMap["playerLeft"] = try playerLeft.encode()
@@ -483,16 +397,16 @@ public extension Pogoprotos.Data.Battle {
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleAction {
+      return try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Battle.BattleAction {
-      return try Pogoprotos.Data.Battle.BattleAction.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Battle.BattleAction {
+      return try Pogoprotos.Data.Battle.BattleAction.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
-      if (hasTypes) {
-        output += "\(indent) types: \(types.description)\n"
+      if (hasType) {
+        output += "\(indent) type: \(type.description)\n"
       }
       if hasActionStartMs {
         output += "\(indent) actionStartMs: \(actionStartMs) \n"
@@ -515,41 +429,41 @@ public extension Pogoprotos.Data.Battle {
       if hasPlayerJoined {
         output += "\(indent) playerJoined {\n"
         if let outDescPlayerJoined = playerJoined {
-          output += try outDescPlayerJoined.getDescription("\(indent)  ")
+          output += try outDescPlayerJoined.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       if hasBattleResults {
         output += "\(indent) battleResults {\n"
         if let outDescBattleResults = battleResults {
-          output += try outDescBattleResults.getDescription("\(indent)  ")
+          output += try outDescBattleResults.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
-      if hasDamageWindowsStartTimestampMss {
-        output += "\(indent) damageWindowsStartTimestampMss: \(damageWindowsStartTimestampMss) \n"
+      if hasDamageWindowsStartTimestampMs {
+        output += "\(indent) damageWindowsStartTimestampMs: \(damageWindowsStartTimestampMs) \n"
       }
-      if hasDamageWindowsEndTimestampMss {
-        output += "\(indent) damageWindowsEndTimestampMss: \(damageWindowsEndTimestampMss) \n"
+      if hasDamageWindowsEndTimestampMs {
+        output += "\(indent) damageWindowsEndTimestampMs: \(damageWindowsEndTimestampMs) \n"
       }
       if hasPlayerLeft {
         output += "\(indent) playerLeft {\n"
         if let outDescPlayerLeft = playerLeft {
-          output += try outDescPlayerLeft.getDescription("\(indent)  ")
+          output += try outDescPlayerLeft.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       if hasTargetPokemonId {
         output += "\(indent) targetPokemonId: \(targetPokemonId) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
         get {
             var hashCode:Int = 7
-            if hasTypes {
-               hashCode = (hashCode &* 31) &+ Int(types.rawValue)
+            if hasType {
+               hashCode = (hashCode &* 31) &+ Int(type.rawValue)
             }
             if hasActionStartMs {
                hashCode = (hashCode &* 31) &+ actionStartMs.hashValue
@@ -579,11 +493,11 @@ public extension Pogoprotos.Data.Battle {
                     hashCode = (hashCode &* 31) &+ hashValuebattleResults
                 }
             }
-            if hasDamageWindowsStartTimestampMss {
-               hashCode = (hashCode &* 31) &+ damageWindowsStartTimestampMss.hashValue
+            if hasDamageWindowsStartTimestampMs {
+               hashCode = (hashCode &* 31) &+ damageWindowsStartTimestampMs.hashValue
             }
-            if hasDamageWindowsEndTimestampMss {
-               hashCode = (hashCode &* 31) &+ damageWindowsEndTimestampMss.hashValue
+            if hasDamageWindowsEndTimestampMs {
+               hashCode = (hashCode &* 31) &+ damageWindowsEndTimestampMs.hashValue
             }
             if hasPlayerLeft {
                 if let hashValueplayerLeft = playerLeft?.hashValue {
@@ -607,13 +521,10 @@ public extension Pogoprotos.Data.Battle {
     override public func className() -> String {
         return "Pogoprotos.Data.Battle.BattleAction"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Battle.BattleAction.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Battle.BattleAction = Pogoprotos.Data.Battle.BattleAction()
+      fileprivate var builderResult:Pogoprotos.Data.Battle.BattleAction = Pogoprotos.Data.Battle.BattleAction()
       public func getMessage() -> Pogoprotos.Data.Battle.BattleAction {
           return builderResult
       }
@@ -621,27 +532,29 @@ public extension Pogoprotos.Data.Battle {
       required override public init () {
          super.init()
       }
-        public var hasTypes:Bool{
+        public var hasType:Bool{
             get {
-                return builderResult.hasTypes
+                return builderResult.hasType
             }
         }
-        public var types:Pogoprotos.Data.Battle.BattleActionType {
+        public var type:Pogoprotos.Data.Battle.BattleActionType {
             get {
-                return builderResult.types
+                return builderResult.type
             }
             set (value) {
-                builderResult.hasTypes = true
-                builderResult.types = value
+                builderResult.hasType = true
+                builderResult.type = value
             }
         }
-        public func setTypes(value:Pogoprotos.Data.Battle.BattleActionType) -> Pogoprotos.Data.Battle.BattleAction.Builder {
-          self.types = value
+      @discardableResult
+        public func setType(_ value:Pogoprotos.Data.Battle.BattleActionType) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+          self.type = value
           return self
         }
-        public func clearTypes() -> Pogoprotos.Data.Battle.BattleAction.Builder {
-           builderResult.hasTypes = false
-           builderResult.types = .ActionUnset
+      @discardableResult
+        public func clearType() -> Pogoprotos.Data.Battle.BattleAction.Builder {
+           builderResult.hasType = false
+           builderResult.type = .actionUnset
            return self
         }
       public var hasActionStartMs:Bool {
@@ -658,10 +571,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.actionStartMs = value
            }
       }
-      public func setActionStartMs(value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setActionStartMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.actionStartMs = value
         return self
       }
+      @discardableResult
       public func clearActionStartMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasActionStartMs = false
            builderResult.actionStartMs = Int64(0)
@@ -681,10 +596,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.durationMs = value
            }
       }
-      public func setDurationMs(value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setDurationMs(_ value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.durationMs = value
         return self
       }
+      @discardableResult
       public func clearDurationMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasDurationMs = false
            builderResult.durationMs = Int32(0)
@@ -704,10 +621,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.energyDelta = value
            }
       }
-      public func setEnergyDelta(value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setEnergyDelta(_ value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.energyDelta = value
         return self
       }
+      @discardableResult
       public func clearEnergyDelta() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasEnergyDelta = false
            builderResult.energyDelta = Int32(0)
@@ -727,10 +646,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.attackerIndex = value
            }
       }
-      public func setAttackerIndex(value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setAttackerIndex(_ value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.attackerIndex = value
         return self
       }
+      @discardableResult
       public func clearAttackerIndex() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasAttackerIndex = false
            builderResult.attackerIndex = Int32(0)
@@ -750,10 +671,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.targetIndex = value
            }
       }
-      public func setTargetIndex(value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setTargetIndex(_ value:Int32) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.targetIndex = value
         return self
       }
+      @discardableResult
       public func clearTargetIndex() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasTargetIndex = false
            builderResult.targetIndex = Int32(0)
@@ -773,10 +696,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.activePokemonId = value
            }
       }
-      public func setActivePokemonId(value:UInt64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setActivePokemonId(_ value:UInt64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.activePokemonId = value
         return self
       }
+      @discardableResult
       public func clearActivePokemonId() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasActivePokemonId = false
            builderResult.activePokemonId = UInt64(0)
@@ -799,7 +724,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.playerJoined = value
            }
       }
-      private var playerJoinedBuilder_:Pogoprotos.Data.Battle.BattleParticipant.Builder! {
+      fileprivate var playerJoinedBuilder_:Pogoprotos.Data.Battle.BattleParticipant.Builder! {
            didSet {
               builderResult.hasPlayerJoined = true
            }
@@ -809,24 +734,27 @@ public extension Pogoprotos.Data.Battle {
            playerJoinedBuilder_ = Pogoprotos.Data.Battle.BattleParticipant.Builder()
            builderResult.playerJoined = playerJoinedBuilder_.getMessage()
            if playerJoined != nil {
-              try! playerJoinedBuilder_.mergeFrom(playerJoined)
+              try! playerJoinedBuilder_.mergeFrom(other: playerJoined)
            }
         }
         return playerJoinedBuilder_
       }
-      public func setPlayerJoined(value:Pogoprotos.Data.Battle.BattleParticipant!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setPlayerJoined(_ value:Pogoprotos.Data.Battle.BattleParticipant!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.playerJoined = value
         return self
       }
+      @discardableResult
       public func mergePlayerJoined(value:Pogoprotos.Data.Battle.BattleParticipant) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         if builderResult.hasPlayerJoined {
-          builderResult.playerJoined = try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(builderResult.playerJoined).mergeFrom(value).buildPartial()
+          builderResult.playerJoined = try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(prototype:builderResult.playerJoined).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.playerJoined = value
         }
         builderResult.hasPlayerJoined = true
         return self
       }
+      @discardableResult
       public func clearPlayerJoined() -> Pogoprotos.Data.Battle.BattleAction.Builder {
         playerJoinedBuilder_ = nil
         builderResult.hasPlayerJoined = false
@@ -850,7 +778,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.battleResults = value
            }
       }
-      private var battleResultsBuilder_:Pogoprotos.Data.Battle.BattleResults.Builder! {
+      fileprivate var battleResultsBuilder_:Pogoprotos.Data.Battle.BattleResults.Builder! {
            didSet {
               builderResult.hasBattleResults = true
            }
@@ -860,74 +788,81 @@ public extension Pogoprotos.Data.Battle {
            battleResultsBuilder_ = Pogoprotos.Data.Battle.BattleResults.Builder()
            builderResult.battleResults = battleResultsBuilder_.getMessage()
            if battleResults != nil {
-              try! battleResultsBuilder_.mergeFrom(battleResults)
+              try! battleResultsBuilder_.mergeFrom(other: battleResults)
            }
         }
         return battleResultsBuilder_
       }
-      public func setBattleResults(value:Pogoprotos.Data.Battle.BattleResults!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setBattleResults(_ value:Pogoprotos.Data.Battle.BattleResults!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.battleResults = value
         return self
       }
+      @discardableResult
       public func mergeBattleResults(value:Pogoprotos.Data.Battle.BattleResults) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         if builderResult.hasBattleResults {
-          builderResult.battleResults = try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(builderResult.battleResults).mergeFrom(value).buildPartial()
+          builderResult.battleResults = try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(prototype:builderResult.battleResults).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.battleResults = value
         }
         builderResult.hasBattleResults = true
         return self
       }
+      @discardableResult
       public func clearBattleResults() -> Pogoprotos.Data.Battle.BattleAction.Builder {
         battleResultsBuilder_ = nil
         builderResult.hasBattleResults = false
         builderResult.battleResults = nil
         return self
       }
-      public var hasDamageWindowsStartTimestampMss:Bool {
+      public var hasDamageWindowsStartTimestampMs:Bool {
            get {
-                return builderResult.hasDamageWindowsStartTimestampMss
+                return builderResult.hasDamageWindowsStartTimestampMs
            }
       }
-      public var damageWindowsStartTimestampMss:Int64 {
+      public var damageWindowsStartTimestampMs:Int64 {
            get {
-                return builderResult.damageWindowsStartTimestampMss
+                return builderResult.damageWindowsStartTimestampMs
            }
            set (value) {
-               builderResult.hasDamageWindowsStartTimestampMss = true
-               builderResult.damageWindowsStartTimestampMss = value
+               builderResult.hasDamageWindowsStartTimestampMs = true
+               builderResult.damageWindowsStartTimestampMs = value
            }
       }
-      public func setDamageWindowsStartTimestampMss(value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        self.damageWindowsStartTimestampMss = value
+      @discardableResult
+      public func setDamageWindowsStartTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        self.damageWindowsStartTimestampMs = value
         return self
       }
-      public func clearDamageWindowsStartTimestampMss() -> Pogoprotos.Data.Battle.BattleAction.Builder{
-           builderResult.hasDamageWindowsStartTimestampMss = false
-           builderResult.damageWindowsStartTimestampMss = Int64(0)
+      @discardableResult
+      public func clearDamageWindowsStartTimestampMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
+           builderResult.hasDamageWindowsStartTimestampMs = false
+           builderResult.damageWindowsStartTimestampMs = Int64(0)
            return self
       }
-      public var hasDamageWindowsEndTimestampMss:Bool {
+      public var hasDamageWindowsEndTimestampMs:Bool {
            get {
-                return builderResult.hasDamageWindowsEndTimestampMss
+                return builderResult.hasDamageWindowsEndTimestampMs
            }
       }
-      public var damageWindowsEndTimestampMss:Int64 {
+      public var damageWindowsEndTimestampMs:Int64 {
            get {
-                return builderResult.damageWindowsEndTimestampMss
+                return builderResult.damageWindowsEndTimestampMs
            }
            set (value) {
-               builderResult.hasDamageWindowsEndTimestampMss = true
-               builderResult.damageWindowsEndTimestampMss = value
+               builderResult.hasDamageWindowsEndTimestampMs = true
+               builderResult.damageWindowsEndTimestampMs = value
            }
       }
-      public func setDamageWindowsEndTimestampMss(value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        self.damageWindowsEndTimestampMss = value
+      @discardableResult
+      public func setDamageWindowsEndTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        self.damageWindowsEndTimestampMs = value
         return self
       }
-      public func clearDamageWindowsEndTimestampMss() -> Pogoprotos.Data.Battle.BattleAction.Builder{
-           builderResult.hasDamageWindowsEndTimestampMss = false
-           builderResult.damageWindowsEndTimestampMss = Int64(0)
+      @discardableResult
+      public func clearDamageWindowsEndTimestampMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
+           builderResult.hasDamageWindowsEndTimestampMs = false
+           builderResult.damageWindowsEndTimestampMs = Int64(0)
            return self
       }
       public var hasPlayerLeft:Bool {
@@ -947,7 +882,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.playerLeft = value
            }
       }
-      private var playerLeftBuilder_:Pogoprotos.Data.Battle.BattleParticipant.Builder! {
+      fileprivate var playerLeftBuilder_:Pogoprotos.Data.Battle.BattleParticipant.Builder! {
            didSet {
               builderResult.hasPlayerLeft = true
            }
@@ -957,24 +892,27 @@ public extension Pogoprotos.Data.Battle {
            playerLeftBuilder_ = Pogoprotos.Data.Battle.BattleParticipant.Builder()
            builderResult.playerLeft = playerLeftBuilder_.getMessage()
            if playerLeft != nil {
-              try! playerLeftBuilder_.mergeFrom(playerLeft)
+              try! playerLeftBuilder_.mergeFrom(other: playerLeft)
            }
         }
         return playerLeftBuilder_
       }
-      public func setPlayerLeft(value:Pogoprotos.Data.Battle.BattleParticipant!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setPlayerLeft(_ value:Pogoprotos.Data.Battle.BattleParticipant!) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.playerLeft = value
         return self
       }
+      @discardableResult
       public func mergePlayerLeft(value:Pogoprotos.Data.Battle.BattleParticipant) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         if builderResult.hasPlayerLeft {
-          builderResult.playerLeft = try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(builderResult.playerLeft).mergeFrom(value).buildPartial()
+          builderResult.playerLeft = try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(prototype:builderResult.playerLeft).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.playerLeft = value
         }
         builderResult.hasPlayerLeft = true
         return self
       }
+      @discardableResult
       public func clearPlayerLeft() -> Pogoprotos.Data.Battle.BattleAction.Builder {
         playerLeftBuilder_ = nil
         builderResult.hasPlayerLeft = false
@@ -995,10 +933,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.targetPokemonId = value
            }
       }
-      public func setTargetPokemonId(value:UInt64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      @discardableResult
+      public func setTargetPokemonId(_ value:UInt64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
         self.targetPokemonId = value
         return self
       }
+      @discardableResult
       public func clearTargetPokemonId() -> Pogoprotos.Data.Battle.BattleAction.Builder{
            builderResult.hasTargetPokemonId = false
            builderResult.targetPokemonId = UInt64(0)
@@ -1009,12 +949,13 @@ public extension Pogoprotos.Data.Battle {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Battle.BattleAction.Builder {
         builderResult = Pogoprotos.Data.Battle.BattleAction()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        return try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Battle.BattleAction {
            try checkInitialized()
@@ -1024,12 +965,13 @@ public extension Pogoprotos.Data.Battle {
         let returnMe:Pogoprotos.Data.Battle.BattleAction = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Battle.BattleAction) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         if other == Pogoprotos.Data.Battle.BattleAction() {
          return self
         }
-        if other.hasTypes {
-             types = other.types
+        if other.hasType {
+             type = other.type
         }
         if other.hasActionStartMs {
              actionStartMs = other.actionStartMs
@@ -1050,144 +992,146 @@ public extension Pogoprotos.Data.Battle {
              activePokemonId = other.activePokemonId
         }
         if (other.hasPlayerJoined) {
-            try mergePlayerJoined(other.playerJoined)
+            try mergePlayerJoined(value: other.playerJoined)
         }
         if (other.hasBattleResults) {
-            try mergeBattleResults(other.battleResults)
+            try mergeBattleResults(value: other.battleResults)
         }
-        if other.hasDamageWindowsStartTimestampMss {
-             damageWindowsStartTimestampMss = other.damageWindowsStartTimestampMss
+        if other.hasDamageWindowsStartTimestampMs {
+             damageWindowsStartTimestampMs = other.damageWindowsStartTimestampMs
         }
-        if other.hasDamageWindowsEndTimestampMss {
-             damageWindowsEndTimestampMss = other.damageWindowsEndTimestampMss
+        if other.hasDamageWindowsEndTimestampMs {
+             damageWindowsEndTimestampMs = other.damageWindowsEndTimestampMs
         }
         if (other.hasPlayerLeft) {
-            try mergePlayerLeft(other.playerLeft)
+            try mergePlayerLeft(value: other.playerLeft)
         }
         if other.hasTargetPokemonId {
              targetPokemonId = other.targetPokemonId
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            let valueInttypes = try input.readEnum()
-            if let enumstypes = Pogoprotos.Data.Battle.BattleActionType(rawValue:valueInttypes){
-                 types = enumstypes
+            let valueInttype = try codedInputStream.readEnum()
+            if let enumstype = Pogoprotos.Data.Battle.BattleActionType(rawValue:valueInttype){
+                 type = enumstype
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueInttypes))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 1, value:Int64(valueInttype))
             }
 
           case 16:
-            actionStartMs = try input.readInt64()
+            actionStartMs = try codedInputStream.readInt64()
 
           case 24:
-            durationMs = try input.readInt32()
+            durationMs = try codedInputStream.readInt32()
 
           case 40:
-            energyDelta = try input.readInt32()
+            energyDelta = try codedInputStream.readInt32()
 
           case 48:
-            attackerIndex = try input.readInt32()
+            attackerIndex = try codedInputStream.readInt32()
 
           case 56:
-            targetIndex = try input.readInt32()
+            targetIndex = try codedInputStream.readInt32()
 
           case 65:
-            activePokemonId = try input.readFixed64()
+            activePokemonId = try codedInputStream.readFixed64()
 
           case 74:
             let subBuilder:Pogoprotos.Data.Battle.BattleParticipant.Builder = Pogoprotos.Data.Battle.BattleParticipant.Builder()
             if hasPlayerJoined {
-              try subBuilder.mergeFrom(playerJoined)
+              try subBuilder.mergeFrom(other: playerJoined)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             playerJoined = subBuilder.buildPartial()
 
           case 82:
             let subBuilder:Pogoprotos.Data.Battle.BattleResults.Builder = Pogoprotos.Data.Battle.BattleResults.Builder()
             if hasBattleResults {
-              try subBuilder.mergeFrom(battleResults)
+              try subBuilder.mergeFrom(other: battleResults)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             battleResults = subBuilder.buildPartial()
 
           case 88:
-            damageWindowsStartTimestampMss = try input.readInt64()
+            damageWindowsStartTimestampMs = try codedInputStream.readInt64()
 
           case 96:
-            damageWindowsEndTimestampMss = try input.readInt64()
+            damageWindowsEndTimestampMs = try codedInputStream.readInt64()
 
           case 106:
             let subBuilder:Pogoprotos.Data.Battle.BattleParticipant.Builder = Pogoprotos.Data.Battle.BattleParticipant.Builder()
             if hasPlayerLeft {
-              try subBuilder.mergeFrom(playerLeft)
+              try subBuilder.mergeFrom(other: playerLeft)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             playerLeft = subBuilder.buildPartial()
 
           case 113:
-            targetPokemonId = try input.readFixed64()
+            targetPokemonId = try codedInputStream.readFixed64()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattleAction.Builder()
-        if let jsonValueTypes = jsonMap["type"] as? String {
-          resultDecodedBuilder.types = try Pogoprotos.Data.Battle.BattleActionType.fromString(jsonValueTypes)
+        if let jsonValueType = jsonMap["type"] as? String {
+          resultDecodedBuilder.type = try Pogoprotos.Data.Battle.BattleActionType.fromString(str: jsonValueType)
         }
         if let jsonValueActionStartMs = jsonMap["actionStartMs"] as? String {
           resultDecodedBuilder.actionStartMs = Int64(jsonValueActionStartMs)!
         }
-        if let jsonValueDurationMs = jsonMap["durationMs"] as? NSNumber {
-          resultDecodedBuilder.durationMs = jsonValueDurationMs.intValue
+        if let jsonValueDurationMs = jsonMap["durationMs"] as? Int {
+          resultDecodedBuilder.durationMs = Int32(jsonValueDurationMs)
         }
-        if let jsonValueEnergyDelta = jsonMap["energyDelta"] as? NSNumber {
-          resultDecodedBuilder.energyDelta = jsonValueEnergyDelta.intValue
+        if let jsonValueEnergyDelta = jsonMap["energyDelta"] as? Int {
+          resultDecodedBuilder.energyDelta = Int32(jsonValueEnergyDelta)
         }
-        if let jsonValueAttackerIndex = jsonMap["attackerIndex"] as? NSNumber {
-          resultDecodedBuilder.attackerIndex = jsonValueAttackerIndex.intValue
+        if let jsonValueAttackerIndex = jsonMap["attackerIndex"] as? Int {
+          resultDecodedBuilder.attackerIndex = Int32(jsonValueAttackerIndex)
         }
-        if let jsonValueTargetIndex = jsonMap["targetIndex"] as? NSNumber {
-          resultDecodedBuilder.targetIndex = jsonValueTargetIndex.intValue
+        if let jsonValueTargetIndex = jsonMap["targetIndex"] as? Int {
+          resultDecodedBuilder.targetIndex = Int32(jsonValueTargetIndex)
         }
         if let jsonValueActivePokemonId = jsonMap["activePokemonId"] as? String {
           resultDecodedBuilder.activePokemonId = UInt64(jsonValueActivePokemonId)!
         }
-        if let jsonValuePlayerJoined = jsonMap["playerJoined"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.playerJoined = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonValuePlayerJoined).build()
+        if let jsonValuePlayerJoined = jsonMap["playerJoined"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.playerJoined = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:jsonValuePlayerJoined).build()
 
         }
-        if let jsonValueBattleResults = jsonMap["battleResults"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.battleResults = try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonValueBattleResults).build()
+        if let jsonValueBattleResults = jsonMap["battleResults"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.battleResults = try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonMap:jsonValueBattleResults).build()
 
         }
-        if let jsonValueDamageWindowsStartTimestampMss = jsonMap["damageWindowsStartTimestampMss"] as? String {
-          resultDecodedBuilder.damageWindowsStartTimestampMss = Int64(jsonValueDamageWindowsStartTimestampMss)!
+        if let jsonValueDamageWindowsStartTimestampMs = jsonMap["damageWindowsStartTimestampMs"] as? String {
+          resultDecodedBuilder.damageWindowsStartTimestampMs = Int64(jsonValueDamageWindowsStartTimestampMs)!
         }
-        if let jsonValueDamageWindowsEndTimestampMss = jsonMap["damageWindowsEndTimestampMss"] as? String {
-          resultDecodedBuilder.damageWindowsEndTimestampMss = Int64(jsonValueDamageWindowsEndTimestampMss)!
+        if let jsonValueDamageWindowsEndTimestampMs = jsonMap["damageWindowsEndTimestampMs"] as? String {
+          resultDecodedBuilder.damageWindowsEndTimestampMs = Int64(jsonValueDamageWindowsEndTimestampMs)!
         }
-        if let jsonValuePlayerLeft = jsonMap["playerLeft"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.playerLeft = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonValuePlayerLeft).build()
+        if let jsonValuePlayerLeft = jsonMap["playerLeft"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.playerLeft = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:jsonValuePlayerLeft).build()
 
         }
         if let jsonValueTargetPokemonId = jsonMap["targetPokemonId"] as? String {
@@ -1195,31 +1139,47 @@ public extension Pogoprotos.Data.Battle {
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class BattleLog : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var state:Pogoprotos.Data.Battle.BattleState = Pogoprotos.Data.Battle.BattleState.StateUnset
-    public private(set) var hasState:Bool = false
-    public private(set) var battleType:Pogoprotos.Data.Battle.BattleType = Pogoprotos.Data.Battle.BattleType.BattleTypeUnset
-    public private(set) var hasBattleType:Bool = false
-    public private(set) var hasServerMs:Bool = false
-    public private(set) var serverMs:Int64 = Int64(0)
+  final public class BattleLog : GeneratedMessage {
 
-    public private(set) var battleActions:Array<Pogoprotos.Data.Battle.BattleAction>  = Array<Pogoprotos.Data.Battle.BattleAction>()
-    public private(set) var hasBattleStartTimestampMs:Bool = false
-    public private(set) var battleStartTimestampMs:Int64 = Int64(0)
+    public static func == (lhs: Pogoprotos.Data.Battle.BattleLog, rhs: Pogoprotos.Data.Battle.BattleLog) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasState == rhs.hasState) && (!lhs.hasState || lhs.state == rhs.state)
+      fieldCheck = fieldCheck && (lhs.hasBattleType == rhs.hasBattleType) && (!lhs.hasBattleType || lhs.battleType == rhs.battleType)
+      fieldCheck = fieldCheck && (lhs.hasServerMs == rhs.hasServerMs) && (!lhs.hasServerMs || lhs.serverMs == rhs.serverMs)
+      fieldCheck = fieldCheck && (lhs.battleActions == rhs.battleActions)
+      fieldCheck = fieldCheck && (lhs.hasBattleStartTimestampMs == rhs.hasBattleStartTimestampMs) && (!lhs.hasBattleStartTimestampMs || lhs.battleStartTimestampMs == rhs.battleStartTimestampMs)
+      fieldCheck = fieldCheck && (lhs.hasBattleEndTimestampMs == rhs.hasBattleEndTimestampMs) && (!lhs.hasBattleEndTimestampMs || lhs.battleEndTimestampMs == rhs.battleEndTimestampMs)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
 
-    public private(set) var hasBattleEndTimestampMs:Bool = false
-    public private(set) var battleEndTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var state:Pogoprotos.Data.Battle.BattleState = Pogoprotos.Data.Battle.BattleState.stateUnset
+    public fileprivate(set) var hasState:Bool = false
+    public fileprivate(set) var battleType:Pogoprotos.Data.Battle.BattleType = Pogoprotos.Data.Battle.BattleType.battleTypeUnset
+    public fileprivate(set) var hasBattleType:Bool = false
+    public fileprivate(set) var serverMs:Int64 = Int64(0)
+    public fileprivate(set) var hasServerMs:Bool = false
+
+    public fileprivate(set) var battleActions:Array<Pogoprotos.Data.Battle.BattleAction>  = Array<Pogoprotos.Data.Battle.BattleAction>()
+    public fileprivate(set) var battleStartTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasBattleStartTimestampMs:Bool = false
+
+    public fileprivate(set) var battleEndTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasBattleEndTimestampMs:Bool = false
 
     required public init() {
          super.init()
@@ -1227,26 +1187,26 @@ public extension Pogoprotos.Data.Battle {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasState {
-        try output.writeEnum(1, value:state.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 1, value:state.rawValue)
       }
       if hasBattleType {
-        try output.writeEnum(2, value:battleType.rawValue)
+        try codedOutputStream.writeEnum(fieldNumber: 2, value:battleType.rawValue)
       }
       if hasServerMs {
-        try output.writeInt64(3, value:serverMs)
+        try codedOutputStream.writeInt64(fieldNumber: 3, value:serverMs)
       }
       for oneElementBattleActions in battleActions {
-          try output.writeMessage(4, value:oneElementBattleActions)
+          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementBattleActions)
       }
       if hasBattleStartTimestampMs {
-        try output.writeInt64(5, value:battleStartTimestampMs)
+        try codedOutputStream.writeInt64(fieldNumber: 5, value:battleStartTimestampMs)
       }
       if hasBattleEndTimestampMs {
-        try output.writeInt64(6, value:battleEndTimestampMs)
+        try codedOutputStream.writeInt64(fieldNumber: 6, value:battleEndTimestampMs)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -1256,54 +1216,26 @@ public extension Pogoprotos.Data.Battle {
 
       serialize_size = 0
       if (hasState) {
-        serialize_size += state.rawValue.computeEnumSize(1)
+        serialize_size += state.rawValue.computeEnumSize(fieldNumber: 1)
       }
       if (hasBattleType) {
-        serialize_size += battleType.rawValue.computeEnumSize(2)
+        serialize_size += battleType.rawValue.computeEnumSize(fieldNumber: 2)
       }
       if hasServerMs {
-        serialize_size += serverMs.computeInt64Size(3)
+        serialize_size += serverMs.computeInt64Size(fieldNumber: 3)
       }
       for oneElementBattleActions in battleActions {
-          serialize_size += oneElementBattleActions.computeMessageSize(4)
+          serialize_size += oneElementBattleActions.computeMessageSize(fieldNumber: 4)
       }
       if hasBattleStartTimestampMs {
-        serialize_size += battleStartTimestampMs.computeInt64Size(5)
+        serialize_size += battleStartTimestampMs.computeInt64Size(fieldNumber: 5)
       }
       if hasBattleEndTimestampMs {
-        serialize_size += battleEndTimestampMs.computeInt64Size(6)
+        serialize_size += battleEndTimestampMs.computeInt64Size(fieldNumber: 6)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Battle.BattleLog> {
-      var mergedArray = Array<Pogoprotos.Data.Battle.BattleLog>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleLog? {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Battle.BattleLog.Builder {
       return Pogoprotos.Data.Battle.BattleLog.classBuilder() as! Pogoprotos.Data.Battle.BattleLog.Builder
@@ -1311,24 +1243,24 @@ public extension Pogoprotos.Data.Battle {
     public func getBuilder() -> Pogoprotos.Data.Battle.BattleLog.Builder {
       return classBuilder() as! Pogoprotos.Data.Battle.BattleLog.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleLog.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleLog.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-      return try Pogoprotos.Data.Battle.BattleLog.builderWithPrototype(self)
+      return try Pogoprotos.Data.Battle.BattleLog.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Battle.BattleLog) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasState {
         jsonMap["state"] = state.toString()
       }
@@ -1339,10 +1271,10 @@ public extension Pogoprotos.Data.Battle {
         jsonMap["serverMs"] = "\(serverMs)"
       }
       if !battleActions.isEmpty {
-        var jsonArrayBattleActions:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayBattleActions:Array<Dictionary<String,Any>> = []
           for oneValueBattleActions in battleActions {
             let ecodedMessageBattleActions = try oneValueBattleActions.encode()
-            jsonArrayBattleActions += [ecodedMessageBattleActions]
+            jsonArrayBattleActions.append(ecodedMessageBattleActions)
           }
         jsonMap["battleActions"] = jsonArrayBattleActions
       }
@@ -1354,11 +1286,11 @@ public extension Pogoprotos.Data.Battle {
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleLog {
+      return try Pogoprotos.Data.Battle.BattleLog.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Battle.BattleLog {
-      return try Pogoprotos.Data.Battle.BattleLog.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Battle.BattleLog {
+      return try Pogoprotos.Data.Battle.BattleLog.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -1374,7 +1306,7 @@ public extension Pogoprotos.Data.Battle {
       var battleActionsElementIndex:Int = 0
       for oneElementBattleActions in battleActions {
           output += "\(indent) battleActions[\(battleActionsElementIndex)] {\n"
-          output += try oneElementBattleActions.getDescription("\(indent)  ")
+          output += try oneElementBattleActions.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           battleActionsElementIndex += 1
       }
@@ -1384,7 +1316,7 @@ public extension Pogoprotos.Data.Battle {
       if hasBattleEndTimestampMs {
         output += "\(indent) battleEndTimestampMs: \(battleEndTimestampMs) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -1422,13 +1354,10 @@ public extension Pogoprotos.Data.Battle {
     override public func className() -> String {
         return "Pogoprotos.Data.Battle.BattleLog"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Battle.BattleLog.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Battle.BattleLog = Pogoprotos.Data.Battle.BattleLog()
+      fileprivate var builderResult:Pogoprotos.Data.Battle.BattleLog = Pogoprotos.Data.Battle.BattleLog()
       public func getMessage() -> Pogoprotos.Data.Battle.BattleLog {
           return builderResult
       }
@@ -1450,13 +1379,15 @@ public extension Pogoprotos.Data.Battle {
                 builderResult.state = value
             }
         }
-        public func setState(value:Pogoprotos.Data.Battle.BattleState) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+        public func setState(_ value:Pogoprotos.Data.Battle.BattleState) -> Pogoprotos.Data.Battle.BattleLog.Builder {
           self.state = value
           return self
         }
+      @discardableResult
         public func clearState() -> Pogoprotos.Data.Battle.BattleLog.Builder {
            builderResult.hasState = false
-           builderResult.state = .StateUnset
+           builderResult.state = .stateUnset
            return self
         }
         public var hasBattleType:Bool{
@@ -1473,13 +1404,15 @@ public extension Pogoprotos.Data.Battle {
                 builderResult.battleType = value
             }
         }
-        public func setBattleType(value:Pogoprotos.Data.Battle.BattleType) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+        public func setBattleType(_ value:Pogoprotos.Data.Battle.BattleType) -> Pogoprotos.Data.Battle.BattleLog.Builder {
           self.battleType = value
           return self
         }
+      @discardableResult
         public func clearBattleType() -> Pogoprotos.Data.Battle.BattleLog.Builder {
            builderResult.hasBattleType = false
-           builderResult.battleType = .BattleTypeUnset
+           builderResult.battleType = .battleTypeUnset
            return self
         }
       public var hasServerMs:Bool {
@@ -1496,10 +1429,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.serverMs = value
            }
       }
-      public func setServerMs(value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+      public func setServerMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
         self.serverMs = value
         return self
       }
+      @discardableResult
       public func clearServerMs() -> Pogoprotos.Data.Battle.BattleLog.Builder{
            builderResult.hasServerMs = false
            builderResult.serverMs = Int64(0)
@@ -1513,12 +1448,14 @@ public extension Pogoprotos.Data.Battle {
                builderResult.battleActions = value
            }
       }
-      public func setBattleActions(value:Array<Pogoprotos.Data.Battle.BattleAction>) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+      public func setBattleActions(_ value:Array<Pogoprotos.Data.Battle.BattleAction>) -> Pogoprotos.Data.Battle.BattleLog.Builder {
         self.battleActions = value
         return self
       }
+      @discardableResult
       public func clearBattleActions() -> Pogoprotos.Data.Battle.BattleLog.Builder {
-        builderResult.battleActions.removeAll(keepCapacity: false)
+        builderResult.battleActions.removeAll(keepingCapacity: false)
         return self
       }
       public var hasBattleStartTimestampMs:Bool {
@@ -1535,10 +1472,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.battleStartTimestampMs = value
            }
       }
-      public func setBattleStartTimestampMs(value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+      public func setBattleStartTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
         self.battleStartTimestampMs = value
         return self
       }
+      @discardableResult
       public func clearBattleStartTimestampMs() -> Pogoprotos.Data.Battle.BattleLog.Builder{
            builderResult.hasBattleStartTimestampMs = false
            builderResult.battleStartTimestampMs = Int64(0)
@@ -1558,10 +1497,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.battleEndTimestampMs = value
            }
       }
-      public func setBattleEndTimestampMs(value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      @discardableResult
+      public func setBattleEndTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleLog.Builder {
         self.battleEndTimestampMs = value
         return self
       }
+      @discardableResult
       public func clearBattleEndTimestampMs() -> Pogoprotos.Data.Battle.BattleLog.Builder{
            builderResult.hasBattleEndTimestampMs = false
            builderResult.battleEndTimestampMs = Int64(0)
@@ -1572,12 +1513,13 @@ public extension Pogoprotos.Data.Battle {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Battle.BattleLog.Builder {
         builderResult = Pogoprotos.Data.Battle.BattleLog()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-        return try Pogoprotos.Data.Battle.BattleLog.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Battle.BattleLog.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Battle.BattleLog {
            try checkInitialized()
@@ -1587,6 +1529,7 @@ public extension Pogoprotos.Data.Battle {
         let returnMe:Pogoprotos.Data.Battle.BattleLog = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Battle.BattleLog) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
         if other == Pogoprotos.Data.Battle.BattleLog() {
          return self
@@ -1609,76 +1552,78 @@ public extension Pogoprotos.Data.Battle {
         if other.hasBattleEndTimestampMs {
              battleEndTimestampMs = other.battleEndTimestampMs
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            let valueIntstate = try input.readEnum()
+            let valueIntstate = try codedInputStream.readEnum()
             if let enumsstate = Pogoprotos.Data.Battle.BattleState(rawValue:valueIntstate){
                  state = enumsstate
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(1, value:Int64(valueIntstate))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 1, value:Int64(valueIntstate))
             }
 
           case 16:
-            let valueIntbattleType = try input.readEnum()
+            let valueIntbattleType = try codedInputStream.readEnum()
             if let enumsbattleType = Pogoprotos.Data.Battle.BattleType(rawValue:valueIntbattleType){
                  battleType = enumsbattleType
             } else {
-                 try unknownFieldsBuilder.mergeVarintField(2, value:Int64(valueIntbattleType))
+                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 2, value:Int64(valueIntbattleType))
             }
 
           case 24:
-            serverMs = try input.readInt64()
+            serverMs = try codedInputStream.readInt64()
 
           case 34:
             let subBuilder = Pogoprotos.Data.Battle.BattleAction.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            battleActions += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            battleActions.append(subBuilder.buildPartial())
 
           case 40:
-            battleStartTimestampMs = try input.readInt64()
+            battleStartTimestampMs = try codedInputStream.readInt64()
 
           case 48:
-            battleEndTimestampMs = try input.readInt64()
+            battleEndTimestampMs = try codedInputStream.readInt64()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattleLog.Builder()
         if let jsonValueState = jsonMap["state"] as? String {
-          resultDecodedBuilder.state = try Pogoprotos.Data.Battle.BattleState.fromString(jsonValueState)
+          resultDecodedBuilder.state = try Pogoprotos.Data.Battle.BattleState.fromString(str: jsonValueState)
         }
         if let jsonValueBattleType = jsonMap["battleType"] as? String {
-          resultDecodedBuilder.battleType = try Pogoprotos.Data.Battle.BattleType.fromString(jsonValueBattleType)
+          resultDecodedBuilder.battleType = try Pogoprotos.Data.Battle.BattleType.fromString(str: jsonValueBattleType)
         }
         if let jsonValueServerMs = jsonMap["serverMs"] as? String {
           resultDecodedBuilder.serverMs = Int64(jsonValueServerMs)!
         }
-        if let jsonValueBattleActions = jsonMap["battleActions"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueBattleActions = jsonMap["battleActions"] as? Array<Dictionary<String,Any>> {
           var jsonArrayBattleActions:Array<Pogoprotos.Data.Battle.BattleAction> = []
           for oneValueBattleActions in jsonValueBattleActions {
-            let messageFromStringBattleActions = try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(oneValueBattleActions).build()
+            let messageFromStringBattleActions = try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap:oneValueBattleActions).build()
 
-            jsonArrayBattleActions += [messageFromStringBattleActions]
+            jsonArrayBattleActions.append(messageFromStringBattleActions)
           }
           resultDecodedBuilder.battleActions = jsonArrayBattleActions
         }
@@ -1690,44 +1635,58 @@ public extension Pogoprotos.Data.Battle {
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Battle.BattleLog.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Battle.BattleLog.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Battle.BattleLog.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class BattleParticipant : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasActivePokemon:Bool = false
-    public private(set) var activePokemon:Pogoprotos.Data.Battle.BattlePokemonInfo!
-    public private(set) var hasTrainerPublicProfile:Bool = false
-    public private(set) var trainerPublicProfile:Pogoprotos.Data.Player.PlayerPublicProfile!
-    public private(set) var reversePokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>  = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
-    public private(set) var defeatedPokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>  = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
+  final public class BattleParticipant : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Data.Battle.BattleParticipant, rhs: Pogoprotos.Data.Battle.BattleParticipant) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasActivePokemon == rhs.hasActivePokemon) && (!lhs.hasActivePokemon || lhs.activePokemon == rhs.activePokemon)
+      fieldCheck = fieldCheck && (lhs.hasTrainerPublicProfile == rhs.hasTrainerPublicProfile) && (!lhs.hasTrainerPublicProfile || lhs.trainerPublicProfile == rhs.trainerPublicProfile)
+      fieldCheck = fieldCheck && (lhs.reversePokemon == rhs.reversePokemon)
+      fieldCheck = fieldCheck && (lhs.defeatedPokemon == rhs.defeatedPokemon)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
+    public fileprivate(set) var activePokemon:Pogoprotos.Data.Battle.BattlePokemonInfo!
+    public fileprivate(set) var hasActivePokemon:Bool = false
+    public fileprivate(set) var trainerPublicProfile:Pogoprotos.Data.Player.PlayerPublicProfile!
+    public fileprivate(set) var hasTrainerPublicProfile:Bool = false
+    public fileprivate(set) var reversePokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>  = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
+    public fileprivate(set) var defeatedPokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>  = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
     required public init() {
          super.init()
     }
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasActivePokemon {
-        try output.writeMessage(1, value:activePokemon)
+        try codedOutputStream.writeMessage(fieldNumber: 1, value:activePokemon)
       }
       if hasTrainerPublicProfile {
-        try output.writeMessage(2, value:trainerPublicProfile)
+        try codedOutputStream.writeMessage(fieldNumber: 2, value:trainerPublicProfile)
       }
       for oneElementReversePokemon in reversePokemon {
-          try output.writeMessage(3, value:oneElementReversePokemon)
+          try codedOutputStream.writeMessage(fieldNumber: 3, value:oneElementReversePokemon)
       }
       for oneElementDefeatedPokemon in defeatedPokemon {
-          try output.writeMessage(4, value:oneElementDefeatedPokemon)
+          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementDefeatedPokemon)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -1737,52 +1696,24 @@ public extension Pogoprotos.Data.Battle {
 
       serialize_size = 0
       if hasActivePokemon {
-          if let varSizeactivePokemon = activePokemon?.computeMessageSize(1) {
+          if let varSizeactivePokemon = activePokemon?.computeMessageSize(fieldNumber: 1) {
               serialize_size += varSizeactivePokemon
           }
       }
       if hasTrainerPublicProfile {
-          if let varSizetrainerPublicProfile = trainerPublicProfile?.computeMessageSize(2) {
+          if let varSizetrainerPublicProfile = trainerPublicProfile?.computeMessageSize(fieldNumber: 2) {
               serialize_size += varSizetrainerPublicProfile
           }
       }
       for oneElementReversePokemon in reversePokemon {
-          serialize_size += oneElementReversePokemon.computeMessageSize(3)
+          serialize_size += oneElementReversePokemon.computeMessageSize(fieldNumber: 3)
       }
       for oneElementDefeatedPokemon in defeatedPokemon {
-          serialize_size += oneElementDefeatedPokemon.computeMessageSize(4)
+          serialize_size += oneElementDefeatedPokemon.computeMessageSize(fieldNumber: 4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Battle.BattleParticipant> {
-      var mergedArray = Array<Pogoprotos.Data.Battle.BattleParticipant>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant? {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
       return Pogoprotos.Data.Battle.BattleParticipant.classBuilder() as! Pogoprotos.Data.Battle.BattleParticipant.Builder
@@ -1790,24 +1721,24 @@ public extension Pogoprotos.Data.Battle {
     public func getBuilder() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
       return classBuilder() as! Pogoprotos.Data.Battle.BattleParticipant.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleParticipant.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleParticipant.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-      return try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(self)
+      return try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Battle.BattleParticipant) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasActivePokemon {
         jsonMap["activePokemon"] = try activePokemon.encode()
       }
@@ -1815,60 +1746,60 @@ public extension Pogoprotos.Data.Battle {
         jsonMap["trainerPublicProfile"] = try trainerPublicProfile.encode()
       }
       if !reversePokemon.isEmpty {
-        var jsonArrayReversePokemon:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayReversePokemon:Array<Dictionary<String,Any>> = []
           for oneValueReversePokemon in reversePokemon {
             let ecodedMessageReversePokemon = try oneValueReversePokemon.encode()
-            jsonArrayReversePokemon += [ecodedMessageReversePokemon]
+            jsonArrayReversePokemon.append(ecodedMessageReversePokemon)
           }
         jsonMap["reversePokemon"] = jsonArrayReversePokemon
       }
       if !defeatedPokemon.isEmpty {
-        var jsonArrayDefeatedPokemon:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayDefeatedPokemon:Array<Dictionary<String,Any>> = []
           for oneValueDefeatedPokemon in defeatedPokemon {
             let ecodedMessageDefeatedPokemon = try oneValueDefeatedPokemon.encode()
-            jsonArrayDefeatedPokemon += [ecodedMessageDefeatedPokemon]
+            jsonArrayDefeatedPokemon.append(ecodedMessageDefeatedPokemon)
           }
         jsonMap["defeatedPokemon"] = jsonArrayDefeatedPokemon
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+      return try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Battle.BattleParticipant {
-      return try Pogoprotos.Data.Battle.BattleParticipant.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+      return try Pogoprotos.Data.Battle.BattleParticipant.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
       if hasActivePokemon {
         output += "\(indent) activePokemon {\n"
         if let outDescActivePokemon = activePokemon {
-          output += try outDescActivePokemon.getDescription("\(indent)  ")
+          output += try outDescActivePokemon.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       if hasTrainerPublicProfile {
         output += "\(indent) trainerPublicProfile {\n"
         if let outDescTrainerPublicProfile = trainerPublicProfile {
-          output += try outDescTrainerPublicProfile.getDescription("\(indent)  ")
+          output += try outDescTrainerPublicProfile.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       var reversePokemonElementIndex:Int = 0
       for oneElementReversePokemon in reversePokemon {
           output += "\(indent) reversePokemon[\(reversePokemonElementIndex)] {\n"
-          output += try oneElementReversePokemon.getDescription("\(indent)  ")
+          output += try oneElementReversePokemon.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           reversePokemonElementIndex += 1
       }
       var defeatedPokemonElementIndex:Int = 0
       for oneElementDefeatedPokemon in defeatedPokemon {
           output += "\(indent) defeatedPokemon[\(defeatedPokemonElementIndex)] {\n"
-          output += try oneElementDefeatedPokemon.getDescription("\(indent)  ")
+          output += try oneElementDefeatedPokemon.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           defeatedPokemonElementIndex += 1
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -1904,13 +1835,10 @@ public extension Pogoprotos.Data.Battle {
     override public func className() -> String {
         return "Pogoprotos.Data.Battle.BattleParticipant"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Battle.BattleParticipant.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Battle.BattleParticipant = Pogoprotos.Data.Battle.BattleParticipant()
+      fileprivate var builderResult:Pogoprotos.Data.Battle.BattleParticipant = Pogoprotos.Data.Battle.BattleParticipant()
       public func getMessage() -> Pogoprotos.Data.Battle.BattleParticipant {
           return builderResult
       }
@@ -1935,7 +1863,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.activePokemon = value
            }
       }
-      private var activePokemonBuilder_:Pogoprotos.Data.Battle.BattlePokemonInfo.Builder! {
+      fileprivate var activePokemonBuilder_:Pogoprotos.Data.Battle.BattlePokemonInfo.Builder! {
            didSet {
               builderResult.hasActivePokemon = true
            }
@@ -1945,24 +1873,27 @@ public extension Pogoprotos.Data.Battle {
            activePokemonBuilder_ = Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
            builderResult.activePokemon = activePokemonBuilder_.getMessage()
            if activePokemon != nil {
-              try! activePokemonBuilder_.mergeFrom(activePokemon)
+              try! activePokemonBuilder_.mergeFrom(other: activePokemon)
            }
         }
         return activePokemonBuilder_
       }
-      public func setActivePokemon(value:Pogoprotos.Data.Battle.BattlePokemonInfo!) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+      @discardableResult
+      public func setActivePokemon(_ value:Pogoprotos.Data.Battle.BattlePokemonInfo!) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         self.activePokemon = value
         return self
       }
+      @discardableResult
       public func mergeActivePokemon(value:Pogoprotos.Data.Battle.BattlePokemonInfo) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         if builderResult.hasActivePokemon {
-          builderResult.activePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(builderResult.activePokemon).mergeFrom(value).buildPartial()
+          builderResult.activePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(prototype:builderResult.activePokemon).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.activePokemon = value
         }
         builderResult.hasActivePokemon = true
         return self
       }
+      @discardableResult
       public func clearActivePokemon() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         activePokemonBuilder_ = nil
         builderResult.hasActivePokemon = false
@@ -1986,7 +1917,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.trainerPublicProfile = value
            }
       }
-      private var trainerPublicProfileBuilder_:Pogoprotos.Data.Player.PlayerPublicProfile.Builder! {
+      fileprivate var trainerPublicProfileBuilder_:Pogoprotos.Data.Player.PlayerPublicProfile.Builder! {
            didSet {
               builderResult.hasTrainerPublicProfile = true
            }
@@ -1996,24 +1927,27 @@ public extension Pogoprotos.Data.Battle {
            trainerPublicProfileBuilder_ = Pogoprotos.Data.Player.PlayerPublicProfile.Builder()
            builderResult.trainerPublicProfile = trainerPublicProfileBuilder_.getMessage()
            if trainerPublicProfile != nil {
-              try! trainerPublicProfileBuilder_.mergeFrom(trainerPublicProfile)
+              try! trainerPublicProfileBuilder_.mergeFrom(other: trainerPublicProfile)
            }
         }
         return trainerPublicProfileBuilder_
       }
-      public func setTrainerPublicProfile(value:Pogoprotos.Data.Player.PlayerPublicProfile!) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+      @discardableResult
+      public func setTrainerPublicProfile(_ value:Pogoprotos.Data.Player.PlayerPublicProfile!) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         self.trainerPublicProfile = value
         return self
       }
+      @discardableResult
       public func mergeTrainerPublicProfile(value:Pogoprotos.Data.Player.PlayerPublicProfile) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         if builderResult.hasTrainerPublicProfile {
-          builderResult.trainerPublicProfile = try Pogoprotos.Data.Player.PlayerPublicProfile.builderWithPrototype(builderResult.trainerPublicProfile).mergeFrom(value).buildPartial()
+          builderResult.trainerPublicProfile = try Pogoprotos.Data.Player.PlayerPublicProfile.builderWithPrototype(prototype:builderResult.trainerPublicProfile).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.trainerPublicProfile = value
         }
         builderResult.hasTrainerPublicProfile = true
         return self
       }
+      @discardableResult
       public func clearTrainerPublicProfile() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         trainerPublicProfileBuilder_ = nil
         builderResult.hasTrainerPublicProfile = false
@@ -2028,12 +1962,14 @@ public extension Pogoprotos.Data.Battle {
                builderResult.reversePokemon = value
            }
       }
-      public func setReversePokemon(value:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+      @discardableResult
+      public func setReversePokemon(_ value:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         self.reversePokemon = value
         return self
       }
+      @discardableResult
       public func clearReversePokemon() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-        builderResult.reversePokemon.removeAll(keepCapacity: false)
+        builderResult.reversePokemon.removeAll(keepingCapacity: false)
         return self
       }
       public var defeatedPokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo> {
@@ -2044,12 +1980,14 @@ public extension Pogoprotos.Data.Battle {
                builderResult.defeatedPokemon = value
            }
       }
-      public func setDefeatedPokemon(value:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+      @discardableResult
+      public func setDefeatedPokemon(_ value:Array<Pogoprotos.Data.Battle.BattlePokemonInfo>) -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         self.defeatedPokemon = value
         return self
       }
+      @discardableResult
       public func clearDefeatedPokemon() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-        builderResult.defeatedPokemon.removeAll(keepCapacity: false)
+        builderResult.defeatedPokemon.removeAll(keepingCapacity: false)
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -2057,12 +1995,13 @@ public extension Pogoprotos.Data.Battle {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         builderResult = Pogoprotos.Data.Battle.BattleParticipant()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-        return try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Battle.BattleParticipant.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Battle.BattleParticipant {
            try checkInitialized()
@@ -2072,15 +2011,16 @@ public extension Pogoprotos.Data.Battle {
         let returnMe:Pogoprotos.Data.Battle.BattleParticipant = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Battle.BattleParticipant) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         if other == Pogoprotos.Data.Battle.BattleParticipant() {
          return self
         }
         if (other.hasActivePokemon) {
-            try mergeActivePokemon(other.activePokemon)
+            try mergeActivePokemon(value: other.activePokemon)
         }
         if (other.hasTrainerPublicProfile) {
-            try mergeTrainerPublicProfile(other.trainerPublicProfile)
+            try mergeTrainerPublicProfile(value: other.trainerPublicProfile)
         }
         if !other.reversePokemon.isEmpty  {
            builderResult.reversePokemon += other.reversePokemon
@@ -2088,16 +2028,18 @@ public extension Pogoprotos.Data.Battle {
         if !other.defeatedPokemon.isEmpty  {
            builderResult.defeatedPokemon += other.defeatedPokemon
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
@@ -2106,86 +2048,99 @@ public extension Pogoprotos.Data.Battle {
           case 10:
             let subBuilder:Pogoprotos.Data.Battle.BattlePokemonInfo.Builder = Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
             if hasActivePokemon {
-              try subBuilder.mergeFrom(activePokemon)
+              try subBuilder.mergeFrom(other: activePokemon)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             activePokemon = subBuilder.buildPartial()
 
           case 18:
             let subBuilder:Pogoprotos.Data.Player.PlayerPublicProfile.Builder = Pogoprotos.Data.Player.PlayerPublicProfile.Builder()
             if hasTrainerPublicProfile {
-              try subBuilder.mergeFrom(trainerPublicProfile)
+              try subBuilder.mergeFrom(other: trainerPublicProfile)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             trainerPublicProfile = subBuilder.buildPartial()
 
           case 26:
             let subBuilder = Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            reversePokemon += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            reversePokemon.append(subBuilder.buildPartial())
 
           case 34:
             let subBuilder = Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            defeatedPokemon += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            defeatedPokemon.append(subBuilder.buildPartial())
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattleParticipant.Builder()
-        if let jsonValueActivePokemon = jsonMap["activePokemon"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.activePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonValueActivePokemon).build()
+        if let jsonValueActivePokemon = jsonMap["activePokemon"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.activePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap:jsonValueActivePokemon).build()
 
         }
-        if let jsonValueTrainerPublicProfile = jsonMap["trainerPublicProfile"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.trainerPublicProfile = try Pogoprotos.Data.Player.PlayerPublicProfile.Builder.decodeToBuilder(jsonValueTrainerPublicProfile).build()
+        if let jsonValueTrainerPublicProfile = jsonMap["trainerPublicProfile"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.trainerPublicProfile = try Pogoprotos.Data.Player.PlayerPublicProfile.Builder.decodeToBuilder(jsonMap:jsonValueTrainerPublicProfile).build()
 
         }
-        if let jsonValueReversePokemon = jsonMap["reversePokemon"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueReversePokemon = jsonMap["reversePokemon"] as? Array<Dictionary<String,Any>> {
           var jsonArrayReversePokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo> = []
           for oneValueReversePokemon in jsonValueReversePokemon {
-            let messageFromStringReversePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(oneValueReversePokemon).build()
+            let messageFromStringReversePokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap:oneValueReversePokemon).build()
 
-            jsonArrayReversePokemon += [messageFromStringReversePokemon]
+            jsonArrayReversePokemon.append(messageFromStringReversePokemon)
           }
           resultDecodedBuilder.reversePokemon = jsonArrayReversePokemon
         }
-        if let jsonValueDefeatedPokemon = jsonMap["defeatedPokemon"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueDefeatedPokemon = jsonMap["defeatedPokemon"] as? Array<Dictionary<String,Any>> {
           var jsonArrayDefeatedPokemon:Array<Pogoprotos.Data.Battle.BattlePokemonInfo> = []
           for oneValueDefeatedPokemon in jsonValueDefeatedPokemon {
-            let messageFromStringDefeatedPokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(oneValueDefeatedPokemon).build()
+            let messageFromStringDefeatedPokemon = try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap:oneValueDefeatedPokemon).build()
 
-            jsonArrayDefeatedPokemon += [messageFromStringDefeatedPokemon]
+            jsonArrayDefeatedPokemon.append(messageFromStringDefeatedPokemon)
           }
           resultDecodedBuilder.defeatedPokemon = jsonArrayDefeatedPokemon
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Battle.BattleParticipant.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class BattlePokemonInfo : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasPokemonData:Bool = false
-    public private(set) var pokemonData:Pogoprotos.Data.PokemonData!
-    public private(set) var hasCurrentHealth:Bool = false
-    public private(set) var currentHealth:Int32 = Int32(0)
+  final public class BattlePokemonInfo : GeneratedMessage {
 
-    public private(set) var hasCurrentEnergy:Bool = false
-    public private(set) var currentEnergy:Int32 = Int32(0)
+    public static func == (lhs: Pogoprotos.Data.Battle.BattlePokemonInfo, rhs: Pogoprotos.Data.Battle.BattlePokemonInfo) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasPokemonData == rhs.hasPokemonData) && (!lhs.hasPokemonData || lhs.pokemonData == rhs.pokemonData)
+      fieldCheck = fieldCheck && (lhs.hasCurrentHealth == rhs.hasCurrentHealth) && (!lhs.hasCurrentHealth || lhs.currentHealth == rhs.currentHealth)
+      fieldCheck = fieldCheck && (lhs.hasCurrentEnergy == rhs.hasCurrentEnergy) && (!lhs.hasCurrentEnergy || lhs.currentEnergy == rhs.currentEnergy)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
+    public fileprivate(set) var pokemonData:Pogoprotos.Data.PokemonData!
+    public fileprivate(set) var hasPokemonData:Bool = false
+    public fileprivate(set) var currentHealth:Int32 = Int32(0)
+    public fileprivate(set) var hasCurrentHealth:Bool = false
+
+    public fileprivate(set) var currentEnergy:Int32 = Int32(0)
+    public fileprivate(set) var hasCurrentEnergy:Bool = false
 
     required public init() {
          super.init()
@@ -2193,17 +2148,17 @@ public extension Pogoprotos.Data.Battle {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasPokemonData {
-        try output.writeMessage(1, value:pokemonData)
+        try codedOutputStream.writeMessage(fieldNumber: 1, value:pokemonData)
       }
       if hasCurrentHealth {
-        try output.writeInt32(2, value:currentHealth)
+        try codedOutputStream.writeInt32(fieldNumber: 2, value:currentHealth)
       }
       if hasCurrentEnergy {
-        try output.writeInt32(3, value:currentEnergy)
+        try codedOutputStream.writeInt32(fieldNumber: 3, value:currentEnergy)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -2213,47 +2168,19 @@ public extension Pogoprotos.Data.Battle {
 
       serialize_size = 0
       if hasPokemonData {
-          if let varSizepokemonData = pokemonData?.computeMessageSize(1) {
+          if let varSizepokemonData = pokemonData?.computeMessageSize(fieldNumber: 1) {
               serialize_size += varSizepokemonData
           }
       }
       if hasCurrentHealth {
-        serialize_size += currentHealth.computeInt32Size(2)
+        serialize_size += currentHealth.computeInt32Size(fieldNumber: 2)
       }
       if hasCurrentEnergy {
-        serialize_size += currentEnergy.computeInt32Size(3)
+        serialize_size += currentEnergy.computeInt32Size(fieldNumber: 3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Battle.BattlePokemonInfo> {
-      var mergedArray = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo? {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
       return Pogoprotos.Data.Battle.BattlePokemonInfo.classBuilder() as! Pogoprotos.Data.Battle.BattlePokemonInfo.Builder
@@ -2261,47 +2188,47 @@ public extension Pogoprotos.Data.Battle {
     public func getBuilder() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
       return classBuilder() as! Pogoprotos.Data.Battle.BattlePokemonInfo.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(self)
+      return try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Battle.BattlePokemonInfo) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasPokemonData {
         jsonMap["pokemonData"] = try pokemonData.encode()
       }
       if hasCurrentHealth {
-        jsonMap["currentHealth"] = NSNumber(int:currentHealth)
+        jsonMap["currentHealth"] = Int(currentHealth)
       }
       if hasCurrentEnergy {
-        jsonMap["currentEnergy"] = NSNumber(int:currentEnergy)
+        jsonMap["currentEnergy"] = Int(currentEnergy)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
-      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+      return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
       if hasPokemonData {
         output += "\(indent) pokemonData {\n"
         if let outDescPokemonData = pokemonData {
-          output += try outDescPokemonData.getDescription("\(indent)  ")
+          output += try outDescPokemonData.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
@@ -2311,7 +2238,7 @@ public extension Pogoprotos.Data.Battle {
       if hasCurrentEnergy {
         output += "\(indent) currentEnergy: \(currentEnergy) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -2342,13 +2269,10 @@ public extension Pogoprotos.Data.Battle {
     override public func className() -> String {
         return "Pogoprotos.Data.Battle.BattlePokemonInfo"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Battle.BattlePokemonInfo.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Battle.BattlePokemonInfo = Pogoprotos.Data.Battle.BattlePokemonInfo()
+      fileprivate var builderResult:Pogoprotos.Data.Battle.BattlePokemonInfo = Pogoprotos.Data.Battle.BattlePokemonInfo()
       public func getMessage() -> Pogoprotos.Data.Battle.BattlePokemonInfo {
           return builderResult
       }
@@ -2373,7 +2297,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.pokemonData = value
            }
       }
-      private var pokemonDataBuilder_:Pogoprotos.Data.PokemonData.Builder! {
+      fileprivate var pokemonDataBuilder_:Pogoprotos.Data.PokemonData.Builder! {
            didSet {
               builderResult.hasPokemonData = true
            }
@@ -2383,24 +2307,27 @@ public extension Pogoprotos.Data.Battle {
            pokemonDataBuilder_ = Pogoprotos.Data.PokemonData.Builder()
            builderResult.pokemonData = pokemonDataBuilder_.getMessage()
            if pokemonData != nil {
-              try! pokemonDataBuilder_.mergeFrom(pokemonData)
+              try! pokemonDataBuilder_.mergeFrom(other: pokemonData)
            }
         }
         return pokemonDataBuilder_
       }
-      public func setPokemonData(value:Pogoprotos.Data.PokemonData!) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+      @discardableResult
+      public func setPokemonData(_ value:Pogoprotos.Data.PokemonData!) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         self.pokemonData = value
         return self
       }
+      @discardableResult
       public func mergePokemonData(value:Pogoprotos.Data.PokemonData) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         if builderResult.hasPokemonData {
-          builderResult.pokemonData = try Pogoprotos.Data.PokemonData.builderWithPrototype(builderResult.pokemonData).mergeFrom(value).buildPartial()
+          builderResult.pokemonData = try Pogoprotos.Data.PokemonData.builderWithPrototype(prototype:builderResult.pokemonData).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.pokemonData = value
         }
         builderResult.hasPokemonData = true
         return self
       }
+      @discardableResult
       public func clearPokemonData() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         pokemonDataBuilder_ = nil
         builderResult.hasPokemonData = false
@@ -2421,10 +2348,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.currentHealth = value
            }
       }
-      public func setCurrentHealth(value:Int32) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+      @discardableResult
+      public func setCurrentHealth(_ value:Int32) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         self.currentHealth = value
         return self
       }
+      @discardableResult
       public func clearCurrentHealth() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder{
            builderResult.hasCurrentHealth = false
            builderResult.currentHealth = Int32(0)
@@ -2444,10 +2373,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.currentEnergy = value
            }
       }
-      public func setCurrentEnergy(value:Int32) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+      @discardableResult
+      public func setCurrentEnergy(_ value:Int32) -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         self.currentEnergy = value
         return self
       }
+      @discardableResult
       public func clearCurrentEnergy() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder{
            builderResult.hasCurrentEnergy = false
            builderResult.currentEnergy = Int32(0)
@@ -2458,12 +2389,13 @@ public extension Pogoprotos.Data.Battle {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         builderResult = Pogoprotos.Data.Battle.BattlePokemonInfo()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-        return try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Battle.BattlePokemonInfo.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
            try checkInitialized()
@@ -2473,12 +2405,13 @@ public extension Pogoprotos.Data.Battle {
         let returnMe:Pogoprotos.Data.Battle.BattlePokemonInfo = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Battle.BattlePokemonInfo) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         if other == Pogoprotos.Data.Battle.BattlePokemonInfo() {
          return self
         }
         if (other.hasPokemonData) {
-            try mergePokemonData(other.pokemonData)
+            try mergePokemonData(value: other.pokemonData)
         }
         if other.hasCurrentHealth {
              currentHealth = other.currentHealth
@@ -2486,16 +2419,18 @@ public extension Pogoprotos.Data.Battle {
         if other.hasCurrentEnergy {
              currentEnergy = other.currentEnergy
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
@@ -2504,61 +2439,76 @@ public extension Pogoprotos.Data.Battle {
           case 10:
             let subBuilder:Pogoprotos.Data.PokemonData.Builder = Pogoprotos.Data.PokemonData.Builder()
             if hasPokemonData {
-              try subBuilder.mergeFrom(pokemonData)
+              try subBuilder.mergeFrom(other: pokemonData)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             pokemonData = subBuilder.buildPartial()
 
           case 16:
-            currentHealth = try input.readInt32()
+            currentHealth = try codedInputStream.readInt32()
 
           case 24:
-            currentEnergy = try input.readInt32()
+            currentEnergy = try codedInputStream.readInt32()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattlePokemonInfo.Builder()
-        if let jsonValuePokemonData = jsonMap["pokemonData"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.pokemonData = try Pogoprotos.Data.PokemonData.Builder.decodeToBuilder(jsonValuePokemonData).build()
+        if let jsonValuePokemonData = jsonMap["pokemonData"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.pokemonData = try Pogoprotos.Data.PokemonData.Builder.decodeToBuilder(jsonMap:jsonValuePokemonData).build()
 
         }
-        if let jsonValueCurrentHealth = jsonMap["currentHealth"] as? NSNumber {
-          resultDecodedBuilder.currentHealth = jsonValueCurrentHealth.intValue
+        if let jsonValueCurrentHealth = jsonMap["currentHealth"] as? Int {
+          resultDecodedBuilder.currentHealth = Int32(jsonValueCurrentHealth)
         }
-        if let jsonValueCurrentEnergy = jsonMap["currentEnergy"] as? NSNumber {
-          resultDecodedBuilder.currentEnergy = jsonValueCurrentEnergy.intValue
+        if let jsonValueCurrentEnergy = jsonMap["currentEnergy"] as? Int {
+          resultDecodedBuilder.currentEnergy = Int32(jsonValueCurrentEnergy)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class BattleResults : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasGymState:Bool = false
-    public private(set) var gymState:Pogoprotos.Data.Gym.GymState!
-    public private(set) var attackers:Array<Pogoprotos.Data.Battle.BattleParticipant>  = Array<Pogoprotos.Data.Battle.BattleParticipant>()
-    public private(set) var playerExperienceAwarded:Array<Int32> = Array<Int32>()
-    private var playerExperienceAwardedMemoizedSerializedSize:Int32 = -1
-    public private(set) var hasNextDefenderPokemonId:Bool = false
-    public private(set) var nextDefenderPokemonId:Int64 = Int64(0)
+  final public class BattleResults : GeneratedMessage {
 
-    public private(set) var hasGymPointsDelta:Bool = false
-    public private(set) var gymPointsDelta:Int32 = Int32(0)
+    public static func == (lhs: Pogoprotos.Data.Battle.BattleResults, rhs: Pogoprotos.Data.Battle.BattleResults) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasGymState == rhs.hasGymState) && (!lhs.hasGymState || lhs.gymState == rhs.gymState)
+      fieldCheck = fieldCheck && (lhs.attackers == rhs.attackers)
+      fieldCheck = fieldCheck && (lhs.playerExperienceAwarded == rhs.playerExperienceAwarded)
+      fieldCheck = fieldCheck && (lhs.hasNextDefenderPokemonId == rhs.hasNextDefenderPokemonId) && (!lhs.hasNextDefenderPokemonId || lhs.nextDefenderPokemonId == rhs.nextDefenderPokemonId)
+      fieldCheck = fieldCheck && (lhs.hasGymPointsDelta == rhs.hasGymPointsDelta) && (!lhs.hasGymPointsDelta || lhs.gymPointsDelta == rhs.gymPointsDelta)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
+    public fileprivate(set) var gymState:Pogoprotos.Data.Gym.GymState!
+    public fileprivate(set) var hasGymState:Bool = false
+    public fileprivate(set) var attackers:Array<Pogoprotos.Data.Battle.BattleParticipant>  = Array<Pogoprotos.Data.Battle.BattleParticipant>()
+    public fileprivate(set) var playerExperienceAwarded:Array<Int32> = Array<Int32>()
+    private var playerExperienceAwardedMemoizedSerializedSize:Int32 = -1
+    public fileprivate(set) var nextDefenderPokemonId:Int64 = Int64(0)
+    public fileprivate(set) var hasNextDefenderPokemonId:Bool = false
+
+    public fileprivate(set) var gymPointsDelta:Int32 = Int32(0)
+    public fileprivate(set) var hasGymPointsDelta:Bool = false
 
     required public init() {
          super.init()
@@ -2566,27 +2516,27 @@ public extension Pogoprotos.Data.Battle {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasGymState {
-        try output.writeMessage(1, value:gymState)
+        try codedOutputStream.writeMessage(fieldNumber: 1, value:gymState)
       }
       for oneElementAttackers in attackers {
-          try output.writeMessage(2, value:oneElementAttackers)
+          try codedOutputStream.writeMessage(fieldNumber: 2, value:oneElementAttackers)
       }
       if !playerExperienceAwarded.isEmpty {
-        try output.writeRawVarint32(26)
-        try output.writeRawVarint32(playerExperienceAwardedMemoizedSerializedSize)
+        try codedOutputStream.writeRawVarint32(value: 26)
+        try codedOutputStream.writeRawVarint32(value: playerExperienceAwardedMemoizedSerializedSize)
         for oneValueplayerExperienceAwarded in playerExperienceAwarded {
-          try output.writeInt32NoTag(oneValueplayerExperienceAwarded)
+          try codedOutputStream.writeInt32NoTag(value: oneValueplayerExperienceAwarded)
         }
       }
       if hasNextDefenderPokemonId {
-        try output.writeInt64(4, value:nextDefenderPokemonId)
+        try codedOutputStream.writeInt64(fieldNumber: 4, value:nextDefenderPokemonId)
       }
       if hasGymPointsDelta {
-        try output.writeInt32(5, value:gymPointsDelta)
+        try codedOutputStream.writeInt32(fieldNumber: 5, value:gymPointsDelta)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -2596,12 +2546,12 @@ public extension Pogoprotos.Data.Battle {
 
       serialize_size = 0
       if hasGymState {
-          if let varSizegymState = gymState?.computeMessageSize(1) {
+          if let varSizegymState = gymState?.computeMessageSize(fieldNumber: 1) {
               serialize_size += varSizegymState
           }
       }
       for oneElementAttackers in attackers {
-          serialize_size += oneElementAttackers.computeMessageSize(2)
+          serialize_size += oneElementAttackers.computeMessageSize(fieldNumber: 2)
       }
       var dataSizePlayerExperienceAwarded:Int32 = 0
       for oneValueplayerExperienceAwarded in playerExperienceAwarded {
@@ -2614,42 +2564,14 @@ public extension Pogoprotos.Data.Battle {
       }
       playerExperienceAwardedMemoizedSerializedSize = dataSizePlayerExperienceAwarded
       if hasNextDefenderPokemonId {
-        serialize_size += nextDefenderPokemonId.computeInt64Size(4)
+        serialize_size += nextDefenderPokemonId.computeInt64Size(fieldNumber: 4)
       }
       if hasGymPointsDelta {
-        serialize_size += gymPointsDelta.computeInt32Size(5)
+        serialize_size += gymPointsDelta.computeInt32Size(fieldNumber: 5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Data.Battle.BattleResults> {
-      var mergedArray = Array<Pogoprotos.Data.Battle.BattleResults>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleResults? {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Data.Battle.BattleResults.Builder {
       return Pogoprotos.Data.Battle.BattleResults.classBuilder() as! Pogoprotos.Data.Battle.BattleResults.Builder
@@ -2657,39 +2579,39 @@ public extension Pogoprotos.Data.Battle {
     public func getBuilder() -> Pogoprotos.Data.Battle.BattleResults.Builder {
       return classBuilder() as! Pogoprotos.Data.Battle.BattleResults.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleResults.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Data.Battle.BattleResults.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-      return try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(self)
+      return try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Data.Battle.BattleResults) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasGymState {
         jsonMap["gymState"] = try gymState.encode()
       }
       if !attackers.isEmpty {
-        var jsonArrayAttackers:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayAttackers:Array<Dictionary<String,Any>> = []
           for oneValueAttackers in attackers {
             let ecodedMessageAttackers = try oneValueAttackers.encode()
-            jsonArrayAttackers += [ecodedMessageAttackers]
+            jsonArrayAttackers.append(ecodedMessageAttackers)
           }
         jsonMap["attackers"] = jsonArrayAttackers
       }
       if !playerExperienceAwarded.isEmpty {
-        var jsonArrayPlayerExperienceAwarded:Array<NSNumber> = []
+        var jsonArrayPlayerExperienceAwarded:Array<Int> = []
           for oneValuePlayerExperienceAwarded in playerExperienceAwarded {
-            jsonArrayPlayerExperienceAwarded += [NSNumber(int:oneValuePlayerExperienceAwarded)]
+            jsonArrayPlayerExperienceAwarded.append(Int(oneValuePlayerExperienceAwarded))
           }
         jsonMap["playerExperienceAwarded"] = jsonArrayPlayerExperienceAwarded
       }
@@ -2697,29 +2619,29 @@ public extension Pogoprotos.Data.Battle {
         jsonMap["nextDefenderPokemonId"] = "\(nextDefenderPokemonId)"
       }
       if hasGymPointsDelta {
-        jsonMap["gymPointsDelta"] = NSNumber(int:gymPointsDelta)
+        jsonMap["gymPointsDelta"] = Int(gymPointsDelta)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleResults {
+      return try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Data.Battle.BattleResults {
-      return try Pogoprotos.Data.Battle.BattleResults.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Data.Battle.BattleResults {
+      return try Pogoprotos.Data.Battle.BattleResults.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
       if hasGymState {
         output += "\(indent) gymState {\n"
         if let outDescGymState = gymState {
-          output += try outDescGymState.getDescription("\(indent)  ")
+          output += try outDescGymState.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
       var attackersElementIndex:Int = 0
       for oneElementAttackers in attackers {
           output += "\(indent) attackers[\(attackersElementIndex)] {\n"
-          output += try oneElementAttackers.getDescription("\(indent)  ")
+          output += try oneElementAttackers.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           attackersElementIndex += 1
       }
@@ -2734,7 +2656,7 @@ public extension Pogoprotos.Data.Battle {
       if hasGymPointsDelta {
         output += "\(indent) gymPointsDelta: \(gymPointsDelta) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -2771,13 +2693,10 @@ public extension Pogoprotos.Data.Battle {
     override public func className() -> String {
         return "Pogoprotos.Data.Battle.BattleResults"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Data.Battle.BattleResults.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Data.Battle.BattleResults = Pogoprotos.Data.Battle.BattleResults()
+      fileprivate var builderResult:Pogoprotos.Data.Battle.BattleResults = Pogoprotos.Data.Battle.BattleResults()
       public func getMessage() -> Pogoprotos.Data.Battle.BattleResults {
           return builderResult
       }
@@ -2802,7 +2721,7 @@ public extension Pogoprotos.Data.Battle {
                builderResult.gymState = value
            }
       }
-      private var gymStateBuilder_:Pogoprotos.Data.Gym.GymState.Builder! {
+      fileprivate var gymStateBuilder_:Pogoprotos.Data.Gym.GymState.Builder! {
            didSet {
               builderResult.hasGymState = true
            }
@@ -2812,24 +2731,27 @@ public extension Pogoprotos.Data.Battle {
            gymStateBuilder_ = Pogoprotos.Data.Gym.GymState.Builder()
            builderResult.gymState = gymStateBuilder_.getMessage()
            if gymState != nil {
-              try! gymStateBuilder_.mergeFrom(gymState)
+              try! gymStateBuilder_.mergeFrom(other: gymState)
            }
         }
         return gymStateBuilder_
       }
-      public func setGymState(value:Pogoprotos.Data.Gym.GymState!) -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      @discardableResult
+      public func setGymState(_ value:Pogoprotos.Data.Gym.GymState!) -> Pogoprotos.Data.Battle.BattleResults.Builder {
         self.gymState = value
         return self
       }
+      @discardableResult
       public func mergeGymState(value:Pogoprotos.Data.Gym.GymState) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
         if builderResult.hasGymState {
-          builderResult.gymState = try Pogoprotos.Data.Gym.GymState.builderWithPrototype(builderResult.gymState).mergeFrom(value).buildPartial()
+          builderResult.gymState = try Pogoprotos.Data.Gym.GymState.builderWithPrototype(prototype:builderResult.gymState).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.gymState = value
         }
         builderResult.hasGymState = true
         return self
       }
+      @discardableResult
       public func clearGymState() -> Pogoprotos.Data.Battle.BattleResults.Builder {
         gymStateBuilder_ = nil
         builderResult.hasGymState = false
@@ -2844,12 +2766,14 @@ public extension Pogoprotos.Data.Battle {
                builderResult.attackers = value
            }
       }
-      public func setAttackers(value:Array<Pogoprotos.Data.Battle.BattleParticipant>) -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      @discardableResult
+      public func setAttackers(_ value:Array<Pogoprotos.Data.Battle.BattleParticipant>) -> Pogoprotos.Data.Battle.BattleResults.Builder {
         self.attackers = value
         return self
       }
+      @discardableResult
       public func clearAttackers() -> Pogoprotos.Data.Battle.BattleResults.Builder {
-        builderResult.attackers.removeAll(keepCapacity: false)
+        builderResult.attackers.removeAll(keepingCapacity: false)
         return self
       }
       public var playerExperienceAwarded:Array<Int32> {
@@ -2860,12 +2784,14 @@ public extension Pogoprotos.Data.Battle {
                builderResult.playerExperienceAwarded = array
            }
       }
-      public func setPlayerExperienceAwarded(value:Array<Int32>) -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      @discardableResult
+      public func setPlayerExperienceAwarded(_ value:Array<Int32>) -> Pogoprotos.Data.Battle.BattleResults.Builder {
         self.playerExperienceAwarded = value
         return self
       }
+      @discardableResult
       public func clearPlayerExperienceAwarded() -> Pogoprotos.Data.Battle.BattleResults.Builder {
-         builderResult.playerExperienceAwarded.removeAll(keepCapacity: false)
+         builderResult.playerExperienceAwarded.removeAll(keepingCapacity: false)
          return self
       }
       public var hasNextDefenderPokemonId:Bool {
@@ -2882,10 +2808,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.nextDefenderPokemonId = value
            }
       }
-      public func setNextDefenderPokemonId(value:Int64) -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      @discardableResult
+      public func setNextDefenderPokemonId(_ value:Int64) -> Pogoprotos.Data.Battle.BattleResults.Builder {
         self.nextDefenderPokemonId = value
         return self
       }
+      @discardableResult
       public func clearNextDefenderPokemonId() -> Pogoprotos.Data.Battle.BattleResults.Builder{
            builderResult.hasNextDefenderPokemonId = false
            builderResult.nextDefenderPokemonId = Int64(0)
@@ -2905,10 +2833,12 @@ public extension Pogoprotos.Data.Battle {
                builderResult.gymPointsDelta = value
            }
       }
-      public func setGymPointsDelta(value:Int32) -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      @discardableResult
+      public func setGymPointsDelta(_ value:Int32) -> Pogoprotos.Data.Battle.BattleResults.Builder {
         self.gymPointsDelta = value
         return self
       }
+      @discardableResult
       public func clearGymPointsDelta() -> Pogoprotos.Data.Battle.BattleResults.Builder{
            builderResult.hasGymPointsDelta = false
            builderResult.gymPointsDelta = Int32(0)
@@ -2919,12 +2849,13 @@ public extension Pogoprotos.Data.Battle {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Data.Battle.BattleResults.Builder {
         builderResult = Pogoprotos.Data.Battle.BattleResults()
         return self
       }
       override public func clone() throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-        return try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(builderResult)
+        return try Pogoprotos.Data.Battle.BattleResults.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Data.Battle.BattleResults {
            try checkInitialized()
@@ -2934,12 +2865,13 @@ public extension Pogoprotos.Data.Battle {
         let returnMe:Pogoprotos.Data.Battle.BattleResults = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Data.Battle.BattleResults) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
         if other == Pogoprotos.Data.Battle.BattleResults() {
          return self
         }
         if (other.hasGymState) {
-            try mergeGymState(other.gymState)
+            try mergeGymState(value: other.gymState)
         }
         if !other.attackers.isEmpty  {
            builderResult.attackers += other.attackers
@@ -2953,16 +2885,18 @@ public extension Pogoprotos.Data.Battle {
         if other.hasGymPointsDelta {
              gymPointsDelta = other.gymPointsDelta
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
@@ -2971,79 +2905,229 @@ public extension Pogoprotos.Data.Battle {
           case 10:
             let subBuilder:Pogoprotos.Data.Gym.GymState.Builder = Pogoprotos.Data.Gym.GymState.Builder()
             if hasGymState {
-              try subBuilder.mergeFrom(gymState)
+              try subBuilder.mergeFrom(other: gymState)
             }
-            try input.readMessage(subBuilder, extensionRegistry:extensionRegistry)
+            try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             gymState = subBuilder.buildPartial()
 
           case 18:
             let subBuilder = Pogoprotos.Data.Battle.BattleParticipant.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            attackers += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            attackers.append(subBuilder.buildPartial())
 
           case 26:
-            let length:Int32 = try input.readRawVarint32()
-            let limit:Int32 = try input.pushLimit(length)
-            while (input.bytesUntilLimit() > 0) {
-              builderResult.playerExperienceAwarded += [try input.readInt32()]
+            let length = Int(try codedInputStream.readRawVarint32())
+            let limit = try codedInputStream.pushLimit(byteLimit: length)
+            while (codedInputStream.bytesUntilLimit() > 0) {
+              builderResult.playerExperienceAwarded.append(try codedInputStream.readInt32())
             }
-            input.popLimit(limit)
+            codedInputStream.popLimit(oldLimit: limit)
 
           case 32:
-            nextDefenderPokemonId = try input.readInt64()
+            nextDefenderPokemonId = try codedInputStream.readInt64()
 
           case 40:
-            gymPointsDelta = try input.readInt32()
+            gymPointsDelta = try codedInputStream.readInt32()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattleResults.Builder()
-        if let jsonValueGymState = jsonMap["gymState"] as? Dictionary<String,AnyObject> {
-          resultDecodedBuilder.gymState = try Pogoprotos.Data.Gym.GymState.Builder.decodeToBuilder(jsonValueGymState).build()
+        if let jsonValueGymState = jsonMap["gymState"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.gymState = try Pogoprotos.Data.Gym.GymState.Builder.decodeToBuilder(jsonMap:jsonValueGymState).build()
 
         }
-        if let jsonValueAttackers = jsonMap["attackers"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueAttackers = jsonMap["attackers"] as? Array<Dictionary<String,Any>> {
           var jsonArrayAttackers:Array<Pogoprotos.Data.Battle.BattleParticipant> = []
           for oneValueAttackers in jsonValueAttackers {
-            let messageFromStringAttackers = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(oneValueAttackers).build()
+            let messageFromStringAttackers = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:oneValueAttackers).build()
 
-            jsonArrayAttackers += [messageFromStringAttackers]
+            jsonArrayAttackers.append(messageFromStringAttackers)
           }
           resultDecodedBuilder.attackers = jsonArrayAttackers
         }
-        if let jsonValuePlayerExperienceAwarded = jsonMap["playerExperienceAwarded"] as? Array<NSNumber> {
+        if let jsonValuePlayerExperienceAwarded = jsonMap["playerExperienceAwarded"] as? Array<Int> {
           var jsonArrayPlayerExperienceAwarded:Array<Int32> = []
           for oneValuePlayerExperienceAwarded in jsonValuePlayerExperienceAwarded {
-            jsonArrayPlayerExperienceAwarded += [oneValuePlayerExperienceAwarded.intValue]
+            jsonArrayPlayerExperienceAwarded.append(Int32(oneValuePlayerExperienceAwarded))
           }
           resultDecodedBuilder.playerExperienceAwarded = jsonArrayPlayerExperienceAwarded
         }
         if let jsonValueNextDefenderPokemonId = jsonMap["nextDefenderPokemonId"] as? String {
           resultDecodedBuilder.nextDefenderPokemonId = Int64(jsonValueNextDefenderPokemonId)!
         }
-        if let jsonValueGymPointsDelta = jsonMap["gymPointsDelta"] as? NSNumber {
-          resultDecodedBuilder.gymPointsDelta = jsonValueGymPointsDelta.intValue
+        if let jsonValueGymPointsDelta = jsonMap["gymPointsDelta"] as? Int {
+          resultDecodedBuilder.gymPointsDelta = Int32(jsonValueGymPointsDelta)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Data.Battle.BattleResults.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
+}
+extension Pogoprotos.Data.Battle.BattleAction: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Battle.BattleAction> {
+    var mergedArray = Array<Pogoprotos.Data.Battle.BattleAction>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleAction? {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleAction {
+    return try Pogoprotos.Data.Battle.BattleAction.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Battle.BattleLog: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Battle.BattleLog> {
+    var mergedArray = Array<Pogoprotos.Data.Battle.BattleLog>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleLog? {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleLog {
+    return try Pogoprotos.Data.Battle.BattleLog.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Battle.BattleParticipant: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Battle.BattleParticipant> {
+    var mergedArray = Array<Pogoprotos.Data.Battle.BattleParticipant>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant? {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleParticipant {
+    return try Pogoprotos.Data.Battle.BattleParticipant.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Battle.BattlePokemonInfo: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Battle.BattlePokemonInfo> {
+    var mergedArray = Array<Pogoprotos.Data.Battle.BattlePokemonInfo>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo? {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattlePokemonInfo {
+    return try Pogoprotos.Data.Battle.BattlePokemonInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Data.Battle.BattleResults: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Data.Battle.BattleResults> {
+    var mergedArray = Array<Pogoprotos.Data.Battle.BattleResults>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleResults? {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Data.Battle.PogoprotosDataBattleRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Data.Battle.BattleResults {
+    return try Pogoprotos.Data.Battle.BattleResults.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
 }
 
 // @@protoc_insertion_point(global_scope)

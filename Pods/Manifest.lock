@@ -1,28 +1,28 @@
 PODS:
-  - Alamofire (3.4.1)
-  - Bolts-Swift (1.2.0)
+  - Alamofire (4.0.1)
+  - Bolts-Swift (1.3.0)
   - ProtocolBuffers-Swift (3.0.0)
 
 DEPENDENCIES:
-  - Alamofire (~> 3.4.1)
-  - Bolts-Swift (~> 1.2.0)
-  - ProtocolBuffers-Swift (from `https://github.com/alexeyxo/protobuf-swift`, branch `ProtoBuf3.0-Swift2.0`)
+  - Alamofire (~> 4.0.1)
+  - Bolts-Swift (~> 1.3.0)
+  - ProtocolBuffers-Swift (from `https://github.com/alexeyxo/protobuf-swift`, branch `ProtoBuf3.0-Swift3.0`)
 
 EXTERNAL SOURCES:
   ProtocolBuffers-Swift:
-    :branch: ProtoBuf3.0-Swift2.0
+    :branch: ProtoBuf3.0-Swift3.0
     :git: https://github.com/alexeyxo/protobuf-swift
 
 CHECKOUT OPTIONS:
   ProtocolBuffers-Swift:
-    :commit: f43bcfe55f7c2b19f19363c12d9499dac232f3ae
+    :commit: fc0f69e2f3b5bed2a444709d35288d33fe7d3532
     :git: https://github.com/alexeyxo/protobuf-swift
 
 SPEC CHECKSUMS:
-  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
-  Bolts-Swift: ac4e7d26719ed0f73aa85b9310da1648105fbde3
+  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Bolts-Swift: fa98d1b59fc1acea9b21a21306dcdca1c85e3737
   ProtocolBuffers-Swift: 948824656ef9f507348481655d409628b0219be0
 
-PODFILE CHECKSUM: 1ecfcd6efbab3d554df81c8defd7215c4444b155
+PODFILE CHECKSUM: d46e1d491064d94fb795a7ca9881916766112b28
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.1.1

@@ -11,6 +11,6 @@ import Foundation
 struct AuthTicket
 {
     let expireTimestamp_ms: UInt64
-    let start: NSData
-    let end: NSData
+    let start: Data
+    let end: Data
 }

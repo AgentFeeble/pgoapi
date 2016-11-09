@@ -5,54 +5,18 @@
 import Foundation
 import ProtocolBuffers
 
-public func == (lhs: Pogoprotos.Map.MapCell, rhs: Pogoprotos.Map.MapCell) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasS2CellId == rhs.hasS2CellId) && (!lhs.hasS2CellId || lhs.s2CellId == rhs.s2CellId)
-  fieldCheck = fieldCheck && (lhs.hasCurrentTimestampMs == rhs.hasCurrentTimestampMs) && (!lhs.hasCurrentTimestampMs || lhs.currentTimestampMs == rhs.currentTimestampMs)
-  fieldCheck = fieldCheck && (lhs.forts == rhs.forts)
-  fieldCheck = fieldCheck && (lhs.spawnPoints == rhs.spawnPoints)
-  fieldCheck = fieldCheck && (lhs.wildPokemons == rhs.wildPokemons)
-  fieldCheck = fieldCheck && (lhs.deletedObjects == rhs.deletedObjects)
-  fieldCheck = fieldCheck && (lhs.hasIsTruncatedList == rhs.hasIsTruncatedList) && (!lhs.hasIsTruncatedList || lhs.isTruncatedList == rhs.isTruncatedList)
-  fieldCheck = fieldCheck && (lhs.fortSummaries == rhs.fortSummaries)
-  fieldCheck = fieldCheck && (lhs.decimatedSpawnPoints == rhs.decimatedSpawnPoints)
-  fieldCheck = fieldCheck && (lhs.catchablePokemons == rhs.catchablePokemons)
-  fieldCheck = fieldCheck && (lhs.nearbyPokemons == rhs.nearbyPokemons)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
-public func == (lhs: Pogoprotos.Map.SpawnPoint, rhs: Pogoprotos.Map.SpawnPoint) -> Bool {
-  if (lhs === rhs) {
-    return true
-  }
-  var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-  fieldCheck = fieldCheck && (lhs.hasLatitude == rhs.hasLatitude) && (!lhs.hasLatitude || lhs.latitude == rhs.latitude)
-  fieldCheck = fieldCheck && (lhs.hasLongitude == rhs.hasLongitude) && (!lhs.hasLongitude || lhs.longitude == rhs.longitude)
-  fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-  return fieldCheck
-}
-
 public extension Pogoprotos.Map {
   public struct PogoprotosMapRoot {
-    public static var sharedInstance : PogoprotosMapRoot {
-     struct Static {
-         static let instance : PogoprotosMapRoot = PogoprotosMapRoot()
-     }
-     return Static.instance
-    }
+    public static let `default` = PogoprotosMapRoot()
     public var extensionRegistry:ExtensionRegistry
 
     init() {
       extensionRegistry = ExtensionRegistry()
-      registerAllExtensions(extensionRegistry)
-      Pogoprotos.Map.Fort.PogoprotosMapFortRoot.sharedInstance.registerAllExtensions(extensionRegistry)
-      Pogoprotos.Map.Pokemon.PogoprotosMapPokemonRoot.sharedInstance.registerAllExtensions(extensionRegistry)
+      registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Map.Fort.PogoprotosMapFortRoot.default.registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Map.Pokemon.PogoprotosMapPokemonRoot.default.registerAllExtensions(registry: extensionRegistry)
     }
-    public func registerAllExtensions(registry:ExtensionRegistry) {
+    public func registerAllExtensions(registry: ExtensionRegistry) {
     }
   }
 
@@ -61,99 +25,120 @@ public extension Pogoprotos.Map {
   //Enum type declaration start 
 
   public enum MapObjectsStatus:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case UnsetStatus = 0
-    case Success = 1
-    case LocationUnset = 2
+    case unsetStatus = 0
+    case success = 1
+    case locationUnset = 2
     public func toString() -> String {
       switch self {
-      case .UnsetStatus: return "UNSET_STATUS"
-      case .Success: return "SUCCESS"
-      case .LocationUnset: return "LOCATION_UNSET"
+      case .unsetStatus: return "UNSET_STATUS"
+      case .success: return "SUCCESS"
+      case .locationUnset: return "LOCATION_UNSET"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Map.MapObjectsStatus {
       switch str {
-      case "UNSET_STATUS":  return .UnsetStatus
-      case "SUCCESS":  return .Success
-      case "LOCATION_UNSET":  return .LocationUnset
-      default: throw ProtocolBuffersError.InvalidProtocolBuffer("Conversion String to Enum has failed.")
+      case "UNSET_STATUS":  return .unsetStatus
+      case "SUCCESS":  return .success
+      case "LOCATION_UNSET":  return .locationUnset
+      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
     public var debugDescription:String { return getDescription() }
     public var description:String { return getDescription() }
     private func getDescription() -> String { 
-        switch self {
-            case .UnsetStatus: return ".UnsetStatus"
-            case .Success: return ".Success"
-            case .LocationUnset: return ".LocationUnset"
-        }
+      switch self {
+      case .unsetStatus: return ".unsetStatus"
+      case .success: return ".success"
+      case .locationUnset: return ".locationUnset"
+      }
     }
   }
 
   //Enum type declaration end 
 
-  final public class MapCell : GeneratedMessage, GeneratedMessageProtocol {
+  final public class MapCell : GeneratedMessage {
+
+    public static func == (lhs: Pogoprotos.Map.MapCell, rhs: Pogoprotos.Map.MapCell) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasS2CellId == rhs.hasS2CellId) && (!lhs.hasS2CellId || lhs.s2CellId == rhs.s2CellId)
+      fieldCheck = fieldCheck && (lhs.hasCurrentTimestampMs == rhs.hasCurrentTimestampMs) && (!lhs.hasCurrentTimestampMs || lhs.currentTimestampMs == rhs.currentTimestampMs)
+      fieldCheck = fieldCheck && (lhs.forts == rhs.forts)
+      fieldCheck = fieldCheck && (lhs.spawnPoints == rhs.spawnPoints)
+      fieldCheck = fieldCheck && (lhs.wildPokemons == rhs.wildPokemons)
+      fieldCheck = fieldCheck && (lhs.deletedObjects == rhs.deletedObjects)
+      fieldCheck = fieldCheck && (lhs.hasIsTruncatedList == rhs.hasIsTruncatedList) && (!lhs.hasIsTruncatedList || lhs.isTruncatedList == rhs.isTruncatedList)
+      fieldCheck = fieldCheck && (lhs.fortSummaries == rhs.fortSummaries)
+      fieldCheck = fieldCheck && (lhs.decimatedSpawnPoints == rhs.decimatedSpawnPoints)
+      fieldCheck = fieldCheck && (lhs.catchablePokemons == rhs.catchablePokemons)
+      fieldCheck = fieldCheck && (lhs.nearbyPokemons == rhs.nearbyPokemons)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
     // S2 geographic area that the cell covers (http://s2map.com/) (https://code.google.com/archive/p/s2-geometry-library/)
-    public private(set) var hasS2CellId:Bool = false
-    public private(set) var s2CellId:UInt64 = UInt64(0)
+    public fileprivate(set) var s2CellId:UInt64 = UInt64(0)
+    public fileprivate(set) var hasS2CellId:Bool = false
 
-    public private(set) var hasCurrentTimestampMs:Bool = false
-    public private(set) var currentTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var currentTimestampMs:Int64 = Int64(0)
+    public fileprivate(set) var hasCurrentTimestampMs:Bool = false
 
-    public private(set) var forts:Array<Pogoprotos.Map.Fort.FortData>  = Array<Pogoprotos.Map.Fort.FortData>()
-    public private(set) var spawnPoints:Array<Pogoprotos.Map.SpawnPoint>  = Array<Pogoprotos.Map.SpawnPoint>()
-    public private(set) var deletedObjects:Array<String> = Array<String>()
-    public private(set) var hasIsTruncatedList:Bool = false
-    public private(set) var isTruncatedList:Bool = false
+    public fileprivate(set) var forts:Array<Pogoprotos.Map.Fort.FortData>  = Array<Pogoprotos.Map.Fort.FortData>()
+    public fileprivate(set) var spawnPoints:Array<Pogoprotos.Map.SpawnPoint>  = Array<Pogoprotos.Map.SpawnPoint>()
+    public fileprivate(set) var deletedObjects:Array<String> = Array<String>()
+    public fileprivate(set) var isTruncatedList:Bool = false
+    public fileprivate(set) var hasIsTruncatedList:Bool = false
 
-    public private(set) var fortSummaries:Array<Pogoprotos.Map.Fort.FortSummary>  = Array<Pogoprotos.Map.Fort.FortSummary>()
-    public private(set) var decimatedSpawnPoints:Array<Pogoprotos.Map.SpawnPoint>  = Array<Pogoprotos.Map.SpawnPoint>()
-    public private(set) var wildPokemons:Array<Pogoprotos.Map.Pokemon.WildPokemon>  = Array<Pogoprotos.Map.Pokemon.WildPokemon>()
-    public private(set) var catchablePokemons:Array<Pogoprotos.Map.Pokemon.MapPokemon>  = Array<Pogoprotos.Map.Pokemon.MapPokemon>()
-    public private(set) var nearbyPokemons:Array<Pogoprotos.Map.Pokemon.NearbyPokemon>  = Array<Pogoprotos.Map.Pokemon.NearbyPokemon>()
+    public fileprivate(set) var fortSummaries:Array<Pogoprotos.Map.Fort.FortSummary>  = Array<Pogoprotos.Map.Fort.FortSummary>()
+    public fileprivate(set) var decimatedSpawnPoints:Array<Pogoprotos.Map.SpawnPoint>  = Array<Pogoprotos.Map.SpawnPoint>()
+    public fileprivate(set) var wildPokemons:Array<Pogoprotos.Map.Pokemon.WildPokemon>  = Array<Pogoprotos.Map.Pokemon.WildPokemon>()
+    public fileprivate(set) var catchablePokemons:Array<Pogoprotos.Map.Pokemon.MapPokemon>  = Array<Pogoprotos.Map.Pokemon.MapPokemon>()
+    public fileprivate(set) var nearbyPokemons:Array<Pogoprotos.Map.Pokemon.NearbyPokemon>  = Array<Pogoprotos.Map.Pokemon.NearbyPokemon>()
     required public init() {
          super.init()
     }
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasS2CellId {
-        try output.writeUInt64(1, value:s2CellId)
+        try codedOutputStream.writeUInt64(fieldNumber: 1, value:s2CellId)
       }
       if hasCurrentTimestampMs {
-        try output.writeInt64(2, value:currentTimestampMs)
+        try codedOutputStream.writeInt64(fieldNumber: 2, value:currentTimestampMs)
       }
       for oneElementForts in forts {
-          try output.writeMessage(3, value:oneElementForts)
+          try codedOutputStream.writeMessage(fieldNumber: 3, value:oneElementForts)
       }
       for oneElementSpawnPoints in spawnPoints {
-          try output.writeMessage(4, value:oneElementSpawnPoints)
+          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementSpawnPoints)
       }
       for oneElementWildPokemons in wildPokemons {
-          try output.writeMessage(5, value:oneElementWildPokemons)
+          try codedOutputStream.writeMessage(fieldNumber: 5, value:oneElementWildPokemons)
       }
       if !deletedObjects.isEmpty {
         for oneValuedeletedObjects in deletedObjects {
-          try output.writeString(6, value:oneValuedeletedObjects)
+          try codedOutputStream.writeString(fieldNumber: 6, value:oneValuedeletedObjects)
         }
       }
       if hasIsTruncatedList {
-        try output.writeBool(7, value:isTruncatedList)
+        try codedOutputStream.writeBool(fieldNumber: 7, value:isTruncatedList)
       }
       for oneElementFortSummaries in fortSummaries {
-          try output.writeMessage(8, value:oneElementFortSummaries)
+          try codedOutputStream.writeMessage(fieldNumber: 8, value:oneElementFortSummaries)
       }
       for oneElementDecimatedSpawnPoints in decimatedSpawnPoints {
-          try output.writeMessage(9, value:oneElementDecimatedSpawnPoints)
+          try codedOutputStream.writeMessage(fieldNumber: 9, value:oneElementDecimatedSpawnPoints)
       }
       for oneElementCatchablePokemons in catchablePokemons {
-          try output.writeMessage(10, value:oneElementCatchablePokemons)
+          try codedOutputStream.writeMessage(fieldNumber: 10, value:oneElementCatchablePokemons)
       }
       for oneElementNearbyPokemons in nearbyPokemons {
-          try output.writeMessage(11, value:oneElementNearbyPokemons)
+          try codedOutputStream.writeMessage(fieldNumber: 11, value:oneElementNearbyPokemons)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -163,19 +148,19 @@ public extension Pogoprotos.Map {
 
       serialize_size = 0
       if hasS2CellId {
-        serialize_size += s2CellId.computeUInt64Size(1)
+        serialize_size += s2CellId.computeUInt64Size(fieldNumber: 1)
       }
       if hasCurrentTimestampMs {
-        serialize_size += currentTimestampMs.computeInt64Size(2)
+        serialize_size += currentTimestampMs.computeInt64Size(fieldNumber: 2)
       }
       for oneElementForts in forts {
-          serialize_size += oneElementForts.computeMessageSize(3)
+          serialize_size += oneElementForts.computeMessageSize(fieldNumber: 3)
       }
       for oneElementSpawnPoints in spawnPoints {
-          serialize_size += oneElementSpawnPoints.computeMessageSize(4)
+          serialize_size += oneElementSpawnPoints.computeMessageSize(fieldNumber: 4)
       }
       for oneElementWildPokemons in wildPokemons {
-          serialize_size += oneElementWildPokemons.computeMessageSize(5)
+          serialize_size += oneElementWildPokemons.computeMessageSize(fieldNumber: 5)
       }
       var dataSizeDeletedObjects:Int32 = 0
       for oneValuedeletedObjects in deletedObjects {
@@ -184,51 +169,23 @@ public extension Pogoprotos.Map {
       serialize_size += dataSizeDeletedObjects
       serialize_size += 1 * Int32(deletedObjects.count)
       if hasIsTruncatedList {
-        serialize_size += isTruncatedList.computeBoolSize(7)
+        serialize_size += isTruncatedList.computeBoolSize(fieldNumber: 7)
       }
       for oneElementFortSummaries in fortSummaries {
-          serialize_size += oneElementFortSummaries.computeMessageSize(8)
+          serialize_size += oneElementFortSummaries.computeMessageSize(fieldNumber: 8)
       }
       for oneElementDecimatedSpawnPoints in decimatedSpawnPoints {
-          serialize_size += oneElementDecimatedSpawnPoints.computeMessageSize(9)
+          serialize_size += oneElementDecimatedSpawnPoints.computeMessageSize(fieldNumber: 9)
       }
       for oneElementCatchablePokemons in catchablePokemons {
-          serialize_size += oneElementCatchablePokemons.computeMessageSize(10)
+          serialize_size += oneElementCatchablePokemons.computeMessageSize(fieldNumber: 10)
       }
       for oneElementNearbyPokemons in nearbyPokemons {
-          serialize_size += oneElementNearbyPokemons.computeMessageSize(11)
+          serialize_size += oneElementNearbyPokemons.computeMessageSize(fieldNumber: 11)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Map.MapCell> {
-      var mergedArray = Array<Pogoprotos.Map.MapCell>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Map.MapCell? {
-      return try Pogoprotos.Map.MapCell.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Map.PogoprotosMapRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Map.MapCell.Builder {
       return Pogoprotos.Map.MapCell.classBuilder() as! Pogoprotos.Map.MapCell.Builder
@@ -236,24 +193,24 @@ public extension Pogoprotos.Map {
     public func getBuilder() -> Pogoprotos.Map.MapCell.Builder {
       return classBuilder() as! Pogoprotos.Map.MapCell.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Map.MapCell.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Map.MapCell.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Map.MapCell.Builder {
-      return try Pogoprotos.Map.MapCell.builderWithPrototype(self)
+      return try Pogoprotos.Map.MapCell.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Map.MapCell) throws -> Pogoprotos.Map.MapCell.Builder {
-      return try Pogoprotos.Map.MapCell.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Map.MapCell.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasS2CellId {
         jsonMap["s2CellId"] = "\(s2CellId)"
       }
@@ -261,74 +218,78 @@ public extension Pogoprotos.Map {
         jsonMap["currentTimestampMs"] = "\(currentTimestampMs)"
       }
       if !forts.isEmpty {
-        var jsonArrayForts:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayForts:Array<Dictionary<String,Any>> = []
           for oneValueForts in forts {
             let ecodedMessageForts = try oneValueForts.encode()
-            jsonArrayForts += [ecodedMessageForts]
+            jsonArrayForts.append(ecodedMessageForts)
           }
         jsonMap["forts"] = jsonArrayForts
       }
       if !spawnPoints.isEmpty {
-        var jsonArraySpawnPoints:Array<Dictionary<String,AnyObject>> = []
+        var jsonArraySpawnPoints:Array<Dictionary<String,Any>> = []
           for oneValueSpawnPoints in spawnPoints {
             let ecodedMessageSpawnPoints = try oneValueSpawnPoints.encode()
-            jsonArraySpawnPoints += [ecodedMessageSpawnPoints]
+            jsonArraySpawnPoints.append(ecodedMessageSpawnPoints)
           }
         jsonMap["spawnPoints"] = jsonArraySpawnPoints
       }
       if !deletedObjects.isEmpty {
-        jsonMap["deletedObjects"] = deletedObjects
+        var jsonArrayDeletedObjects:Array<String> = []
+          for oneValueDeletedObjects in deletedObjects {
+            jsonArrayDeletedObjects.append(oneValueDeletedObjects)
+          }
+        jsonMap["deletedObjects"] = jsonArrayDeletedObjects
       }
       if hasIsTruncatedList {
         jsonMap["isTruncatedList"] = isTruncatedList
       }
       if !fortSummaries.isEmpty {
-        var jsonArrayFortSummaries:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayFortSummaries:Array<Dictionary<String,Any>> = []
           for oneValueFortSummaries in fortSummaries {
             let ecodedMessageFortSummaries = try oneValueFortSummaries.encode()
-            jsonArrayFortSummaries += [ecodedMessageFortSummaries]
+            jsonArrayFortSummaries.append(ecodedMessageFortSummaries)
           }
         jsonMap["fortSummaries"] = jsonArrayFortSummaries
       }
       if !decimatedSpawnPoints.isEmpty {
-        var jsonArrayDecimatedSpawnPoints:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayDecimatedSpawnPoints:Array<Dictionary<String,Any>> = []
           for oneValueDecimatedSpawnPoints in decimatedSpawnPoints {
             let ecodedMessageDecimatedSpawnPoints = try oneValueDecimatedSpawnPoints.encode()
-            jsonArrayDecimatedSpawnPoints += [ecodedMessageDecimatedSpawnPoints]
+            jsonArrayDecimatedSpawnPoints.append(ecodedMessageDecimatedSpawnPoints)
           }
         jsonMap["decimatedSpawnPoints"] = jsonArrayDecimatedSpawnPoints
       }
       if !wildPokemons.isEmpty {
-        var jsonArrayWildPokemons:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayWildPokemons:Array<Dictionary<String,Any>> = []
           for oneValueWildPokemons in wildPokemons {
             let ecodedMessageWildPokemons = try oneValueWildPokemons.encode()
-            jsonArrayWildPokemons += [ecodedMessageWildPokemons]
+            jsonArrayWildPokemons.append(ecodedMessageWildPokemons)
           }
         jsonMap["wildPokemons"] = jsonArrayWildPokemons
       }
       if !catchablePokemons.isEmpty {
-        var jsonArrayCatchablePokemons:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayCatchablePokemons:Array<Dictionary<String,Any>> = []
           for oneValueCatchablePokemons in catchablePokemons {
             let ecodedMessageCatchablePokemons = try oneValueCatchablePokemons.encode()
-            jsonArrayCatchablePokemons += [ecodedMessageCatchablePokemons]
+            jsonArrayCatchablePokemons.append(ecodedMessageCatchablePokemons)
           }
         jsonMap["catchablePokemons"] = jsonArrayCatchablePokemons
       }
       if !nearbyPokemons.isEmpty {
-        var jsonArrayNearbyPokemons:Array<Dictionary<String,AnyObject>> = []
+        var jsonArrayNearbyPokemons:Array<Dictionary<String,Any>> = []
           for oneValueNearbyPokemons in nearbyPokemons {
             let ecodedMessageNearbyPokemons = try oneValueNearbyPokemons.encode()
-            jsonArrayNearbyPokemons += [ecodedMessageNearbyPokemons]
+            jsonArrayNearbyPokemons.append(ecodedMessageNearbyPokemons)
           }
         jsonMap["nearbyPokemons"] = jsonArrayNearbyPokemons
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Map.MapCell {
+      return try Pogoprotos.Map.MapCell.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Map.MapCell {
-      return try Pogoprotos.Map.MapCell.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Map.MapCell {
+      return try Pogoprotos.Map.MapCell.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -341,21 +302,21 @@ public extension Pogoprotos.Map {
       var fortsElementIndex:Int = 0
       for oneElementForts in forts {
           output += "\(indent) forts[\(fortsElementIndex)] {\n"
-          output += try oneElementForts.getDescription("\(indent)  ")
+          output += try oneElementForts.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           fortsElementIndex += 1
       }
       var spawnPointsElementIndex:Int = 0
       for oneElementSpawnPoints in spawnPoints {
           output += "\(indent) spawnPoints[\(spawnPointsElementIndex)] {\n"
-          output += try oneElementSpawnPoints.getDescription("\(indent)  ")
+          output += try oneElementSpawnPoints.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           spawnPointsElementIndex += 1
       }
       var wildPokemonsElementIndex:Int = 0
       for oneElementWildPokemons in wildPokemons {
           output += "\(indent) wildPokemons[\(wildPokemonsElementIndex)] {\n"
-          output += try oneElementWildPokemons.getDescription("\(indent)  ")
+          output += try oneElementWildPokemons.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           wildPokemonsElementIndex += 1
       }
@@ -370,32 +331,32 @@ public extension Pogoprotos.Map {
       var fortSummariesElementIndex:Int = 0
       for oneElementFortSummaries in fortSummaries {
           output += "\(indent) fortSummaries[\(fortSummariesElementIndex)] {\n"
-          output += try oneElementFortSummaries.getDescription("\(indent)  ")
+          output += try oneElementFortSummaries.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           fortSummariesElementIndex += 1
       }
       var decimatedSpawnPointsElementIndex:Int = 0
       for oneElementDecimatedSpawnPoints in decimatedSpawnPoints {
           output += "\(indent) decimatedSpawnPoints[\(decimatedSpawnPointsElementIndex)] {\n"
-          output += try oneElementDecimatedSpawnPoints.getDescription("\(indent)  ")
+          output += try oneElementDecimatedSpawnPoints.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           decimatedSpawnPointsElementIndex += 1
       }
       var catchablePokemonsElementIndex:Int = 0
       for oneElementCatchablePokemons in catchablePokemons {
           output += "\(indent) catchablePokemons[\(catchablePokemonsElementIndex)] {\n"
-          output += try oneElementCatchablePokemons.getDescription("\(indent)  ")
+          output += try oneElementCatchablePokemons.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           catchablePokemonsElementIndex += 1
       }
       var nearbyPokemonsElementIndex:Int = 0
       for oneElementNearbyPokemons in nearbyPokemons {
           output += "\(indent) nearbyPokemons[\(nearbyPokemonsElementIndex)] {\n"
-          output += try oneElementNearbyPokemons.getDescription("\(indent)  ")
+          output += try oneElementNearbyPokemons.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
           nearbyPokemonsElementIndex += 1
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -448,13 +409,10 @@ public extension Pogoprotos.Map {
     override public func className() -> String {
         return "Pogoprotos.Map.MapCell"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Map.MapCell.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Map.MapCell = Pogoprotos.Map.MapCell()
+      fileprivate var builderResult:Pogoprotos.Map.MapCell = Pogoprotos.Map.MapCell()
       public func getMessage() -> Pogoprotos.Map.MapCell {
           return builderResult
       }
@@ -476,10 +434,12 @@ public extension Pogoprotos.Map {
                builderResult.s2CellId = value
            }
       }
-      public func setS2CellId(value:UInt64) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setS2CellId(_ value:UInt64) -> Pogoprotos.Map.MapCell.Builder {
         self.s2CellId = value
         return self
       }
+      @discardableResult
       public func clearS2CellId() -> Pogoprotos.Map.MapCell.Builder{
            builderResult.hasS2CellId = false
            builderResult.s2CellId = UInt64(0)
@@ -499,10 +459,12 @@ public extension Pogoprotos.Map {
                builderResult.currentTimestampMs = value
            }
       }
-      public func setCurrentTimestampMs(value:Int64) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setCurrentTimestampMs(_ value:Int64) -> Pogoprotos.Map.MapCell.Builder {
         self.currentTimestampMs = value
         return self
       }
+      @discardableResult
       public func clearCurrentTimestampMs() -> Pogoprotos.Map.MapCell.Builder{
            builderResult.hasCurrentTimestampMs = false
            builderResult.currentTimestampMs = Int64(0)
@@ -516,12 +478,14 @@ public extension Pogoprotos.Map {
                builderResult.forts = value
            }
       }
-      public func setForts(value:Array<Pogoprotos.Map.Fort.FortData>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setForts(_ value:Array<Pogoprotos.Map.Fort.FortData>) -> Pogoprotos.Map.MapCell.Builder {
         self.forts = value
         return self
       }
+      @discardableResult
       public func clearForts() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.forts.removeAll(keepCapacity: false)
+        builderResult.forts.removeAll(keepingCapacity: false)
         return self
       }
       public var spawnPoints:Array<Pogoprotos.Map.SpawnPoint> {
@@ -532,12 +496,14 @@ public extension Pogoprotos.Map {
                builderResult.spawnPoints = value
            }
       }
-      public func setSpawnPoints(value:Array<Pogoprotos.Map.SpawnPoint>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setSpawnPoints(_ value:Array<Pogoprotos.Map.SpawnPoint>) -> Pogoprotos.Map.MapCell.Builder {
         self.spawnPoints = value
         return self
       }
+      @discardableResult
       public func clearSpawnPoints() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.spawnPoints.removeAll(keepCapacity: false)
+        builderResult.spawnPoints.removeAll(keepingCapacity: false)
         return self
       }
       public var deletedObjects:Array<String> {
@@ -548,12 +514,14 @@ public extension Pogoprotos.Map {
                builderResult.deletedObjects = array
            }
       }
-      public func setDeletedObjects(value:Array<String>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setDeletedObjects(_ value:Array<String>) -> Pogoprotos.Map.MapCell.Builder {
         self.deletedObjects = value
         return self
       }
+      @discardableResult
       public func clearDeletedObjects() -> Pogoprotos.Map.MapCell.Builder {
-         builderResult.deletedObjects.removeAll(keepCapacity: false)
+         builderResult.deletedObjects.removeAll(keepingCapacity: false)
          return self
       }
       public var hasIsTruncatedList:Bool {
@@ -570,10 +538,12 @@ public extension Pogoprotos.Map {
                builderResult.isTruncatedList = value
            }
       }
-      public func setIsTruncatedList(value:Bool) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setIsTruncatedList(_ value:Bool) -> Pogoprotos.Map.MapCell.Builder {
         self.isTruncatedList = value
         return self
       }
+      @discardableResult
       public func clearIsTruncatedList() -> Pogoprotos.Map.MapCell.Builder{
            builderResult.hasIsTruncatedList = false
            builderResult.isTruncatedList = false
@@ -587,12 +557,14 @@ public extension Pogoprotos.Map {
                builderResult.fortSummaries = value
            }
       }
-      public func setFortSummaries(value:Array<Pogoprotos.Map.Fort.FortSummary>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setFortSummaries(_ value:Array<Pogoprotos.Map.Fort.FortSummary>) -> Pogoprotos.Map.MapCell.Builder {
         self.fortSummaries = value
         return self
       }
+      @discardableResult
       public func clearFortSummaries() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.fortSummaries.removeAll(keepCapacity: false)
+        builderResult.fortSummaries.removeAll(keepingCapacity: false)
         return self
       }
       public var decimatedSpawnPoints:Array<Pogoprotos.Map.SpawnPoint> {
@@ -603,12 +575,14 @@ public extension Pogoprotos.Map {
                builderResult.decimatedSpawnPoints = value
            }
       }
-      public func setDecimatedSpawnPoints(value:Array<Pogoprotos.Map.SpawnPoint>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setDecimatedSpawnPoints(_ value:Array<Pogoprotos.Map.SpawnPoint>) -> Pogoprotos.Map.MapCell.Builder {
         self.decimatedSpawnPoints = value
         return self
       }
+      @discardableResult
       public func clearDecimatedSpawnPoints() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.decimatedSpawnPoints.removeAll(keepCapacity: false)
+        builderResult.decimatedSpawnPoints.removeAll(keepingCapacity: false)
         return self
       }
       public var wildPokemons:Array<Pogoprotos.Map.Pokemon.WildPokemon> {
@@ -619,12 +593,14 @@ public extension Pogoprotos.Map {
                builderResult.wildPokemons = value
            }
       }
-      public func setWildPokemons(value:Array<Pogoprotos.Map.Pokemon.WildPokemon>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setWildPokemons(_ value:Array<Pogoprotos.Map.Pokemon.WildPokemon>) -> Pogoprotos.Map.MapCell.Builder {
         self.wildPokemons = value
         return self
       }
+      @discardableResult
       public func clearWildPokemons() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.wildPokemons.removeAll(keepCapacity: false)
+        builderResult.wildPokemons.removeAll(keepingCapacity: false)
         return self
       }
       public var catchablePokemons:Array<Pogoprotos.Map.Pokemon.MapPokemon> {
@@ -635,12 +611,14 @@ public extension Pogoprotos.Map {
                builderResult.catchablePokemons = value
            }
       }
-      public func setCatchablePokemons(value:Array<Pogoprotos.Map.Pokemon.MapPokemon>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setCatchablePokemons(_ value:Array<Pogoprotos.Map.Pokemon.MapPokemon>) -> Pogoprotos.Map.MapCell.Builder {
         self.catchablePokemons = value
         return self
       }
+      @discardableResult
       public func clearCatchablePokemons() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.catchablePokemons.removeAll(keepCapacity: false)
+        builderResult.catchablePokemons.removeAll(keepingCapacity: false)
         return self
       }
       public var nearbyPokemons:Array<Pogoprotos.Map.Pokemon.NearbyPokemon> {
@@ -651,12 +629,14 @@ public extension Pogoprotos.Map {
                builderResult.nearbyPokemons = value
            }
       }
-      public func setNearbyPokemons(value:Array<Pogoprotos.Map.Pokemon.NearbyPokemon>) -> Pogoprotos.Map.MapCell.Builder {
+      @discardableResult
+      public func setNearbyPokemons(_ value:Array<Pogoprotos.Map.Pokemon.NearbyPokemon>) -> Pogoprotos.Map.MapCell.Builder {
         self.nearbyPokemons = value
         return self
       }
+      @discardableResult
       public func clearNearbyPokemons() -> Pogoprotos.Map.MapCell.Builder {
-        builderResult.nearbyPokemons.removeAll(keepCapacity: false)
+        builderResult.nearbyPokemons.removeAll(keepingCapacity: false)
         return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -664,12 +644,13 @@ public extension Pogoprotos.Map {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Map.MapCell.Builder {
         builderResult = Pogoprotos.Map.MapCell()
         return self
       }
       override public func clone() throws -> Pogoprotos.Map.MapCell.Builder {
-        return try Pogoprotos.Map.MapCell.builderWithPrototype(builderResult)
+        return try Pogoprotos.Map.MapCell.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Map.MapCell {
            try checkInitialized()
@@ -679,6 +660,7 @@ public extension Pogoprotos.Map {
         let returnMe:Pogoprotos.Map.MapCell = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Map.MapCell) throws -> Pogoprotos.Map.MapCell.Builder {
         if other == Pogoprotos.Map.MapCell() {
          return self
@@ -716,77 +698,79 @@ public extension Pogoprotos.Map {
         if !other.nearbyPokemons.isEmpty  {
            builderResult.nearbyPokemons += other.nearbyPokemons
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Map.MapCell.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Map.MapCell.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 8:
-            s2CellId = try input.readUInt64()
+            s2CellId = try codedInputStream.readUInt64()
 
           case 16:
-            currentTimestampMs = try input.readInt64()
+            currentTimestampMs = try codedInputStream.readInt64()
 
           case 26:
             let subBuilder = Pogoprotos.Map.Fort.FortData.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            forts += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            forts.append(subBuilder.buildPartial())
 
           case 34:
             let subBuilder = Pogoprotos.Map.SpawnPoint.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            spawnPoints += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            spawnPoints.append(subBuilder.buildPartial())
 
           case 42:
             let subBuilder = Pogoprotos.Map.Pokemon.WildPokemon.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            wildPokemons += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            wildPokemons.append(subBuilder.buildPartial())
 
           case 50:
-            deletedObjects += [try input.readString()]
+            deletedObjects += [try codedInputStream.readString()]
 
           case 56:
-            isTruncatedList = try input.readBool()
+            isTruncatedList = try codedInputStream.readBool()
 
           case 66:
             let subBuilder = Pogoprotos.Map.Fort.FortSummary.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            fortSummaries += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            fortSummaries.append(subBuilder.buildPartial())
 
           case 74:
             let subBuilder = Pogoprotos.Map.SpawnPoint.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            decimatedSpawnPoints += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            decimatedSpawnPoints.append(subBuilder.buildPartial())
 
           case 82:
             let subBuilder = Pogoprotos.Map.Pokemon.MapPokemon.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            catchablePokemons += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            catchablePokemons.append(subBuilder.buildPartial())
 
           case 90:
             let subBuilder = Pogoprotos.Map.Pokemon.NearbyPokemon.Builder()
-            try input.readMessage(subBuilder,extensionRegistry:extensionRegistry)
-            nearbyPokemons += [subBuilder.buildPartial()]
+            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
+            nearbyPokemons.append(subBuilder.buildPartial())
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Map.MapCell.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Map.MapCell.Builder {
         let resultDecodedBuilder = Pogoprotos.Map.MapCell.Builder()
         if let jsonValueS2CellId = jsonMap["s2CellId"] as? String {
           resultDecodedBuilder.s2CellId = UInt64(jsonValueS2CellId)!
@@ -794,94 +778,110 @@ public extension Pogoprotos.Map {
         if let jsonValueCurrentTimestampMs = jsonMap["currentTimestampMs"] as? String {
           resultDecodedBuilder.currentTimestampMs = Int64(jsonValueCurrentTimestampMs)!
         }
-        if let jsonValueForts = jsonMap["forts"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueForts = jsonMap["forts"] as? Array<Dictionary<String,Any>> {
           var jsonArrayForts:Array<Pogoprotos.Map.Fort.FortData> = []
           for oneValueForts in jsonValueForts {
-            let messageFromStringForts = try Pogoprotos.Map.Fort.FortData.Builder.decodeToBuilder(oneValueForts).build()
+            let messageFromStringForts = try Pogoprotos.Map.Fort.FortData.Builder.decodeToBuilder(jsonMap:oneValueForts).build()
 
-            jsonArrayForts += [messageFromStringForts]
+            jsonArrayForts.append(messageFromStringForts)
           }
           resultDecodedBuilder.forts = jsonArrayForts
         }
-        if let jsonValueSpawnPoints = jsonMap["spawnPoints"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueSpawnPoints = jsonMap["spawnPoints"] as? Array<Dictionary<String,Any>> {
           var jsonArraySpawnPoints:Array<Pogoprotos.Map.SpawnPoint> = []
           for oneValueSpawnPoints in jsonValueSpawnPoints {
-            let messageFromStringSpawnPoints = try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(oneValueSpawnPoints).build()
+            let messageFromStringSpawnPoints = try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsonMap:oneValueSpawnPoints).build()
 
-            jsonArraySpawnPoints += [messageFromStringSpawnPoints]
+            jsonArraySpawnPoints.append(messageFromStringSpawnPoints)
           }
           resultDecodedBuilder.spawnPoints = jsonArraySpawnPoints
         }
         if let jsonValueDeletedObjects = jsonMap["deletedObjects"] as? Array<String> {
-          resultDecodedBuilder.deletedObjects = jsonValueDeletedObjects
+          var jsonArrayDeletedObjects:Array<String> = []
+          for oneValueDeletedObjects in jsonValueDeletedObjects {
+            jsonArrayDeletedObjects.append(oneValueDeletedObjects)
+          }
+          resultDecodedBuilder.deletedObjects = jsonArrayDeletedObjects
         }
         if let jsonValueIsTruncatedList = jsonMap["isTruncatedList"] as? Bool {
           resultDecodedBuilder.isTruncatedList = jsonValueIsTruncatedList
         }
-        if let jsonValueFortSummaries = jsonMap["fortSummaries"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueFortSummaries = jsonMap["fortSummaries"] as? Array<Dictionary<String,Any>> {
           var jsonArrayFortSummaries:Array<Pogoprotos.Map.Fort.FortSummary> = []
           for oneValueFortSummaries in jsonValueFortSummaries {
-            let messageFromStringFortSummaries = try Pogoprotos.Map.Fort.FortSummary.Builder.decodeToBuilder(oneValueFortSummaries).build()
+            let messageFromStringFortSummaries = try Pogoprotos.Map.Fort.FortSummary.Builder.decodeToBuilder(jsonMap:oneValueFortSummaries).build()
 
-            jsonArrayFortSummaries += [messageFromStringFortSummaries]
+            jsonArrayFortSummaries.append(messageFromStringFortSummaries)
           }
           resultDecodedBuilder.fortSummaries = jsonArrayFortSummaries
         }
-        if let jsonValueDecimatedSpawnPoints = jsonMap["decimatedSpawnPoints"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueDecimatedSpawnPoints = jsonMap["decimatedSpawnPoints"] as? Array<Dictionary<String,Any>> {
           var jsonArrayDecimatedSpawnPoints:Array<Pogoprotos.Map.SpawnPoint> = []
           for oneValueDecimatedSpawnPoints in jsonValueDecimatedSpawnPoints {
-            let messageFromStringDecimatedSpawnPoints = try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(oneValueDecimatedSpawnPoints).build()
+            let messageFromStringDecimatedSpawnPoints = try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsonMap:oneValueDecimatedSpawnPoints).build()
 
-            jsonArrayDecimatedSpawnPoints += [messageFromStringDecimatedSpawnPoints]
+            jsonArrayDecimatedSpawnPoints.append(messageFromStringDecimatedSpawnPoints)
           }
           resultDecodedBuilder.decimatedSpawnPoints = jsonArrayDecimatedSpawnPoints
         }
-        if let jsonValueWildPokemons = jsonMap["wildPokemons"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueWildPokemons = jsonMap["wildPokemons"] as? Array<Dictionary<String,Any>> {
           var jsonArrayWildPokemons:Array<Pogoprotos.Map.Pokemon.WildPokemon> = []
           for oneValueWildPokemons in jsonValueWildPokemons {
-            let messageFromStringWildPokemons = try Pogoprotos.Map.Pokemon.WildPokemon.Builder.decodeToBuilder(oneValueWildPokemons).build()
+            let messageFromStringWildPokemons = try Pogoprotos.Map.Pokemon.WildPokemon.Builder.decodeToBuilder(jsonMap:oneValueWildPokemons).build()
 
-            jsonArrayWildPokemons += [messageFromStringWildPokemons]
+            jsonArrayWildPokemons.append(messageFromStringWildPokemons)
           }
           resultDecodedBuilder.wildPokemons = jsonArrayWildPokemons
         }
-        if let jsonValueCatchablePokemons = jsonMap["catchablePokemons"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueCatchablePokemons = jsonMap["catchablePokemons"] as? Array<Dictionary<String,Any>> {
           var jsonArrayCatchablePokemons:Array<Pogoprotos.Map.Pokemon.MapPokemon> = []
           for oneValueCatchablePokemons in jsonValueCatchablePokemons {
-            let messageFromStringCatchablePokemons = try Pogoprotos.Map.Pokemon.MapPokemon.Builder.decodeToBuilder(oneValueCatchablePokemons).build()
+            let messageFromStringCatchablePokemons = try Pogoprotos.Map.Pokemon.MapPokemon.Builder.decodeToBuilder(jsonMap:oneValueCatchablePokemons).build()
 
-            jsonArrayCatchablePokemons += [messageFromStringCatchablePokemons]
+            jsonArrayCatchablePokemons.append(messageFromStringCatchablePokemons)
           }
           resultDecodedBuilder.catchablePokemons = jsonArrayCatchablePokemons
         }
-        if let jsonValueNearbyPokemons = jsonMap["nearbyPokemons"] as? Array<Dictionary<String,AnyObject>> {
+        if let jsonValueNearbyPokemons = jsonMap["nearbyPokemons"] as? Array<Dictionary<String,Any>> {
           var jsonArrayNearbyPokemons:Array<Pogoprotos.Map.Pokemon.NearbyPokemon> = []
           for oneValueNearbyPokemons in jsonValueNearbyPokemons {
-            let messageFromStringNearbyPokemons = try Pogoprotos.Map.Pokemon.NearbyPokemon.Builder.decodeToBuilder(oneValueNearbyPokemons).build()
+            let messageFromStringNearbyPokemons = try Pogoprotos.Map.Pokemon.NearbyPokemon.Builder.decodeToBuilder(jsonMap:oneValueNearbyPokemons).build()
 
-            jsonArrayNearbyPokemons += [messageFromStringNearbyPokemons]
+            jsonArrayNearbyPokemons.append(messageFromStringNearbyPokemons)
           }
           resultDecodedBuilder.nearbyPokemons = jsonArrayNearbyPokemons
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Map.MapCell.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Map.MapCell.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Map.MapCell.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Map.MapCell.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
-  final public class SpawnPoint : GeneratedMessage, GeneratedMessageProtocol {
-    public private(set) var hasLatitude:Bool = false
-    public private(set) var latitude:Double = Double(0)
+  final public class SpawnPoint : GeneratedMessage {
 
-    public private(set) var hasLongitude:Bool = false
-    public private(set) var longitude:Double = Double(0)
+    public static func == (lhs: Pogoprotos.Map.SpawnPoint, rhs: Pogoprotos.Map.SpawnPoint) -> Bool {
+      if (lhs === rhs) {
+        return true
+      }
+      var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+      fieldCheck = fieldCheck && (lhs.hasLatitude == rhs.hasLatitude) && (!lhs.hasLatitude || lhs.latitude == rhs.latitude)
+      fieldCheck = fieldCheck && (lhs.hasLongitude == rhs.hasLongitude) && (!lhs.hasLongitude || lhs.longitude == rhs.longitude)
+      fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+      return fieldCheck
+    }
+
+    public fileprivate(set) var latitude:Double = Double(0)
+    public fileprivate(set) var hasLatitude:Bool = false
+
+    public fileprivate(set) var longitude:Double = Double(0)
+    public fileprivate(set) var hasLongitude:Bool = false
 
     required public init() {
          super.init()
@@ -889,14 +889,14 @@ public extension Pogoprotos.Map {
     override public func isInitialized() -> Bool {
      return true
     }
-    override public func writeToCodedOutputStream(output:CodedOutputStream) throws {
+    override public func writeTo(codedOutputStream: CodedOutputStream) throws {
       if hasLatitude {
-        try output.writeDouble(2, value:latitude)
+        try codedOutputStream.writeDouble(fieldNumber: 2, value:latitude)
       }
       if hasLongitude {
-        try output.writeDouble(3, value:longitude)
+        try codedOutputStream.writeDouble(fieldNumber: 3, value:longitude)
       }
-      try unknownFields.writeToCodedOutputStream(output)
+      try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
     override public func serializedSize() -> Int32 {
       var serialize_size:Int32 = memoizedSerializedSize
@@ -906,42 +906,14 @@ public extension Pogoprotos.Map {
 
       serialize_size = 0
       if hasLatitude {
-        serialize_size += latitude.computeDoubleSize(2)
+        serialize_size += latitude.computeDoubleSize(fieldNumber: 2)
       }
       if hasLongitude {
-        serialize_size += longitude.computeDoubleSize(3)
+        serialize_size += longitude.computeDoubleSize(fieldNumber: 3)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
-    }
-    public class func parseArrayDelimitedFromInputStream(input:NSInputStream) throws -> Array<Pogoprotos.Map.SpawnPoint> {
-      var mergedArray = Array<Pogoprotos.Map.SpawnPoint>()
-      while let value = try parseFromDelimitedFromInputStream(input) {
-        mergedArray += [value]
-      }
-      return mergedArray
-    }
-    public class func parseFromDelimitedFromInputStream(input:NSInputStream) throws -> Pogoprotos.Map.SpawnPoint? {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeDelimitedFromInputStream(input)?.build()
-    }
-    public class func parseFromData(data:NSData) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromData(data, extensionRegistry:Pogoprotos.Map.PogoprotosMapRoot.sharedInstance.extensionRegistry).build()
-    }
-    public class func parseFromData(data:NSData, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromData(data, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromInputStream(input).build()
-    }
-    public class func parseFromInputStream(input:NSInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromInputStream(input, extensionRegistry:extensionRegistry).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromCodedInputStream(input).build()
-    }
-    public class func parseFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFromCodedInputStream(input, extensionRegistry:extensionRegistry).build()
     }
     public class func getBuilder() -> Pogoprotos.Map.SpawnPoint.Builder {
       return Pogoprotos.Map.SpawnPoint.classBuilder() as! Pogoprotos.Map.SpawnPoint.Builder
@@ -949,37 +921,37 @@ public extension Pogoprotos.Map {
     public func getBuilder() -> Pogoprotos.Map.SpawnPoint.Builder {
       return classBuilder() as! Pogoprotos.Map.SpawnPoint.Builder
     }
-    override public class func classBuilder() -> MessageBuilder {
+    override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Map.SpawnPoint.Builder()
     }
-    override public func classBuilder() -> MessageBuilder {
+    override public func classBuilder() -> ProtocolBuffersMessageBuilder {
       return Pogoprotos.Map.SpawnPoint.Builder()
     }
     public func toBuilder() throws -> Pogoprotos.Map.SpawnPoint.Builder {
-      return try Pogoprotos.Map.SpawnPoint.builderWithPrototype(self)
+      return try Pogoprotos.Map.SpawnPoint.builderWithPrototype(prototype:self)
     }
     public class func builderWithPrototype(prototype:Pogoprotos.Map.SpawnPoint) throws -> Pogoprotos.Map.SpawnPoint.Builder {
-      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(prototype)
+      return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(other:prototype)
     }
-    override public func encode() throws -> Dictionary<String,AnyObject> {
+    override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
-        throw ProtocolBuffersError.InvalidProtocolBuffer("Uninitialized Message")
+        throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
       }
 
-      var jsonMap:Dictionary<String,AnyObject> = Dictionary<String,AnyObject>()
+      var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasLatitude {
-        jsonMap["latitude"] = NSNumber(double:latitude)
+        jsonMap["latitude"] = Double(latitude)
       }
       if hasLongitude {
-        jsonMap["longitude"] = NSNumber(double:longitude)
+        jsonMap["longitude"] = Double(longitude)
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Map.SpawnPoint {
+      return try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:NSData) throws -> Pogoprotos.Map.SpawnPoint {
-      return try Pogoprotos.Map.SpawnPoint.Builder.fromJSONToBuilder(data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Map.SpawnPoint {
+      return try Pogoprotos.Map.SpawnPoint.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -989,7 +961,7 @@ public extension Pogoprotos.Map {
       if hasLongitude {
         output += "\(indent) longitude: \(longitude) \n"
       }
-      output += unknownFields.getDescription(indent)
+      output += unknownFields.getDescription(indent: indent)
       return output
     }
     override public var hashValue:Int {
@@ -1015,13 +987,10 @@ public extension Pogoprotos.Map {
     override public func className() -> String {
         return "Pogoprotos.Map.SpawnPoint"
     }
-    override public func classMetaType() -> GeneratedMessage.Type {
-        return Pogoprotos.Map.SpawnPoint.self
-    }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      private var builderResult:Pogoprotos.Map.SpawnPoint = Pogoprotos.Map.SpawnPoint()
+      fileprivate var builderResult:Pogoprotos.Map.SpawnPoint = Pogoprotos.Map.SpawnPoint()
       public func getMessage() -> Pogoprotos.Map.SpawnPoint {
           return builderResult
       }
@@ -1043,10 +1012,12 @@ public extension Pogoprotos.Map {
                builderResult.latitude = value
            }
       }
-      public func setLatitude(value:Double) -> Pogoprotos.Map.SpawnPoint.Builder {
+      @discardableResult
+      public func setLatitude(_ value:Double) -> Pogoprotos.Map.SpawnPoint.Builder {
         self.latitude = value
         return self
       }
+      @discardableResult
       public func clearLatitude() -> Pogoprotos.Map.SpawnPoint.Builder{
            builderResult.hasLatitude = false
            builderResult.latitude = Double(0)
@@ -1066,10 +1037,12 @@ public extension Pogoprotos.Map {
                builderResult.longitude = value
            }
       }
-      public func setLongitude(value:Double) -> Pogoprotos.Map.SpawnPoint.Builder {
+      @discardableResult
+      public func setLongitude(_ value:Double) -> Pogoprotos.Map.SpawnPoint.Builder {
         self.longitude = value
         return self
       }
+      @discardableResult
       public func clearLongitude() -> Pogoprotos.Map.SpawnPoint.Builder{
            builderResult.hasLongitude = false
            builderResult.longitude = Double(0)
@@ -1080,12 +1053,13 @@ public extension Pogoprotos.Map {
               return builderResult
            }
       }
+      @discardableResult
       override public func clear() -> Pogoprotos.Map.SpawnPoint.Builder {
         builderResult = Pogoprotos.Map.SpawnPoint()
         return self
       }
       override public func clone() throws -> Pogoprotos.Map.SpawnPoint.Builder {
-        return try Pogoprotos.Map.SpawnPoint.builderWithPrototype(builderResult)
+        return try Pogoprotos.Map.SpawnPoint.builderWithPrototype(prototype:builderResult)
       }
       override public func build() throws -> Pogoprotos.Map.SpawnPoint {
            try checkInitialized()
@@ -1095,6 +1069,7 @@ public extension Pogoprotos.Map {
         let returnMe:Pogoprotos.Map.SpawnPoint = builderResult
         return returnMe
       }
+      @discardableResult
       public func mergeFrom(other:Pogoprotos.Map.SpawnPoint) throws -> Pogoprotos.Map.SpawnPoint.Builder {
         if other == Pogoprotos.Map.SpawnPoint() {
          return self
@@ -1105,56 +1080,118 @@ public extension Pogoprotos.Map {
         if other.hasLongitude {
              longitude = other.longitude
         }
-        try mergeUnknownFields(other.unknownFields)
+        _ = try merge(unknownField: other.unknownFields)
         return self
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream) throws -> Pogoprotos.Map.SpawnPoint.Builder {
-           return try mergeFromCodedInputStream(input, extensionRegistry:ExtensionRegistry())
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Map.SpawnPoint.Builder {
+           return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
-      override public func mergeFromCodedInputStream(input:CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint.Builder {
-        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(self.unknownFields)
+      @discardableResult
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint.Builder {
+        let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
-          let protobufTag = try input.readTag()
+          let protobufTag = try codedInputStream.readTag()
           switch protobufTag {
           case 0: 
             self.unknownFields = try unknownFieldsBuilder.build()
             return self
 
           case 17:
-            latitude = try input.readDouble()
+            latitude = try codedInputStream.readDouble()
 
           case 25:
-            longitude = try input.readDouble()
+            longitude = try codedInputStream.readDouble()
 
           default:
-            if (!(try parseUnknownField(input,unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+            if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
                return self
             }
           }
         }
       }
-      override class public func decodeToBuilder(jsonMap:Dictionary<String,AnyObject>) throws -> Pogoprotos.Map.SpawnPoint.Builder {
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Map.SpawnPoint.Builder {
         let resultDecodedBuilder = Pogoprotos.Map.SpawnPoint.Builder()
-        if let jsonValueLatitude = jsonMap["latitude"] as? NSNumber {
-          resultDecodedBuilder.latitude = jsonValueLatitude.doubleValue
+        if let jsonValueLatitude = jsonMap["latitude"] as? Double {
+          resultDecodedBuilder.latitude = Double(jsonValueLatitude)
         }
-        if let jsonValueLongitude = jsonMap["longitude"] as? NSNumber {
-          resultDecodedBuilder.longitude = jsonValueLongitude.doubleValue
+        if let jsonValueLongitude = jsonMap["longitude"] as? Double {
+          resultDecodedBuilder.longitude = Double(jsonValueLongitude)
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:NSData) throws -> Pogoprotos.Map.SpawnPoint.Builder {
-        let jsonData = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(rawValue: 0))
-        guard let jsDataCast = jsonData as? Dictionary<String,AnyObject> else {
-          throw ProtocolBuffersError.InvalidProtocolBuffer("Invalid JSON data")
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Map.SpawnPoint.Builder {
+        let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+        guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+          throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsDataCast)
+        return try Pogoprotos.Map.SpawnPoint.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
   }
 
+}
+extension Pogoprotos.Map.MapCell: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Map.MapCell> {
+    var mergedArray = Array<Pogoprotos.Map.MapCell>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Map.MapCell? {
+    return try Pogoprotos.Map.MapCell.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Map.PogoprotosMapRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.MapCell {
+    return try Pogoprotos.Map.MapCell.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
+}
+extension Pogoprotos.Map.SpawnPoint: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Map.SpawnPoint> {
+    var mergedArray = Array<Pogoprotos.Map.SpawnPoint>()
+    while let value = try parseDelimitedFrom(inputStream: inputStream) {
+      mergedArray.append(value)
+    }
+    return mergedArray
+  }
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Map.SpawnPoint? {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  }
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Map.PogoprotosMapRoot.default.extensionRegistry).build()
+  }
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(inputStream: inputStream).build()
+  }
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  }
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Map.SpawnPoint {
+    return try Pogoprotos.Map.SpawnPoint.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  }
 }
 
 // @@protoc_insertion_point(global_scope)
