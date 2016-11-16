@@ -60,15 +60,11 @@ public extension Pogoprotos.Map.Fort {
     case unsetSponsor = 0
     case mcdonalds = 1
     case pokemonStore = 2
-    case toho = 3
-    case softbank = 4
     public func toString() -> String {
       switch self {
       case .unsetSponsor: return "UNSET_SPONSOR"
       case .mcdonalds: return "MCDONALDS"
       case .pokemonStore: return "POKEMON_STORE"
-      case .toho: return "TOHO"
-      case .softbank: return "SOFTBANK"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Map.Fort.FortSponsor {
@@ -76,8 +72,6 @@ public extension Pogoprotos.Map.Fort {
       case "UNSET_SPONSOR":  return .unsetSponsor
       case "MCDONALDS":  return .mcdonalds
       case "POKEMON_STORE":  return .pokemonStore
-      case "TOHO":  return .toho
-      case "SOFTBANK":  return .softbank
       default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
@@ -88,8 +82,6 @@ public extension Pogoprotos.Map.Fort {
       case .unsetSponsor: return ".unsetSponsor"
       case .mcdonalds: return ".mcdonalds"
       case .pokemonStore: return ".pokemonStore"
-      case .toho: return ".toho"
-      case .softbank: return ".softbank"
       }
     }
   }

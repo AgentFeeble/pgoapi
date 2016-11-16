@@ -13,8 +13,8 @@ public extension Pogoprotos.Networking.Envelopes {
     init() {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(registry: extensionRegistry)
-      Pogoprotos.Networking.Requests.PogoprotosNetworkingRequestsRoot.default.registerAllExtensions(registry: extensionRegistry)
       Pogoprotos.Networking.Platform.PogoprotosNetworkingPlatformRoot.default.registerAllExtensions(registry: extensionRegistry)
+      Pogoprotos.Networking.Requests.PogoprotosNetworkingRequestsRoot.default.registerAllExtensions(registry: extensionRegistry)
     }
     public func registerAllExtensions(registry: ExtensionRegistry) {
     }
@@ -1244,7 +1244,6 @@ public extension Pogoprotos.Networking.Envelopes {
     public fileprivate(set) var longitude:Double = Double(0)
     public fileprivate(set) var hasLongitude:Bool = false
 
-    // Make sure to use this to build .POGOProtos.Networking.Envelopes.Signature.location_hash1 and .POGOProtos.Networking.Envelopes.Signature.location_hash2
     public fileprivate(set) var accuracy:Double = Double(0)
     public fileprivate(set) var hasAccuracy:Bool = false
 
@@ -2949,23 +2948,23 @@ public extension Pogoprotos.Networking.Envelopes {
 
   }
 
-  final public class Signature : GeneratedMessage {
+  final public class SignalAgglomUpdates : GeneratedMessage {
 
-    public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature, rhs: Pogoprotos.Networking.Envelopes.Signature) -> Bool {
+    public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates) -> Bool {
       if (lhs === rhs) {
         return true
       }
       var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
       fieldCheck = fieldCheck && (lhs.field1 == rhs.field1)
-      fieldCheck = fieldCheck && (lhs.hasTimestampSinceStart == rhs.hasTimestampSinceStart) && (!lhs.hasTimestampSinceStart || lhs.timestampSinceStart == rhs.timestampSinceStart)
+      fieldCheck = fieldCheck && (lhs.hasTimestampMsSinceStart == rhs.hasTimestampMsSinceStart) && (!lhs.hasTimestampMsSinceStart || lhs.timestampMsSinceStart == rhs.timestampMsSinceStart)
       fieldCheck = fieldCheck && (lhs.hasField3 == rhs.hasField3) && (!lhs.hasField3 || lhs.field3 == rhs.field3)
-      fieldCheck = fieldCheck && (lhs.locationFix == rhs.locationFix)
-      fieldCheck = fieldCheck && (lhs.gpsInfo == rhs.gpsInfo)
+      fieldCheck = fieldCheck && (lhs.locationUpdates == rhs.locationUpdates)
+      fieldCheck = fieldCheck && (lhs.androidGpsInfo == rhs.androidGpsInfo)
       fieldCheck = fieldCheck && (lhs.field6 == rhs.field6)
-      fieldCheck = fieldCheck && (lhs.sensorInfo == rhs.sensorInfo)
+      fieldCheck = fieldCheck && (lhs.sensorUpdates == rhs.sensorUpdates)
       fieldCheck = fieldCheck && (lhs.hasDeviceInfo == rhs.hasDeviceInfo) && (!lhs.hasDeviceInfo || lhs.deviceInfo == rhs.deviceInfo)
-      fieldCheck = fieldCheck && (lhs.hasActivityStatus == rhs.hasActivityStatus) && (!lhs.hasActivityStatus || lhs.activityStatus == rhs.activityStatus)
-      fieldCheck = fieldCheck && (lhs.hasLocationHash1 == rhs.hasLocationHash1) && (!lhs.hasLocationHash1 || lhs.locationHash1 == rhs.locationHash1)
+      fieldCheck = fieldCheck && (lhs.hasIosDeviceInfo == rhs.hasIosDeviceInfo) && (!lhs.hasIosDeviceInfo || lhs.iosDeviceInfo == rhs.iosDeviceInfo)
+      fieldCheck = fieldCheck && (lhs.hasLocationHashByTokenSeed == rhs.hasLocationHashByTokenSeed) && (!lhs.hasLocationHashByTokenSeed || lhs.locationHashByTokenSeed == rhs.locationHashByTokenSeed)
       fieldCheck = fieldCheck && (lhs.hasField11 == rhs.hasField11) && (!lhs.hasField11 || lhs.field11 == rhs.field11)
       fieldCheck = fieldCheck && (lhs.hasField12 == rhs.hasField12) && (!lhs.hasField12 || lhs.field12 == rhs.field12)
       fieldCheck = fieldCheck && (lhs.hasField13 == rhs.hasField13) && (!lhs.hasField13 || lhs.field13 == rhs.field13)
@@ -2975,12 +2974,12 @@ public extension Pogoprotos.Networking.Envelopes {
       fieldCheck = fieldCheck && (lhs.hasField17 == rhs.hasField17) && (!lhs.hasField17 || lhs.field17 == rhs.field17)
       fieldCheck = fieldCheck && (lhs.hasField18 == rhs.hasField18) && (!lhs.hasField18 || lhs.field18 == rhs.field18)
       fieldCheck = fieldCheck && (lhs.hasField19 == rhs.hasField19) && (!lhs.hasField19 || lhs.field19 == rhs.field19)
-      fieldCheck = fieldCheck && (lhs.hasLocationHash2 == rhs.hasLocationHash2) && (!lhs.hasLocationHash2 || lhs.locationHash2 == rhs.locationHash2)
+      fieldCheck = fieldCheck && (lhs.hasLocationHash == rhs.hasLocationHash) && (!lhs.hasLocationHash || lhs.locationHash == rhs.locationHash)
       fieldCheck = fieldCheck && (lhs.hasField21 == rhs.hasField21) && (!lhs.hasField21 || lhs.field21 == rhs.field21)
-      fieldCheck = fieldCheck && (lhs.hasSessionHash == rhs.hasSessionHash) && (!lhs.hasSessionHash || lhs.sessionHash == rhs.sessionHash)
-      fieldCheck = fieldCheck && (lhs.hasTimestamp == rhs.hasTimestamp) && (!lhs.hasTimestamp || lhs.timestamp == rhs.timestamp)
-      fieldCheck = fieldCheck && (lhs.requestHash == rhs.requestHash)
-      fieldCheck = fieldCheck && (lhs.hasUnknown25 == rhs.hasUnknown25) && (!lhs.hasUnknown25 || lhs.unknown25 == rhs.unknown25)
+      fieldCheck = fieldCheck && (lhs.hasField22 == rhs.hasField22) && (!lhs.hasField22 || lhs.field22 == rhs.field22)
+      fieldCheck = fieldCheck && (lhs.hasEpochTimestampMs == rhs.hasEpochTimestampMs) && (!lhs.hasEpochTimestampMs || lhs.epochTimestampMs == rhs.epochTimestampMs)
+      fieldCheck = fieldCheck && (lhs.requestHashes == rhs.requestHashes)
+      fieldCheck = fieldCheck && (lhs.hasField25 == rhs.hasField25) && (!lhs.hasField25 || lhs.field25 == rhs.field25)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
       return fieldCheck
     }
@@ -2989,20 +2988,21 @@ public extension Pogoprotos.Networking.Envelopes {
 
     //Nested type declaration start
 
-      final public class LocationFix : GeneratedMessage {
+      // 100% - Reference iOS lib "LocationUpdate" structure for bridge
+      final public class LocationUpdate : GeneratedMessage {
 
-        public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature.LocationFix, rhs: Pogoprotos.Networking.Envelopes.Signature.LocationFix) -> Bool {
+        public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate) -> Bool {
           if (lhs === rhs) {
             return true
           }
           var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-          fieldCheck = fieldCheck && (lhs.hasProvider == rhs.hasProvider) && (!lhs.hasProvider || lhs.provider == rhs.provider)
-          fieldCheck = fieldCheck && (lhs.hasTimestampSnapshot == rhs.hasTimestampSnapshot) && (!lhs.hasTimestampSnapshot || lhs.timestampSnapshot == rhs.timestampSnapshot)
+          fieldCheck = fieldCheck && (lhs.hasName == rhs.hasName) && (!lhs.hasName || lhs.name == rhs.name)
+          fieldCheck = fieldCheck && (lhs.hasTimestampMs == rhs.hasTimestampMs) && (!lhs.hasTimestampMs || lhs.timestampMs == rhs.timestampMs)
           fieldCheck = fieldCheck && (lhs.hasAltitude == rhs.hasAltitude) && (!lhs.hasAltitude || lhs.altitude == rhs.altitude)
           fieldCheck = fieldCheck && (lhs.hasLatitude == rhs.hasLatitude) && (!lhs.hasLatitude || lhs.latitude == rhs.latitude)
           fieldCheck = fieldCheck && (lhs.hasLongitude == rhs.hasLongitude) && (!lhs.hasLongitude || lhs.longitude == rhs.longitude)
-          fieldCheck = fieldCheck && (lhs.hasSpeed == rhs.hasSpeed) && (!lhs.hasSpeed || lhs.speed == rhs.speed)
-          fieldCheck = fieldCheck && (lhs.hasCourse == rhs.hasCourse) && (!lhs.hasCourse || lhs.course == rhs.course)
+          fieldCheck = fieldCheck && (lhs.hasDeviceSpeed == rhs.hasDeviceSpeed) && (!lhs.hasDeviceSpeed || lhs.deviceSpeed == rhs.deviceSpeed)
+          fieldCheck = fieldCheck && (lhs.hasDeviceCourse == rhs.hasDeviceCourse) && (!lhs.hasDeviceCourse || lhs.deviceCourse == rhs.deviceCourse)
           fieldCheck = fieldCheck && (lhs.hasHorizontalAccuracy == rhs.hasHorizontalAccuracy) && (!lhs.hasHorizontalAccuracy || lhs.horizontalAccuracy == rhs.horizontalAccuracy)
           fieldCheck = fieldCheck && (lhs.hasVerticalAccuracy == rhs.hasVerticalAccuracy) && (!lhs.hasVerticalAccuracy || lhs.verticalAccuracy == rhs.verticalAccuracy)
           fieldCheck = fieldCheck && (lhs.hasProviderStatus == rhs.hasProviderStatus) && (!lhs.hasProviderStatus || lhs.providerStatus == rhs.providerStatus)
@@ -3012,15 +3012,13 @@ public extension Pogoprotos.Networking.Envelopes {
           return fieldCheck
         }
 
-        // "network", "gps", "fused", possibly others
-        public fileprivate(set) var provider:String = ""
-        public fileprivate(set) var hasProvider:Bool = false
+        // "network", "gps", "fused" - only these 3 values (com.nianticlabs.location.NianticLocationManager.class)
+        public fileprivate(set) var name:String = ""
+        public fileprivate(set) var hasName:Bool = false
 
-        // in ms since start
-        public fileprivate(set) var timestampSnapshot:UInt64 = UInt64(0)
-        public fileprivate(set) var hasTimestampSnapshot:Bool = false
+        public fileprivate(set) var timestampMs:Int64 = Int64(0)
+        public fileprivate(set) var hasTimestampMs:Bool = false
 
-        // Confirmed on android/ios
         public fileprivate(set) var altitude:Float = Float(0)
         public fileprivate(set) var hasAltitude:Bool = false
 
@@ -3030,32 +3028,25 @@ public extension Pogoprotos.Networking.Envelopes {
         public fileprivate(set) var longitude:Float = Float(0)
         public fileprivate(set) var hasLongitude:Bool = false
 
-        // iOS only (-1 for no reading available, speed in m/s)
-        public fileprivate(set) var speed:Float = Float(0)
-        public fileprivate(set) var hasSpeed:Bool = false
+        public fileprivate(set) var deviceSpeed:Float = Float(0)
+        public fileprivate(set) var hasDeviceSpeed:Bool = false
 
-        // iOS only (range seems to be -1 for not reading, and 0 to 360 for reading) confirmed by @marcel
-        public fileprivate(set) var course:Float = Float(0)
-        public fileprivate(set) var hasCourse:Bool = false
+        public fileprivate(set) var deviceCourse:Float = Float(0)
+        public fileprivate(set) var hasDeviceCourse:Bool = false
 
-        // in meters, both on Android and iOS
         public fileprivate(set) var horizontalAccuracy:Float = Float(0)
         public fileprivate(set) var hasHorizontalAccuracy:Bool = false
 
-        // iOS only
         public fileprivate(set) var verticalAccuracy:Float = Float(0)
         public fileprivate(set) var hasVerticalAccuracy:Bool = false
 
-        // Usually 3 (possibly GPS status: 1 = no fix, 2 = acquiring/inaccurate, 3 = fix acquired)
-        public fileprivate(set) var providerStatus:UInt64 = UInt64(0)
+        public fileprivate(set) var providerStatus:Int32 = Int32(0)
         public fileprivate(set) var hasProviderStatus:Bool = false
 
-        // On iOS there are some LocationFixes with unk26=1 and everything else empty
-        public fileprivate(set) var floor:UInt32 = UInt32(0)
+        public fileprivate(set) var floor:Int64 = Int64(0)
         public fileprivate(set) var hasFloor:Bool = false
 
-        // Always 1 (if there is data at all)
-        public fileprivate(set) var locationType:UInt64 = UInt64(0)
+        public fileprivate(set) var locationType:Int32 = Int32(0)
         public fileprivate(set) var hasLocationType:Bool = false
 
         required public init() {
@@ -3065,11 +3056,11 @@ public extension Pogoprotos.Networking.Envelopes {
          return true
         }
         override public func writeTo(codedOutputStream: CodedOutputStream) throws {
-          if hasProvider {
-            try codedOutputStream.writeString(fieldNumber: 1, value:provider)
+          if hasName {
+            try codedOutputStream.writeString(fieldNumber: 1, value:name)
           }
-          if hasTimestampSnapshot {
-            try codedOutputStream.writeUInt64(fieldNumber: 2, value:timestampSnapshot)
+          if hasTimestampMs {
+            try codedOutputStream.writeInt64(fieldNumber: 2, value:timestampMs)
           }
           if hasAltitude {
             try codedOutputStream.writeFloat(fieldNumber: 4, value:altitude)
@@ -3080,11 +3071,11 @@ public extension Pogoprotos.Networking.Envelopes {
           if hasLongitude {
             try codedOutputStream.writeFloat(fieldNumber: 14, value:longitude)
           }
-          if hasSpeed {
-            try codedOutputStream.writeFloat(fieldNumber: 18, value:speed)
+          if hasDeviceSpeed {
+            try codedOutputStream.writeFloat(fieldNumber: 18, value:deviceSpeed)
           }
-          if hasCourse {
-            try codedOutputStream.writeFloat(fieldNumber: 20, value:course)
+          if hasDeviceCourse {
+            try codedOutputStream.writeFloat(fieldNumber: 20, value:deviceCourse)
           }
           if hasHorizontalAccuracy {
             try codedOutputStream.writeFloat(fieldNumber: 21, value:horizontalAccuracy)
@@ -3093,13 +3084,13 @@ public extension Pogoprotos.Networking.Envelopes {
             try codedOutputStream.writeFloat(fieldNumber: 22, value:verticalAccuracy)
           }
           if hasProviderStatus {
-            try codedOutputStream.writeUInt64(fieldNumber: 26, value:providerStatus)
+            try codedOutputStream.writeInt32(fieldNumber: 26, value:providerStatus)
           }
           if hasFloor {
-            try codedOutputStream.writeUInt32(fieldNumber: 27, value:floor)
+            try codedOutputStream.writeInt64(fieldNumber: 27, value:floor)
           }
           if hasLocationType {
-            try codedOutputStream.writeUInt64(fieldNumber: 28, value:locationType)
+            try codedOutputStream.writeInt32(fieldNumber: 28, value:locationType)
           }
           try unknownFields.writeTo(codedOutputStream: codedOutputStream)
         }
@@ -3110,11 +3101,11 @@ public extension Pogoprotos.Networking.Envelopes {
           }
 
           serialize_size = 0
-          if hasProvider {
-            serialize_size += provider.computeStringSize(fieldNumber: 1)
+          if hasName {
+            serialize_size += name.computeStringSize(fieldNumber: 1)
           }
-          if hasTimestampSnapshot {
-            serialize_size += timestampSnapshot.computeUInt64Size(fieldNumber: 2)
+          if hasTimestampMs {
+            serialize_size += timestampMs.computeInt64Size(fieldNumber: 2)
           }
           if hasAltitude {
             serialize_size += altitude.computeFloatSize(fieldNumber: 4)
@@ -3125,11 +3116,11 @@ public extension Pogoprotos.Networking.Envelopes {
           if hasLongitude {
             serialize_size += longitude.computeFloatSize(fieldNumber: 14)
           }
-          if hasSpeed {
-            serialize_size += speed.computeFloatSize(fieldNumber: 18)
+          if hasDeviceSpeed {
+            serialize_size += deviceSpeed.computeFloatSize(fieldNumber: 18)
           }
-          if hasCourse {
-            serialize_size += course.computeFloatSize(fieldNumber: 20)
+          if hasDeviceCourse {
+            serialize_size += deviceCourse.computeFloatSize(fieldNumber: 20)
           }
           if hasHorizontalAccuracy {
             serialize_size += horizontalAccuracy.computeFloatSize(fieldNumber: 21)
@@ -3138,35 +3129,35 @@ public extension Pogoprotos.Networking.Envelopes {
             serialize_size += verticalAccuracy.computeFloatSize(fieldNumber: 22)
           }
           if hasProviderStatus {
-            serialize_size += providerStatus.computeUInt64Size(fieldNumber: 26)
+            serialize_size += providerStatus.computeInt32Size(fieldNumber: 26)
           }
           if hasFloor {
-            serialize_size += floor.computeUInt32Size(fieldNumber: 27)
+            serialize_size += floor.computeInt64Size(fieldNumber: 27)
           }
           if hasLocationType {
-            serialize_size += locationType.computeUInt64Size(fieldNumber: 28)
+            serialize_size += locationType.computeInt32Size(fieldNumber: 28)
           }
           serialize_size += unknownFields.serializedSize()
           memoizedSerializedSize = serialize_size
           return serialize_size
         }
-        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-          return Pogoprotos.Networking.Envelopes.Signature.LocationFix.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder
+        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder
         }
-        public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-          return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder
+        public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+          return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder
         }
         override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder()
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder()
         }
         override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder()
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder()
         }
-        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.builderWithPrototype(prototype:self)
+        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.builderWithPrototype(prototype:self)
         }
-        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature.LocationFix) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(other:prototype)
+        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(other:prototype)
         }
         override public func encode() throws -> Dictionary<String,Any> {
           guard isInitialized() else {
@@ -3174,11 +3165,11 @@ public extension Pogoprotos.Networking.Envelopes {
           }
 
           var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
-          if hasProvider {
-            jsonMap["provider"] = provider
+          if hasName {
+            jsonMap["name"] = name
           }
-          if hasTimestampSnapshot {
-            jsonMap["timestampSnapshot"] = "\(timestampSnapshot)"
+          if hasTimestampMs {
+            jsonMap["timestampMs"] = "\(timestampMs)"
           }
           if hasAltitude {
             jsonMap["altitude"] = Float(altitude)
@@ -3189,11 +3180,11 @@ public extension Pogoprotos.Networking.Envelopes {
           if hasLongitude {
             jsonMap["longitude"] = Float(longitude)
           }
-          if hasSpeed {
-            jsonMap["speed"] = Float(speed)
+          if hasDeviceSpeed {
+            jsonMap["deviceSpeed"] = Float(deviceSpeed)
           }
-          if hasCourse {
-            jsonMap["course"] = Float(course)
+          if hasDeviceCourse {
+            jsonMap["deviceCourse"] = Float(deviceCourse)
           }
           if hasHorizontalAccuracy {
             jsonMap["horizontalAccuracy"] = Float(horizontalAccuracy)
@@ -3202,29 +3193,29 @@ public extension Pogoprotos.Networking.Envelopes {
             jsonMap["verticalAccuracy"] = Float(verticalAccuracy)
           }
           if hasProviderStatus {
-            jsonMap["providerStatus"] = "\(providerStatus)"
+            jsonMap["providerStatus"] = Int(providerStatus)
           }
           if hasFloor {
-            jsonMap["floor"] = UInt(floor)
+            jsonMap["floor"] = "\(floor)"
           }
           if hasLocationType {
-            jsonMap["locationType"] = "\(locationType)"
+            jsonMap["locationType"] = Int(locationType)
           }
           return jsonMap
         }
-        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-          return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder.decodeToBuilder(jsonMap:jsonMap).build()
         }
-        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-          return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder.fromJSONToBuilder(data:data).build()
+        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder.fromJSONToBuilder(data:data).build()
         }
         override public func getDescription(indent:String) throws -> String {
           var output = ""
-          if hasProvider {
-            output += "\(indent) provider: \(provider) \n"
+          if hasName {
+            output += "\(indent) name: \(name) \n"
           }
-          if hasTimestampSnapshot {
-            output += "\(indent) timestampSnapshot: \(timestampSnapshot) \n"
+          if hasTimestampMs {
+            output += "\(indent) timestampMs: \(timestampMs) \n"
           }
           if hasAltitude {
             output += "\(indent) altitude: \(altitude) \n"
@@ -3235,11 +3226,11 @@ public extension Pogoprotos.Networking.Envelopes {
           if hasLongitude {
             output += "\(indent) longitude: \(longitude) \n"
           }
-          if hasSpeed {
-            output += "\(indent) speed: \(speed) \n"
+          if hasDeviceSpeed {
+            output += "\(indent) deviceSpeed: \(deviceSpeed) \n"
           }
-          if hasCourse {
-            output += "\(indent) course: \(course) \n"
+          if hasDeviceCourse {
+            output += "\(indent) deviceCourse: \(deviceCourse) \n"
           }
           if hasHorizontalAccuracy {
             output += "\(indent) horizontalAccuracy: \(horizontalAccuracy) \n"
@@ -3262,11 +3253,11 @@ public extension Pogoprotos.Networking.Envelopes {
         override public var hashValue:Int {
             get {
                 var hashCode:Int = 7
-                if hasProvider {
-                   hashCode = (hashCode &* 31) &+ provider.hashValue
+                if hasName {
+                   hashCode = (hashCode &* 31) &+ name.hashValue
                 }
-                if hasTimestampSnapshot {
-                   hashCode = (hashCode &* 31) &+ timestampSnapshot.hashValue
+                if hasTimestampMs {
+                   hashCode = (hashCode &* 31) &+ timestampMs.hashValue
                 }
                 if hasAltitude {
                    hashCode = (hashCode &* 31) &+ altitude.hashValue
@@ -3277,11 +3268,11 @@ public extension Pogoprotos.Networking.Envelopes {
                 if hasLongitude {
                    hashCode = (hashCode &* 31) &+ longitude.hashValue
                 }
-                if hasSpeed {
-                   hashCode = (hashCode &* 31) &+ speed.hashValue
+                if hasDeviceSpeed {
+                   hashCode = (hashCode &* 31) &+ deviceSpeed.hashValue
                 }
-                if hasCourse {
-                   hashCode = (hashCode &* 31) &+ course.hashValue
+                if hasDeviceCourse {
+                   hashCode = (hashCode &* 31) &+ deviceCourse.hashValue
                 }
                 if hasHorizontalAccuracy {
                    hashCode = (hashCode &* 31) &+ horizontalAccuracy.hashValue
@@ -3307,70 +3298,70 @@ public extension Pogoprotos.Networking.Envelopes {
         //Meta information declaration start
 
         override public class func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.LocationFix"
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate"
         }
         override public func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.LocationFix"
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate"
         }
         //Meta information declaration end
 
         final public class Builder : GeneratedMessageBuilder {
-          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature.LocationFix = Pogoprotos.Networking.Envelopes.Signature.LocationFix()
-          public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
+          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate()
+          public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
               return builderResult
           }
 
           required override public init () {
              super.init()
           }
-          public var hasProvider:Bool {
+          public var hasName:Bool {
                get {
-                    return builderResult.hasProvider
+                    return builderResult.hasName
                }
           }
-          public var provider:String {
+          public var name:String {
                get {
-                    return builderResult.provider
+                    return builderResult.name
                }
                set (value) {
-                   builderResult.hasProvider = true
-                   builderResult.provider = value
+                   builderResult.hasName = true
+                   builderResult.name = value
                }
           }
           @discardableResult
-          public func setProvider(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            self.provider = value
+          public func setName(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            self.name = value
             return self
           }
           @discardableResult
-          public func clearProvider() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
-               builderResult.hasProvider = false
-               builderResult.provider = ""
+          public func clearName() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
+               builderResult.hasName = false
+               builderResult.name = ""
                return self
           }
-          public var hasTimestampSnapshot:Bool {
+          public var hasTimestampMs:Bool {
                get {
-                    return builderResult.hasTimestampSnapshot
+                    return builderResult.hasTimestampMs
                }
           }
-          public var timestampSnapshot:UInt64 {
+          public var timestampMs:Int64 {
                get {
-                    return builderResult.timestampSnapshot
+                    return builderResult.timestampMs
                }
                set (value) {
-                   builderResult.hasTimestampSnapshot = true
-                   builderResult.timestampSnapshot = value
+                   builderResult.hasTimestampMs = true
+                   builderResult.timestampMs = value
                }
           }
           @discardableResult
-          public func setTimestampSnapshot(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            self.timestampSnapshot = value
+          public func setTimestampMs(_ value:Int64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            self.timestampMs = value
             return self
           }
           @discardableResult
-          public func clearTimestampSnapshot() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
-               builderResult.hasTimestampSnapshot = false
-               builderResult.timestampSnapshot = UInt64(0)
+          public func clearTimestampMs() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
+               builderResult.hasTimestampMs = false
+               builderResult.timestampMs = Int64(0)
                return self
           }
           public var hasAltitude:Bool {
@@ -3388,12 +3379,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setAltitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setAltitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.altitude = value
             return self
           }
           @discardableResult
-          public func clearAltitude() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearAltitude() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasAltitude = false
                builderResult.altitude = Float(0)
                return self
@@ -3413,12 +3404,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setLatitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setLatitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.latitude = value
             return self
           }
           @discardableResult
-          public func clearLatitude() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearLatitude() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasLatitude = false
                builderResult.latitude = Float(0)
                return self
@@ -3438,64 +3429,64 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setLongitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setLongitude(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.longitude = value
             return self
           }
           @discardableResult
-          public func clearLongitude() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearLongitude() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasLongitude = false
                builderResult.longitude = Float(0)
                return self
           }
-          public var hasSpeed:Bool {
+          public var hasDeviceSpeed:Bool {
                get {
-                    return builderResult.hasSpeed
+                    return builderResult.hasDeviceSpeed
                }
           }
-          public var speed:Float {
+          public var deviceSpeed:Float {
                get {
-                    return builderResult.speed
+                    return builderResult.deviceSpeed
                }
                set (value) {
-                   builderResult.hasSpeed = true
-                   builderResult.speed = value
+                   builderResult.hasDeviceSpeed = true
+                   builderResult.deviceSpeed = value
                }
           }
           @discardableResult
-          public func setSpeed(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            self.speed = value
+          public func setDeviceSpeed(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            self.deviceSpeed = value
             return self
           }
           @discardableResult
-          public func clearSpeed() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
-               builderResult.hasSpeed = false
-               builderResult.speed = Float(0)
+          public func clearDeviceSpeed() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
+               builderResult.hasDeviceSpeed = false
+               builderResult.deviceSpeed = Float(0)
                return self
           }
-          public var hasCourse:Bool {
+          public var hasDeviceCourse:Bool {
                get {
-                    return builderResult.hasCourse
+                    return builderResult.hasDeviceCourse
                }
           }
-          public var course:Float {
+          public var deviceCourse:Float {
                get {
-                    return builderResult.course
+                    return builderResult.deviceCourse
                }
                set (value) {
-                   builderResult.hasCourse = true
-                   builderResult.course = value
+                   builderResult.hasDeviceCourse = true
+                   builderResult.deviceCourse = value
                }
           }
           @discardableResult
-          public func setCourse(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            self.course = value
+          public func setDeviceCourse(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            self.deviceCourse = value
             return self
           }
           @discardableResult
-          public func clearCourse() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
-               builderResult.hasCourse = false
-               builderResult.course = Float(0)
+          public func clearDeviceCourse() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
+               builderResult.hasDeviceCourse = false
+               builderResult.deviceCourse = Float(0)
                return self
           }
           public var hasHorizontalAccuracy:Bool {
@@ -3513,12 +3504,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setHorizontalAccuracy(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setHorizontalAccuracy(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.horizontalAccuracy = value
             return self
           }
           @discardableResult
-          public func clearHorizontalAccuracy() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearHorizontalAccuracy() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasHorizontalAccuracy = false
                builderResult.horizontalAccuracy = Float(0)
                return self
@@ -3538,12 +3529,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setVerticalAccuracy(_ value:Float) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setVerticalAccuracy(_ value:Float) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.verticalAccuracy = value
             return self
           }
           @discardableResult
-          public func clearVerticalAccuracy() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearVerticalAccuracy() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasVerticalAccuracy = false
                builderResult.verticalAccuracy = Float(0)
                return self
@@ -3553,7 +3544,7 @@ public extension Pogoprotos.Networking.Envelopes {
                     return builderResult.hasProviderStatus
                }
           }
-          public var providerStatus:UInt64 {
+          public var providerStatus:Int32 {
                get {
                     return builderResult.providerStatus
                }
@@ -3563,14 +3554,14 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setProviderStatus(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setProviderStatus(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.providerStatus = value
             return self
           }
           @discardableResult
-          public func clearProviderStatus() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearProviderStatus() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasProviderStatus = false
-               builderResult.providerStatus = UInt64(0)
+               builderResult.providerStatus = Int32(0)
                return self
           }
           public var hasFloor:Bool {
@@ -3578,7 +3569,7 @@ public extension Pogoprotos.Networking.Envelopes {
                     return builderResult.hasFloor
                }
           }
-          public var floor:UInt32 {
+          public var floor:Int64 {
                get {
                     return builderResult.floor
                }
@@ -3588,14 +3579,14 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setFloor(_ value:UInt32) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setFloor(_ value:Int64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.floor = value
             return self
           }
           @discardableResult
-          public func clearFloor() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearFloor() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasFloor = false
-               builderResult.floor = UInt32(0)
+               builderResult.floor = Int64(0)
                return self
           }
           public var hasLocationType:Bool {
@@ -3603,7 +3594,7 @@ public extension Pogoprotos.Networking.Envelopes {
                     return builderResult.hasLocationType
                }
           }
-          public var locationType:UInt64 {
+          public var locationType:Int32 {
                get {
                     return builderResult.locationType
                }
@@ -3613,14 +3604,14 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setLocationType(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          public func setLocationType(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             self.locationType = value
             return self
           }
           @discardableResult
-          public func clearLocationType() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder{
+          public func clearLocationType() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder{
                builderResult.hasLocationType = false
-               builderResult.locationType = UInt64(0)
+               builderResult.locationType = Int32(0)
                return self
           }
           override public var internalGetResult:GeneratedMessage {
@@ -3629,31 +3620,31 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            builderResult = Pogoprotos.Networking.Envelopes.Signature.LocationFix()
+          override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate()
             return self
           }
-          override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.builderWithPrototype(prototype:builderResult)
+          override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.builderWithPrototype(prototype:builderResult)
           }
-          override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
+          override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
                try checkInitialized()
                return buildPartial()
           }
-          public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-            let returnMe:Pogoprotos.Networking.Envelopes.Signature.LocationFix = builderResult
+          public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+            let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate = builderResult
             return returnMe
           }
           @discardableResult
-          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature.LocationFix) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            if other == Pogoprotos.Networking.Envelopes.Signature.LocationFix() {
+          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate() {
              return self
             }
-            if other.hasProvider {
-                 provider = other.provider
+            if other.hasName {
+                 name = other.name
             }
-            if other.hasTimestampSnapshot {
-                 timestampSnapshot = other.timestampSnapshot
+            if other.hasTimestampMs {
+                 timestampMs = other.timestampMs
             }
             if other.hasAltitude {
                  altitude = other.altitude
@@ -3664,11 +3655,11 @@ public extension Pogoprotos.Networking.Envelopes {
             if other.hasLongitude {
                  longitude = other.longitude
             }
-            if other.hasSpeed {
-                 speed = other.speed
+            if other.hasDeviceSpeed {
+                 deviceSpeed = other.deviceSpeed
             }
-            if other.hasCourse {
-                 course = other.course
+            if other.hasDeviceCourse {
+                 deviceCourse = other.deviceCourse
             }
             if other.hasHorizontalAccuracy {
                  horizontalAccuracy = other.horizontalAccuracy
@@ -3689,11 +3680,11 @@ public extension Pogoprotos.Networking.Envelopes {
             return self
           }
           @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
                return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
           }
           @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
             while (true) {
               let protobufTag = try codedInputStream.readTag()
@@ -3703,10 +3694,10 @@ public extension Pogoprotos.Networking.Envelopes {
                 return self
 
               case 10:
-                provider = try codedInputStream.readString()
+                name = try codedInputStream.readString()
 
               case 16:
-                timestampSnapshot = try codedInputStream.readUInt64()
+                timestampMs = try codedInputStream.readInt64()
 
               case 37:
                 altitude = try codedInputStream.readFloat()
@@ -3718,10 +3709,10 @@ public extension Pogoprotos.Networking.Envelopes {
                 longitude = try codedInputStream.readFloat()
 
               case 149:
-                speed = try codedInputStream.readFloat()
+                deviceSpeed = try codedInputStream.readFloat()
 
               case 165:
-                course = try codedInputStream.readFloat()
+                deviceCourse = try codedInputStream.readFloat()
 
               case 173:
                 horizontalAccuracy = try codedInputStream.readFloat()
@@ -3730,13 +3721,13 @@ public extension Pogoprotos.Networking.Envelopes {
                 verticalAccuracy = try codedInputStream.readFloat()
 
               case 208:
-                providerStatus = try codedInputStream.readUInt64()
+                providerStatus = try codedInputStream.readInt32()
 
               case 216:
-                floor = try codedInputStream.readUInt32()
+                floor = try codedInputStream.readInt64()
 
               case 224:
-                locationType = try codedInputStream.readUInt64()
+                locationType = try codedInputStream.readInt32()
 
               default:
                 if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -3746,13 +3737,13 @@ public extension Pogoprotos.Networking.Envelopes {
               }
             }
           }
-          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
-            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder()
-            if let jsonValueProvider = jsonMap["provider"] as? String {
-              resultDecodedBuilder.provider = jsonValueProvider
+          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
+            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder()
+            if let jsonValueName = jsonMap["name"] as? String {
+              resultDecodedBuilder.name = jsonValueName
             }
-            if let jsonValueTimestampSnapshot = jsonMap["timestampSnapshot"] as? String {
-              resultDecodedBuilder.timestampSnapshot = UInt64(jsonValueTimestampSnapshot)!
+            if let jsonValueTimestampMs = jsonMap["timestampMs"] as? String {
+              resultDecodedBuilder.timestampMs = Int64(jsonValueTimestampMs)!
             }
             if let jsonValueAltitude = jsonMap["altitude"] as? Float {
               resultDecodedBuilder.altitude = Float(jsonValueAltitude)
@@ -3763,11 +3754,11 @@ public extension Pogoprotos.Networking.Envelopes {
             if let jsonValueLongitude = jsonMap["longitude"] as? Float {
               resultDecodedBuilder.longitude = Float(jsonValueLongitude)
             }
-            if let jsonValueSpeed = jsonMap["speed"] as? Float {
-              resultDecodedBuilder.speed = Float(jsonValueSpeed)
+            if let jsonValueDeviceSpeed = jsonMap["deviceSpeed"] as? Float {
+              resultDecodedBuilder.deviceSpeed = Float(jsonValueDeviceSpeed)
             }
-            if let jsonValueCourse = jsonMap["course"] as? Float {
-              resultDecodedBuilder.course = Float(jsonValueCourse)
+            if let jsonValueDeviceCourse = jsonMap["deviceCourse"] as? Float {
+              resultDecodedBuilder.deviceCourse = Float(jsonValueDeviceCourse)
             }
             if let jsonValueHorizontalAccuracy = jsonMap["horizontalAccuracy"] as? Float {
               resultDecodedBuilder.horizontalAccuracy = Float(jsonValueHorizontalAccuracy)
@@ -3775,23 +3766,23 @@ public extension Pogoprotos.Networking.Envelopes {
             if let jsonValueVerticalAccuracy = jsonMap["verticalAccuracy"] as? Float {
               resultDecodedBuilder.verticalAccuracy = Float(jsonValueVerticalAccuracy)
             }
-            if let jsonValueProviderStatus = jsonMap["providerStatus"] as? String {
-              resultDecodedBuilder.providerStatus = UInt64(jsonValueProviderStatus)!
+            if let jsonValueProviderStatus = jsonMap["providerStatus"] as? Int {
+              resultDecodedBuilder.providerStatus = Int32(jsonValueProviderStatus)
             }
-            if let jsonValueFloor = jsonMap["floor"] as? UInt {
-              resultDecodedBuilder.floor = UInt32(jsonValueFloor)
+            if let jsonValueFloor = jsonMap["floor"] as? String {
+              resultDecodedBuilder.floor = Int64(jsonValueFloor)!
             }
-            if let jsonValueLocationType = jsonMap["locationType"] as? String {
-              resultDecodedBuilder.locationType = UInt64(jsonValueLocationType)!
+            if let jsonValueLocationType = jsonMap["locationType"] as? Int {
+              resultDecodedBuilder.locationType = Int32(jsonValueLocationType)
             }
             return resultDecodedBuilder
           }
-          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder {
+          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder {
             let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
             guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
               throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
             }
-            return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder.decodeToBuilder(jsonMap:jsDataCast)
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder.decodeToBuilder(jsonMap:jsDataCast)
           }
         }
 
@@ -3803,10 +3794,2701 @@ public extension Pogoprotos.Networking.Envelopes {
 
     //Nested type declaration start
 
-      // don't really care about this since we're not using it
+      // iOS only
+      final public class IosdeviceInfo : GeneratedMessage {
+
+        public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo) -> Bool {
+          if (lhs === rhs) {
+            return true
+          }
+          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+          fieldCheck = fieldCheck && (lhs.hasBool1 == rhs.hasBool1) && (!lhs.hasBool1 || lhs.bool1 == rhs.bool1)
+          fieldCheck = fieldCheck && (lhs.hasBool2 == rhs.hasBool2) && (!lhs.hasBool2 || lhs.bool2 == rhs.bool2)
+          fieldCheck = fieldCheck && (lhs.hasBool3 == rhs.hasBool3) && (!lhs.hasBool3 || lhs.bool3 == rhs.bool3)
+          fieldCheck = fieldCheck && (lhs.hasBool4 == rhs.hasBool4) && (!lhs.hasBool4 || lhs.bool4 == rhs.bool4)
+          fieldCheck = fieldCheck && (lhs.hasBool5 == rhs.hasBool5) && (!lhs.hasBool5 || lhs.bool5 == rhs.bool5)
+          fieldCheck = fieldCheck && (lhs.hasBool6 == rhs.hasBool6) && (!lhs.hasBool6 || lhs.bool6 == rhs.bool6)
+          fieldCheck = fieldCheck && (lhs.hasBool7 == rhs.hasBool7) && (!lhs.hasBool7 || lhs.bool7 == rhs.bool7)
+          fieldCheck = fieldCheck && (lhs.hasBool8 == rhs.hasBool8) && (!lhs.hasBool8 || lhs.bool8 == rhs.bool8)
+          fieldCheck = fieldCheck && (lhs.hasBool9 == rhs.hasBool9) && (!lhs.hasBool9 || lhs.bool9 == rhs.bool9)
+          fieldCheck = fieldCheck && (lhs.hasBool10 == rhs.hasBool10) && (!lhs.hasBool10 || lhs.bool10 == rhs.bool10)
+          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+          return fieldCheck
+        }
+
+        public fileprivate(set) var bool1:Bool = false
+        public fileprivate(set) var hasBool1:Bool = false
+
+        public fileprivate(set) var bool2:Bool = false
+        public fileprivate(set) var hasBool2:Bool = false
+
+        // 1
+        public fileprivate(set) var bool3:Bool = false
+        public fileprivate(set) var hasBool3:Bool = false
+
+        public fileprivate(set) var bool4:Bool = false
+        public fileprivate(set) var hasBool4:Bool = false
+
+        // 1
+        public fileprivate(set) var bool5:Bool = false
+        public fileprivate(set) var hasBool5:Bool = false
+
+        // 1
+        public fileprivate(set) var bool6:Bool = false
+        public fileprivate(set) var hasBool6:Bool = false
+
+        public fileprivate(set) var bool7:Bool = false
+        public fileprivate(set) var hasBool7:Bool = false
+
+        public fileprivate(set) var bool8:Bool = false
+        public fileprivate(set) var hasBool8:Bool = false
+
+        public fileprivate(set) var bool9:Bool = false
+        public fileprivate(set) var hasBool9:Bool = false
+
+        public fileprivate(set) var bool10:Bool = false
+        public fileprivate(set) var hasBool10:Bool = false
+
+        required public init() {
+             super.init()
+        }
+        override public func isInitialized() -> Bool {
+         return true
+        }
+        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
+          if hasBool1 {
+            try codedOutputStream.writeBool(fieldNumber: 1, value:bool1)
+          }
+          if hasBool2 {
+            try codedOutputStream.writeBool(fieldNumber: 2, value:bool2)
+          }
+          if hasBool3 {
+            try codedOutputStream.writeBool(fieldNumber: 3, value:bool3)
+          }
+          if hasBool4 {
+            try codedOutputStream.writeBool(fieldNumber: 4, value:bool4)
+          }
+          if hasBool5 {
+            try codedOutputStream.writeBool(fieldNumber: 5, value:bool5)
+          }
+          if hasBool6 {
+            try codedOutputStream.writeBool(fieldNumber: 6, value:bool6)
+          }
+          if hasBool7 {
+            try codedOutputStream.writeBool(fieldNumber: 7, value:bool7)
+          }
+          if hasBool8 {
+            try codedOutputStream.writeBool(fieldNumber: 8, value:bool8)
+          }
+          if hasBool9 {
+            try codedOutputStream.writeBool(fieldNumber: 9, value:bool9)
+          }
+          if hasBool10 {
+            try codedOutputStream.writeBool(fieldNumber: 10, value:bool10)
+          }
+          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
+        }
+        override public func serializedSize() -> Int32 {
+          var serialize_size:Int32 = memoizedSerializedSize
+          if serialize_size != -1 {
+           return serialize_size
+          }
+
+          serialize_size = 0
+          if hasBool1 {
+            serialize_size += bool1.computeBoolSize(fieldNumber: 1)
+          }
+          if hasBool2 {
+            serialize_size += bool2.computeBoolSize(fieldNumber: 2)
+          }
+          if hasBool3 {
+            serialize_size += bool3.computeBoolSize(fieldNumber: 3)
+          }
+          if hasBool4 {
+            serialize_size += bool4.computeBoolSize(fieldNumber: 4)
+          }
+          if hasBool5 {
+            serialize_size += bool5.computeBoolSize(fieldNumber: 5)
+          }
+          if hasBool6 {
+            serialize_size += bool6.computeBoolSize(fieldNumber: 6)
+          }
+          if hasBool7 {
+            serialize_size += bool7.computeBoolSize(fieldNumber: 7)
+          }
+          if hasBool8 {
+            serialize_size += bool8.computeBoolSize(fieldNumber: 8)
+          }
+          if hasBool9 {
+            serialize_size += bool9.computeBoolSize(fieldNumber: 9)
+          }
+          if hasBool10 {
+            serialize_size += bool10.computeBoolSize(fieldNumber: 10)
+          }
+          serialize_size += unknownFields.serializedSize()
+          memoizedSerializedSize = serialize_size
+          return serialize_size
+        }
+        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder
+        }
+        public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+          return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder
+        }
+        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder()
+        }
+        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder()
+        }
+        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.builderWithPrototype(prototype:self)
+        }
+        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(other:prototype)
+        }
+        override public func encode() throws -> Dictionary<String,Any> {
+          guard isInitialized() else {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
+          }
+
+          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+          if hasBool1 {
+            jsonMap["bool1"] = bool1
+          }
+          if hasBool2 {
+            jsonMap["bool2"] = bool2
+          }
+          if hasBool3 {
+            jsonMap["bool3"] = bool3
+          }
+          if hasBool4 {
+            jsonMap["bool4"] = bool4
+          }
+          if hasBool5 {
+            jsonMap["bool5"] = bool5
+          }
+          if hasBool6 {
+            jsonMap["bool6"] = bool6
+          }
+          if hasBool7 {
+            jsonMap["bool7"] = bool7
+          }
+          if hasBool8 {
+            jsonMap["bool8"] = bool8
+          }
+          if hasBool9 {
+            jsonMap["bool9"] = bool9
+          }
+          if hasBool10 {
+            jsonMap["bool10"] = bool10
+          }
+          return jsonMap
+        }
+        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+        }
+        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder.fromJSONToBuilder(data:data).build()
+        }
+        override public func getDescription(indent:String) throws -> String {
+          var output = ""
+          if hasBool1 {
+            output += "\(indent) bool1: \(bool1) \n"
+          }
+          if hasBool2 {
+            output += "\(indent) bool2: \(bool2) \n"
+          }
+          if hasBool3 {
+            output += "\(indent) bool3: \(bool3) \n"
+          }
+          if hasBool4 {
+            output += "\(indent) bool4: \(bool4) \n"
+          }
+          if hasBool5 {
+            output += "\(indent) bool5: \(bool5) \n"
+          }
+          if hasBool6 {
+            output += "\(indent) bool6: \(bool6) \n"
+          }
+          if hasBool7 {
+            output += "\(indent) bool7: \(bool7) \n"
+          }
+          if hasBool8 {
+            output += "\(indent) bool8: \(bool8) \n"
+          }
+          if hasBool9 {
+            output += "\(indent) bool9: \(bool9) \n"
+          }
+          if hasBool10 {
+            output += "\(indent) bool10: \(bool10) \n"
+          }
+          output += unknownFields.getDescription(indent: indent)
+          return output
+        }
+        override public var hashValue:Int {
+            get {
+                var hashCode:Int = 7
+                if hasBool1 {
+                   hashCode = (hashCode &* 31) &+ bool1.hashValue
+                }
+                if hasBool2 {
+                   hashCode = (hashCode &* 31) &+ bool2.hashValue
+                }
+                if hasBool3 {
+                   hashCode = (hashCode &* 31) &+ bool3.hashValue
+                }
+                if hasBool4 {
+                   hashCode = (hashCode &* 31) &+ bool4.hashValue
+                }
+                if hasBool5 {
+                   hashCode = (hashCode &* 31) &+ bool5.hashValue
+                }
+                if hasBool6 {
+                   hashCode = (hashCode &* 31) &+ bool6.hashValue
+                }
+                if hasBool7 {
+                   hashCode = (hashCode &* 31) &+ bool7.hashValue
+                }
+                if hasBool8 {
+                   hashCode = (hashCode &* 31) &+ bool8.hashValue
+                }
+                if hasBool9 {
+                   hashCode = (hashCode &* 31) &+ bool9.hashValue
+                }
+                if hasBool10 {
+                   hashCode = (hashCode &* 31) &+ bool10.hashValue
+                }
+                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                return hashCode
+            }
+        }
+
+
+        //Meta information declaration start
+
+        override public class func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo"
+        }
+        override public func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo"
+        }
+        //Meta information declaration end
+
+        final public class Builder : GeneratedMessageBuilder {
+          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo()
+          public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+              return builderResult
+          }
+
+          required override public init () {
+             super.init()
+          }
+          public var hasBool1:Bool {
+               get {
+                    return builderResult.hasBool1
+               }
+          }
+          public var bool1:Bool {
+               get {
+                    return builderResult.bool1
+               }
+               set (value) {
+                   builderResult.hasBool1 = true
+                   builderResult.bool1 = value
+               }
+          }
+          @discardableResult
+          public func setBool1(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool1 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool1() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool1 = false
+               builderResult.bool1 = false
+               return self
+          }
+          public var hasBool2:Bool {
+               get {
+                    return builderResult.hasBool2
+               }
+          }
+          public var bool2:Bool {
+               get {
+                    return builderResult.bool2
+               }
+               set (value) {
+                   builderResult.hasBool2 = true
+                   builderResult.bool2 = value
+               }
+          }
+          @discardableResult
+          public func setBool2(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool2 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool2() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool2 = false
+               builderResult.bool2 = false
+               return self
+          }
+          public var hasBool3:Bool {
+               get {
+                    return builderResult.hasBool3
+               }
+          }
+          public var bool3:Bool {
+               get {
+                    return builderResult.bool3
+               }
+               set (value) {
+                   builderResult.hasBool3 = true
+                   builderResult.bool3 = value
+               }
+          }
+          @discardableResult
+          public func setBool3(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool3 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool3() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool3 = false
+               builderResult.bool3 = false
+               return self
+          }
+          public var hasBool4:Bool {
+               get {
+                    return builderResult.hasBool4
+               }
+          }
+          public var bool4:Bool {
+               get {
+                    return builderResult.bool4
+               }
+               set (value) {
+                   builderResult.hasBool4 = true
+                   builderResult.bool4 = value
+               }
+          }
+          @discardableResult
+          public func setBool4(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool4 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool4() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool4 = false
+               builderResult.bool4 = false
+               return self
+          }
+          public var hasBool5:Bool {
+               get {
+                    return builderResult.hasBool5
+               }
+          }
+          public var bool5:Bool {
+               get {
+                    return builderResult.bool5
+               }
+               set (value) {
+                   builderResult.hasBool5 = true
+                   builderResult.bool5 = value
+               }
+          }
+          @discardableResult
+          public func setBool5(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool5 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool5() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool5 = false
+               builderResult.bool5 = false
+               return self
+          }
+          public var hasBool6:Bool {
+               get {
+                    return builderResult.hasBool6
+               }
+          }
+          public var bool6:Bool {
+               get {
+                    return builderResult.bool6
+               }
+               set (value) {
+                   builderResult.hasBool6 = true
+                   builderResult.bool6 = value
+               }
+          }
+          @discardableResult
+          public func setBool6(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool6 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool6() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool6 = false
+               builderResult.bool6 = false
+               return self
+          }
+          public var hasBool7:Bool {
+               get {
+                    return builderResult.hasBool7
+               }
+          }
+          public var bool7:Bool {
+               get {
+                    return builderResult.bool7
+               }
+               set (value) {
+                   builderResult.hasBool7 = true
+                   builderResult.bool7 = value
+               }
+          }
+          @discardableResult
+          public func setBool7(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool7 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool7() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool7 = false
+               builderResult.bool7 = false
+               return self
+          }
+          public var hasBool8:Bool {
+               get {
+                    return builderResult.hasBool8
+               }
+          }
+          public var bool8:Bool {
+               get {
+                    return builderResult.bool8
+               }
+               set (value) {
+                   builderResult.hasBool8 = true
+                   builderResult.bool8 = value
+               }
+          }
+          @discardableResult
+          public func setBool8(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool8 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool8() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool8 = false
+               builderResult.bool8 = false
+               return self
+          }
+          public var hasBool9:Bool {
+               get {
+                    return builderResult.hasBool9
+               }
+          }
+          public var bool9:Bool {
+               get {
+                    return builderResult.bool9
+               }
+               set (value) {
+                   builderResult.hasBool9 = true
+                   builderResult.bool9 = value
+               }
+          }
+          @discardableResult
+          public func setBool9(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool9 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool9() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool9 = false
+               builderResult.bool9 = false
+               return self
+          }
+          public var hasBool10:Bool {
+               get {
+                    return builderResult.hasBool10
+               }
+          }
+          public var bool10:Bool {
+               get {
+                    return builderResult.bool10
+               }
+               set (value) {
+                   builderResult.hasBool10 = true
+                   builderResult.bool10 = value
+               }
+          }
+          @discardableResult
+          public func setBool10(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            self.bool10 = value
+            return self
+          }
+          @discardableResult
+          public func clearBool10() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder{
+               builderResult.hasBool10 = false
+               builderResult.bool10 = false
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          @discardableResult
+          override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo()
+            return self
+          }
+          override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.builderWithPrototype(prototype:builderResult)
+          }
+          override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+               try checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+            let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo = builderResult
+            return returnMe
+          }
+          @discardableResult
+          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo() {
+             return self
+            }
+            if other.hasBool1 {
+                 bool1 = other.bool1
+            }
+            if other.hasBool2 {
+                 bool2 = other.bool2
+            }
+            if other.hasBool3 {
+                 bool3 = other.bool3
+            }
+            if other.hasBool4 {
+                 bool4 = other.bool4
+            }
+            if other.hasBool5 {
+                 bool5 = other.bool5
+            }
+            if other.hasBool6 {
+                 bool6 = other.bool6
+            }
+            if other.hasBool7 {
+                 bool7 = other.bool7
+            }
+            if other.hasBool8 {
+                 bool8 = other.bool8
+            }
+            if other.hasBool9 {
+                 bool9 = other.bool9
+            }
+            if other.hasBool10 {
+                 bool10 = other.bool10
+            }
+            _ = try merge(unknownField: other.unknownFields)
+            return self
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
+            while (true) {
+              let protobufTag = try codedInputStream.readTag()
+              switch protobufTag {
+              case 0: 
+                self.unknownFields = try unknownFieldsBuilder.build()
+                return self
+
+              case 8:
+                bool1 = try codedInputStream.readBool()
+
+              case 16:
+                bool2 = try codedInputStream.readBool()
+
+              case 24:
+                bool3 = try codedInputStream.readBool()
+
+              case 32:
+                bool4 = try codedInputStream.readBool()
+
+              case 40:
+                bool5 = try codedInputStream.readBool()
+
+              case 48:
+                bool6 = try codedInputStream.readBool()
+
+              case 56:
+                bool7 = try codedInputStream.readBool()
+
+              case 64:
+                bool8 = try codedInputStream.readBool()
+
+              case 72:
+                bool9 = try codedInputStream.readBool()
+
+              case 80:
+                bool10 = try codedInputStream.readBool()
+
+              default:
+                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+                   unknownFields = try unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder()
+            if let jsonValueBool1 = jsonMap["bool1"] as? Bool {
+              resultDecodedBuilder.bool1 = jsonValueBool1
+            }
+            if let jsonValueBool2 = jsonMap["bool2"] as? Bool {
+              resultDecodedBuilder.bool2 = jsonValueBool2
+            }
+            if let jsonValueBool3 = jsonMap["bool3"] as? Bool {
+              resultDecodedBuilder.bool3 = jsonValueBool3
+            }
+            if let jsonValueBool4 = jsonMap["bool4"] as? Bool {
+              resultDecodedBuilder.bool4 = jsonValueBool4
+            }
+            if let jsonValueBool5 = jsonMap["bool5"] as? Bool {
+              resultDecodedBuilder.bool5 = jsonValueBool5
+            }
+            if let jsonValueBool6 = jsonMap["bool6"] as? Bool {
+              resultDecodedBuilder.bool6 = jsonValueBool6
+            }
+            if let jsonValueBool7 = jsonMap["bool7"] as? Bool {
+              resultDecodedBuilder.bool7 = jsonValueBool7
+            }
+            if let jsonValueBool8 = jsonMap["bool8"] as? Bool {
+              resultDecodedBuilder.bool8 = jsonValueBool8
+            }
+            if let jsonValueBool9 = jsonMap["bool9"] as? Bool {
+              resultDecodedBuilder.bool9 = jsonValueBool9
+            }
+            if let jsonValueBool10 = jsonMap["bool10"] as? Bool {
+              resultDecodedBuilder.bool10 = jsonValueBool10
+            }
+            return resultDecodedBuilder
+          }
+          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
+            }
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
+          }
+        }
+
+      }
+
+    //Nested type declaration end
+
+
+
+    //Nested type declaration start
+
+      // 100% - Reference iOS lib "LocationUpdate" structure for bridge
+      final public class SensorUpdate : GeneratedMessage {
+
+        public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate) -> Bool {
+          if (lhs === rhs) {
+            return true
+          }
+          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+          fieldCheck = fieldCheck && (lhs.hasTimestamp == rhs.hasTimestamp) && (!lhs.hasTimestamp || lhs.timestamp == rhs.timestamp)
+          fieldCheck = fieldCheck && (lhs.hasAccelerationX == rhs.hasAccelerationX) && (!lhs.hasAccelerationX || lhs.accelerationX == rhs.accelerationX)
+          fieldCheck = fieldCheck && (lhs.hasAccelerationY == rhs.hasAccelerationY) && (!lhs.hasAccelerationY || lhs.accelerationY == rhs.accelerationY)
+          fieldCheck = fieldCheck && (lhs.hasAccelerationZ == rhs.hasAccelerationZ) && (!lhs.hasAccelerationZ || lhs.accelerationZ == rhs.accelerationZ)
+          fieldCheck = fieldCheck && (lhs.hasMagneticFieldX == rhs.hasMagneticFieldX) && (!lhs.hasMagneticFieldX || lhs.magneticFieldX == rhs.magneticFieldX)
+          fieldCheck = fieldCheck && (lhs.hasMagneticFieldY == rhs.hasMagneticFieldY) && (!lhs.hasMagneticFieldY || lhs.magneticFieldY == rhs.magneticFieldY)
+          fieldCheck = fieldCheck && (lhs.hasMagneticFieldZ == rhs.hasMagneticFieldZ) && (!lhs.hasMagneticFieldZ || lhs.magneticFieldZ == rhs.magneticFieldZ)
+          fieldCheck = fieldCheck && (lhs.hasMagneticFieldAccuracy == rhs.hasMagneticFieldAccuracy) && (!lhs.hasMagneticFieldAccuracy || lhs.magneticFieldAccuracy == rhs.magneticFieldAccuracy)
+          fieldCheck = fieldCheck && (lhs.hasAttitudePitch == rhs.hasAttitudePitch) && (!lhs.hasAttitudePitch || lhs.attitudePitch == rhs.attitudePitch)
+          fieldCheck = fieldCheck && (lhs.hasAttitudeYaw == rhs.hasAttitudeYaw) && (!lhs.hasAttitudeYaw || lhs.attitudeYaw == rhs.attitudeYaw)
+          fieldCheck = fieldCheck && (lhs.hasAttitudeRoll == rhs.hasAttitudeRoll) && (!lhs.hasAttitudeRoll || lhs.attitudeRoll == rhs.attitudeRoll)
+          fieldCheck = fieldCheck && (lhs.hasRotationRateX == rhs.hasRotationRateX) && (!lhs.hasRotationRateX || lhs.rotationRateX == rhs.rotationRateX)
+          fieldCheck = fieldCheck && (lhs.hasRotationRateY == rhs.hasRotationRateY) && (!lhs.hasRotationRateY || lhs.rotationRateY == rhs.rotationRateY)
+          fieldCheck = fieldCheck && (lhs.hasRotationRateZ == rhs.hasRotationRateZ) && (!lhs.hasRotationRateZ || lhs.rotationRateZ == rhs.rotationRateZ)
+          fieldCheck = fieldCheck && (lhs.hasGravityX == rhs.hasGravityX) && (!lhs.hasGravityX || lhs.gravityX == rhs.gravityX)
+          fieldCheck = fieldCheck && (lhs.hasGravityY == rhs.hasGravityY) && (!lhs.hasGravityY || lhs.gravityY == rhs.gravityY)
+          fieldCheck = fieldCheck && (lhs.hasGravityZ == rhs.hasGravityZ) && (!lhs.hasGravityZ || lhs.gravityZ == rhs.gravityZ)
+          fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
+          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+          return fieldCheck
+        }
+
+        public fileprivate(set) var timestamp:UInt64 = UInt64(0)
+        public fileprivate(set) var hasTimestamp:Bool = false
+
+        public fileprivate(set) var accelerationX:Double = Double(0)
+        public fileprivate(set) var hasAccelerationX:Bool = false
+
+        public fileprivate(set) var accelerationY:Double = Double(0)
+        public fileprivate(set) var hasAccelerationY:Bool = false
+
+        public fileprivate(set) var accelerationZ:Double = Double(0)
+        public fileprivate(set) var hasAccelerationZ:Bool = false
+
+        public fileprivate(set) var magneticFieldX:Double = Double(0)
+        public fileprivate(set) var hasMagneticFieldX:Bool = false
+
+        public fileprivate(set) var magneticFieldY:Double = Double(0)
+        public fileprivate(set) var hasMagneticFieldY:Bool = false
+
+        public fileprivate(set) var magneticFieldZ:Double = Double(0)
+        public fileprivate(set) var hasMagneticFieldZ:Bool = false
+
+        public fileprivate(set) var magneticFieldAccuracy:Int32 = Int32(0)
+        public fileprivate(set) var hasMagneticFieldAccuracy:Bool = false
+
+        public fileprivate(set) var attitudePitch:Double = Double(0)
+        public fileprivate(set) var hasAttitudePitch:Bool = false
+
+        public fileprivate(set) var attitudeYaw:Double = Double(0)
+        public fileprivate(set) var hasAttitudeYaw:Bool = false
+
+        public fileprivate(set) var attitudeRoll:Double = Double(0)
+        public fileprivate(set) var hasAttitudeRoll:Bool = false
+
+        public fileprivate(set) var rotationRateX:Double = Double(0)
+        public fileprivate(set) var hasRotationRateX:Bool = false
+
+        public fileprivate(set) var rotationRateY:Double = Double(0)
+        public fileprivate(set) var hasRotationRateY:Bool = false
+
+        public fileprivate(set) var rotationRateZ:Double = Double(0)
+        public fileprivate(set) var hasRotationRateZ:Bool = false
+
+        public fileprivate(set) var gravityX:Double = Double(0)
+        public fileprivate(set) var hasGravityX:Bool = false
+
+        public fileprivate(set) var gravityY:Double = Double(0)
+        public fileprivate(set) var hasGravityY:Bool = false
+
+        public fileprivate(set) var gravityZ:Double = Double(0)
+        public fileprivate(set) var hasGravityZ:Bool = false
+
+        public fileprivate(set) var status:Int32 = Int32(0)
+        public fileprivate(set) var hasStatus:Bool = false
+
+        required public init() {
+             super.init()
+        }
+        override public func isInitialized() -> Bool {
+         return true
+        }
+        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
+          if hasTimestamp {
+            try codedOutputStream.writeUInt64(fieldNumber: 1, value:timestamp)
+          }
+          if hasAccelerationX {
+            try codedOutputStream.writeDouble(fieldNumber: 3, value:accelerationX)
+          }
+          if hasAccelerationY {
+            try codedOutputStream.writeDouble(fieldNumber: 4, value:accelerationY)
+          }
+          if hasAccelerationZ {
+            try codedOutputStream.writeDouble(fieldNumber: 5, value:accelerationZ)
+          }
+          if hasMagneticFieldX {
+            try codedOutputStream.writeDouble(fieldNumber: 6, value:magneticFieldX)
+          }
+          if hasMagneticFieldY {
+            try codedOutputStream.writeDouble(fieldNumber: 7, value:magneticFieldY)
+          }
+          if hasMagneticFieldZ {
+            try codedOutputStream.writeDouble(fieldNumber: 8, value:magneticFieldZ)
+          }
+          if hasMagneticFieldAccuracy {
+            try codedOutputStream.writeInt32(fieldNumber: 9, value:magneticFieldAccuracy)
+          }
+          if hasAttitudePitch {
+            try codedOutputStream.writeDouble(fieldNumber: 10, value:attitudePitch)
+          }
+          if hasAttitudeYaw {
+            try codedOutputStream.writeDouble(fieldNumber: 11, value:attitudeYaw)
+          }
+          if hasAttitudeRoll {
+            try codedOutputStream.writeDouble(fieldNumber: 12, value:attitudeRoll)
+          }
+          if hasRotationRateX {
+            try codedOutputStream.writeDouble(fieldNumber: 13, value:rotationRateX)
+          }
+          if hasRotationRateY {
+            try codedOutputStream.writeDouble(fieldNumber: 14, value:rotationRateY)
+          }
+          if hasRotationRateZ {
+            try codedOutputStream.writeDouble(fieldNumber: 15, value:rotationRateZ)
+          }
+          if hasGravityX {
+            try codedOutputStream.writeDouble(fieldNumber: 16, value:gravityX)
+          }
+          if hasGravityY {
+            try codedOutputStream.writeDouble(fieldNumber: 17, value:gravityY)
+          }
+          if hasGravityZ {
+            try codedOutputStream.writeDouble(fieldNumber: 18, value:gravityZ)
+          }
+          if hasStatus {
+            try codedOutputStream.writeInt32(fieldNumber: 19, value:status)
+          }
+          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
+        }
+        override public func serializedSize() -> Int32 {
+          var serialize_size:Int32 = memoizedSerializedSize
+          if serialize_size != -1 {
+           return serialize_size
+          }
+
+          serialize_size = 0
+          if hasTimestamp {
+            serialize_size += timestamp.computeUInt64Size(fieldNumber: 1)
+          }
+          if hasAccelerationX {
+            serialize_size += accelerationX.computeDoubleSize(fieldNumber: 3)
+          }
+          if hasAccelerationY {
+            serialize_size += accelerationY.computeDoubleSize(fieldNumber: 4)
+          }
+          if hasAccelerationZ {
+            serialize_size += accelerationZ.computeDoubleSize(fieldNumber: 5)
+          }
+          if hasMagneticFieldX {
+            serialize_size += magneticFieldX.computeDoubleSize(fieldNumber: 6)
+          }
+          if hasMagneticFieldY {
+            serialize_size += magneticFieldY.computeDoubleSize(fieldNumber: 7)
+          }
+          if hasMagneticFieldZ {
+            serialize_size += magneticFieldZ.computeDoubleSize(fieldNumber: 8)
+          }
+          if hasMagneticFieldAccuracy {
+            serialize_size += magneticFieldAccuracy.computeInt32Size(fieldNumber: 9)
+          }
+          if hasAttitudePitch {
+            serialize_size += attitudePitch.computeDoubleSize(fieldNumber: 10)
+          }
+          if hasAttitudeYaw {
+            serialize_size += attitudeYaw.computeDoubleSize(fieldNumber: 11)
+          }
+          if hasAttitudeRoll {
+            serialize_size += attitudeRoll.computeDoubleSize(fieldNumber: 12)
+          }
+          if hasRotationRateX {
+            serialize_size += rotationRateX.computeDoubleSize(fieldNumber: 13)
+          }
+          if hasRotationRateY {
+            serialize_size += rotationRateY.computeDoubleSize(fieldNumber: 14)
+          }
+          if hasRotationRateZ {
+            serialize_size += rotationRateZ.computeDoubleSize(fieldNumber: 15)
+          }
+          if hasGravityX {
+            serialize_size += gravityX.computeDoubleSize(fieldNumber: 16)
+          }
+          if hasGravityY {
+            serialize_size += gravityY.computeDoubleSize(fieldNumber: 17)
+          }
+          if hasGravityZ {
+            serialize_size += gravityZ.computeDoubleSize(fieldNumber: 18)
+          }
+          if hasStatus {
+            serialize_size += status.computeInt32Size(fieldNumber: 19)
+          }
+          serialize_size += unknownFields.serializedSize()
+          memoizedSerializedSize = serialize_size
+          return serialize_size
+        }
+        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder
+        }
+        public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+          return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder
+        }
+        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder()
+        }
+        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder()
+        }
+        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.builderWithPrototype(prototype:self)
+        }
+        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(other:prototype)
+        }
+        override public func encode() throws -> Dictionary<String,Any> {
+          guard isInitialized() else {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
+          }
+
+          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+          if hasTimestamp {
+            jsonMap["timestamp"] = "\(timestamp)"
+          }
+          if hasAccelerationX {
+            jsonMap["accelerationX"] = Double(accelerationX)
+          }
+          if hasAccelerationY {
+            jsonMap["accelerationY"] = Double(accelerationY)
+          }
+          if hasAccelerationZ {
+            jsonMap["accelerationZ"] = Double(accelerationZ)
+          }
+          if hasMagneticFieldX {
+            jsonMap["magneticFieldX"] = Double(magneticFieldX)
+          }
+          if hasMagneticFieldY {
+            jsonMap["magneticFieldY"] = Double(magneticFieldY)
+          }
+          if hasMagneticFieldZ {
+            jsonMap["magneticFieldZ"] = Double(magneticFieldZ)
+          }
+          if hasMagneticFieldAccuracy {
+            jsonMap["magneticFieldAccuracy"] = Int(magneticFieldAccuracy)
+          }
+          if hasAttitudePitch {
+            jsonMap["attitudePitch"] = Double(attitudePitch)
+          }
+          if hasAttitudeYaw {
+            jsonMap["attitudeYaw"] = Double(attitudeYaw)
+          }
+          if hasAttitudeRoll {
+            jsonMap["attitudeRoll"] = Double(attitudeRoll)
+          }
+          if hasRotationRateX {
+            jsonMap["rotationRateX"] = Double(rotationRateX)
+          }
+          if hasRotationRateY {
+            jsonMap["rotationRateY"] = Double(rotationRateY)
+          }
+          if hasRotationRateZ {
+            jsonMap["rotationRateZ"] = Double(rotationRateZ)
+          }
+          if hasGravityX {
+            jsonMap["gravityX"] = Double(gravityX)
+          }
+          if hasGravityY {
+            jsonMap["gravityY"] = Double(gravityY)
+          }
+          if hasGravityZ {
+            jsonMap["gravityZ"] = Double(gravityZ)
+          }
+          if hasStatus {
+            jsonMap["status"] = Int(status)
+          }
+          return jsonMap
+        }
+        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+        }
+        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder.fromJSONToBuilder(data:data).build()
+        }
+        override public func getDescription(indent:String) throws -> String {
+          var output = ""
+          if hasTimestamp {
+            output += "\(indent) timestamp: \(timestamp) \n"
+          }
+          if hasAccelerationX {
+            output += "\(indent) accelerationX: \(accelerationX) \n"
+          }
+          if hasAccelerationY {
+            output += "\(indent) accelerationY: \(accelerationY) \n"
+          }
+          if hasAccelerationZ {
+            output += "\(indent) accelerationZ: \(accelerationZ) \n"
+          }
+          if hasMagneticFieldX {
+            output += "\(indent) magneticFieldX: \(magneticFieldX) \n"
+          }
+          if hasMagneticFieldY {
+            output += "\(indent) magneticFieldY: \(magneticFieldY) \n"
+          }
+          if hasMagneticFieldZ {
+            output += "\(indent) magneticFieldZ: \(magneticFieldZ) \n"
+          }
+          if hasMagneticFieldAccuracy {
+            output += "\(indent) magneticFieldAccuracy: \(magneticFieldAccuracy) \n"
+          }
+          if hasAttitudePitch {
+            output += "\(indent) attitudePitch: \(attitudePitch) \n"
+          }
+          if hasAttitudeYaw {
+            output += "\(indent) attitudeYaw: \(attitudeYaw) \n"
+          }
+          if hasAttitudeRoll {
+            output += "\(indent) attitudeRoll: \(attitudeRoll) \n"
+          }
+          if hasRotationRateX {
+            output += "\(indent) rotationRateX: \(rotationRateX) \n"
+          }
+          if hasRotationRateY {
+            output += "\(indent) rotationRateY: \(rotationRateY) \n"
+          }
+          if hasRotationRateZ {
+            output += "\(indent) rotationRateZ: \(rotationRateZ) \n"
+          }
+          if hasGravityX {
+            output += "\(indent) gravityX: \(gravityX) \n"
+          }
+          if hasGravityY {
+            output += "\(indent) gravityY: \(gravityY) \n"
+          }
+          if hasGravityZ {
+            output += "\(indent) gravityZ: \(gravityZ) \n"
+          }
+          if hasStatus {
+            output += "\(indent) status: \(status) \n"
+          }
+          output += unknownFields.getDescription(indent: indent)
+          return output
+        }
+        override public var hashValue:Int {
+            get {
+                var hashCode:Int = 7
+                if hasTimestamp {
+                   hashCode = (hashCode &* 31) &+ timestamp.hashValue
+                }
+                if hasAccelerationX {
+                   hashCode = (hashCode &* 31) &+ accelerationX.hashValue
+                }
+                if hasAccelerationY {
+                   hashCode = (hashCode &* 31) &+ accelerationY.hashValue
+                }
+                if hasAccelerationZ {
+                   hashCode = (hashCode &* 31) &+ accelerationZ.hashValue
+                }
+                if hasMagneticFieldX {
+                   hashCode = (hashCode &* 31) &+ magneticFieldX.hashValue
+                }
+                if hasMagneticFieldY {
+                   hashCode = (hashCode &* 31) &+ magneticFieldY.hashValue
+                }
+                if hasMagneticFieldZ {
+                   hashCode = (hashCode &* 31) &+ magneticFieldZ.hashValue
+                }
+                if hasMagneticFieldAccuracy {
+                   hashCode = (hashCode &* 31) &+ magneticFieldAccuracy.hashValue
+                }
+                if hasAttitudePitch {
+                   hashCode = (hashCode &* 31) &+ attitudePitch.hashValue
+                }
+                if hasAttitudeYaw {
+                   hashCode = (hashCode &* 31) &+ attitudeYaw.hashValue
+                }
+                if hasAttitudeRoll {
+                   hashCode = (hashCode &* 31) &+ attitudeRoll.hashValue
+                }
+                if hasRotationRateX {
+                   hashCode = (hashCode &* 31) &+ rotationRateX.hashValue
+                }
+                if hasRotationRateY {
+                   hashCode = (hashCode &* 31) &+ rotationRateY.hashValue
+                }
+                if hasRotationRateZ {
+                   hashCode = (hashCode &* 31) &+ rotationRateZ.hashValue
+                }
+                if hasGravityX {
+                   hashCode = (hashCode &* 31) &+ gravityX.hashValue
+                }
+                if hasGravityY {
+                   hashCode = (hashCode &* 31) &+ gravityY.hashValue
+                }
+                if hasGravityZ {
+                   hashCode = (hashCode &* 31) &+ gravityZ.hashValue
+                }
+                if hasStatus {
+                   hashCode = (hashCode &* 31) &+ status.hashValue
+                }
+                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                return hashCode
+            }
+        }
+
+
+        //Meta information declaration start
+
+        override public class func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate"
+        }
+        override public func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate"
+        }
+        //Meta information declaration end
+
+        final public class Builder : GeneratedMessageBuilder {
+          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate()
+          public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+              return builderResult
+          }
+
+          required override public init () {
+             super.init()
+          }
+          public var hasTimestamp:Bool {
+               get {
+                    return builderResult.hasTimestamp
+               }
+          }
+          public var timestamp:UInt64 {
+               get {
+                    return builderResult.timestamp
+               }
+               set (value) {
+                   builderResult.hasTimestamp = true
+                   builderResult.timestamp = value
+               }
+          }
+          @discardableResult
+          public func setTimestamp(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.timestamp = value
+            return self
+          }
+          @discardableResult
+          public func clearTimestamp() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasTimestamp = false
+               builderResult.timestamp = UInt64(0)
+               return self
+          }
+          public var hasAccelerationX:Bool {
+               get {
+                    return builderResult.hasAccelerationX
+               }
+          }
+          public var accelerationX:Double {
+               get {
+                    return builderResult.accelerationX
+               }
+               set (value) {
+                   builderResult.hasAccelerationX = true
+                   builderResult.accelerationX = value
+               }
+          }
+          @discardableResult
+          public func setAccelerationX(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.accelerationX = value
+            return self
+          }
+          @discardableResult
+          public func clearAccelerationX() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAccelerationX = false
+               builderResult.accelerationX = Double(0)
+               return self
+          }
+          public var hasAccelerationY:Bool {
+               get {
+                    return builderResult.hasAccelerationY
+               }
+          }
+          public var accelerationY:Double {
+               get {
+                    return builderResult.accelerationY
+               }
+               set (value) {
+                   builderResult.hasAccelerationY = true
+                   builderResult.accelerationY = value
+               }
+          }
+          @discardableResult
+          public func setAccelerationY(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.accelerationY = value
+            return self
+          }
+          @discardableResult
+          public func clearAccelerationY() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAccelerationY = false
+               builderResult.accelerationY = Double(0)
+               return self
+          }
+          public var hasAccelerationZ:Bool {
+               get {
+                    return builderResult.hasAccelerationZ
+               }
+          }
+          public var accelerationZ:Double {
+               get {
+                    return builderResult.accelerationZ
+               }
+               set (value) {
+                   builderResult.hasAccelerationZ = true
+                   builderResult.accelerationZ = value
+               }
+          }
+          @discardableResult
+          public func setAccelerationZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.accelerationZ = value
+            return self
+          }
+          @discardableResult
+          public func clearAccelerationZ() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAccelerationZ = false
+               builderResult.accelerationZ = Double(0)
+               return self
+          }
+          public var hasMagneticFieldX:Bool {
+               get {
+                    return builderResult.hasMagneticFieldX
+               }
+          }
+          public var magneticFieldX:Double {
+               get {
+                    return builderResult.magneticFieldX
+               }
+               set (value) {
+                   builderResult.hasMagneticFieldX = true
+                   builderResult.magneticFieldX = value
+               }
+          }
+          @discardableResult
+          public func setMagneticFieldX(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.magneticFieldX = value
+            return self
+          }
+          @discardableResult
+          public func clearMagneticFieldX() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasMagneticFieldX = false
+               builderResult.magneticFieldX = Double(0)
+               return self
+          }
+          public var hasMagneticFieldY:Bool {
+               get {
+                    return builderResult.hasMagneticFieldY
+               }
+          }
+          public var magneticFieldY:Double {
+               get {
+                    return builderResult.magneticFieldY
+               }
+               set (value) {
+                   builderResult.hasMagneticFieldY = true
+                   builderResult.magneticFieldY = value
+               }
+          }
+          @discardableResult
+          public func setMagneticFieldY(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.magneticFieldY = value
+            return self
+          }
+          @discardableResult
+          public func clearMagneticFieldY() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasMagneticFieldY = false
+               builderResult.magneticFieldY = Double(0)
+               return self
+          }
+          public var hasMagneticFieldZ:Bool {
+               get {
+                    return builderResult.hasMagneticFieldZ
+               }
+          }
+          public var magneticFieldZ:Double {
+               get {
+                    return builderResult.magneticFieldZ
+               }
+               set (value) {
+                   builderResult.hasMagneticFieldZ = true
+                   builderResult.magneticFieldZ = value
+               }
+          }
+          @discardableResult
+          public func setMagneticFieldZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.magneticFieldZ = value
+            return self
+          }
+          @discardableResult
+          public func clearMagneticFieldZ() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasMagneticFieldZ = false
+               builderResult.magneticFieldZ = Double(0)
+               return self
+          }
+          public var hasMagneticFieldAccuracy:Bool {
+               get {
+                    return builderResult.hasMagneticFieldAccuracy
+               }
+          }
+          public var magneticFieldAccuracy:Int32 {
+               get {
+                    return builderResult.magneticFieldAccuracy
+               }
+               set (value) {
+                   builderResult.hasMagneticFieldAccuracy = true
+                   builderResult.magneticFieldAccuracy = value
+               }
+          }
+          @discardableResult
+          public func setMagneticFieldAccuracy(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.magneticFieldAccuracy = value
+            return self
+          }
+          @discardableResult
+          public func clearMagneticFieldAccuracy() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasMagneticFieldAccuracy = false
+               builderResult.magneticFieldAccuracy = Int32(0)
+               return self
+          }
+          public var hasAttitudePitch:Bool {
+               get {
+                    return builderResult.hasAttitudePitch
+               }
+          }
+          public var attitudePitch:Double {
+               get {
+                    return builderResult.attitudePitch
+               }
+               set (value) {
+                   builderResult.hasAttitudePitch = true
+                   builderResult.attitudePitch = value
+               }
+          }
+          @discardableResult
+          public func setAttitudePitch(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.attitudePitch = value
+            return self
+          }
+          @discardableResult
+          public func clearAttitudePitch() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAttitudePitch = false
+               builderResult.attitudePitch = Double(0)
+               return self
+          }
+          public var hasAttitudeYaw:Bool {
+               get {
+                    return builderResult.hasAttitudeYaw
+               }
+          }
+          public var attitudeYaw:Double {
+               get {
+                    return builderResult.attitudeYaw
+               }
+               set (value) {
+                   builderResult.hasAttitudeYaw = true
+                   builderResult.attitudeYaw = value
+               }
+          }
+          @discardableResult
+          public func setAttitudeYaw(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.attitudeYaw = value
+            return self
+          }
+          @discardableResult
+          public func clearAttitudeYaw() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAttitudeYaw = false
+               builderResult.attitudeYaw = Double(0)
+               return self
+          }
+          public var hasAttitudeRoll:Bool {
+               get {
+                    return builderResult.hasAttitudeRoll
+               }
+          }
+          public var attitudeRoll:Double {
+               get {
+                    return builderResult.attitudeRoll
+               }
+               set (value) {
+                   builderResult.hasAttitudeRoll = true
+                   builderResult.attitudeRoll = value
+               }
+          }
+          @discardableResult
+          public func setAttitudeRoll(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.attitudeRoll = value
+            return self
+          }
+          @discardableResult
+          public func clearAttitudeRoll() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasAttitudeRoll = false
+               builderResult.attitudeRoll = Double(0)
+               return self
+          }
+          public var hasRotationRateX:Bool {
+               get {
+                    return builderResult.hasRotationRateX
+               }
+          }
+          public var rotationRateX:Double {
+               get {
+                    return builderResult.rotationRateX
+               }
+               set (value) {
+                   builderResult.hasRotationRateX = true
+                   builderResult.rotationRateX = value
+               }
+          }
+          @discardableResult
+          public func setRotationRateX(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.rotationRateX = value
+            return self
+          }
+          @discardableResult
+          public func clearRotationRateX() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasRotationRateX = false
+               builderResult.rotationRateX = Double(0)
+               return self
+          }
+          public var hasRotationRateY:Bool {
+               get {
+                    return builderResult.hasRotationRateY
+               }
+          }
+          public var rotationRateY:Double {
+               get {
+                    return builderResult.rotationRateY
+               }
+               set (value) {
+                   builderResult.hasRotationRateY = true
+                   builderResult.rotationRateY = value
+               }
+          }
+          @discardableResult
+          public func setRotationRateY(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.rotationRateY = value
+            return self
+          }
+          @discardableResult
+          public func clearRotationRateY() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasRotationRateY = false
+               builderResult.rotationRateY = Double(0)
+               return self
+          }
+          public var hasRotationRateZ:Bool {
+               get {
+                    return builderResult.hasRotationRateZ
+               }
+          }
+          public var rotationRateZ:Double {
+               get {
+                    return builderResult.rotationRateZ
+               }
+               set (value) {
+                   builderResult.hasRotationRateZ = true
+                   builderResult.rotationRateZ = value
+               }
+          }
+          @discardableResult
+          public func setRotationRateZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.rotationRateZ = value
+            return self
+          }
+          @discardableResult
+          public func clearRotationRateZ() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasRotationRateZ = false
+               builderResult.rotationRateZ = Double(0)
+               return self
+          }
+          public var hasGravityX:Bool {
+               get {
+                    return builderResult.hasGravityX
+               }
+          }
+          public var gravityX:Double {
+               get {
+                    return builderResult.gravityX
+               }
+               set (value) {
+                   builderResult.hasGravityX = true
+                   builderResult.gravityX = value
+               }
+          }
+          @discardableResult
+          public func setGravityX(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.gravityX = value
+            return self
+          }
+          @discardableResult
+          public func clearGravityX() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasGravityX = false
+               builderResult.gravityX = Double(0)
+               return self
+          }
+          public var hasGravityY:Bool {
+               get {
+                    return builderResult.hasGravityY
+               }
+          }
+          public var gravityY:Double {
+               get {
+                    return builderResult.gravityY
+               }
+               set (value) {
+                   builderResult.hasGravityY = true
+                   builderResult.gravityY = value
+               }
+          }
+          @discardableResult
+          public func setGravityY(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.gravityY = value
+            return self
+          }
+          @discardableResult
+          public func clearGravityY() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasGravityY = false
+               builderResult.gravityY = Double(0)
+               return self
+          }
+          public var hasGravityZ:Bool {
+               get {
+                    return builderResult.hasGravityZ
+               }
+          }
+          public var gravityZ:Double {
+               get {
+                    return builderResult.gravityZ
+               }
+               set (value) {
+                   builderResult.hasGravityZ = true
+                   builderResult.gravityZ = value
+               }
+          }
+          @discardableResult
+          public func setGravityZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.gravityZ = value
+            return self
+          }
+          @discardableResult
+          public func clearGravityZ() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasGravityZ = false
+               builderResult.gravityZ = Double(0)
+               return self
+          }
+          public var hasStatus:Bool {
+               get {
+                    return builderResult.hasStatus
+               }
+          }
+          public var status:Int32 {
+               get {
+                    return builderResult.status
+               }
+               set (value) {
+                   builderResult.hasStatus = true
+                   builderResult.status = value
+               }
+          }
+          @discardableResult
+          public func setStatus(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            self.status = value
+            return self
+          }
+          @discardableResult
+          public func clearStatus() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder{
+               builderResult.hasStatus = false
+               builderResult.status = Int32(0)
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          @discardableResult
+          override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate()
+            return self
+          }
+          override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.builderWithPrototype(prototype:builderResult)
+          }
+          override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+               try checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+            let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate = builderResult
+            return returnMe
+          }
+          @discardableResult
+          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate() {
+             return self
+            }
+            if other.hasTimestamp {
+                 timestamp = other.timestamp
+            }
+            if other.hasAccelerationX {
+                 accelerationX = other.accelerationX
+            }
+            if other.hasAccelerationY {
+                 accelerationY = other.accelerationY
+            }
+            if other.hasAccelerationZ {
+                 accelerationZ = other.accelerationZ
+            }
+            if other.hasMagneticFieldX {
+                 magneticFieldX = other.magneticFieldX
+            }
+            if other.hasMagneticFieldY {
+                 magneticFieldY = other.magneticFieldY
+            }
+            if other.hasMagneticFieldZ {
+                 magneticFieldZ = other.magneticFieldZ
+            }
+            if other.hasMagneticFieldAccuracy {
+                 magneticFieldAccuracy = other.magneticFieldAccuracy
+            }
+            if other.hasAttitudePitch {
+                 attitudePitch = other.attitudePitch
+            }
+            if other.hasAttitudeYaw {
+                 attitudeYaw = other.attitudeYaw
+            }
+            if other.hasAttitudeRoll {
+                 attitudeRoll = other.attitudeRoll
+            }
+            if other.hasRotationRateX {
+                 rotationRateX = other.rotationRateX
+            }
+            if other.hasRotationRateY {
+                 rotationRateY = other.rotationRateY
+            }
+            if other.hasRotationRateZ {
+                 rotationRateZ = other.rotationRateZ
+            }
+            if other.hasGravityX {
+                 gravityX = other.gravityX
+            }
+            if other.hasGravityY {
+                 gravityY = other.gravityY
+            }
+            if other.hasGravityZ {
+                 gravityZ = other.gravityZ
+            }
+            if other.hasStatus {
+                 status = other.status
+            }
+            _ = try merge(unknownField: other.unknownFields)
+            return self
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
+            while (true) {
+              let protobufTag = try codedInputStream.readTag()
+              switch protobufTag {
+              case 0: 
+                self.unknownFields = try unknownFieldsBuilder.build()
+                return self
+
+              case 8:
+                timestamp = try codedInputStream.readUInt64()
+
+              case 25:
+                accelerationX = try codedInputStream.readDouble()
+
+              case 33:
+                accelerationY = try codedInputStream.readDouble()
+
+              case 41:
+                accelerationZ = try codedInputStream.readDouble()
+
+              case 49:
+                magneticFieldX = try codedInputStream.readDouble()
+
+              case 57:
+                magneticFieldY = try codedInputStream.readDouble()
+
+              case 65:
+                magneticFieldZ = try codedInputStream.readDouble()
+
+              case 72:
+                magneticFieldAccuracy = try codedInputStream.readInt32()
+
+              case 81:
+                attitudePitch = try codedInputStream.readDouble()
+
+              case 89:
+                attitudeYaw = try codedInputStream.readDouble()
+
+              case 97:
+                attitudeRoll = try codedInputStream.readDouble()
+
+              case 105:
+                rotationRateX = try codedInputStream.readDouble()
+
+              case 113:
+                rotationRateY = try codedInputStream.readDouble()
+
+              case 121:
+                rotationRateZ = try codedInputStream.readDouble()
+
+              case 129:
+                gravityX = try codedInputStream.readDouble()
+
+              case 137:
+                gravityY = try codedInputStream.readDouble()
+
+              case 145:
+                gravityZ = try codedInputStream.readDouble()
+
+              case 152:
+                status = try codedInputStream.readInt32()
+
+              default:
+                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+                   unknownFields = try unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder()
+            if let jsonValueTimestamp = jsonMap["timestamp"] as? String {
+              resultDecodedBuilder.timestamp = UInt64(jsonValueTimestamp)!
+            }
+            if let jsonValueAccelerationX = jsonMap["accelerationX"] as? Double {
+              resultDecodedBuilder.accelerationX = Double(jsonValueAccelerationX)
+            }
+            if let jsonValueAccelerationY = jsonMap["accelerationY"] as? Double {
+              resultDecodedBuilder.accelerationY = Double(jsonValueAccelerationY)
+            }
+            if let jsonValueAccelerationZ = jsonMap["accelerationZ"] as? Double {
+              resultDecodedBuilder.accelerationZ = Double(jsonValueAccelerationZ)
+            }
+            if let jsonValueMagneticFieldX = jsonMap["magneticFieldX"] as? Double {
+              resultDecodedBuilder.magneticFieldX = Double(jsonValueMagneticFieldX)
+            }
+            if let jsonValueMagneticFieldY = jsonMap["magneticFieldY"] as? Double {
+              resultDecodedBuilder.magneticFieldY = Double(jsonValueMagneticFieldY)
+            }
+            if let jsonValueMagneticFieldZ = jsonMap["magneticFieldZ"] as? Double {
+              resultDecodedBuilder.magneticFieldZ = Double(jsonValueMagneticFieldZ)
+            }
+            if let jsonValueMagneticFieldAccuracy = jsonMap["magneticFieldAccuracy"] as? Int {
+              resultDecodedBuilder.magneticFieldAccuracy = Int32(jsonValueMagneticFieldAccuracy)
+            }
+            if let jsonValueAttitudePitch = jsonMap["attitudePitch"] as? Double {
+              resultDecodedBuilder.attitudePitch = Double(jsonValueAttitudePitch)
+            }
+            if let jsonValueAttitudeYaw = jsonMap["attitudeYaw"] as? Double {
+              resultDecodedBuilder.attitudeYaw = Double(jsonValueAttitudeYaw)
+            }
+            if let jsonValueAttitudeRoll = jsonMap["attitudeRoll"] as? Double {
+              resultDecodedBuilder.attitudeRoll = Double(jsonValueAttitudeRoll)
+            }
+            if let jsonValueRotationRateX = jsonMap["rotationRateX"] as? Double {
+              resultDecodedBuilder.rotationRateX = Double(jsonValueRotationRateX)
+            }
+            if let jsonValueRotationRateY = jsonMap["rotationRateY"] as? Double {
+              resultDecodedBuilder.rotationRateY = Double(jsonValueRotationRateY)
+            }
+            if let jsonValueRotationRateZ = jsonMap["rotationRateZ"] as? Double {
+              resultDecodedBuilder.rotationRateZ = Double(jsonValueRotationRateZ)
+            }
+            if let jsonValueGravityX = jsonMap["gravityX"] as? Double {
+              resultDecodedBuilder.gravityX = Double(jsonValueGravityX)
+            }
+            if let jsonValueGravityY = jsonMap["gravityY"] as? Double {
+              resultDecodedBuilder.gravityY = Double(jsonValueGravityY)
+            }
+            if let jsonValueGravityZ = jsonMap["gravityZ"] as? Double {
+              resultDecodedBuilder.gravityZ = Double(jsonValueGravityZ)
+            }
+            if let jsonValueStatus = jsonMap["status"] as? Int {
+              resultDecodedBuilder.status = Int32(jsonValueStatus)
+            }
+            return resultDecodedBuilder
+          }
+          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder {
+            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
+            }
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder.decodeToBuilder(jsonMap:jsDataCast)
+          }
+        }
+
+      }
+
+    //Nested type declaration end
+
+
+
+    //Nested type declaration start
+
+      final public class DeviceInfo : GeneratedMessage {
+
+        public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo) -> Bool {
+          if (lhs === rhs) {
+            return true
+          }
+          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
+          fieldCheck = fieldCheck && (lhs.hasDeviceId == rhs.hasDeviceId) && (!lhs.hasDeviceId || lhs.deviceId == rhs.deviceId)
+          fieldCheck = fieldCheck && (lhs.hasAndroidBoardName == rhs.hasAndroidBoardName) && (!lhs.hasAndroidBoardName || lhs.androidBoardName == rhs.androidBoardName)
+          fieldCheck = fieldCheck && (lhs.hasAndroidBootloader == rhs.hasAndroidBootloader) && (!lhs.hasAndroidBootloader || lhs.androidBootloader == rhs.androidBootloader)
+          fieldCheck = fieldCheck && (lhs.hasDeviceBrand == rhs.hasDeviceBrand) && (!lhs.hasDeviceBrand || lhs.deviceBrand == rhs.deviceBrand)
+          fieldCheck = fieldCheck && (lhs.hasDeviceModel == rhs.hasDeviceModel) && (!lhs.hasDeviceModel || lhs.deviceModel == rhs.deviceModel)
+          fieldCheck = fieldCheck && (lhs.hasDeviceModelIdentifier == rhs.hasDeviceModelIdentifier) && (!lhs.hasDeviceModelIdentifier || lhs.deviceModelIdentifier == rhs.deviceModelIdentifier)
+          fieldCheck = fieldCheck && (lhs.hasDeviceCommsModel == rhs.hasDeviceCommsModel) && (!lhs.hasDeviceCommsModel || lhs.deviceCommsModel == rhs.deviceCommsModel)
+          fieldCheck = fieldCheck && (lhs.hasHardwareManufacturer == rhs.hasHardwareManufacturer) && (!lhs.hasHardwareManufacturer || lhs.hardwareManufacturer == rhs.hardwareManufacturer)
+          fieldCheck = fieldCheck && (lhs.hasHardwareModel == rhs.hasHardwareModel) && (!lhs.hasHardwareModel || lhs.hardwareModel == rhs.hardwareModel)
+          fieldCheck = fieldCheck && (lhs.hasFirmwareBrand == rhs.hasFirmwareBrand) && (!lhs.hasFirmwareBrand || lhs.firmwareBrand == rhs.firmwareBrand)
+          fieldCheck = fieldCheck && (lhs.hasFirmwareTags == rhs.hasFirmwareTags) && (!lhs.hasFirmwareTags || lhs.firmwareTags == rhs.firmwareTags)
+          fieldCheck = fieldCheck && (lhs.hasFirmwareType == rhs.hasFirmwareType) && (!lhs.hasFirmwareType || lhs.firmwareType == rhs.firmwareType)
+          fieldCheck = fieldCheck && (lhs.hasFirmwareFingerprint == rhs.hasFirmwareFingerprint) && (!lhs.hasFirmwareFingerprint || lhs.firmwareFingerprint == rhs.firmwareFingerprint)
+          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
+          return fieldCheck
+        }
+
+        public fileprivate(set) var deviceId:String = ""
+        public fileprivate(set) var hasDeviceId:Bool = false
+
+        public fileprivate(set) var androidBoardName:String = ""
+        public fileprivate(set) var hasAndroidBoardName:Bool = false
+
+        public fileprivate(set) var androidBootloader:String = ""
+        public fileprivate(set) var hasAndroidBootloader:Bool = false
+
+        // product.brand
+        public fileprivate(set) var deviceBrand:String = ""
+        public fileprivate(set) var hasDeviceBrand:Bool = false
+
+        // product.device
+        public fileprivate(set) var deviceModel:String = ""
+        public fileprivate(set) var hasDeviceModel:Bool = false
+
+        // Android only, build.display.id
+        public fileprivate(set) var deviceModelIdentifier:String = ""
+        public fileprivate(set) var hasDeviceModelIdentifier:Bool = false
+
+        // boot.hardware
+        public fileprivate(set) var deviceCommsModel:String = ""
+        public fileprivate(set) var hasDeviceCommsModel:Bool = false
+
+        // product.manufacturer
+        public fileprivate(set) var hardwareManufacturer:String = ""
+        public fileprivate(set) var hasHardwareManufacturer:Bool = false
+
+        // product.model
+        public fileprivate(set) var hardwareModel:String = ""
+        public fileprivate(set) var hasHardwareModel:Bool = false
+
+        // On iOS: "iPhone OS", product.name
+        public fileprivate(set) var firmwareBrand:String = ""
+        public fileprivate(set) var hasFirmwareBrand:Bool = false
+
+        // Android only, build.tags
+        public fileprivate(set) var firmwareTags:String = ""
+        public fileprivate(set) var hasFirmwareTags:Bool = false
+
+        // On iOS instead: iOS version; // build.type
+        public fileprivate(set) var firmwareType:String = ""
+        public fileprivate(set) var hasFirmwareType:Bool = false
+
+        // Android only, build.fingerprint
+        public fileprivate(set) var firmwareFingerprint:String = ""
+        public fileprivate(set) var hasFirmwareFingerprint:Bool = false
+
+        required public init() {
+             super.init()
+        }
+        override public func isInitialized() -> Bool {
+         return true
+        }
+        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
+          if hasDeviceId {
+            try codedOutputStream.writeString(fieldNumber: 1, value:deviceId)
+          }
+          if hasAndroidBoardName {
+            try codedOutputStream.writeString(fieldNumber: 2, value:androidBoardName)
+          }
+          if hasAndroidBootloader {
+            try codedOutputStream.writeString(fieldNumber: 3, value:androidBootloader)
+          }
+          if hasDeviceBrand {
+            try codedOutputStream.writeString(fieldNumber: 4, value:deviceBrand)
+          }
+          if hasDeviceModel {
+            try codedOutputStream.writeString(fieldNumber: 5, value:deviceModel)
+          }
+          if hasDeviceModelIdentifier {
+            try codedOutputStream.writeString(fieldNumber: 6, value:deviceModelIdentifier)
+          }
+          if hasDeviceCommsModel {
+            try codedOutputStream.writeString(fieldNumber: 7, value:deviceCommsModel)
+          }
+          if hasHardwareManufacturer {
+            try codedOutputStream.writeString(fieldNumber: 8, value:hardwareManufacturer)
+          }
+          if hasHardwareModel {
+            try codedOutputStream.writeString(fieldNumber: 9, value:hardwareModel)
+          }
+          if hasFirmwareBrand {
+            try codedOutputStream.writeString(fieldNumber: 10, value:firmwareBrand)
+          }
+          if hasFirmwareTags {
+            try codedOutputStream.writeString(fieldNumber: 12, value:firmwareTags)
+          }
+          if hasFirmwareType {
+            try codedOutputStream.writeString(fieldNumber: 13, value:firmwareType)
+          }
+          if hasFirmwareFingerprint {
+            try codedOutputStream.writeString(fieldNumber: 14, value:firmwareFingerprint)
+          }
+          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
+        }
+        override public func serializedSize() -> Int32 {
+          var serialize_size:Int32 = memoizedSerializedSize
+          if serialize_size != -1 {
+           return serialize_size
+          }
+
+          serialize_size = 0
+          if hasDeviceId {
+            serialize_size += deviceId.computeStringSize(fieldNumber: 1)
+          }
+          if hasAndroidBoardName {
+            serialize_size += androidBoardName.computeStringSize(fieldNumber: 2)
+          }
+          if hasAndroidBootloader {
+            serialize_size += androidBootloader.computeStringSize(fieldNumber: 3)
+          }
+          if hasDeviceBrand {
+            serialize_size += deviceBrand.computeStringSize(fieldNumber: 4)
+          }
+          if hasDeviceModel {
+            serialize_size += deviceModel.computeStringSize(fieldNumber: 5)
+          }
+          if hasDeviceModelIdentifier {
+            serialize_size += deviceModelIdentifier.computeStringSize(fieldNumber: 6)
+          }
+          if hasDeviceCommsModel {
+            serialize_size += deviceCommsModel.computeStringSize(fieldNumber: 7)
+          }
+          if hasHardwareManufacturer {
+            serialize_size += hardwareManufacturer.computeStringSize(fieldNumber: 8)
+          }
+          if hasHardwareModel {
+            serialize_size += hardwareModel.computeStringSize(fieldNumber: 9)
+          }
+          if hasFirmwareBrand {
+            serialize_size += firmwareBrand.computeStringSize(fieldNumber: 10)
+          }
+          if hasFirmwareTags {
+            serialize_size += firmwareTags.computeStringSize(fieldNumber: 12)
+          }
+          if hasFirmwareType {
+            serialize_size += firmwareType.computeStringSize(fieldNumber: 13)
+          }
+          if hasFirmwareFingerprint {
+            serialize_size += firmwareFingerprint.computeStringSize(fieldNumber: 14)
+          }
+          serialize_size += unknownFields.serializedSize()
+          memoizedSerializedSize = serialize_size
+          return serialize_size
+        }
+        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder
+        }
+        public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+          return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder
+        }
+        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder()
+        }
+        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder()
+        }
+        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.builderWithPrototype(prototype:self)
+        }
+        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(other:prototype)
+        }
+        override public func encode() throws -> Dictionary<String,Any> {
+          guard isInitialized() else {
+            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
+          }
+
+          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
+          if hasDeviceId {
+            jsonMap["deviceId"] = deviceId
+          }
+          if hasAndroidBoardName {
+            jsonMap["androidBoardName"] = androidBoardName
+          }
+          if hasAndroidBootloader {
+            jsonMap["androidBootloader"] = androidBootloader
+          }
+          if hasDeviceBrand {
+            jsonMap["deviceBrand"] = deviceBrand
+          }
+          if hasDeviceModel {
+            jsonMap["deviceModel"] = deviceModel
+          }
+          if hasDeviceModelIdentifier {
+            jsonMap["deviceModelIdentifier"] = deviceModelIdentifier
+          }
+          if hasDeviceCommsModel {
+            jsonMap["deviceCommsModel"] = deviceCommsModel
+          }
+          if hasHardwareManufacturer {
+            jsonMap["hardwareManufacturer"] = hardwareManufacturer
+          }
+          if hasHardwareModel {
+            jsonMap["hardwareModel"] = hardwareModel
+          }
+          if hasFirmwareBrand {
+            jsonMap["firmwareBrand"] = firmwareBrand
+          }
+          if hasFirmwareTags {
+            jsonMap["firmwareTags"] = firmwareTags
+          }
+          if hasFirmwareType {
+            jsonMap["firmwareType"] = firmwareType
+          }
+          if hasFirmwareFingerprint {
+            jsonMap["firmwareFingerprint"] = firmwareFingerprint
+          }
+          return jsonMap
+        }
+        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+        }
+        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder.fromJSONToBuilder(data:data).build()
+        }
+        override public func getDescription(indent:String) throws -> String {
+          var output = ""
+          if hasDeviceId {
+            output += "\(indent) deviceId: \(deviceId) \n"
+          }
+          if hasAndroidBoardName {
+            output += "\(indent) androidBoardName: \(androidBoardName) \n"
+          }
+          if hasAndroidBootloader {
+            output += "\(indent) androidBootloader: \(androidBootloader) \n"
+          }
+          if hasDeviceBrand {
+            output += "\(indent) deviceBrand: \(deviceBrand) \n"
+          }
+          if hasDeviceModel {
+            output += "\(indent) deviceModel: \(deviceModel) \n"
+          }
+          if hasDeviceModelIdentifier {
+            output += "\(indent) deviceModelIdentifier: \(deviceModelIdentifier) \n"
+          }
+          if hasDeviceCommsModel {
+            output += "\(indent) deviceCommsModel: \(deviceCommsModel) \n"
+          }
+          if hasHardwareManufacturer {
+            output += "\(indent) hardwareManufacturer: \(hardwareManufacturer) \n"
+          }
+          if hasHardwareModel {
+            output += "\(indent) hardwareModel: \(hardwareModel) \n"
+          }
+          if hasFirmwareBrand {
+            output += "\(indent) firmwareBrand: \(firmwareBrand) \n"
+          }
+          if hasFirmwareTags {
+            output += "\(indent) firmwareTags: \(firmwareTags) \n"
+          }
+          if hasFirmwareType {
+            output += "\(indent) firmwareType: \(firmwareType) \n"
+          }
+          if hasFirmwareFingerprint {
+            output += "\(indent) firmwareFingerprint: \(firmwareFingerprint) \n"
+          }
+          output += unknownFields.getDescription(indent: indent)
+          return output
+        }
+        override public var hashValue:Int {
+            get {
+                var hashCode:Int = 7
+                if hasDeviceId {
+                   hashCode = (hashCode &* 31) &+ deviceId.hashValue
+                }
+                if hasAndroidBoardName {
+                   hashCode = (hashCode &* 31) &+ androidBoardName.hashValue
+                }
+                if hasAndroidBootloader {
+                   hashCode = (hashCode &* 31) &+ androidBootloader.hashValue
+                }
+                if hasDeviceBrand {
+                   hashCode = (hashCode &* 31) &+ deviceBrand.hashValue
+                }
+                if hasDeviceModel {
+                   hashCode = (hashCode &* 31) &+ deviceModel.hashValue
+                }
+                if hasDeviceModelIdentifier {
+                   hashCode = (hashCode &* 31) &+ deviceModelIdentifier.hashValue
+                }
+                if hasDeviceCommsModel {
+                   hashCode = (hashCode &* 31) &+ deviceCommsModel.hashValue
+                }
+                if hasHardwareManufacturer {
+                   hashCode = (hashCode &* 31) &+ hardwareManufacturer.hashValue
+                }
+                if hasHardwareModel {
+                   hashCode = (hashCode &* 31) &+ hardwareModel.hashValue
+                }
+                if hasFirmwareBrand {
+                   hashCode = (hashCode &* 31) &+ firmwareBrand.hashValue
+                }
+                if hasFirmwareTags {
+                   hashCode = (hashCode &* 31) &+ firmwareTags.hashValue
+                }
+                if hasFirmwareType {
+                   hashCode = (hashCode &* 31) &+ firmwareType.hashValue
+                }
+                if hasFirmwareFingerprint {
+                   hashCode = (hashCode &* 31) &+ firmwareFingerprint.hashValue
+                }
+                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
+                return hashCode
+            }
+        }
+
+
+        //Meta information declaration start
+
+        override public class func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo"
+        }
+        override public func className() -> String {
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo"
+        }
+        //Meta information declaration end
+
+        final public class Builder : GeneratedMessageBuilder {
+          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo()
+          public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+              return builderResult
+          }
+
+          required override public init () {
+             super.init()
+          }
+          public var hasDeviceId:Bool {
+               get {
+                    return builderResult.hasDeviceId
+               }
+          }
+          public var deviceId:String {
+               get {
+                    return builderResult.deviceId
+               }
+               set (value) {
+                   builderResult.hasDeviceId = true
+                   builderResult.deviceId = value
+               }
+          }
+          @discardableResult
+          public func setDeviceId(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.deviceId = value
+            return self
+          }
+          @discardableResult
+          public func clearDeviceId() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasDeviceId = false
+               builderResult.deviceId = ""
+               return self
+          }
+          public var hasAndroidBoardName:Bool {
+               get {
+                    return builderResult.hasAndroidBoardName
+               }
+          }
+          public var androidBoardName:String {
+               get {
+                    return builderResult.androidBoardName
+               }
+               set (value) {
+                   builderResult.hasAndroidBoardName = true
+                   builderResult.androidBoardName = value
+               }
+          }
+          @discardableResult
+          public func setAndroidBoardName(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.androidBoardName = value
+            return self
+          }
+          @discardableResult
+          public func clearAndroidBoardName() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasAndroidBoardName = false
+               builderResult.androidBoardName = ""
+               return self
+          }
+          public var hasAndroidBootloader:Bool {
+               get {
+                    return builderResult.hasAndroidBootloader
+               }
+          }
+          public var androidBootloader:String {
+               get {
+                    return builderResult.androidBootloader
+               }
+               set (value) {
+                   builderResult.hasAndroidBootloader = true
+                   builderResult.androidBootloader = value
+               }
+          }
+          @discardableResult
+          public func setAndroidBootloader(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.androidBootloader = value
+            return self
+          }
+          @discardableResult
+          public func clearAndroidBootloader() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasAndroidBootloader = false
+               builderResult.androidBootloader = ""
+               return self
+          }
+          public var hasDeviceBrand:Bool {
+               get {
+                    return builderResult.hasDeviceBrand
+               }
+          }
+          public var deviceBrand:String {
+               get {
+                    return builderResult.deviceBrand
+               }
+               set (value) {
+                   builderResult.hasDeviceBrand = true
+                   builderResult.deviceBrand = value
+               }
+          }
+          @discardableResult
+          public func setDeviceBrand(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.deviceBrand = value
+            return self
+          }
+          @discardableResult
+          public func clearDeviceBrand() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasDeviceBrand = false
+               builderResult.deviceBrand = ""
+               return self
+          }
+          public var hasDeviceModel:Bool {
+               get {
+                    return builderResult.hasDeviceModel
+               }
+          }
+          public var deviceModel:String {
+               get {
+                    return builderResult.deviceModel
+               }
+               set (value) {
+                   builderResult.hasDeviceModel = true
+                   builderResult.deviceModel = value
+               }
+          }
+          @discardableResult
+          public func setDeviceModel(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.deviceModel = value
+            return self
+          }
+          @discardableResult
+          public func clearDeviceModel() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasDeviceModel = false
+               builderResult.deviceModel = ""
+               return self
+          }
+          public var hasDeviceModelIdentifier:Bool {
+               get {
+                    return builderResult.hasDeviceModelIdentifier
+               }
+          }
+          public var deviceModelIdentifier:String {
+               get {
+                    return builderResult.deviceModelIdentifier
+               }
+               set (value) {
+                   builderResult.hasDeviceModelIdentifier = true
+                   builderResult.deviceModelIdentifier = value
+               }
+          }
+          @discardableResult
+          public func setDeviceModelIdentifier(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.deviceModelIdentifier = value
+            return self
+          }
+          @discardableResult
+          public func clearDeviceModelIdentifier() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasDeviceModelIdentifier = false
+               builderResult.deviceModelIdentifier = ""
+               return self
+          }
+          public var hasDeviceCommsModel:Bool {
+               get {
+                    return builderResult.hasDeviceCommsModel
+               }
+          }
+          public var deviceCommsModel:String {
+               get {
+                    return builderResult.deviceCommsModel
+               }
+               set (value) {
+                   builderResult.hasDeviceCommsModel = true
+                   builderResult.deviceCommsModel = value
+               }
+          }
+          @discardableResult
+          public func setDeviceCommsModel(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.deviceCommsModel = value
+            return self
+          }
+          @discardableResult
+          public func clearDeviceCommsModel() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasDeviceCommsModel = false
+               builderResult.deviceCommsModel = ""
+               return self
+          }
+          public var hasHardwareManufacturer:Bool {
+               get {
+                    return builderResult.hasHardwareManufacturer
+               }
+          }
+          public var hardwareManufacturer:String {
+               get {
+                    return builderResult.hardwareManufacturer
+               }
+               set (value) {
+                   builderResult.hasHardwareManufacturer = true
+                   builderResult.hardwareManufacturer = value
+               }
+          }
+          @discardableResult
+          public func setHardwareManufacturer(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.hardwareManufacturer = value
+            return self
+          }
+          @discardableResult
+          public func clearHardwareManufacturer() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasHardwareManufacturer = false
+               builderResult.hardwareManufacturer = ""
+               return self
+          }
+          public var hasHardwareModel:Bool {
+               get {
+                    return builderResult.hasHardwareModel
+               }
+          }
+          public var hardwareModel:String {
+               get {
+                    return builderResult.hardwareModel
+               }
+               set (value) {
+                   builderResult.hasHardwareModel = true
+                   builderResult.hardwareModel = value
+               }
+          }
+          @discardableResult
+          public func setHardwareModel(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.hardwareModel = value
+            return self
+          }
+          @discardableResult
+          public func clearHardwareModel() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasHardwareModel = false
+               builderResult.hardwareModel = ""
+               return self
+          }
+          public var hasFirmwareBrand:Bool {
+               get {
+                    return builderResult.hasFirmwareBrand
+               }
+          }
+          public var firmwareBrand:String {
+               get {
+                    return builderResult.firmwareBrand
+               }
+               set (value) {
+                   builderResult.hasFirmwareBrand = true
+                   builderResult.firmwareBrand = value
+               }
+          }
+          @discardableResult
+          public func setFirmwareBrand(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.firmwareBrand = value
+            return self
+          }
+          @discardableResult
+          public func clearFirmwareBrand() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasFirmwareBrand = false
+               builderResult.firmwareBrand = ""
+               return self
+          }
+          public var hasFirmwareTags:Bool {
+               get {
+                    return builderResult.hasFirmwareTags
+               }
+          }
+          public var firmwareTags:String {
+               get {
+                    return builderResult.firmwareTags
+               }
+               set (value) {
+                   builderResult.hasFirmwareTags = true
+                   builderResult.firmwareTags = value
+               }
+          }
+          @discardableResult
+          public func setFirmwareTags(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.firmwareTags = value
+            return self
+          }
+          @discardableResult
+          public func clearFirmwareTags() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasFirmwareTags = false
+               builderResult.firmwareTags = ""
+               return self
+          }
+          public var hasFirmwareType:Bool {
+               get {
+                    return builderResult.hasFirmwareType
+               }
+          }
+          public var firmwareType:String {
+               get {
+                    return builderResult.firmwareType
+               }
+               set (value) {
+                   builderResult.hasFirmwareType = true
+                   builderResult.firmwareType = value
+               }
+          }
+          @discardableResult
+          public func setFirmwareType(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.firmwareType = value
+            return self
+          }
+          @discardableResult
+          public func clearFirmwareType() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasFirmwareType = false
+               builderResult.firmwareType = ""
+               return self
+          }
+          public var hasFirmwareFingerprint:Bool {
+               get {
+                    return builderResult.hasFirmwareFingerprint
+               }
+          }
+          public var firmwareFingerprint:String {
+               get {
+                    return builderResult.firmwareFingerprint
+               }
+               set (value) {
+                   builderResult.hasFirmwareFingerprint = true
+                   builderResult.firmwareFingerprint = value
+               }
+          }
+          @discardableResult
+          public func setFirmwareFingerprint(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            self.firmwareFingerprint = value
+            return self
+          }
+          @discardableResult
+          public func clearFirmwareFingerprint() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder{
+               builderResult.hasFirmwareFingerprint = false
+               builderResult.firmwareFingerprint = ""
+               return self
+          }
+          override public var internalGetResult:GeneratedMessage {
+               get {
+                  return builderResult
+               }
+          }
+          @discardableResult
+          override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo()
+            return self
+          }
+          override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.builderWithPrototype(prototype:builderResult)
+          }
+          override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+               try checkInitialized()
+               return buildPartial()
+          }
+          public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+            let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo = builderResult
+            return returnMe
+          }
+          @discardableResult
+          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo() {
+             return self
+            }
+            if other.hasDeviceId {
+                 deviceId = other.deviceId
+            }
+            if other.hasAndroidBoardName {
+                 androidBoardName = other.androidBoardName
+            }
+            if other.hasAndroidBootloader {
+                 androidBootloader = other.androidBootloader
+            }
+            if other.hasDeviceBrand {
+                 deviceBrand = other.deviceBrand
+            }
+            if other.hasDeviceModel {
+                 deviceModel = other.deviceModel
+            }
+            if other.hasDeviceModelIdentifier {
+                 deviceModelIdentifier = other.deviceModelIdentifier
+            }
+            if other.hasDeviceCommsModel {
+                 deviceCommsModel = other.deviceCommsModel
+            }
+            if other.hasHardwareManufacturer {
+                 hardwareManufacturer = other.hardwareManufacturer
+            }
+            if other.hasHardwareModel {
+                 hardwareModel = other.hardwareModel
+            }
+            if other.hasFirmwareBrand {
+                 firmwareBrand = other.firmwareBrand
+            }
+            if other.hasFirmwareTags {
+                 firmwareTags = other.firmwareTags
+            }
+            if other.hasFirmwareType {
+                 firmwareType = other.firmwareType
+            }
+            if other.hasFirmwareFingerprint {
+                 firmwareFingerprint = other.firmwareFingerprint
+            }
+            _ = try merge(unknownField: other.unknownFields)
+            return self
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
+          }
+          @discardableResult
+          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
+            while (true) {
+              let protobufTag = try codedInputStream.readTag()
+              switch protobufTag {
+              case 0: 
+                self.unknownFields = try unknownFieldsBuilder.build()
+                return self
+
+              case 10:
+                deviceId = try codedInputStream.readString()
+
+              case 18:
+                androidBoardName = try codedInputStream.readString()
+
+              case 26:
+                androidBootloader = try codedInputStream.readString()
+
+              case 34:
+                deviceBrand = try codedInputStream.readString()
+
+              case 42:
+                deviceModel = try codedInputStream.readString()
+
+              case 50:
+                deviceModelIdentifier = try codedInputStream.readString()
+
+              case 58:
+                deviceCommsModel = try codedInputStream.readString()
+
+              case 66:
+                hardwareManufacturer = try codedInputStream.readString()
+
+              case 74:
+                hardwareModel = try codedInputStream.readString()
+
+              case 82:
+                firmwareBrand = try codedInputStream.readString()
+
+              case 98:
+                firmwareTags = try codedInputStream.readString()
+
+              case 106:
+                firmwareType = try codedInputStream.readString()
+
+              case 114:
+                firmwareFingerprint = try codedInputStream.readString()
+
+              default:
+                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
+                   unknownFields = try unknownFieldsBuilder.build()
+                   return self
+                }
+              }
+            }
+          }
+          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder()
+            if let jsonValueDeviceId = jsonMap["deviceId"] as? String {
+              resultDecodedBuilder.deviceId = jsonValueDeviceId
+            }
+            if let jsonValueAndroidBoardName = jsonMap["androidBoardName"] as? String {
+              resultDecodedBuilder.androidBoardName = jsonValueAndroidBoardName
+            }
+            if let jsonValueAndroidBootloader = jsonMap["androidBootloader"] as? String {
+              resultDecodedBuilder.androidBootloader = jsonValueAndroidBootloader
+            }
+            if let jsonValueDeviceBrand = jsonMap["deviceBrand"] as? String {
+              resultDecodedBuilder.deviceBrand = jsonValueDeviceBrand
+            }
+            if let jsonValueDeviceModel = jsonMap["deviceModel"] as? String {
+              resultDecodedBuilder.deviceModel = jsonValueDeviceModel
+            }
+            if let jsonValueDeviceModelIdentifier = jsonMap["deviceModelIdentifier"] as? String {
+              resultDecodedBuilder.deviceModelIdentifier = jsonValueDeviceModelIdentifier
+            }
+            if let jsonValueDeviceCommsModel = jsonMap["deviceCommsModel"] as? String {
+              resultDecodedBuilder.deviceCommsModel = jsonValueDeviceCommsModel
+            }
+            if let jsonValueHardwareManufacturer = jsonMap["hardwareManufacturer"] as? String {
+              resultDecodedBuilder.hardwareManufacturer = jsonValueHardwareManufacturer
+            }
+            if let jsonValueHardwareModel = jsonMap["hardwareModel"] as? String {
+              resultDecodedBuilder.hardwareModel = jsonValueHardwareModel
+            }
+            if let jsonValueFirmwareBrand = jsonMap["firmwareBrand"] as? String {
+              resultDecodedBuilder.firmwareBrand = jsonValueFirmwareBrand
+            }
+            if let jsonValueFirmwareTags = jsonMap["firmwareTags"] as? String {
+              resultDecodedBuilder.firmwareTags = jsonValueFirmwareTags
+            }
+            if let jsonValueFirmwareType = jsonMap["firmwareType"] as? String {
+              resultDecodedBuilder.firmwareType = jsonValueFirmwareType
+            }
+            if let jsonValueFirmwareFingerprint = jsonMap["firmwareFingerprint"] as? String {
+              resultDecodedBuilder.firmwareFingerprint = jsonValueFirmwareFingerprint
+            }
+            return resultDecodedBuilder
+          }
+          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
+            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
+              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
+            }
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
+          }
+        }
+
+      }
+
+    //Nested type declaration end
+
+
+
+    //Nested type declaration start
+
       final public class AndroidGpsInfo : GeneratedMessage {
 
-        public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo, rhs: Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo) -> Bool {
+        public static func == (lhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo, rhs: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo) -> Bool {
           if (lhs === rhs) {
             return true
           }
@@ -3973,23 +6655,23 @@ public extension Pogoprotos.Networking.Envelopes {
           memoizedSerializedSize = serialize_size
           return serialize_size
         }
-        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-          return Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder
+        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder
         }
-        public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-          return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder
+        public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+          return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder
         }
         override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder()
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder()
         }
         override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder()
+          return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder()
         }
-        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.builderWithPrototype(prototype:self)
+        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.builderWithPrototype(prototype:self)
         }
-        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(other:prototype)
+        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(other:prototype)
         }
         override public func encode() throws -> Dictionary<String,Any> {
           guard isInitialized() else {
@@ -4051,11 +6733,11 @@ public extension Pogoprotos.Networking.Envelopes {
           }
           return jsonMap
         }
-        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
         }
-        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder.fromJSONToBuilder(data:data).build()
+        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+          return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder.fromJSONToBuilder(data:data).build()
         }
         override public func getDescription(indent:String) throws -> String {
           var output = ""
@@ -4136,16 +6818,16 @@ public extension Pogoprotos.Networking.Envelopes {
         //Meta information declaration start
 
         override public class func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo"
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo"
         }
         override public func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo"
+            return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo"
         }
         //Meta information declaration end
 
         final public class Builder : GeneratedMessageBuilder {
-          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo = Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo()
-          public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
+          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo()
+          public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
               return builderResult
           }
 
@@ -4167,12 +6849,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setTimeToFix(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setTimeToFix(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.timeToFix = value
             return self
           }
           @discardableResult
-          public func clearTimeToFix() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder{
+          public func clearTimeToFix() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder{
                builderResult.hasTimeToFix = false
                builderResult.timeToFix = UInt64(0)
                return self
@@ -4186,12 +6868,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setSatellitesPrn(_ value:Array<Int32>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setSatellitesPrn(_ value:Array<Int32>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.satellitesPrn = value
             return self
           }
           @discardableResult
-          public func clearSatellitesPrn() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearSatellitesPrn() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.satellitesPrn.removeAll(keepingCapacity: false)
              return self
           }
@@ -4204,12 +6886,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setAzimuth(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setAzimuth(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.azimuth = value
             return self
           }
           @discardableResult
-          public func clearAzimuth() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearAzimuth() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.azimuth.removeAll(keepingCapacity: false)
              return self
           }
@@ -4222,12 +6904,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setElevation(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setElevation(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.elevation = value
             return self
           }
           @discardableResult
-          public func clearElevation() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearElevation() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.elevation.removeAll(keepingCapacity: false)
              return self
           }
@@ -4240,12 +6922,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setSnr(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setSnr(_ value:Array<Float>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.snr = value
             return self
           }
           @discardableResult
-          public func clearSnr() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearSnr() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.snr.removeAll(keepingCapacity: false)
              return self
           }
@@ -4258,12 +6940,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setHasAlmanac(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setHasAlmanac(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.hasAlmanac = value
             return self
           }
           @discardableResult
-          public func clearHasAlmanac() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearHasAlmanac() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.hasAlmanac.removeAll(keepingCapacity: false)
              return self
           }
@@ -4276,12 +6958,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setHasEphemeris(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setHasEphemeris(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.hasEphemeris = value
             return self
           }
           @discardableResult
-          public func clearHasEphemeris() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearHasEphemeris() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.hasEphemeris.removeAll(keepingCapacity: false)
              return self
           }
@@ -4294,12 +6976,12 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          public func setUsedInFix(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func setUsedInFix(_ value:Array<Bool>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             self.usedInFix = value
             return self
           }
           @discardableResult
-          public func clearUsedInFix() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          public func clearUsedInFix() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
              builderResult.usedInFix.removeAll(keepingCapacity: false)
              return self
           }
@@ -4309,24 +6991,24 @@ public extension Pogoprotos.Networking.Envelopes {
                }
           }
           @discardableResult
-          override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-            builderResult = Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo()
+          override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+            builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo()
             return self
           }
-          override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-            return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.builderWithPrototype(prototype:builderResult)
+          override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.builderWithPrototype(prototype:builderResult)
           }
-          override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
+          override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
                try checkInitialized()
                return buildPartial()
           }
-          public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-            let returnMe:Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo = builderResult
+          public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+            let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo = builderResult
             return returnMe
           }
           @discardableResult
-          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-            if other == Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo() {
+          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+            if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo() {
              return self
             }
             if other.hasTimeToFix {
@@ -4357,11 +7039,11 @@ public extension Pogoprotos.Networking.Envelopes {
             return self
           }
           @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
                return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
           }
           @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
             while (true) {
               let protobufTag = try codedInputStream.readTag()
@@ -4437,8 +7119,8 @@ public extension Pogoprotos.Networking.Envelopes {
               }
             }
           }
-          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
-            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder()
+          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
+            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder()
             if let jsonValueTimeToFix = jsonMap["timeToFix"] as? String {
               resultDecodedBuilder.timeToFix = UInt64(jsonValueTimeToFix)!
             }
@@ -4493,2650 +7175,12 @@ public extension Pogoprotos.Networking.Envelopes {
             }
             return resultDecodedBuilder
           }
-          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder {
+          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder {
             let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
             guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
               throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
             }
-            return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
-          }
-        }
-
-      }
-
-    //Nested type declaration end
-
-
-
-    //Nested type declaration start
-
-      final public class SensorInfo : GeneratedMessage {
-
-        public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature.SensorInfo, rhs: Pogoprotos.Networking.Envelopes.Signature.SensorInfo) -> Bool {
-          if (lhs === rhs) {
-            return true
-          }
-          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-          fieldCheck = fieldCheck && (lhs.hasTimestampSnapshot == rhs.hasTimestampSnapshot) && (!lhs.hasTimestampSnapshot || lhs.timestampSnapshot == rhs.timestampSnapshot)
-          fieldCheck = fieldCheck && (lhs.hasLinearAccelerationX == rhs.hasLinearAccelerationX) && (!lhs.hasLinearAccelerationX || lhs.linearAccelerationX == rhs.linearAccelerationX)
-          fieldCheck = fieldCheck && (lhs.hasLinearAccelerationY == rhs.hasLinearAccelerationY) && (!lhs.hasLinearAccelerationY || lhs.linearAccelerationY == rhs.linearAccelerationY)
-          fieldCheck = fieldCheck && (lhs.hasLinearAccelerationZ == rhs.hasLinearAccelerationZ) && (!lhs.hasLinearAccelerationZ || lhs.linearAccelerationZ == rhs.linearAccelerationZ)
-          fieldCheck = fieldCheck && (lhs.hasMagneticFieldX == rhs.hasMagneticFieldX) && (!lhs.hasMagneticFieldX || lhs.magneticFieldX == rhs.magneticFieldX)
-          fieldCheck = fieldCheck && (lhs.hasMagneticFieldY == rhs.hasMagneticFieldY) && (!lhs.hasMagneticFieldY || lhs.magneticFieldY == rhs.magneticFieldY)
-          fieldCheck = fieldCheck && (lhs.hasMagneticFieldZ == rhs.hasMagneticFieldZ) && (!lhs.hasMagneticFieldZ || lhs.magneticFieldZ == rhs.magneticFieldZ)
-          fieldCheck = fieldCheck && (lhs.hasMagneticFieldAccuracy == rhs.hasMagneticFieldAccuracy) && (!lhs.hasMagneticFieldAccuracy || lhs.magneticFieldAccuracy == rhs.magneticFieldAccuracy)
-          fieldCheck = fieldCheck && (lhs.hasAttitudePitch == rhs.hasAttitudePitch) && (!lhs.hasAttitudePitch || lhs.attitudePitch == rhs.attitudePitch)
-          fieldCheck = fieldCheck && (lhs.hasAttitudeYaw == rhs.hasAttitudeYaw) && (!lhs.hasAttitudeYaw || lhs.attitudeYaw == rhs.attitudeYaw)
-          fieldCheck = fieldCheck && (lhs.hasAttitudeRoll == rhs.hasAttitudeRoll) && (!lhs.hasAttitudeRoll || lhs.attitudeRoll == rhs.attitudeRoll)
-          fieldCheck = fieldCheck && (lhs.hasRotationRateX == rhs.hasRotationRateX) && (!lhs.hasRotationRateX || lhs.rotationRateX == rhs.rotationRateX)
-          fieldCheck = fieldCheck && (lhs.hasRotationRateY == rhs.hasRotationRateY) && (!lhs.hasRotationRateY || lhs.rotationRateY == rhs.rotationRateY)
-          fieldCheck = fieldCheck && (lhs.hasRotationRateZ == rhs.hasRotationRateZ) && (!lhs.hasRotationRateZ || lhs.rotationRateZ == rhs.rotationRateZ)
-          fieldCheck = fieldCheck && (lhs.hasGravityX == rhs.hasGravityX) && (!lhs.hasGravityX || lhs.gravityX == rhs.gravityX)
-          fieldCheck = fieldCheck && (lhs.hasGravityY == rhs.hasGravityY) && (!lhs.hasGravityY || lhs.gravityY == rhs.gravityY)
-          fieldCheck = fieldCheck && (lhs.hasGravityZ == rhs.hasGravityZ) && (!lhs.hasGravityZ || lhs.gravityZ == rhs.gravityZ)
-          fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
-          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-          return fieldCheck
-        }
-
-        // in ms since start
-        public fileprivate(set) var timestampSnapshot:UInt64 = UInt64(0)
-        public fileprivate(set) var hasTimestampSnapshot:Bool = false
-
-        public fileprivate(set) var linearAccelerationX:Double = Double(0)
-        public fileprivate(set) var hasLinearAccelerationX:Bool = false
-
-        public fileprivate(set) var linearAccelerationY:Double = Double(0)
-        public fileprivate(set) var hasLinearAccelerationY:Bool = false
-
-        public fileprivate(set) var linearAccelerationZ:Double = Double(0)
-        public fileprivate(set) var hasLinearAccelerationZ:Bool = false
-
-        public fileprivate(set) var magneticFieldX:Double = Double(0)
-        public fileprivate(set) var hasMagneticFieldX:Bool = false
-
-        public fileprivate(set) var magneticFieldY:Double = Double(0)
-        public fileprivate(set) var hasMagneticFieldY:Bool = false
-
-        public fileprivate(set) var magneticFieldZ:Double = Double(0)
-        public fileprivate(set) var hasMagneticFieldZ:Bool = false
-
-        public fileprivate(set) var magneticFieldAccuracy:Int32 = Int32(0)
-        public fileprivate(set) var hasMagneticFieldAccuracy:Bool = false
-
-        public fileprivate(set) var attitudePitch:Double = Double(0)
-        public fileprivate(set) var hasAttitudePitch:Bool = false
-
-        public fileprivate(set) var attitudeYaw:Double = Double(0)
-        public fileprivate(set) var hasAttitudeYaw:Bool = false
-
-        public fileprivate(set) var attitudeRoll:Double = Double(0)
-        public fileprivate(set) var hasAttitudeRoll:Bool = false
-
-        public fileprivate(set) var rotationRateX:Double = Double(0)
-        public fileprivate(set) var hasRotationRateX:Bool = false
-
-        public fileprivate(set) var rotationRateY:Double = Double(0)
-        public fileprivate(set) var hasRotationRateY:Bool = false
-
-        public fileprivate(set) var rotationRateZ:Double = Double(0)
-        public fileprivate(set) var hasRotationRateZ:Bool = false
-
-        public fileprivate(set) var gravityX:Double = Double(0)
-        public fileprivate(set) var hasGravityX:Bool = false
-
-        public fileprivate(set) var gravityY:Double = Double(0)
-        public fileprivate(set) var hasGravityY:Bool = false
-
-        public fileprivate(set) var gravityZ:Double = Double(0)
-        public fileprivate(set) var hasGravityZ:Bool = false
-
-        public fileprivate(set) var status:Int32 = Int32(0)
-        public fileprivate(set) var hasStatus:Bool = false
-
-        required public init() {
-             super.init()
-        }
-        override public func isInitialized() -> Bool {
-         return true
-        }
-        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
-          if hasTimestampSnapshot {
-            try codedOutputStream.writeUInt64(fieldNumber: 1, value:timestampSnapshot)
-          }
-          if hasLinearAccelerationX {
-            try codedOutputStream.writeDouble(fieldNumber: 3, value:linearAccelerationX)
-          }
-          if hasLinearAccelerationY {
-            try codedOutputStream.writeDouble(fieldNumber: 4, value:linearAccelerationY)
-          }
-          if hasLinearAccelerationZ {
-            try codedOutputStream.writeDouble(fieldNumber: 5, value:linearAccelerationZ)
-          }
-          if hasMagneticFieldX {
-            try codedOutputStream.writeDouble(fieldNumber: 6, value:magneticFieldX)
-          }
-          if hasMagneticFieldY {
-            try codedOutputStream.writeDouble(fieldNumber: 7, value:magneticFieldY)
-          }
-          if hasMagneticFieldZ {
-            try codedOutputStream.writeDouble(fieldNumber: 8, value:magneticFieldZ)
-          }
-          if hasMagneticFieldAccuracy {
-            try codedOutputStream.writeInt32(fieldNumber: 9, value:magneticFieldAccuracy)
-          }
-          if hasAttitudePitch {
-            try codedOutputStream.writeDouble(fieldNumber: 10, value:attitudePitch)
-          }
-          if hasAttitudeYaw {
-            try codedOutputStream.writeDouble(fieldNumber: 11, value:attitudeYaw)
-          }
-          if hasAttitudeRoll {
-            try codedOutputStream.writeDouble(fieldNumber: 12, value:attitudeRoll)
-          }
-          if hasRotationRateX {
-            try codedOutputStream.writeDouble(fieldNumber: 13, value:rotationRateX)
-          }
-          if hasRotationRateY {
-            try codedOutputStream.writeDouble(fieldNumber: 14, value:rotationRateY)
-          }
-          if hasRotationRateZ {
-            try codedOutputStream.writeDouble(fieldNumber: 15, value:rotationRateZ)
-          }
-          if hasGravityX {
-            try codedOutputStream.writeDouble(fieldNumber: 16, value:gravityX)
-          }
-          if hasGravityY {
-            try codedOutputStream.writeDouble(fieldNumber: 17, value:gravityY)
-          }
-          if hasGravityZ {
-            try codedOutputStream.writeDouble(fieldNumber: 18, value:gravityZ)
-          }
-          if hasStatus {
-            try codedOutputStream.writeInt32(fieldNumber: 19, value:status)
-          }
-          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
-        }
-        override public func serializedSize() -> Int32 {
-          var serialize_size:Int32 = memoizedSerializedSize
-          if serialize_size != -1 {
-           return serialize_size
-          }
-
-          serialize_size = 0
-          if hasTimestampSnapshot {
-            serialize_size += timestampSnapshot.computeUInt64Size(fieldNumber: 1)
-          }
-          if hasLinearAccelerationX {
-            serialize_size += linearAccelerationX.computeDoubleSize(fieldNumber: 3)
-          }
-          if hasLinearAccelerationY {
-            serialize_size += linearAccelerationY.computeDoubleSize(fieldNumber: 4)
-          }
-          if hasLinearAccelerationZ {
-            serialize_size += linearAccelerationZ.computeDoubleSize(fieldNumber: 5)
-          }
-          if hasMagneticFieldX {
-            serialize_size += magneticFieldX.computeDoubleSize(fieldNumber: 6)
-          }
-          if hasMagneticFieldY {
-            serialize_size += magneticFieldY.computeDoubleSize(fieldNumber: 7)
-          }
-          if hasMagneticFieldZ {
-            serialize_size += magneticFieldZ.computeDoubleSize(fieldNumber: 8)
-          }
-          if hasMagneticFieldAccuracy {
-            serialize_size += magneticFieldAccuracy.computeInt32Size(fieldNumber: 9)
-          }
-          if hasAttitudePitch {
-            serialize_size += attitudePitch.computeDoubleSize(fieldNumber: 10)
-          }
-          if hasAttitudeYaw {
-            serialize_size += attitudeYaw.computeDoubleSize(fieldNumber: 11)
-          }
-          if hasAttitudeRoll {
-            serialize_size += attitudeRoll.computeDoubleSize(fieldNumber: 12)
-          }
-          if hasRotationRateX {
-            serialize_size += rotationRateX.computeDoubleSize(fieldNumber: 13)
-          }
-          if hasRotationRateY {
-            serialize_size += rotationRateY.computeDoubleSize(fieldNumber: 14)
-          }
-          if hasRotationRateZ {
-            serialize_size += rotationRateZ.computeDoubleSize(fieldNumber: 15)
-          }
-          if hasGravityX {
-            serialize_size += gravityX.computeDoubleSize(fieldNumber: 16)
-          }
-          if hasGravityY {
-            serialize_size += gravityY.computeDoubleSize(fieldNumber: 17)
-          }
-          if hasGravityZ {
-            serialize_size += gravityZ.computeDoubleSize(fieldNumber: 18)
-          }
-          if hasStatus {
-            serialize_size += status.computeInt32Size(fieldNumber: 19)
-          }
-          serialize_size += unknownFields.serializedSize()
-          memoizedSerializedSize = serialize_size
-          return serialize_size
-        }
-        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-          return Pogoprotos.Networking.Envelopes.Signature.SensorInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder
-        }
-        public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-          return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder
-        }
-        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder()
-        }
-        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder()
-        }
-        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.builderWithPrototype(prototype:self)
-        }
-        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature.SensorInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(other:prototype)
-        }
-        override public func encode() throws -> Dictionary<String,Any> {
-          guard isInitialized() else {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
-          }
-
-          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
-          if hasTimestampSnapshot {
-            jsonMap["timestampSnapshot"] = "\(timestampSnapshot)"
-          }
-          if hasLinearAccelerationX {
-            jsonMap["linearAccelerationX"] = Double(linearAccelerationX)
-          }
-          if hasLinearAccelerationY {
-            jsonMap["linearAccelerationY"] = Double(linearAccelerationY)
-          }
-          if hasLinearAccelerationZ {
-            jsonMap["linearAccelerationZ"] = Double(linearAccelerationZ)
-          }
-          if hasMagneticFieldX {
-            jsonMap["magneticFieldX"] = Double(magneticFieldX)
-          }
-          if hasMagneticFieldY {
-            jsonMap["magneticFieldY"] = Double(magneticFieldY)
-          }
-          if hasMagneticFieldZ {
-            jsonMap["magneticFieldZ"] = Double(magneticFieldZ)
-          }
-          if hasMagneticFieldAccuracy {
-            jsonMap["magneticFieldAccuracy"] = Int(magneticFieldAccuracy)
-          }
-          if hasAttitudePitch {
-            jsonMap["attitudePitch"] = Double(attitudePitch)
-          }
-          if hasAttitudeYaw {
-            jsonMap["attitudeYaw"] = Double(attitudeYaw)
-          }
-          if hasAttitudeRoll {
-            jsonMap["attitudeRoll"] = Double(attitudeRoll)
-          }
-          if hasRotationRateX {
-            jsonMap["rotationRateX"] = Double(rotationRateX)
-          }
-          if hasRotationRateY {
-            jsonMap["rotationRateY"] = Double(rotationRateY)
-          }
-          if hasRotationRateZ {
-            jsonMap["rotationRateZ"] = Double(rotationRateZ)
-          }
-          if hasGravityX {
-            jsonMap["gravityX"] = Double(gravityX)
-          }
-          if hasGravityY {
-            jsonMap["gravityY"] = Double(gravityY)
-          }
-          if hasGravityZ {
-            jsonMap["gravityZ"] = Double(gravityZ)
-          }
-          if hasStatus {
-            jsonMap["status"] = Int(status)
-          }
-          return jsonMap
-        }
-        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
-        }
-        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder.fromJSONToBuilder(data:data).build()
-        }
-        override public func getDescription(indent:String) throws -> String {
-          var output = ""
-          if hasTimestampSnapshot {
-            output += "\(indent) timestampSnapshot: \(timestampSnapshot) \n"
-          }
-          if hasLinearAccelerationX {
-            output += "\(indent) linearAccelerationX: \(linearAccelerationX) \n"
-          }
-          if hasLinearAccelerationY {
-            output += "\(indent) linearAccelerationY: \(linearAccelerationY) \n"
-          }
-          if hasLinearAccelerationZ {
-            output += "\(indent) linearAccelerationZ: \(linearAccelerationZ) \n"
-          }
-          if hasMagneticFieldX {
-            output += "\(indent) magneticFieldX: \(magneticFieldX) \n"
-          }
-          if hasMagneticFieldY {
-            output += "\(indent) magneticFieldY: \(magneticFieldY) \n"
-          }
-          if hasMagneticFieldZ {
-            output += "\(indent) magneticFieldZ: \(magneticFieldZ) \n"
-          }
-          if hasMagneticFieldAccuracy {
-            output += "\(indent) magneticFieldAccuracy: \(magneticFieldAccuracy) \n"
-          }
-          if hasAttitudePitch {
-            output += "\(indent) attitudePitch: \(attitudePitch) \n"
-          }
-          if hasAttitudeYaw {
-            output += "\(indent) attitudeYaw: \(attitudeYaw) \n"
-          }
-          if hasAttitudeRoll {
-            output += "\(indent) attitudeRoll: \(attitudeRoll) \n"
-          }
-          if hasRotationRateX {
-            output += "\(indent) rotationRateX: \(rotationRateX) \n"
-          }
-          if hasRotationRateY {
-            output += "\(indent) rotationRateY: \(rotationRateY) \n"
-          }
-          if hasRotationRateZ {
-            output += "\(indent) rotationRateZ: \(rotationRateZ) \n"
-          }
-          if hasGravityX {
-            output += "\(indent) gravityX: \(gravityX) \n"
-          }
-          if hasGravityY {
-            output += "\(indent) gravityY: \(gravityY) \n"
-          }
-          if hasGravityZ {
-            output += "\(indent) gravityZ: \(gravityZ) \n"
-          }
-          if hasStatus {
-            output += "\(indent) status: \(status) \n"
-          }
-          output += unknownFields.getDescription(indent: indent)
-          return output
-        }
-        override public var hashValue:Int {
-            get {
-                var hashCode:Int = 7
-                if hasTimestampSnapshot {
-                   hashCode = (hashCode &* 31) &+ timestampSnapshot.hashValue
-                }
-                if hasLinearAccelerationX {
-                   hashCode = (hashCode &* 31) &+ linearAccelerationX.hashValue
-                }
-                if hasLinearAccelerationY {
-                   hashCode = (hashCode &* 31) &+ linearAccelerationY.hashValue
-                }
-                if hasLinearAccelerationZ {
-                   hashCode = (hashCode &* 31) &+ linearAccelerationZ.hashValue
-                }
-                if hasMagneticFieldX {
-                   hashCode = (hashCode &* 31) &+ magneticFieldX.hashValue
-                }
-                if hasMagneticFieldY {
-                   hashCode = (hashCode &* 31) &+ magneticFieldY.hashValue
-                }
-                if hasMagneticFieldZ {
-                   hashCode = (hashCode &* 31) &+ magneticFieldZ.hashValue
-                }
-                if hasMagneticFieldAccuracy {
-                   hashCode = (hashCode &* 31) &+ magneticFieldAccuracy.hashValue
-                }
-                if hasAttitudePitch {
-                   hashCode = (hashCode &* 31) &+ attitudePitch.hashValue
-                }
-                if hasAttitudeYaw {
-                   hashCode = (hashCode &* 31) &+ attitudeYaw.hashValue
-                }
-                if hasAttitudeRoll {
-                   hashCode = (hashCode &* 31) &+ attitudeRoll.hashValue
-                }
-                if hasRotationRateX {
-                   hashCode = (hashCode &* 31) &+ rotationRateX.hashValue
-                }
-                if hasRotationRateY {
-                   hashCode = (hashCode &* 31) &+ rotationRateY.hashValue
-                }
-                if hasRotationRateZ {
-                   hashCode = (hashCode &* 31) &+ rotationRateZ.hashValue
-                }
-                if hasGravityX {
-                   hashCode = (hashCode &* 31) &+ gravityX.hashValue
-                }
-                if hasGravityY {
-                   hashCode = (hashCode &* 31) &+ gravityY.hashValue
-                }
-                if hasGravityZ {
-                   hashCode = (hashCode &* 31) &+ gravityZ.hashValue
-                }
-                if hasStatus {
-                   hashCode = (hashCode &* 31) &+ status.hashValue
-                }
-                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-                return hashCode
-            }
-        }
-
-
-        //Meta information declaration start
-
-        override public class func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.SensorInfo"
-        }
-        override public func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.SensorInfo"
-        }
-        //Meta information declaration end
-
-        final public class Builder : GeneratedMessageBuilder {
-          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature.SensorInfo = Pogoprotos.Networking.Envelopes.Signature.SensorInfo()
-          public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-              return builderResult
-          }
-
-          required override public init () {
-             super.init()
-          }
-          public var hasTimestampSnapshot:Bool {
-               get {
-                    return builderResult.hasTimestampSnapshot
-               }
-          }
-          public var timestampSnapshot:UInt64 {
-               get {
-                    return builderResult.timestampSnapshot
-               }
-               set (value) {
-                   builderResult.hasTimestampSnapshot = true
-                   builderResult.timestampSnapshot = value
-               }
-          }
-          @discardableResult
-          public func setTimestampSnapshot(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.timestampSnapshot = value
-            return self
-          }
-          @discardableResult
-          public func clearTimestampSnapshot() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasTimestampSnapshot = false
-               builderResult.timestampSnapshot = UInt64(0)
-               return self
-          }
-          public var hasLinearAccelerationX:Bool {
-               get {
-                    return builderResult.hasLinearAccelerationX
-               }
-          }
-          public var linearAccelerationX:Double {
-               get {
-                    return builderResult.linearAccelerationX
-               }
-               set (value) {
-                   builderResult.hasLinearAccelerationX = true
-                   builderResult.linearAccelerationX = value
-               }
-          }
-          @discardableResult
-          public func setLinearAccelerationX(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.linearAccelerationX = value
-            return self
-          }
-          @discardableResult
-          public func clearLinearAccelerationX() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasLinearAccelerationX = false
-               builderResult.linearAccelerationX = Double(0)
-               return self
-          }
-          public var hasLinearAccelerationY:Bool {
-               get {
-                    return builderResult.hasLinearAccelerationY
-               }
-          }
-          public var linearAccelerationY:Double {
-               get {
-                    return builderResult.linearAccelerationY
-               }
-               set (value) {
-                   builderResult.hasLinearAccelerationY = true
-                   builderResult.linearAccelerationY = value
-               }
-          }
-          @discardableResult
-          public func setLinearAccelerationY(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.linearAccelerationY = value
-            return self
-          }
-          @discardableResult
-          public func clearLinearAccelerationY() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasLinearAccelerationY = false
-               builderResult.linearAccelerationY = Double(0)
-               return self
-          }
-          public var hasLinearAccelerationZ:Bool {
-               get {
-                    return builderResult.hasLinearAccelerationZ
-               }
-          }
-          public var linearAccelerationZ:Double {
-               get {
-                    return builderResult.linearAccelerationZ
-               }
-               set (value) {
-                   builderResult.hasLinearAccelerationZ = true
-                   builderResult.linearAccelerationZ = value
-               }
-          }
-          @discardableResult
-          public func setLinearAccelerationZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.linearAccelerationZ = value
-            return self
-          }
-          @discardableResult
-          public func clearLinearAccelerationZ() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasLinearAccelerationZ = false
-               builderResult.linearAccelerationZ = Double(0)
-               return self
-          }
-          public var hasMagneticFieldX:Bool {
-               get {
-                    return builderResult.hasMagneticFieldX
-               }
-          }
-          public var magneticFieldX:Double {
-               get {
-                    return builderResult.magneticFieldX
-               }
-               set (value) {
-                   builderResult.hasMagneticFieldX = true
-                   builderResult.magneticFieldX = value
-               }
-          }
-          @discardableResult
-          public func setMagneticFieldX(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.magneticFieldX = value
-            return self
-          }
-          @discardableResult
-          public func clearMagneticFieldX() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasMagneticFieldX = false
-               builderResult.magneticFieldX = Double(0)
-               return self
-          }
-          public var hasMagneticFieldY:Bool {
-               get {
-                    return builderResult.hasMagneticFieldY
-               }
-          }
-          public var magneticFieldY:Double {
-               get {
-                    return builderResult.magneticFieldY
-               }
-               set (value) {
-                   builderResult.hasMagneticFieldY = true
-                   builderResult.magneticFieldY = value
-               }
-          }
-          @discardableResult
-          public func setMagneticFieldY(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.magneticFieldY = value
-            return self
-          }
-          @discardableResult
-          public func clearMagneticFieldY() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasMagneticFieldY = false
-               builderResult.magneticFieldY = Double(0)
-               return self
-          }
-          public var hasMagneticFieldZ:Bool {
-               get {
-                    return builderResult.hasMagneticFieldZ
-               }
-          }
-          public var magneticFieldZ:Double {
-               get {
-                    return builderResult.magneticFieldZ
-               }
-               set (value) {
-                   builderResult.hasMagneticFieldZ = true
-                   builderResult.magneticFieldZ = value
-               }
-          }
-          @discardableResult
-          public func setMagneticFieldZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.magneticFieldZ = value
-            return self
-          }
-          @discardableResult
-          public func clearMagneticFieldZ() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasMagneticFieldZ = false
-               builderResult.magneticFieldZ = Double(0)
-               return self
-          }
-          public var hasMagneticFieldAccuracy:Bool {
-               get {
-                    return builderResult.hasMagneticFieldAccuracy
-               }
-          }
-          public var magneticFieldAccuracy:Int32 {
-               get {
-                    return builderResult.magneticFieldAccuracy
-               }
-               set (value) {
-                   builderResult.hasMagneticFieldAccuracy = true
-                   builderResult.magneticFieldAccuracy = value
-               }
-          }
-          @discardableResult
-          public func setMagneticFieldAccuracy(_ value:Int32) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.magneticFieldAccuracy = value
-            return self
-          }
-          @discardableResult
-          public func clearMagneticFieldAccuracy() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasMagneticFieldAccuracy = false
-               builderResult.magneticFieldAccuracy = Int32(0)
-               return self
-          }
-          public var hasAttitudePitch:Bool {
-               get {
-                    return builderResult.hasAttitudePitch
-               }
-          }
-          public var attitudePitch:Double {
-               get {
-                    return builderResult.attitudePitch
-               }
-               set (value) {
-                   builderResult.hasAttitudePitch = true
-                   builderResult.attitudePitch = value
-               }
-          }
-          @discardableResult
-          public func setAttitudePitch(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.attitudePitch = value
-            return self
-          }
-          @discardableResult
-          public func clearAttitudePitch() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasAttitudePitch = false
-               builderResult.attitudePitch = Double(0)
-               return self
-          }
-          public var hasAttitudeYaw:Bool {
-               get {
-                    return builderResult.hasAttitudeYaw
-               }
-          }
-          public var attitudeYaw:Double {
-               get {
-                    return builderResult.attitudeYaw
-               }
-               set (value) {
-                   builderResult.hasAttitudeYaw = true
-                   builderResult.attitudeYaw = value
-               }
-          }
-          @discardableResult
-          public func setAttitudeYaw(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.attitudeYaw = value
-            return self
-          }
-          @discardableResult
-          public func clearAttitudeYaw() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasAttitudeYaw = false
-               builderResult.attitudeYaw = Double(0)
-               return self
-          }
-          public var hasAttitudeRoll:Bool {
-               get {
-                    return builderResult.hasAttitudeRoll
-               }
-          }
-          public var attitudeRoll:Double {
-               get {
-                    return builderResult.attitudeRoll
-               }
-               set (value) {
-                   builderResult.hasAttitudeRoll = true
-                   builderResult.attitudeRoll = value
-               }
-          }
-          @discardableResult
-          public func setAttitudeRoll(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.attitudeRoll = value
-            return self
-          }
-          @discardableResult
-          public func clearAttitudeRoll() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasAttitudeRoll = false
-               builderResult.attitudeRoll = Double(0)
-               return self
-          }
-          public var hasRotationRateX:Bool {
-               get {
-                    return builderResult.hasRotationRateX
-               }
-          }
-          public var rotationRateX:Double {
-               get {
-                    return builderResult.rotationRateX
-               }
-               set (value) {
-                   builderResult.hasRotationRateX = true
-                   builderResult.rotationRateX = value
-               }
-          }
-          @discardableResult
-          public func setRotationRateX(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.rotationRateX = value
-            return self
-          }
-          @discardableResult
-          public func clearRotationRateX() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasRotationRateX = false
-               builderResult.rotationRateX = Double(0)
-               return self
-          }
-          public var hasRotationRateY:Bool {
-               get {
-                    return builderResult.hasRotationRateY
-               }
-          }
-          public var rotationRateY:Double {
-               get {
-                    return builderResult.rotationRateY
-               }
-               set (value) {
-                   builderResult.hasRotationRateY = true
-                   builderResult.rotationRateY = value
-               }
-          }
-          @discardableResult
-          public func setRotationRateY(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.rotationRateY = value
-            return self
-          }
-          @discardableResult
-          public func clearRotationRateY() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasRotationRateY = false
-               builderResult.rotationRateY = Double(0)
-               return self
-          }
-          public var hasRotationRateZ:Bool {
-               get {
-                    return builderResult.hasRotationRateZ
-               }
-          }
-          public var rotationRateZ:Double {
-               get {
-                    return builderResult.rotationRateZ
-               }
-               set (value) {
-                   builderResult.hasRotationRateZ = true
-                   builderResult.rotationRateZ = value
-               }
-          }
-          @discardableResult
-          public func setRotationRateZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.rotationRateZ = value
-            return self
-          }
-          @discardableResult
-          public func clearRotationRateZ() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasRotationRateZ = false
-               builderResult.rotationRateZ = Double(0)
-               return self
-          }
-          public var hasGravityX:Bool {
-               get {
-                    return builderResult.hasGravityX
-               }
-          }
-          public var gravityX:Double {
-               get {
-                    return builderResult.gravityX
-               }
-               set (value) {
-                   builderResult.hasGravityX = true
-                   builderResult.gravityX = value
-               }
-          }
-          @discardableResult
-          public func setGravityX(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.gravityX = value
-            return self
-          }
-          @discardableResult
-          public func clearGravityX() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasGravityX = false
-               builderResult.gravityX = Double(0)
-               return self
-          }
-          public var hasGravityY:Bool {
-               get {
-                    return builderResult.hasGravityY
-               }
-          }
-          public var gravityY:Double {
-               get {
-                    return builderResult.gravityY
-               }
-               set (value) {
-                   builderResult.hasGravityY = true
-                   builderResult.gravityY = value
-               }
-          }
-          @discardableResult
-          public func setGravityY(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.gravityY = value
-            return self
-          }
-          @discardableResult
-          public func clearGravityY() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasGravityY = false
-               builderResult.gravityY = Double(0)
-               return self
-          }
-          public var hasGravityZ:Bool {
-               get {
-                    return builderResult.hasGravityZ
-               }
-          }
-          public var gravityZ:Double {
-               get {
-                    return builderResult.gravityZ
-               }
-               set (value) {
-                   builderResult.hasGravityZ = true
-                   builderResult.gravityZ = value
-               }
-          }
-          @discardableResult
-          public func setGravityZ(_ value:Double) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.gravityZ = value
-            return self
-          }
-          @discardableResult
-          public func clearGravityZ() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasGravityZ = false
-               builderResult.gravityZ = Double(0)
-               return self
-          }
-          public var hasStatus:Bool {
-               get {
-                    return builderResult.hasStatus
-               }
-          }
-          public var status:Int32 {
-               get {
-                    return builderResult.status
-               }
-               set (value) {
-                   builderResult.hasStatus = true
-                   builderResult.status = value
-               }
-          }
-          @discardableResult
-          public func setStatus(_ value:Int32) -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            self.status = value
-            return self
-          }
-          @discardableResult
-          public func clearStatus() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder{
-               builderResult.hasStatus = false
-               builderResult.status = Int32(0)
-               return self
-          }
-          override public var internalGetResult:GeneratedMessage {
-               get {
-                  return builderResult
-               }
-          }
-          @discardableResult
-          override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            builderResult = Pogoprotos.Networking.Envelopes.Signature.SensorInfo()
-            return self
-          }
-          override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.builderWithPrototype(prototype:builderResult)
-          }
-          override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-               try checkInitialized()
-               return buildPartial()
-          }
-          public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-            let returnMe:Pogoprotos.Networking.Envelopes.Signature.SensorInfo = builderResult
-            return returnMe
-          }
-          @discardableResult
-          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature.SensorInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            if other == Pogoprotos.Networking.Envelopes.Signature.SensorInfo() {
-             return self
-            }
-            if other.hasTimestampSnapshot {
-                 timestampSnapshot = other.timestampSnapshot
-            }
-            if other.hasLinearAccelerationX {
-                 linearAccelerationX = other.linearAccelerationX
-            }
-            if other.hasLinearAccelerationY {
-                 linearAccelerationY = other.linearAccelerationY
-            }
-            if other.hasLinearAccelerationZ {
-                 linearAccelerationZ = other.linearAccelerationZ
-            }
-            if other.hasMagneticFieldX {
-                 magneticFieldX = other.magneticFieldX
-            }
-            if other.hasMagneticFieldY {
-                 magneticFieldY = other.magneticFieldY
-            }
-            if other.hasMagneticFieldZ {
-                 magneticFieldZ = other.magneticFieldZ
-            }
-            if other.hasMagneticFieldAccuracy {
-                 magneticFieldAccuracy = other.magneticFieldAccuracy
-            }
-            if other.hasAttitudePitch {
-                 attitudePitch = other.attitudePitch
-            }
-            if other.hasAttitudeYaw {
-                 attitudeYaw = other.attitudeYaw
-            }
-            if other.hasAttitudeRoll {
-                 attitudeRoll = other.attitudeRoll
-            }
-            if other.hasRotationRateX {
-                 rotationRateX = other.rotationRateX
-            }
-            if other.hasRotationRateY {
-                 rotationRateY = other.rotationRateY
-            }
-            if other.hasRotationRateZ {
-                 rotationRateZ = other.rotationRateZ
-            }
-            if other.hasGravityX {
-                 gravityX = other.gravityX
-            }
-            if other.hasGravityY {
-                 gravityY = other.gravityY
-            }
-            if other.hasGravityZ {
-                 gravityZ = other.gravityZ
-            }
-            if other.hasStatus {
-                 status = other.status
-            }
-            _ = try merge(unknownField: other.unknownFields)
-            return self
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
-            while (true) {
-              let protobufTag = try codedInputStream.readTag()
-              switch protobufTag {
-              case 0: 
-                self.unknownFields = try unknownFieldsBuilder.build()
-                return self
-
-              case 8:
-                timestampSnapshot = try codedInputStream.readUInt64()
-
-              case 25:
-                linearAccelerationX = try codedInputStream.readDouble()
-
-              case 33:
-                linearAccelerationY = try codedInputStream.readDouble()
-
-              case 41:
-                linearAccelerationZ = try codedInputStream.readDouble()
-
-              case 49:
-                magneticFieldX = try codedInputStream.readDouble()
-
-              case 57:
-                magneticFieldY = try codedInputStream.readDouble()
-
-              case 65:
-                magneticFieldZ = try codedInputStream.readDouble()
-
-              case 72:
-                magneticFieldAccuracy = try codedInputStream.readInt32()
-
-              case 81:
-                attitudePitch = try codedInputStream.readDouble()
-
-              case 89:
-                attitudeYaw = try codedInputStream.readDouble()
-
-              case 97:
-                attitudeRoll = try codedInputStream.readDouble()
-
-              case 105:
-                rotationRateX = try codedInputStream.readDouble()
-
-              case 113:
-                rotationRateY = try codedInputStream.readDouble()
-
-              case 121:
-                rotationRateZ = try codedInputStream.readDouble()
-
-              case 129:
-                gravityX = try codedInputStream.readDouble()
-
-              case 137:
-                gravityY = try codedInputStream.readDouble()
-
-              case 145:
-                gravityZ = try codedInputStream.readDouble()
-
-              case 152:
-                status = try codedInputStream.readInt32()
-
-              default:
-                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
-                   unknownFields = try unknownFieldsBuilder.build()
-                   return self
-                }
-              }
-            }
-          }
-          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder()
-            if let jsonValueTimestampSnapshot = jsonMap["timestampSnapshot"] as? String {
-              resultDecodedBuilder.timestampSnapshot = UInt64(jsonValueTimestampSnapshot)!
-            }
-            if let jsonValueLinearAccelerationX = jsonMap["linearAccelerationX"] as? Double {
-              resultDecodedBuilder.linearAccelerationX = Double(jsonValueLinearAccelerationX)
-            }
-            if let jsonValueLinearAccelerationY = jsonMap["linearAccelerationY"] as? Double {
-              resultDecodedBuilder.linearAccelerationY = Double(jsonValueLinearAccelerationY)
-            }
-            if let jsonValueLinearAccelerationZ = jsonMap["linearAccelerationZ"] as? Double {
-              resultDecodedBuilder.linearAccelerationZ = Double(jsonValueLinearAccelerationZ)
-            }
-            if let jsonValueMagneticFieldX = jsonMap["magneticFieldX"] as? Double {
-              resultDecodedBuilder.magneticFieldX = Double(jsonValueMagneticFieldX)
-            }
-            if let jsonValueMagneticFieldY = jsonMap["magneticFieldY"] as? Double {
-              resultDecodedBuilder.magneticFieldY = Double(jsonValueMagneticFieldY)
-            }
-            if let jsonValueMagneticFieldZ = jsonMap["magneticFieldZ"] as? Double {
-              resultDecodedBuilder.magneticFieldZ = Double(jsonValueMagneticFieldZ)
-            }
-            if let jsonValueMagneticFieldAccuracy = jsonMap["magneticFieldAccuracy"] as? Int {
-              resultDecodedBuilder.magneticFieldAccuracy = Int32(jsonValueMagneticFieldAccuracy)
-            }
-            if let jsonValueAttitudePitch = jsonMap["attitudePitch"] as? Double {
-              resultDecodedBuilder.attitudePitch = Double(jsonValueAttitudePitch)
-            }
-            if let jsonValueAttitudeYaw = jsonMap["attitudeYaw"] as? Double {
-              resultDecodedBuilder.attitudeYaw = Double(jsonValueAttitudeYaw)
-            }
-            if let jsonValueAttitudeRoll = jsonMap["attitudeRoll"] as? Double {
-              resultDecodedBuilder.attitudeRoll = Double(jsonValueAttitudeRoll)
-            }
-            if let jsonValueRotationRateX = jsonMap["rotationRateX"] as? Double {
-              resultDecodedBuilder.rotationRateX = Double(jsonValueRotationRateX)
-            }
-            if let jsonValueRotationRateY = jsonMap["rotationRateY"] as? Double {
-              resultDecodedBuilder.rotationRateY = Double(jsonValueRotationRateY)
-            }
-            if let jsonValueRotationRateZ = jsonMap["rotationRateZ"] as? Double {
-              resultDecodedBuilder.rotationRateZ = Double(jsonValueRotationRateZ)
-            }
-            if let jsonValueGravityX = jsonMap["gravityX"] as? Double {
-              resultDecodedBuilder.gravityX = Double(jsonValueGravityX)
-            }
-            if let jsonValueGravityY = jsonMap["gravityY"] as? Double {
-              resultDecodedBuilder.gravityY = Double(jsonValueGravityY)
-            }
-            if let jsonValueGravityZ = jsonMap["gravityZ"] as? Double {
-              resultDecodedBuilder.gravityZ = Double(jsonValueGravityZ)
-            }
-            if let jsonValueStatus = jsonMap["status"] as? Int {
-              resultDecodedBuilder.status = Int32(jsonValueStatus)
-            }
-            return resultDecodedBuilder
-          }
-          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder {
-            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
-            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
-              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
-            }
-            return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
-          }
-        }
-
-      }
-
-    //Nested type declaration end
-
-
-
-    //Nested type declaration start
-
-      final public class DeviceInfo : GeneratedMessage {
-
-        public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature.DeviceInfo, rhs: Pogoprotos.Networking.Envelopes.Signature.DeviceInfo) -> Bool {
-          if (lhs === rhs) {
-            return true
-          }
-          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-          fieldCheck = fieldCheck && (lhs.hasDeviceId == rhs.hasDeviceId) && (!lhs.hasDeviceId || lhs.deviceId == rhs.deviceId)
-          fieldCheck = fieldCheck && (lhs.hasAndroidBoardName == rhs.hasAndroidBoardName) && (!lhs.hasAndroidBoardName || lhs.androidBoardName == rhs.androidBoardName)
-          fieldCheck = fieldCheck && (lhs.hasAndroidBootloader == rhs.hasAndroidBootloader) && (!lhs.hasAndroidBootloader || lhs.androidBootloader == rhs.androidBootloader)
-          fieldCheck = fieldCheck && (lhs.hasDeviceBrand == rhs.hasDeviceBrand) && (!lhs.hasDeviceBrand || lhs.deviceBrand == rhs.deviceBrand)
-          fieldCheck = fieldCheck && (lhs.hasDeviceModel == rhs.hasDeviceModel) && (!lhs.hasDeviceModel || lhs.deviceModel == rhs.deviceModel)
-          fieldCheck = fieldCheck && (lhs.hasDeviceModelIdentifier == rhs.hasDeviceModelIdentifier) && (!lhs.hasDeviceModelIdentifier || lhs.deviceModelIdentifier == rhs.deviceModelIdentifier)
-          fieldCheck = fieldCheck && (lhs.hasDeviceModelBoot == rhs.hasDeviceModelBoot) && (!lhs.hasDeviceModelBoot || lhs.deviceModelBoot == rhs.deviceModelBoot)
-          fieldCheck = fieldCheck && (lhs.hasHardwareManufacturer == rhs.hasHardwareManufacturer) && (!lhs.hasHardwareManufacturer || lhs.hardwareManufacturer == rhs.hardwareManufacturer)
-          fieldCheck = fieldCheck && (lhs.hasHardwareModel == rhs.hasHardwareModel) && (!lhs.hasHardwareModel || lhs.hardwareModel == rhs.hardwareModel)
-          fieldCheck = fieldCheck && (lhs.hasFirmwareBrand == rhs.hasFirmwareBrand) && (!lhs.hasFirmwareBrand || lhs.firmwareBrand == rhs.firmwareBrand)
-          fieldCheck = fieldCheck && (lhs.hasFirmwareTags == rhs.hasFirmwareTags) && (!lhs.hasFirmwareTags || lhs.firmwareTags == rhs.firmwareTags)
-          fieldCheck = fieldCheck && (lhs.hasFirmwareType == rhs.hasFirmwareType) && (!lhs.hasFirmwareType || lhs.firmwareType == rhs.firmwareType)
-          fieldCheck = fieldCheck && (lhs.hasFirmwareFingerprint == rhs.hasFirmwareFingerprint) && (!lhs.hasFirmwareFingerprint || lhs.firmwareFingerprint == rhs.firmwareFingerprint)
-          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-          return fieldCheck
-        }
-
-        // Hex string
-        public fileprivate(set) var deviceId:String = ""
-        public fileprivate(set) var hasDeviceId:Bool = false
-
-        public fileprivate(set) var androidBoardName:String = ""
-        public fileprivate(set) var hasAndroidBoardName:Bool = false
-
-        public fileprivate(set) var androidBootloader:String = ""
-        public fileprivate(set) var hasAndroidBootloader:Bool = false
-
-        // On Android: product.brand
-        public fileprivate(set) var deviceBrand:String = ""
-        public fileprivate(set) var hasDeviceBrand:Bool = false
-
-        // On Android: product.device
-        public fileprivate(set) var deviceModel:String = ""
-        public fileprivate(set) var hasDeviceModel:Bool = false
-
-        // Android only, build.display.id
-        public fileprivate(set) var deviceModelIdentifier:String = ""
-        public fileprivate(set) var hasDeviceModelIdentifier:Bool = false
-
-        // On Android: boot.hardware
-        public fileprivate(set) var deviceModelBoot:String = ""
-        public fileprivate(set) var hasDeviceModelBoot:Bool = false
-
-        // On Android: product.manufacturer
-        public fileprivate(set) var hardwareManufacturer:String = ""
-        public fileprivate(set) var hasHardwareManufacturer:Bool = false
-
-        // On Android: product.model
-        public fileprivate(set) var hardwareModel:String = ""
-        public fileprivate(set) var hasHardwareModel:Bool = false
-
-        // On Android: product.name, on iOS: "iPhone OS"
-        public fileprivate(set) var firmwareBrand:String = ""
-        public fileprivate(set) var hasFirmwareBrand:Bool = false
-
-        // Android only, build.tags
-        public fileprivate(set) var firmwareTags:String = ""
-        public fileprivate(set) var hasFirmwareTags:Bool = false
-
-        // On Android: build.type, on iOS instead: iOS version
-        public fileprivate(set) var firmwareType:String = ""
-        public fileprivate(set) var hasFirmwareType:Bool = false
-
-        // Android only, build.fingerprint
-        public fileprivate(set) var firmwareFingerprint:String = ""
-        public fileprivate(set) var hasFirmwareFingerprint:Bool = false
-
-        required public init() {
-             super.init()
-        }
-        override public func isInitialized() -> Bool {
-         return true
-        }
-        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
-          if hasDeviceId {
-            try codedOutputStream.writeString(fieldNumber: 1, value:deviceId)
-          }
-          if hasAndroidBoardName {
-            try codedOutputStream.writeString(fieldNumber: 2, value:androidBoardName)
-          }
-          if hasAndroidBootloader {
-            try codedOutputStream.writeString(fieldNumber: 3, value:androidBootloader)
-          }
-          if hasDeviceBrand {
-            try codedOutputStream.writeString(fieldNumber: 4, value:deviceBrand)
-          }
-          if hasDeviceModel {
-            try codedOutputStream.writeString(fieldNumber: 5, value:deviceModel)
-          }
-          if hasDeviceModelIdentifier {
-            try codedOutputStream.writeString(fieldNumber: 6, value:deviceModelIdentifier)
-          }
-          if hasDeviceModelBoot {
-            try codedOutputStream.writeString(fieldNumber: 7, value:deviceModelBoot)
-          }
-          if hasHardwareManufacturer {
-            try codedOutputStream.writeString(fieldNumber: 8, value:hardwareManufacturer)
-          }
-          if hasHardwareModel {
-            try codedOutputStream.writeString(fieldNumber: 9, value:hardwareModel)
-          }
-          if hasFirmwareBrand {
-            try codedOutputStream.writeString(fieldNumber: 10, value:firmwareBrand)
-          }
-          if hasFirmwareTags {
-            try codedOutputStream.writeString(fieldNumber: 12, value:firmwareTags)
-          }
-          if hasFirmwareType {
-            try codedOutputStream.writeString(fieldNumber: 13, value:firmwareType)
-          }
-          if hasFirmwareFingerprint {
-            try codedOutputStream.writeString(fieldNumber: 14, value:firmwareFingerprint)
-          }
-          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
-        }
-        override public func serializedSize() -> Int32 {
-          var serialize_size:Int32 = memoizedSerializedSize
-          if serialize_size != -1 {
-           return serialize_size
-          }
-
-          serialize_size = 0
-          if hasDeviceId {
-            serialize_size += deviceId.computeStringSize(fieldNumber: 1)
-          }
-          if hasAndroidBoardName {
-            serialize_size += androidBoardName.computeStringSize(fieldNumber: 2)
-          }
-          if hasAndroidBootloader {
-            serialize_size += androidBootloader.computeStringSize(fieldNumber: 3)
-          }
-          if hasDeviceBrand {
-            serialize_size += deviceBrand.computeStringSize(fieldNumber: 4)
-          }
-          if hasDeviceModel {
-            serialize_size += deviceModel.computeStringSize(fieldNumber: 5)
-          }
-          if hasDeviceModelIdentifier {
-            serialize_size += deviceModelIdentifier.computeStringSize(fieldNumber: 6)
-          }
-          if hasDeviceModelBoot {
-            serialize_size += deviceModelBoot.computeStringSize(fieldNumber: 7)
-          }
-          if hasHardwareManufacturer {
-            serialize_size += hardwareManufacturer.computeStringSize(fieldNumber: 8)
-          }
-          if hasHardwareModel {
-            serialize_size += hardwareModel.computeStringSize(fieldNumber: 9)
-          }
-          if hasFirmwareBrand {
-            serialize_size += firmwareBrand.computeStringSize(fieldNumber: 10)
-          }
-          if hasFirmwareTags {
-            serialize_size += firmwareTags.computeStringSize(fieldNumber: 12)
-          }
-          if hasFirmwareType {
-            serialize_size += firmwareType.computeStringSize(fieldNumber: 13)
-          }
-          if hasFirmwareFingerprint {
-            serialize_size += firmwareFingerprint.computeStringSize(fieldNumber: 14)
-          }
-          serialize_size += unknownFields.serializedSize()
-          memoizedSerializedSize = serialize_size
-          return serialize_size
-        }
-        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-          return Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder
-        }
-        public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-          return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder
-        }
-        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder()
-        }
-        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder()
-        }
-        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.builderWithPrototype(prototype:self)
-        }
-        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(other:prototype)
-        }
-        override public func encode() throws -> Dictionary<String,Any> {
-          guard isInitialized() else {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
-          }
-
-          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
-          if hasDeviceId {
-            jsonMap["deviceId"] = deviceId
-          }
-          if hasAndroidBoardName {
-            jsonMap["androidBoardName"] = androidBoardName
-          }
-          if hasAndroidBootloader {
-            jsonMap["androidBootloader"] = androidBootloader
-          }
-          if hasDeviceBrand {
-            jsonMap["deviceBrand"] = deviceBrand
-          }
-          if hasDeviceModel {
-            jsonMap["deviceModel"] = deviceModel
-          }
-          if hasDeviceModelIdentifier {
-            jsonMap["deviceModelIdentifier"] = deviceModelIdentifier
-          }
-          if hasDeviceModelBoot {
-            jsonMap["deviceModelBoot"] = deviceModelBoot
-          }
-          if hasHardwareManufacturer {
-            jsonMap["hardwareManufacturer"] = hardwareManufacturer
-          }
-          if hasHardwareModel {
-            jsonMap["hardwareModel"] = hardwareModel
-          }
-          if hasFirmwareBrand {
-            jsonMap["firmwareBrand"] = firmwareBrand
-          }
-          if hasFirmwareTags {
-            jsonMap["firmwareTags"] = firmwareTags
-          }
-          if hasFirmwareType {
-            jsonMap["firmwareType"] = firmwareType
-          }
-          if hasFirmwareFingerprint {
-            jsonMap["firmwareFingerprint"] = firmwareFingerprint
-          }
-          return jsonMap
-        }
-        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsonMap).build()
-        }
-        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-          return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder.fromJSONToBuilder(data:data).build()
-        }
-        override public func getDescription(indent:String) throws -> String {
-          var output = ""
-          if hasDeviceId {
-            output += "\(indent) deviceId: \(deviceId) \n"
-          }
-          if hasAndroidBoardName {
-            output += "\(indent) androidBoardName: \(androidBoardName) \n"
-          }
-          if hasAndroidBootloader {
-            output += "\(indent) androidBootloader: \(androidBootloader) \n"
-          }
-          if hasDeviceBrand {
-            output += "\(indent) deviceBrand: \(deviceBrand) \n"
-          }
-          if hasDeviceModel {
-            output += "\(indent) deviceModel: \(deviceModel) \n"
-          }
-          if hasDeviceModelIdentifier {
-            output += "\(indent) deviceModelIdentifier: \(deviceModelIdentifier) \n"
-          }
-          if hasDeviceModelBoot {
-            output += "\(indent) deviceModelBoot: \(deviceModelBoot) \n"
-          }
-          if hasHardwareManufacturer {
-            output += "\(indent) hardwareManufacturer: \(hardwareManufacturer) \n"
-          }
-          if hasHardwareModel {
-            output += "\(indent) hardwareModel: \(hardwareModel) \n"
-          }
-          if hasFirmwareBrand {
-            output += "\(indent) firmwareBrand: \(firmwareBrand) \n"
-          }
-          if hasFirmwareTags {
-            output += "\(indent) firmwareTags: \(firmwareTags) \n"
-          }
-          if hasFirmwareType {
-            output += "\(indent) firmwareType: \(firmwareType) \n"
-          }
-          if hasFirmwareFingerprint {
-            output += "\(indent) firmwareFingerprint: \(firmwareFingerprint) \n"
-          }
-          output += unknownFields.getDescription(indent: indent)
-          return output
-        }
-        override public var hashValue:Int {
-            get {
-                var hashCode:Int = 7
-                if hasDeviceId {
-                   hashCode = (hashCode &* 31) &+ deviceId.hashValue
-                }
-                if hasAndroidBoardName {
-                   hashCode = (hashCode &* 31) &+ androidBoardName.hashValue
-                }
-                if hasAndroidBootloader {
-                   hashCode = (hashCode &* 31) &+ androidBootloader.hashValue
-                }
-                if hasDeviceBrand {
-                   hashCode = (hashCode &* 31) &+ deviceBrand.hashValue
-                }
-                if hasDeviceModel {
-                   hashCode = (hashCode &* 31) &+ deviceModel.hashValue
-                }
-                if hasDeviceModelIdentifier {
-                   hashCode = (hashCode &* 31) &+ deviceModelIdentifier.hashValue
-                }
-                if hasDeviceModelBoot {
-                   hashCode = (hashCode &* 31) &+ deviceModelBoot.hashValue
-                }
-                if hasHardwareManufacturer {
-                   hashCode = (hashCode &* 31) &+ hardwareManufacturer.hashValue
-                }
-                if hasHardwareModel {
-                   hashCode = (hashCode &* 31) &+ hardwareModel.hashValue
-                }
-                if hasFirmwareBrand {
-                   hashCode = (hashCode &* 31) &+ firmwareBrand.hashValue
-                }
-                if hasFirmwareTags {
-                   hashCode = (hashCode &* 31) &+ firmwareTags.hashValue
-                }
-                if hasFirmwareType {
-                   hashCode = (hashCode &* 31) &+ firmwareType.hashValue
-                }
-                if hasFirmwareFingerprint {
-                   hashCode = (hashCode &* 31) &+ firmwareFingerprint.hashValue
-                }
-                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-                return hashCode
-            }
-        }
-
-
-        //Meta information declaration start
-
-        override public class func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.DeviceInfo"
-        }
-        override public func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.DeviceInfo"
-        }
-        //Meta information declaration end
-
-        final public class Builder : GeneratedMessageBuilder {
-          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo = Pogoprotos.Networking.Envelopes.Signature.DeviceInfo()
-          public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-              return builderResult
-          }
-
-          required override public init () {
-             super.init()
-          }
-          public var hasDeviceId:Bool {
-               get {
-                    return builderResult.hasDeviceId
-               }
-          }
-          public var deviceId:String {
-               get {
-                    return builderResult.deviceId
-               }
-               set (value) {
-                   builderResult.hasDeviceId = true
-                   builderResult.deviceId = value
-               }
-          }
-          @discardableResult
-          public func setDeviceId(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.deviceId = value
-            return self
-          }
-          @discardableResult
-          public func clearDeviceId() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasDeviceId = false
-               builderResult.deviceId = ""
-               return self
-          }
-          public var hasAndroidBoardName:Bool {
-               get {
-                    return builderResult.hasAndroidBoardName
-               }
-          }
-          public var androidBoardName:String {
-               get {
-                    return builderResult.androidBoardName
-               }
-               set (value) {
-                   builderResult.hasAndroidBoardName = true
-                   builderResult.androidBoardName = value
-               }
-          }
-          @discardableResult
-          public func setAndroidBoardName(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.androidBoardName = value
-            return self
-          }
-          @discardableResult
-          public func clearAndroidBoardName() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasAndroidBoardName = false
-               builderResult.androidBoardName = ""
-               return self
-          }
-          public var hasAndroidBootloader:Bool {
-               get {
-                    return builderResult.hasAndroidBootloader
-               }
-          }
-          public var androidBootloader:String {
-               get {
-                    return builderResult.androidBootloader
-               }
-               set (value) {
-                   builderResult.hasAndroidBootloader = true
-                   builderResult.androidBootloader = value
-               }
-          }
-          @discardableResult
-          public func setAndroidBootloader(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.androidBootloader = value
-            return self
-          }
-          @discardableResult
-          public func clearAndroidBootloader() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasAndroidBootloader = false
-               builderResult.androidBootloader = ""
-               return self
-          }
-          public var hasDeviceBrand:Bool {
-               get {
-                    return builderResult.hasDeviceBrand
-               }
-          }
-          public var deviceBrand:String {
-               get {
-                    return builderResult.deviceBrand
-               }
-               set (value) {
-                   builderResult.hasDeviceBrand = true
-                   builderResult.deviceBrand = value
-               }
-          }
-          @discardableResult
-          public func setDeviceBrand(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.deviceBrand = value
-            return self
-          }
-          @discardableResult
-          public func clearDeviceBrand() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasDeviceBrand = false
-               builderResult.deviceBrand = ""
-               return self
-          }
-          public var hasDeviceModel:Bool {
-               get {
-                    return builderResult.hasDeviceModel
-               }
-          }
-          public var deviceModel:String {
-               get {
-                    return builderResult.deviceModel
-               }
-               set (value) {
-                   builderResult.hasDeviceModel = true
-                   builderResult.deviceModel = value
-               }
-          }
-          @discardableResult
-          public func setDeviceModel(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.deviceModel = value
-            return self
-          }
-          @discardableResult
-          public func clearDeviceModel() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasDeviceModel = false
-               builderResult.deviceModel = ""
-               return self
-          }
-          public var hasDeviceModelIdentifier:Bool {
-               get {
-                    return builderResult.hasDeviceModelIdentifier
-               }
-          }
-          public var deviceModelIdentifier:String {
-               get {
-                    return builderResult.deviceModelIdentifier
-               }
-               set (value) {
-                   builderResult.hasDeviceModelIdentifier = true
-                   builderResult.deviceModelIdentifier = value
-               }
-          }
-          @discardableResult
-          public func setDeviceModelIdentifier(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.deviceModelIdentifier = value
-            return self
-          }
-          @discardableResult
-          public func clearDeviceModelIdentifier() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasDeviceModelIdentifier = false
-               builderResult.deviceModelIdentifier = ""
-               return self
-          }
-          public var hasDeviceModelBoot:Bool {
-               get {
-                    return builderResult.hasDeviceModelBoot
-               }
-          }
-          public var deviceModelBoot:String {
-               get {
-                    return builderResult.deviceModelBoot
-               }
-               set (value) {
-                   builderResult.hasDeviceModelBoot = true
-                   builderResult.deviceModelBoot = value
-               }
-          }
-          @discardableResult
-          public func setDeviceModelBoot(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.deviceModelBoot = value
-            return self
-          }
-          @discardableResult
-          public func clearDeviceModelBoot() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasDeviceModelBoot = false
-               builderResult.deviceModelBoot = ""
-               return self
-          }
-          public var hasHardwareManufacturer:Bool {
-               get {
-                    return builderResult.hasHardwareManufacturer
-               }
-          }
-          public var hardwareManufacturer:String {
-               get {
-                    return builderResult.hardwareManufacturer
-               }
-               set (value) {
-                   builderResult.hasHardwareManufacturer = true
-                   builderResult.hardwareManufacturer = value
-               }
-          }
-          @discardableResult
-          public func setHardwareManufacturer(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.hardwareManufacturer = value
-            return self
-          }
-          @discardableResult
-          public func clearHardwareManufacturer() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasHardwareManufacturer = false
-               builderResult.hardwareManufacturer = ""
-               return self
-          }
-          public var hasHardwareModel:Bool {
-               get {
-                    return builderResult.hasHardwareModel
-               }
-          }
-          public var hardwareModel:String {
-               get {
-                    return builderResult.hardwareModel
-               }
-               set (value) {
-                   builderResult.hasHardwareModel = true
-                   builderResult.hardwareModel = value
-               }
-          }
-          @discardableResult
-          public func setHardwareModel(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.hardwareModel = value
-            return self
-          }
-          @discardableResult
-          public func clearHardwareModel() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasHardwareModel = false
-               builderResult.hardwareModel = ""
-               return self
-          }
-          public var hasFirmwareBrand:Bool {
-               get {
-                    return builderResult.hasFirmwareBrand
-               }
-          }
-          public var firmwareBrand:String {
-               get {
-                    return builderResult.firmwareBrand
-               }
-               set (value) {
-                   builderResult.hasFirmwareBrand = true
-                   builderResult.firmwareBrand = value
-               }
-          }
-          @discardableResult
-          public func setFirmwareBrand(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.firmwareBrand = value
-            return self
-          }
-          @discardableResult
-          public func clearFirmwareBrand() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasFirmwareBrand = false
-               builderResult.firmwareBrand = ""
-               return self
-          }
-          public var hasFirmwareTags:Bool {
-               get {
-                    return builderResult.hasFirmwareTags
-               }
-          }
-          public var firmwareTags:String {
-               get {
-                    return builderResult.firmwareTags
-               }
-               set (value) {
-                   builderResult.hasFirmwareTags = true
-                   builderResult.firmwareTags = value
-               }
-          }
-          @discardableResult
-          public func setFirmwareTags(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.firmwareTags = value
-            return self
-          }
-          @discardableResult
-          public func clearFirmwareTags() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasFirmwareTags = false
-               builderResult.firmwareTags = ""
-               return self
-          }
-          public var hasFirmwareType:Bool {
-               get {
-                    return builderResult.hasFirmwareType
-               }
-          }
-          public var firmwareType:String {
-               get {
-                    return builderResult.firmwareType
-               }
-               set (value) {
-                   builderResult.hasFirmwareType = true
-                   builderResult.firmwareType = value
-               }
-          }
-          @discardableResult
-          public func setFirmwareType(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.firmwareType = value
-            return self
-          }
-          @discardableResult
-          public func clearFirmwareType() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasFirmwareType = false
-               builderResult.firmwareType = ""
-               return self
-          }
-          public var hasFirmwareFingerprint:Bool {
-               get {
-                    return builderResult.hasFirmwareFingerprint
-               }
-          }
-          public var firmwareFingerprint:String {
-               get {
-                    return builderResult.firmwareFingerprint
-               }
-               set (value) {
-                   builderResult.hasFirmwareFingerprint = true
-                   builderResult.firmwareFingerprint = value
-               }
-          }
-          @discardableResult
-          public func setFirmwareFingerprint(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            self.firmwareFingerprint = value
-            return self
-          }
-          @discardableResult
-          public func clearFirmwareFingerprint() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder{
-               builderResult.hasFirmwareFingerprint = false
-               builderResult.firmwareFingerprint = ""
-               return self
-          }
-          override public var internalGetResult:GeneratedMessage {
-               get {
-                  return builderResult
-               }
-          }
-          @discardableResult
-          override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            builderResult = Pogoprotos.Networking.Envelopes.Signature.DeviceInfo()
-            return self
-          }
-          override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.builderWithPrototype(prototype:builderResult)
-          }
-          override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-               try checkInitialized()
-               return buildPartial()
-          }
-          public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-            let returnMe:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo = builderResult
-            return returnMe
-          }
-          @discardableResult
-          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            if other == Pogoprotos.Networking.Envelopes.Signature.DeviceInfo() {
-             return self
-            }
-            if other.hasDeviceId {
-                 deviceId = other.deviceId
-            }
-            if other.hasAndroidBoardName {
-                 androidBoardName = other.androidBoardName
-            }
-            if other.hasAndroidBootloader {
-                 androidBootloader = other.androidBootloader
-            }
-            if other.hasDeviceBrand {
-                 deviceBrand = other.deviceBrand
-            }
-            if other.hasDeviceModel {
-                 deviceModel = other.deviceModel
-            }
-            if other.hasDeviceModelIdentifier {
-                 deviceModelIdentifier = other.deviceModelIdentifier
-            }
-            if other.hasDeviceModelBoot {
-                 deviceModelBoot = other.deviceModelBoot
-            }
-            if other.hasHardwareManufacturer {
-                 hardwareManufacturer = other.hardwareManufacturer
-            }
-            if other.hasHardwareModel {
-                 hardwareModel = other.hardwareModel
-            }
-            if other.hasFirmwareBrand {
-                 firmwareBrand = other.firmwareBrand
-            }
-            if other.hasFirmwareTags {
-                 firmwareTags = other.firmwareTags
-            }
-            if other.hasFirmwareType {
-                 firmwareType = other.firmwareType
-            }
-            if other.hasFirmwareFingerprint {
-                 firmwareFingerprint = other.firmwareFingerprint
-            }
-            _ = try merge(unknownField: other.unknownFields)
-            return self
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
-            while (true) {
-              let protobufTag = try codedInputStream.readTag()
-              switch protobufTag {
-              case 0: 
-                self.unknownFields = try unknownFieldsBuilder.build()
-                return self
-
-              case 10:
-                deviceId = try codedInputStream.readString()
-
-              case 18:
-                androidBoardName = try codedInputStream.readString()
-
-              case 26:
-                androidBootloader = try codedInputStream.readString()
-
-              case 34:
-                deviceBrand = try codedInputStream.readString()
-
-              case 42:
-                deviceModel = try codedInputStream.readString()
-
-              case 50:
-                deviceModelIdentifier = try codedInputStream.readString()
-
-              case 58:
-                deviceModelBoot = try codedInputStream.readString()
-
-              case 66:
-                hardwareManufacturer = try codedInputStream.readString()
-
-              case 74:
-                hardwareModel = try codedInputStream.readString()
-
-              case 82:
-                firmwareBrand = try codedInputStream.readString()
-
-              case 98:
-                firmwareTags = try codedInputStream.readString()
-
-              case 106:
-                firmwareType = try codedInputStream.readString()
-
-              case 114:
-                firmwareFingerprint = try codedInputStream.readString()
-
-              default:
-                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
-                   unknownFields = try unknownFieldsBuilder.build()
-                   return self
-                }
-              }
-            }
-          }
-          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder()
-            if let jsonValueDeviceId = jsonMap["deviceId"] as? String {
-              resultDecodedBuilder.deviceId = jsonValueDeviceId
-            }
-            if let jsonValueAndroidBoardName = jsonMap["androidBoardName"] as? String {
-              resultDecodedBuilder.androidBoardName = jsonValueAndroidBoardName
-            }
-            if let jsonValueAndroidBootloader = jsonMap["androidBootloader"] as? String {
-              resultDecodedBuilder.androidBootloader = jsonValueAndroidBootloader
-            }
-            if let jsonValueDeviceBrand = jsonMap["deviceBrand"] as? String {
-              resultDecodedBuilder.deviceBrand = jsonValueDeviceBrand
-            }
-            if let jsonValueDeviceModel = jsonMap["deviceModel"] as? String {
-              resultDecodedBuilder.deviceModel = jsonValueDeviceModel
-            }
-            if let jsonValueDeviceModelIdentifier = jsonMap["deviceModelIdentifier"] as? String {
-              resultDecodedBuilder.deviceModelIdentifier = jsonValueDeviceModelIdentifier
-            }
-            if let jsonValueDeviceModelBoot = jsonMap["deviceModelBoot"] as? String {
-              resultDecodedBuilder.deviceModelBoot = jsonValueDeviceModelBoot
-            }
-            if let jsonValueHardwareManufacturer = jsonMap["hardwareManufacturer"] as? String {
-              resultDecodedBuilder.hardwareManufacturer = jsonValueHardwareManufacturer
-            }
-            if let jsonValueHardwareModel = jsonMap["hardwareModel"] as? String {
-              resultDecodedBuilder.hardwareModel = jsonValueHardwareModel
-            }
-            if let jsonValueFirmwareBrand = jsonMap["firmwareBrand"] as? String {
-              resultDecodedBuilder.firmwareBrand = jsonValueFirmwareBrand
-            }
-            if let jsonValueFirmwareTags = jsonMap["firmwareTags"] as? String {
-              resultDecodedBuilder.firmwareTags = jsonValueFirmwareTags
-            }
-            if let jsonValueFirmwareType = jsonMap["firmwareType"] as? String {
-              resultDecodedBuilder.firmwareType = jsonValueFirmwareType
-            }
-            if let jsonValueFirmwareFingerprint = jsonMap["firmwareFingerprint"] as? String {
-              resultDecodedBuilder.firmwareFingerprint = jsonValueFirmwareFingerprint
-            }
-            return resultDecodedBuilder
-          }
-          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
-            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
-            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
-              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
-            }
-            return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
-          }
-        }
-
-      }
-
-    //Nested type declaration end
-
-
-
-    //Nested type declaration start
-
-      // Only used in iOS - Android just sends an empty version
-      final public class ActivityStatus : GeneratedMessage {
-
-        public static func == (lhs: Pogoprotos.Networking.Envelopes.Signature.ActivityStatus, rhs: Pogoprotos.Networking.Envelopes.Signature.ActivityStatus) -> Bool {
-          if (lhs === rhs) {
-            return true
-          }
-          var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
-          fieldCheck = fieldCheck && (lhs.hasStartTimeMs == rhs.hasStartTimeMs) && (!lhs.hasStartTimeMs || lhs.startTimeMs == rhs.startTimeMs)
-          fieldCheck = fieldCheck && (lhs.hasUnknownStatus == rhs.hasUnknownStatus) && (!lhs.hasUnknownStatus || lhs.unknownStatus == rhs.unknownStatus)
-          fieldCheck = fieldCheck && (lhs.hasWalking == rhs.hasWalking) && (!lhs.hasWalking || lhs.walking == rhs.walking)
-          fieldCheck = fieldCheck && (lhs.hasRunning == rhs.hasRunning) && (!lhs.hasRunning || lhs.running == rhs.running)
-          fieldCheck = fieldCheck && (lhs.hasStationary == rhs.hasStationary) && (!lhs.hasStationary || lhs.stationary == rhs.stationary)
-          fieldCheck = fieldCheck && (lhs.hasAutomotive == rhs.hasAutomotive) && (!lhs.hasAutomotive || lhs.automotive == rhs.automotive)
-          fieldCheck = fieldCheck && (lhs.hasTilting == rhs.hasTilting) && (!lhs.hasTilting || lhs.tilting == rhs.tilting)
-          fieldCheck = fieldCheck && (lhs.hasCycling == rhs.hasCycling) && (!lhs.hasCycling || lhs.cycling == rhs.cycling)
-          fieldCheck = fieldCheck && (lhs.hasStatus == rhs.hasStatus) && (!lhs.hasStatus || lhs.status == rhs.status)
-          fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
-          return fieldCheck
-        }
-
-        // all of these had 1 as their value
-        public fileprivate(set) var startTimeMs:UInt64 = UInt64(0)
-        public fileprivate(set) var hasStartTimeMs:Bool = false
-
-        public fileprivate(set) var unknownStatus:Bool = false
-        public fileprivate(set) var hasUnknownStatus:Bool = false
-
-        public fileprivate(set) var walking:Bool = false
-        public fileprivate(set) var hasWalking:Bool = false
-
-        public fileprivate(set) var running:Bool = false
-        public fileprivate(set) var hasRunning:Bool = false
-
-        public fileprivate(set) var stationary:Bool = false
-        public fileprivate(set) var hasStationary:Bool = false
-
-        public fileprivate(set) var automotive:Bool = false
-        public fileprivate(set) var hasAutomotive:Bool = false
-
-        public fileprivate(set) var tilting:Bool = false
-        public fileprivate(set) var hasTilting:Bool = false
-
-        public fileprivate(set) var cycling:Bool = false
-        public fileprivate(set) var hasCycling:Bool = false
-
-        public fileprivate(set) var status:Data = Data()
-        public fileprivate(set) var hasStatus:Bool = false
-
-        required public init() {
-             super.init()
-        }
-        override public func isInitialized() -> Bool {
-         return true
-        }
-        override public func writeTo(codedOutputStream: CodedOutputStream) throws {
-          if hasStartTimeMs {
-            try codedOutputStream.writeUInt64(fieldNumber: 1, value:startTimeMs)
-          }
-          if hasUnknownStatus {
-            try codedOutputStream.writeBool(fieldNumber: 2, value:unknownStatus)
-          }
-          if hasWalking {
-            try codedOutputStream.writeBool(fieldNumber: 3, value:walking)
-          }
-          if hasRunning {
-            try codedOutputStream.writeBool(fieldNumber: 4, value:running)
-          }
-          if hasStationary {
-            try codedOutputStream.writeBool(fieldNumber: 5, value:stationary)
-          }
-          if hasAutomotive {
-            try codedOutputStream.writeBool(fieldNumber: 6, value:automotive)
-          }
-          if hasTilting {
-            try codedOutputStream.writeBool(fieldNumber: 7, value:tilting)
-          }
-          if hasCycling {
-            try codedOutputStream.writeBool(fieldNumber: 8, value:cycling)
-          }
-          if hasStatus {
-            try codedOutputStream.writeData(fieldNumber: 9, value:status)
-          }
-          try unknownFields.writeTo(codedOutputStream: codedOutputStream)
-        }
-        override public func serializedSize() -> Int32 {
-          var serialize_size:Int32 = memoizedSerializedSize
-          if serialize_size != -1 {
-           return serialize_size
-          }
-
-          serialize_size = 0
-          if hasStartTimeMs {
-            serialize_size += startTimeMs.computeUInt64Size(fieldNumber: 1)
-          }
-          if hasUnknownStatus {
-            serialize_size += unknownStatus.computeBoolSize(fieldNumber: 2)
-          }
-          if hasWalking {
-            serialize_size += walking.computeBoolSize(fieldNumber: 3)
-          }
-          if hasRunning {
-            serialize_size += running.computeBoolSize(fieldNumber: 4)
-          }
-          if hasStationary {
-            serialize_size += stationary.computeBoolSize(fieldNumber: 5)
-          }
-          if hasAutomotive {
-            serialize_size += automotive.computeBoolSize(fieldNumber: 6)
-          }
-          if hasTilting {
-            serialize_size += tilting.computeBoolSize(fieldNumber: 7)
-          }
-          if hasCycling {
-            serialize_size += cycling.computeBoolSize(fieldNumber: 8)
-          }
-          if hasStatus {
-            serialize_size += status.computeDataSize(fieldNumber: 9)
-          }
-          serialize_size += unknownFields.serializedSize()
-          memoizedSerializedSize = serialize_size
-          return serialize_size
-        }
-        public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-          return Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder
-        }
-        public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-          return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder
-        }
-        override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder()
-        }
-        override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-          return Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder()
-        }
-        public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.builderWithPrototype(prototype:self)
-        }
-        public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-          return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(other:prototype)
-        }
-        override public func encode() throws -> Dictionary<String,Any> {
-          guard isInitialized() else {
-            throw ProtocolBuffersError.invalidProtocolBuffer("Uninitialized Message")
-          }
-
-          var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
-          if hasStartTimeMs {
-            jsonMap["startTimeMs"] = "\(startTimeMs)"
-          }
-          if hasUnknownStatus {
-            jsonMap["unknownStatus"] = unknownStatus
-          }
-          if hasWalking {
-            jsonMap["walking"] = walking
-          }
-          if hasRunning {
-            jsonMap["running"] = running
-          }
-          if hasStationary {
-            jsonMap["stationary"] = stationary
-          }
-          if hasAutomotive {
-            jsonMap["automotive"] = automotive
-          }
-          if hasTilting {
-            jsonMap["tilting"] = tilting
-          }
-          if hasCycling {
-            jsonMap["cycling"] = cycling
-          }
-          if hasStatus {
-            jsonMap["status"] = status.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
-          }
-          return jsonMap
-        }
-        override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-          return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder.decodeToBuilder(jsonMap:jsonMap).build()
-        }
-        override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-          return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder.fromJSONToBuilder(data:data).build()
-        }
-        override public func getDescription(indent:String) throws -> String {
-          var output = ""
-          if hasStartTimeMs {
-            output += "\(indent) startTimeMs: \(startTimeMs) \n"
-          }
-          if hasUnknownStatus {
-            output += "\(indent) unknownStatus: \(unknownStatus) \n"
-          }
-          if hasWalking {
-            output += "\(indent) walking: \(walking) \n"
-          }
-          if hasRunning {
-            output += "\(indent) running: \(running) \n"
-          }
-          if hasStationary {
-            output += "\(indent) stationary: \(stationary) \n"
-          }
-          if hasAutomotive {
-            output += "\(indent) automotive: \(automotive) \n"
-          }
-          if hasTilting {
-            output += "\(indent) tilting: \(tilting) \n"
-          }
-          if hasCycling {
-            output += "\(indent) cycling: \(cycling) \n"
-          }
-          if hasStatus {
-            output += "\(indent) status: \(status) \n"
-          }
-          output += unknownFields.getDescription(indent: indent)
-          return output
-        }
-        override public var hashValue:Int {
-            get {
-                var hashCode:Int = 7
-                if hasStartTimeMs {
-                   hashCode = (hashCode &* 31) &+ startTimeMs.hashValue
-                }
-                if hasUnknownStatus {
-                   hashCode = (hashCode &* 31) &+ unknownStatus.hashValue
-                }
-                if hasWalking {
-                   hashCode = (hashCode &* 31) &+ walking.hashValue
-                }
-                if hasRunning {
-                   hashCode = (hashCode &* 31) &+ running.hashValue
-                }
-                if hasStationary {
-                   hashCode = (hashCode &* 31) &+ stationary.hashValue
-                }
-                if hasAutomotive {
-                   hashCode = (hashCode &* 31) &+ automotive.hashValue
-                }
-                if hasTilting {
-                   hashCode = (hashCode &* 31) &+ tilting.hashValue
-                }
-                if hasCycling {
-                   hashCode = (hashCode &* 31) &+ cycling.hashValue
-                }
-                if hasStatus {
-                   hashCode = (hashCode &* 31) &+ status.hashValue
-                }
-                hashCode = (hashCode &* 31) &+  unknownFields.hashValue
-                return hashCode
-            }
-        }
-
-
-        //Meta information declaration start
-
-        override public class func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.ActivityStatus"
-        }
-        override public func className() -> String {
-            return "Pogoprotos.Networking.Envelopes.Signature.ActivityStatus"
-        }
-        //Meta information declaration end
-
-        final public class Builder : GeneratedMessageBuilder {
-          fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus = Pogoprotos.Networking.Envelopes.Signature.ActivityStatus()
-          public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-              return builderResult
-          }
-
-          required override public init () {
-             super.init()
-          }
-          public var hasStartTimeMs:Bool {
-               get {
-                    return builderResult.hasStartTimeMs
-               }
-          }
-          public var startTimeMs:UInt64 {
-               get {
-                    return builderResult.startTimeMs
-               }
-               set (value) {
-                   builderResult.hasStartTimeMs = true
-                   builderResult.startTimeMs = value
-               }
-          }
-          @discardableResult
-          public func setStartTimeMs(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.startTimeMs = value
-            return self
-          }
-          @discardableResult
-          public func clearStartTimeMs() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasStartTimeMs = false
-               builderResult.startTimeMs = UInt64(0)
-               return self
-          }
-          public var hasUnknownStatus:Bool {
-               get {
-                    return builderResult.hasUnknownStatus
-               }
-          }
-          public var unknownStatus:Bool {
-               get {
-                    return builderResult.unknownStatus
-               }
-               set (value) {
-                   builderResult.hasUnknownStatus = true
-                   builderResult.unknownStatus = value
-               }
-          }
-          @discardableResult
-          public func setUnknownStatus(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.unknownStatus = value
-            return self
-          }
-          @discardableResult
-          public func clearUnknownStatus() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasUnknownStatus = false
-               builderResult.unknownStatus = false
-               return self
-          }
-          public var hasWalking:Bool {
-               get {
-                    return builderResult.hasWalking
-               }
-          }
-          public var walking:Bool {
-               get {
-                    return builderResult.walking
-               }
-               set (value) {
-                   builderResult.hasWalking = true
-                   builderResult.walking = value
-               }
-          }
-          @discardableResult
-          public func setWalking(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.walking = value
-            return self
-          }
-          @discardableResult
-          public func clearWalking() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasWalking = false
-               builderResult.walking = false
-               return self
-          }
-          public var hasRunning:Bool {
-               get {
-                    return builderResult.hasRunning
-               }
-          }
-          public var running:Bool {
-               get {
-                    return builderResult.running
-               }
-               set (value) {
-                   builderResult.hasRunning = true
-                   builderResult.running = value
-               }
-          }
-          @discardableResult
-          public func setRunning(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.running = value
-            return self
-          }
-          @discardableResult
-          public func clearRunning() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasRunning = false
-               builderResult.running = false
-               return self
-          }
-          public var hasStationary:Bool {
-               get {
-                    return builderResult.hasStationary
-               }
-          }
-          public var stationary:Bool {
-               get {
-                    return builderResult.stationary
-               }
-               set (value) {
-                   builderResult.hasStationary = true
-                   builderResult.stationary = value
-               }
-          }
-          @discardableResult
-          public func setStationary(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.stationary = value
-            return self
-          }
-          @discardableResult
-          public func clearStationary() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasStationary = false
-               builderResult.stationary = false
-               return self
-          }
-          public var hasAutomotive:Bool {
-               get {
-                    return builderResult.hasAutomotive
-               }
-          }
-          public var automotive:Bool {
-               get {
-                    return builderResult.automotive
-               }
-               set (value) {
-                   builderResult.hasAutomotive = true
-                   builderResult.automotive = value
-               }
-          }
-          @discardableResult
-          public func setAutomotive(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.automotive = value
-            return self
-          }
-          @discardableResult
-          public func clearAutomotive() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasAutomotive = false
-               builderResult.automotive = false
-               return self
-          }
-          public var hasTilting:Bool {
-               get {
-                    return builderResult.hasTilting
-               }
-          }
-          public var tilting:Bool {
-               get {
-                    return builderResult.tilting
-               }
-               set (value) {
-                   builderResult.hasTilting = true
-                   builderResult.tilting = value
-               }
-          }
-          @discardableResult
-          public func setTilting(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.tilting = value
-            return self
-          }
-          @discardableResult
-          public func clearTilting() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasTilting = false
-               builderResult.tilting = false
-               return self
-          }
-          public var hasCycling:Bool {
-               get {
-                    return builderResult.hasCycling
-               }
-          }
-          public var cycling:Bool {
-               get {
-                    return builderResult.cycling
-               }
-               set (value) {
-                   builderResult.hasCycling = true
-                   builderResult.cycling = value
-               }
-          }
-          @discardableResult
-          public func setCycling(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.cycling = value
-            return self
-          }
-          @discardableResult
-          public func clearCycling() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasCycling = false
-               builderResult.cycling = false
-               return self
-          }
-          public var hasStatus:Bool {
-               get {
-                    return builderResult.hasStatus
-               }
-          }
-          public var status:Data {
-               get {
-                    return builderResult.status
-               }
-               set (value) {
-                   builderResult.hasStatus = true
-                   builderResult.status = value
-               }
-          }
-          @discardableResult
-          public func setStatus(_ value:Data) -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            self.status = value
-            return self
-          }
-          @discardableResult
-          public func clearStatus() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder{
-               builderResult.hasStatus = false
-               builderResult.status = Data()
-               return self
-          }
-          override public var internalGetResult:GeneratedMessage {
-               get {
-                  return builderResult
-               }
-          }
-          @discardableResult
-          override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            builderResult = Pogoprotos.Networking.Envelopes.Signature.ActivityStatus()
-            return self
-          }
-          override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.builderWithPrototype(prototype:builderResult)
-          }
-          override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-               try checkInitialized()
-               return buildPartial()
-          }
-          public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-            let returnMe:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus = builderResult
-            return returnMe
-          }
-          @discardableResult
-          public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            if other == Pogoprotos.Networking.Envelopes.Signature.ActivityStatus() {
-             return self
-            }
-            if other.hasStartTimeMs {
-                 startTimeMs = other.startTimeMs
-            }
-            if other.hasUnknownStatus {
-                 unknownStatus = other.unknownStatus
-            }
-            if other.hasWalking {
-                 walking = other.walking
-            }
-            if other.hasRunning {
-                 running = other.running
-            }
-            if other.hasStationary {
-                 stationary = other.stationary
-            }
-            if other.hasAutomotive {
-                 automotive = other.automotive
-            }
-            if other.hasTilting {
-                 tilting = other.tilting
-            }
-            if other.hasCycling {
-                 cycling = other.cycling
-            }
-            if other.hasStatus {
-                 status = other.status
-            }
-            _ = try merge(unknownField: other.unknownFields)
-            return self
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-               return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
-          }
-          @discardableResult
-          override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
-            while (true) {
-              let protobufTag = try codedInputStream.readTag()
-              switch protobufTag {
-              case 0: 
-                self.unknownFields = try unknownFieldsBuilder.build()
-                return self
-
-              case 8:
-                startTimeMs = try codedInputStream.readUInt64()
-
-              case 16:
-                unknownStatus = try codedInputStream.readBool()
-
-              case 24:
-                walking = try codedInputStream.readBool()
-
-              case 32:
-                running = try codedInputStream.readBool()
-
-              case 40:
-                stationary = try codedInputStream.readBool()
-
-              case 48:
-                automotive = try codedInputStream.readBool()
-
-              case 56:
-                tilting = try codedInputStream.readBool()
-
-              case 64:
-                cycling = try codedInputStream.readBool()
-
-              case 74:
-                status = try codedInputStream.readData()
-
-              default:
-                if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
-                   unknownFields = try unknownFieldsBuilder.build()
-                   return self
-                }
-              }
-            }
-          }
-          class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder()
-            if let jsonValueStartTimeMs = jsonMap["startTimeMs"] as? String {
-              resultDecodedBuilder.startTimeMs = UInt64(jsonValueStartTimeMs)!
-            }
-            if let jsonValueUnknownStatus = jsonMap["unknownStatus"] as? Bool {
-              resultDecodedBuilder.unknownStatus = jsonValueUnknownStatus
-            }
-            if let jsonValueWalking = jsonMap["walking"] as? Bool {
-              resultDecodedBuilder.walking = jsonValueWalking
-            }
-            if let jsonValueRunning = jsonMap["running"] as? Bool {
-              resultDecodedBuilder.running = jsonValueRunning
-            }
-            if let jsonValueStationary = jsonMap["stationary"] as? Bool {
-              resultDecodedBuilder.stationary = jsonValueStationary
-            }
-            if let jsonValueAutomotive = jsonMap["automotive"] as? Bool {
-              resultDecodedBuilder.automotive = jsonValueAutomotive
-            }
-            if let jsonValueTilting = jsonMap["tilting"] as? Bool {
-              resultDecodedBuilder.tilting = jsonValueTilting
-            }
-            if let jsonValueCycling = jsonMap["cycling"] as? Bool {
-              resultDecodedBuilder.cycling = jsonValueCycling
-            }
-            if let jsonValueStatus = jsonMap["status"] as? String {
-              resultDecodedBuilder.status = Data(base64Encoded:jsonValueStatus, options: Data.Base64DecodingOptions(rawValue:0))!
-            }
-            return resultDecodedBuilder
-          }
-          override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-            let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
-            guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
-              throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
-            }
-            return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder.decodeToBuilder(jsonMap:jsDataCast)
+            return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:jsDataCast)
           }
         }
 
@@ -7145,23 +7189,23 @@ public extension Pogoprotos.Networking.Envelopes {
     //Nested type declaration end
 
     public fileprivate(set) var field1:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>  = Array<Pogoprotos.Networking.Envelopes.UnknownMessage>()
-    // in ms
-    public fileprivate(set) var timestampSinceStart:UInt64 = UInt64(0)
-    public fileprivate(set) var hasTimestampSinceStart:Bool = false
+    public fileprivate(set) var timestampMsSinceStart:Int64 = Int64(0)
+    public fileprivate(set) var hasTimestampMsSinceStart:Bool = false
 
     public fileprivate(set) var field3:String = ""
     public fileprivate(set) var hasField3:Bool = false
 
-    public fileprivate(set) var locationFix:Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix>  = Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix>()
-    public fileprivate(set) var gpsInfo:Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo>  = Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo>()
+    public fileprivate(set) var locationUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate>  = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate>()
+    public fileprivate(set) var androidGpsInfo:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo>  = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo>()
     public fileprivate(set) var field6:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>  = Array<Pogoprotos.Networking.Envelopes.UnknownMessage>()
-    public fileprivate(set) var sensorInfo:Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo>  = Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo>()
-    public fileprivate(set) var deviceInfo:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo!
+    public fileprivate(set) var sensorUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate>  = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate>()
+    public fileprivate(set) var deviceInfo:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo!
     public fileprivate(set) var hasDeviceInfo:Bool = false
-    public fileprivate(set) var activityStatus:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus!
-    public fileprivate(set) var hasActivityStatus:Bool = false
-    public fileprivate(set) var locationHash1:UInt32 = UInt32(0)
-    public fileprivate(set) var hasLocationHash1:Bool = false
+    public fileprivate(set) var iosDeviceInfo:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo!
+    public fileprivate(set) var hasIosDeviceInfo:Bool = false
+    // Hashed location using the auth token as the seed (hashed auth token -> location hash seed)
+    public fileprivate(set) var locationHashByTokenSeed:Int32 = Int32(0)
+    public fileprivate(set) var hasLocationHashByTokenSeed:Bool = false
 
     public fileprivate(set) var field11:Bool = false
     public fileprivate(set) var hasField11:Bool = false
@@ -7190,25 +7234,24 @@ public extension Pogoprotos.Networking.Envelopes {
     public fileprivate(set) var field19:Bool = false
     public fileprivate(set) var hasField19:Bool = false
 
-    public fileprivate(set) var locationHash2:UInt32 = UInt32(0)
-    public fileprivate(set) var hasLocationHash2:Bool = false
+    public fileprivate(set) var locationHash:Int32 = Int32(0)
+    public fileprivate(set) var hasLocationHash:Bool = false
 
     public fileprivate(set) var field21:Bool = false
     public fileprivate(set) var hasField21:Bool = false
 
-    // 32 random bytes, unique per session.
-    public fileprivate(set) var sessionHash:Data = Data()
-    public fileprivate(set) var hasSessionHash:Bool = false
+    // replay check - Changes every 5 minutes or so. Generation unknown but pointed to by 0001B8614
+    public fileprivate(set) var field22:Data = Data()
+    public fileprivate(set) var hasField22:Bool = false
 
-    // epoch timestamp in ms
-    public fileprivate(set) var timestamp:UInt64 = UInt64(0)
-    public fileprivate(set) var hasTimestamp:Bool = false
+    public fileprivate(set) var epochTimestampMs:UInt64 = UInt64(0)
+    public fileprivate(set) var hasEpochTimestampMs:Bool = false
 
-    // hashes of each request message in a hashArray signed based on the auth_token or auth_info - xxhash64
-    public fileprivate(set) var requestHash:Array<UInt64> = Array<UInt64>()
-    private var requestHashMemoizedSerializedSize:Int32 = -1
-    public fileprivate(set) var unknown25:Int64 = Int64(0)
-    public fileprivate(set) var hasUnknown25:Bool = false
+    // xxHash64 of the requests being sent with this agglom
+    public fileprivate(set) var requestHashes:Array<Int64> = Array<Int64>()
+    private var requestHashesMemoizedSerializedSize:Int32 = -1
+    public fileprivate(set) var field25:UInt64 = UInt64(0)
+    public fileprivate(set) var hasField25:Bool = false
 
     required public init() {
          super.init()
@@ -7220,32 +7263,32 @@ public extension Pogoprotos.Networking.Envelopes {
       for oneElementField1 in field1 {
           try codedOutputStream.writeMessage(fieldNumber: 1, value:oneElementField1)
       }
-      if hasTimestampSinceStart {
-        try codedOutputStream.writeUInt64(fieldNumber: 2, value:timestampSinceStart)
+      if hasTimestampMsSinceStart {
+        try codedOutputStream.writeInt64(fieldNumber: 2, value:timestampMsSinceStart)
       }
       if hasField3 {
         try codedOutputStream.writeString(fieldNumber: 3, value:field3)
       }
-      for oneElementLocationFix in locationFix {
-          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementLocationFix)
+      for oneElementLocationUpdates in locationUpdates {
+          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementLocationUpdates)
       }
-      for oneElementGpsInfo in gpsInfo {
-          try codedOutputStream.writeMessage(fieldNumber: 5, value:oneElementGpsInfo)
+      for oneElementAndroidGpsInfo in androidGpsInfo {
+          try codedOutputStream.writeMessage(fieldNumber: 5, value:oneElementAndroidGpsInfo)
       }
       for oneElementField6 in field6 {
           try codedOutputStream.writeMessage(fieldNumber: 6, value:oneElementField6)
       }
-      for oneElementSensorInfo in sensorInfo {
-          try codedOutputStream.writeMessage(fieldNumber: 7, value:oneElementSensorInfo)
+      for oneElementSensorUpdates in sensorUpdates {
+          try codedOutputStream.writeMessage(fieldNumber: 7, value:oneElementSensorUpdates)
       }
       if hasDeviceInfo {
         try codedOutputStream.writeMessage(fieldNumber: 8, value:deviceInfo)
       }
-      if hasActivityStatus {
-        try codedOutputStream.writeMessage(fieldNumber: 9, value:activityStatus)
+      if hasIosDeviceInfo {
+        try codedOutputStream.writeMessage(fieldNumber: 9, value:iosDeviceInfo)
       }
-      if hasLocationHash1 {
-        try codedOutputStream.writeUInt32(fieldNumber: 10, value:locationHash1)
+      if hasLocationHashByTokenSeed {
+        try codedOutputStream.writeInt32(fieldNumber: 10, value:locationHashByTokenSeed)
       }
       if hasField11 {
         try codedOutputStream.writeBool(fieldNumber: 11, value:field11)
@@ -7274,27 +7317,27 @@ public extension Pogoprotos.Networking.Envelopes {
       if hasField19 {
         try codedOutputStream.writeBool(fieldNumber: 19, value:field19)
       }
-      if hasLocationHash2 {
-        try codedOutputStream.writeUInt32(fieldNumber: 20, value:locationHash2)
+      if hasLocationHash {
+        try codedOutputStream.writeInt32(fieldNumber: 20, value:locationHash)
       }
       if hasField21 {
         try codedOutputStream.writeBool(fieldNumber: 21, value:field21)
       }
-      if hasSessionHash {
-        try codedOutputStream.writeData(fieldNumber: 22, value:sessionHash)
+      if hasField22 {
+        try codedOutputStream.writeData(fieldNumber: 22, value:field22)
       }
-      if hasTimestamp {
-        try codedOutputStream.writeUInt64(fieldNumber: 23, value:timestamp)
+      if hasEpochTimestampMs {
+        try codedOutputStream.writeUInt64(fieldNumber: 23, value:epochTimestampMs)
       }
-      if !requestHash.isEmpty {
+      if !requestHashes.isEmpty {
         try codedOutputStream.writeRawVarint32(value: 194)
-        try codedOutputStream.writeRawVarint32(value: requestHashMemoizedSerializedSize)
-        for oneValuerequestHash in requestHash {
-          try codedOutputStream.writeUInt64NoTag(value: oneValuerequestHash)
+        try codedOutputStream.writeRawVarint32(value: requestHashesMemoizedSerializedSize)
+        for oneValuerequestHashes in requestHashes {
+          try codedOutputStream.writeInt64NoTag(value: oneValuerequestHashes)
         }
       }
-      if hasUnknown25 {
-        try codedOutputStream.writeInt64(fieldNumber: 25, value:unknown25)
+      if hasField25 {
+        try codedOutputStream.writeUInt64(fieldNumber: 25, value:field25)
       }
       try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -7308,36 +7351,36 @@ public extension Pogoprotos.Networking.Envelopes {
       for oneElementField1 in field1 {
           serialize_size += oneElementField1.computeMessageSize(fieldNumber: 1)
       }
-      if hasTimestampSinceStart {
-        serialize_size += timestampSinceStart.computeUInt64Size(fieldNumber: 2)
+      if hasTimestampMsSinceStart {
+        serialize_size += timestampMsSinceStart.computeInt64Size(fieldNumber: 2)
       }
       if hasField3 {
         serialize_size += field3.computeStringSize(fieldNumber: 3)
       }
-      for oneElementLocationFix in locationFix {
-          serialize_size += oneElementLocationFix.computeMessageSize(fieldNumber: 4)
+      for oneElementLocationUpdates in locationUpdates {
+          serialize_size += oneElementLocationUpdates.computeMessageSize(fieldNumber: 4)
       }
-      for oneElementGpsInfo in gpsInfo {
-          serialize_size += oneElementGpsInfo.computeMessageSize(fieldNumber: 5)
+      for oneElementAndroidGpsInfo in androidGpsInfo {
+          serialize_size += oneElementAndroidGpsInfo.computeMessageSize(fieldNumber: 5)
       }
       for oneElementField6 in field6 {
           serialize_size += oneElementField6.computeMessageSize(fieldNumber: 6)
       }
-      for oneElementSensorInfo in sensorInfo {
-          serialize_size += oneElementSensorInfo.computeMessageSize(fieldNumber: 7)
+      for oneElementSensorUpdates in sensorUpdates {
+          serialize_size += oneElementSensorUpdates.computeMessageSize(fieldNumber: 7)
       }
       if hasDeviceInfo {
           if let varSizedeviceInfo = deviceInfo?.computeMessageSize(fieldNumber: 8) {
               serialize_size += varSizedeviceInfo
           }
       }
-      if hasActivityStatus {
-          if let varSizeactivityStatus = activityStatus?.computeMessageSize(fieldNumber: 9) {
-              serialize_size += varSizeactivityStatus
+      if hasIosDeviceInfo {
+          if let varSizeiosDeviceInfo = iosDeviceInfo?.computeMessageSize(fieldNumber: 9) {
+              serialize_size += varSizeiosDeviceInfo
           }
       }
-      if hasLocationHash1 {
-        serialize_size += locationHash1.computeUInt32Size(fieldNumber: 10)
+      if hasLocationHashByTokenSeed {
+        serialize_size += locationHashByTokenSeed.computeInt32Size(fieldNumber: 10)
       }
       if hasField11 {
         serialize_size += field11.computeBoolSize(fieldNumber: 11)
@@ -7366,52 +7409,52 @@ public extension Pogoprotos.Networking.Envelopes {
       if hasField19 {
         serialize_size += field19.computeBoolSize(fieldNumber: 19)
       }
-      if hasLocationHash2 {
-        serialize_size += locationHash2.computeUInt32Size(fieldNumber: 20)
+      if hasLocationHash {
+        serialize_size += locationHash.computeInt32Size(fieldNumber: 20)
       }
       if hasField21 {
         serialize_size += field21.computeBoolSize(fieldNumber: 21)
       }
-      if hasSessionHash {
-        serialize_size += sessionHash.computeDataSize(fieldNumber: 22)
+      if hasField22 {
+        serialize_size += field22.computeDataSize(fieldNumber: 22)
       }
-      if hasTimestamp {
-        serialize_size += timestamp.computeUInt64Size(fieldNumber: 23)
+      if hasEpochTimestampMs {
+        serialize_size += epochTimestampMs.computeUInt64Size(fieldNumber: 23)
       }
-      var dataSizeRequestHash:Int32 = 0
-      for oneValuerequestHash in requestHash {
-          dataSizeRequestHash += oneValuerequestHash.computeUInt64SizeNoTag()
+      var dataSizeRequestHashes:Int32 = 0
+      for oneValuerequestHashes in requestHashes {
+          dataSizeRequestHashes += oneValuerequestHashes.computeInt64SizeNoTag()
       }
-      serialize_size += dataSizeRequestHash
-      if !requestHash.isEmpty {
+      serialize_size += dataSizeRequestHashes
+      if !requestHashes.isEmpty {
         serialize_size += 2
-        serialize_size += dataSizeRequestHash.computeInt32SizeNoTag()
+        serialize_size += dataSizeRequestHashes.computeInt32SizeNoTag()
       }
-      requestHashMemoizedSerializedSize = dataSizeRequestHash
-      if hasUnknown25 {
-        serialize_size += unknown25.computeInt64Size(fieldNumber: 25)
+      requestHashesMemoizedSerializedSize = dataSizeRequestHashes
+      if hasField25 {
+        serialize_size += field25.computeUInt64Size(fieldNumber: 25)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
     }
-    public class func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-      return Pogoprotos.Networking.Envelopes.Signature.classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.Builder
+    public class func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+      return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder
     }
-    public func getBuilder() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-      return classBuilder() as! Pogoprotos.Networking.Envelopes.Signature.Builder
+    public func getBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+      return classBuilder() as! Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder
     }
     override public class func classBuilder() -> ProtocolBuffersMessageBuilder {
-      return Pogoprotos.Networking.Envelopes.Signature.Builder()
+      return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder()
     }
     override public func classBuilder() -> ProtocolBuffersMessageBuilder {
-      return Pogoprotos.Networking.Envelopes.Signature.Builder()
+      return Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder()
     }
-    public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-      return try Pogoprotos.Networking.Envelopes.Signature.builderWithPrototype(prototype:self)
+    public func toBuilder() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+      return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.builderWithPrototype(prototype:self)
     }
-    public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.Signature) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-      return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(other:prototype)
+    public class func builderWithPrototype(prototype:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+      return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(other:prototype)
     }
     override public func encode() throws -> Dictionary<String,Any> {
       guard isInitialized() else {
@@ -7427,27 +7470,27 @@ public extension Pogoprotos.Networking.Envelopes {
           }
         jsonMap["field1"] = jsonArrayField1
       }
-      if hasTimestampSinceStart {
-        jsonMap["timestampSinceStart"] = "\(timestampSinceStart)"
+      if hasTimestampMsSinceStart {
+        jsonMap["timestampMsSinceStart"] = "\(timestampMsSinceStart)"
       }
       if hasField3 {
         jsonMap["field3"] = field3
       }
-      if !locationFix.isEmpty {
-        var jsonArrayLocationFix:Array<Dictionary<String,Any>> = []
-          for oneValueLocationFix in locationFix {
-            let ecodedMessageLocationFix = try oneValueLocationFix.encode()
-            jsonArrayLocationFix.append(ecodedMessageLocationFix)
+      if !locationUpdates.isEmpty {
+        var jsonArrayLocationUpdates:Array<Dictionary<String,Any>> = []
+          for oneValueLocationUpdates in locationUpdates {
+            let ecodedMessageLocationUpdates = try oneValueLocationUpdates.encode()
+            jsonArrayLocationUpdates.append(ecodedMessageLocationUpdates)
           }
-        jsonMap["locationFix"] = jsonArrayLocationFix
+        jsonMap["locationUpdates"] = jsonArrayLocationUpdates
       }
-      if !gpsInfo.isEmpty {
-        var jsonArrayGpsInfo:Array<Dictionary<String,Any>> = []
-          for oneValueGpsInfo in gpsInfo {
-            let ecodedMessageGpsInfo = try oneValueGpsInfo.encode()
-            jsonArrayGpsInfo.append(ecodedMessageGpsInfo)
+      if !androidGpsInfo.isEmpty {
+        var jsonArrayAndroidGpsInfo:Array<Dictionary<String,Any>> = []
+          for oneValueAndroidGpsInfo in androidGpsInfo {
+            let ecodedMessageAndroidGpsInfo = try oneValueAndroidGpsInfo.encode()
+            jsonArrayAndroidGpsInfo.append(ecodedMessageAndroidGpsInfo)
           }
-        jsonMap["gpsInfo"] = jsonArrayGpsInfo
+        jsonMap["androidGpsInfo"] = jsonArrayAndroidGpsInfo
       }
       if !field6.isEmpty {
         var jsonArrayField6:Array<Dictionary<String,Any>> = []
@@ -7457,22 +7500,22 @@ public extension Pogoprotos.Networking.Envelopes {
           }
         jsonMap["field6"] = jsonArrayField6
       }
-      if !sensorInfo.isEmpty {
-        var jsonArraySensorInfo:Array<Dictionary<String,Any>> = []
-          for oneValueSensorInfo in sensorInfo {
-            let ecodedMessageSensorInfo = try oneValueSensorInfo.encode()
-            jsonArraySensorInfo.append(ecodedMessageSensorInfo)
+      if !sensorUpdates.isEmpty {
+        var jsonArraySensorUpdates:Array<Dictionary<String,Any>> = []
+          for oneValueSensorUpdates in sensorUpdates {
+            let ecodedMessageSensorUpdates = try oneValueSensorUpdates.encode()
+            jsonArraySensorUpdates.append(ecodedMessageSensorUpdates)
           }
-        jsonMap["sensorInfo"] = jsonArraySensorInfo
+        jsonMap["sensorUpdates"] = jsonArraySensorUpdates
       }
       if hasDeviceInfo {
         jsonMap["deviceInfo"] = try deviceInfo.encode()
       }
-      if hasActivityStatus {
-        jsonMap["activityStatus"] = try activityStatus.encode()
+      if hasIosDeviceInfo {
+        jsonMap["iosDeviceInfo"] = try iosDeviceInfo.encode()
       }
-      if hasLocationHash1 {
-        jsonMap["locationHash1"] = UInt(locationHash1)
+      if hasLocationHashByTokenSeed {
+        jsonMap["locationHashByTokenSeed"] = Int(locationHashByTokenSeed)
       }
       if hasField11 {
         jsonMap["field11"] = field11
@@ -7501,35 +7544,35 @@ public extension Pogoprotos.Networking.Envelopes {
       if hasField19 {
         jsonMap["field19"] = field19
       }
-      if hasLocationHash2 {
-        jsonMap["locationHash2"] = UInt(locationHash2)
+      if hasLocationHash {
+        jsonMap["locationHash"] = Int(locationHash)
       }
       if hasField21 {
         jsonMap["field21"] = field21
       }
-      if hasSessionHash {
-        jsonMap["sessionHash"] = sessionHash.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
+      if hasField22 {
+        jsonMap["field22"] = field22.base64EncodedString(options: Data.Base64EncodingOptions(rawValue: 0))
       }
-      if hasTimestamp {
-        jsonMap["timestamp"] = "\(timestamp)"
+      if hasEpochTimestampMs {
+        jsonMap["epochTimestampMs"] = "\(epochTimestampMs)"
       }
-      if !requestHash.isEmpty {
-        var jsonArrayRequestHash:Array<String> = []
-          for oneValueRequestHash in requestHash {
-            jsonArrayRequestHash.append("\(oneValueRequestHash)")
+      if !requestHashes.isEmpty {
+        var jsonArrayRequestHashes:Array<String> = []
+          for oneValueRequestHashes in requestHashes {
+            jsonArrayRequestHashes.append("\(oneValueRequestHashes)")
           }
-        jsonMap["requestHash"] = jsonArrayRequestHash
+        jsonMap["requestHashes"] = jsonArrayRequestHashes
       }
-      if hasUnknown25 {
-        jsonMap["unknown25"] = "\(unknown25)"
+      if hasField25 {
+        jsonMap["field25"] = "\(field25)"
       }
       return jsonMap
     }
-    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature {
-      return try Pogoprotos.Networking.Envelopes.Signature.Builder.decodeToBuilder(jsonMap:jsonMap).build()
+    override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+      return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder.decodeToBuilder(jsonMap:jsonMap).build()
     }
-    override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature {
-      return try Pogoprotos.Networking.Envelopes.Signature.Builder.fromJSONToBuilder(data:data).build()
+    override class public func fromJSON(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+      return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder.fromJSONToBuilder(data:data).build()
     }
     override public func getDescription(indent:String) throws -> String {
       var output = ""
@@ -7540,25 +7583,25 @@ public extension Pogoprotos.Networking.Envelopes {
           output += "\(indent)}\n"
           field1ElementIndex += 1
       }
-      if hasTimestampSinceStart {
-        output += "\(indent) timestampSinceStart: \(timestampSinceStart) \n"
+      if hasTimestampMsSinceStart {
+        output += "\(indent) timestampMsSinceStart: \(timestampMsSinceStart) \n"
       }
       if hasField3 {
         output += "\(indent) field3: \(field3) \n"
       }
-      var locationFixElementIndex:Int = 0
-      for oneElementLocationFix in locationFix {
-          output += "\(indent) locationFix[\(locationFixElementIndex)] {\n"
-          output += try oneElementLocationFix.getDescription(indent: "\(indent)  ")
+      var locationUpdatesElementIndex:Int = 0
+      for oneElementLocationUpdates in locationUpdates {
+          output += "\(indent) locationUpdates[\(locationUpdatesElementIndex)] {\n"
+          output += try oneElementLocationUpdates.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
-          locationFixElementIndex += 1
+          locationUpdatesElementIndex += 1
       }
-      var gpsInfoElementIndex:Int = 0
-      for oneElementGpsInfo in gpsInfo {
-          output += "\(indent) gpsInfo[\(gpsInfoElementIndex)] {\n"
-          output += try oneElementGpsInfo.getDescription(indent: "\(indent)  ")
+      var androidGpsInfoElementIndex:Int = 0
+      for oneElementAndroidGpsInfo in androidGpsInfo {
+          output += "\(indent) androidGpsInfo[\(androidGpsInfoElementIndex)] {\n"
+          output += try oneElementAndroidGpsInfo.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
-          gpsInfoElementIndex += 1
+          androidGpsInfoElementIndex += 1
       }
       var field6ElementIndex:Int = 0
       for oneElementField6 in field6 {
@@ -7567,12 +7610,12 @@ public extension Pogoprotos.Networking.Envelopes {
           output += "\(indent)}\n"
           field6ElementIndex += 1
       }
-      var sensorInfoElementIndex:Int = 0
-      for oneElementSensorInfo in sensorInfo {
-          output += "\(indent) sensorInfo[\(sensorInfoElementIndex)] {\n"
-          output += try oneElementSensorInfo.getDescription(indent: "\(indent)  ")
+      var sensorUpdatesElementIndex:Int = 0
+      for oneElementSensorUpdates in sensorUpdates {
+          output += "\(indent) sensorUpdates[\(sensorUpdatesElementIndex)] {\n"
+          output += try oneElementSensorUpdates.getDescription(indent: "\(indent)  ")
           output += "\(indent)}\n"
-          sensorInfoElementIndex += 1
+          sensorUpdatesElementIndex += 1
       }
       if hasDeviceInfo {
         output += "\(indent) deviceInfo {\n"
@@ -7581,15 +7624,15 @@ public extension Pogoprotos.Networking.Envelopes {
         }
         output += "\(indent) }\n"
       }
-      if hasActivityStatus {
-        output += "\(indent) activityStatus {\n"
-        if let outDescActivityStatus = activityStatus {
-          output += try outDescActivityStatus.getDescription(indent: "\(indent)  ")
+      if hasIosDeviceInfo {
+        output += "\(indent) iosDeviceInfo {\n"
+        if let outDescIosDeviceInfo = iosDeviceInfo {
+          output += try outDescIosDeviceInfo.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
-      if hasLocationHash1 {
-        output += "\(indent) locationHash1: \(locationHash1) \n"
+      if hasLocationHashByTokenSeed {
+        output += "\(indent) locationHashByTokenSeed: \(locationHashByTokenSeed) \n"
       }
       if hasField11 {
         output += "\(indent) field11: \(field11) \n"
@@ -7618,25 +7661,25 @@ public extension Pogoprotos.Networking.Envelopes {
       if hasField19 {
         output += "\(indent) field19: \(field19) \n"
       }
-      if hasLocationHash2 {
-        output += "\(indent) locationHash2: \(locationHash2) \n"
+      if hasLocationHash {
+        output += "\(indent) locationHash: \(locationHash) \n"
       }
       if hasField21 {
         output += "\(indent) field21: \(field21) \n"
       }
-      if hasSessionHash {
-        output += "\(indent) sessionHash: \(sessionHash) \n"
+      if hasField22 {
+        output += "\(indent) field22: \(field22) \n"
       }
-      if hasTimestamp {
-        output += "\(indent) timestamp: \(timestamp) \n"
+      if hasEpochTimestampMs {
+        output += "\(indent) epochTimestampMs: \(epochTimestampMs) \n"
       }
-      var requestHashElementIndex:Int = 0
-      for oneValueRequestHash in requestHash  {
-          output += "\(indent) requestHash[\(requestHashElementIndex)]: \(oneValueRequestHash)\n"
-          requestHashElementIndex += 1
+      var requestHashesElementIndex:Int = 0
+      for oneValueRequestHashes in requestHashes  {
+          output += "\(indent) requestHashes[\(requestHashesElementIndex)]: \(oneValueRequestHashes)\n"
+          requestHashesElementIndex += 1
       }
-      if hasUnknown25 {
-        output += "\(indent) unknown25: \(unknown25) \n"
+      if hasField25 {
+        output += "\(indent) field25: \(field25) \n"
       }
       output += unknownFields.getDescription(indent: indent)
       return output
@@ -7647,36 +7690,36 @@ public extension Pogoprotos.Networking.Envelopes {
             for oneElementField1 in field1 {
                 hashCode = (hashCode &* 31) &+ oneElementField1.hashValue
             }
-            if hasTimestampSinceStart {
-               hashCode = (hashCode &* 31) &+ timestampSinceStart.hashValue
+            if hasTimestampMsSinceStart {
+               hashCode = (hashCode &* 31) &+ timestampMsSinceStart.hashValue
             }
             if hasField3 {
                hashCode = (hashCode &* 31) &+ field3.hashValue
             }
-            for oneElementLocationFix in locationFix {
-                hashCode = (hashCode &* 31) &+ oneElementLocationFix.hashValue
+            for oneElementLocationUpdates in locationUpdates {
+                hashCode = (hashCode &* 31) &+ oneElementLocationUpdates.hashValue
             }
-            for oneElementGpsInfo in gpsInfo {
-                hashCode = (hashCode &* 31) &+ oneElementGpsInfo.hashValue
+            for oneElementAndroidGpsInfo in androidGpsInfo {
+                hashCode = (hashCode &* 31) &+ oneElementAndroidGpsInfo.hashValue
             }
             for oneElementField6 in field6 {
                 hashCode = (hashCode &* 31) &+ oneElementField6.hashValue
             }
-            for oneElementSensorInfo in sensorInfo {
-                hashCode = (hashCode &* 31) &+ oneElementSensorInfo.hashValue
+            for oneElementSensorUpdates in sensorUpdates {
+                hashCode = (hashCode &* 31) &+ oneElementSensorUpdates.hashValue
             }
             if hasDeviceInfo {
                 if let hashValuedeviceInfo = deviceInfo?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuedeviceInfo
                 }
             }
-            if hasActivityStatus {
-                if let hashValueactivityStatus = activityStatus?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValueactivityStatus
+            if hasIosDeviceInfo {
+                if let hashValueiosDeviceInfo = iosDeviceInfo?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValueiosDeviceInfo
                 }
             }
-            if hasLocationHash1 {
-               hashCode = (hashCode &* 31) &+ locationHash1.hashValue
+            if hasLocationHashByTokenSeed {
+               hashCode = (hashCode &* 31) &+ locationHashByTokenSeed.hashValue
             }
             if hasField11 {
                hashCode = (hashCode &* 31) &+ field11.hashValue
@@ -7705,23 +7748,23 @@ public extension Pogoprotos.Networking.Envelopes {
             if hasField19 {
                hashCode = (hashCode &* 31) &+ field19.hashValue
             }
-            if hasLocationHash2 {
-               hashCode = (hashCode &* 31) &+ locationHash2.hashValue
+            if hasLocationHash {
+               hashCode = (hashCode &* 31) &+ locationHash.hashValue
             }
             if hasField21 {
                hashCode = (hashCode &* 31) &+ field21.hashValue
             }
-            if hasSessionHash {
-               hashCode = (hashCode &* 31) &+ sessionHash.hashValue
+            if hasField22 {
+               hashCode = (hashCode &* 31) &+ field22.hashValue
             }
-            if hasTimestamp {
-               hashCode = (hashCode &* 31) &+ timestamp.hashValue
+            if hasEpochTimestampMs {
+               hashCode = (hashCode &* 31) &+ epochTimestampMs.hashValue
             }
-            for oneValueRequestHash in requestHash {
-                hashCode = (hashCode &* 31) &+ oneValueRequestHash.hashValue
+            for oneValueRequestHashes in requestHashes {
+                hashCode = (hashCode &* 31) &+ oneValueRequestHashes.hashValue
             }
-            if hasUnknown25 {
-               hashCode = (hashCode &* 31) &+ unknown25.hashValue
+            if hasField25 {
+               hashCode = (hashCode &* 31) &+ field25.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -7732,16 +7775,16 @@ public extension Pogoprotos.Networking.Envelopes {
     //Meta information declaration start
 
     override public class func className() -> String {
-        return "Pogoprotos.Networking.Envelopes.Signature"
+        return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates"
     }
     override public func className() -> String {
-        return "Pogoprotos.Networking.Envelopes.Signature"
+        return "Pogoprotos.Networking.Envelopes.SignalAgglomUpdates"
     }
     //Meta information declaration end
 
     final public class Builder : GeneratedMessageBuilder {
-      fileprivate var builderResult:Pogoprotos.Networking.Envelopes.Signature = Pogoprotos.Networking.Envelopes.Signature()
-      public func getMessage() -> Pogoprotos.Networking.Envelopes.Signature {
+      fileprivate var builderResult:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates()
+      public func getMessage() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
           return builderResult
       }
 
@@ -7757,38 +7800,38 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField1(_ value:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField1(_ value:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field1 = value
         return self
       }
       @discardableResult
-      public func clearField1() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func clearField1() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         builderResult.field1.removeAll(keepingCapacity: false)
         return self
       }
-      public var hasTimestampSinceStart:Bool {
+      public var hasTimestampMsSinceStart:Bool {
            get {
-                return builderResult.hasTimestampSinceStart
+                return builderResult.hasTimestampMsSinceStart
            }
       }
-      public var timestampSinceStart:UInt64 {
+      public var timestampMsSinceStart:Int64 {
            get {
-                return builderResult.timestampSinceStart
+                return builderResult.timestampMsSinceStart
            }
            set (value) {
-               builderResult.hasTimestampSinceStart = true
-               builderResult.timestampSinceStart = value
+               builderResult.hasTimestampMsSinceStart = true
+               builderResult.timestampMsSinceStart = value
            }
       }
       @discardableResult
-      public func setTimestampSinceStart(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.timestampSinceStart = value
+      public func setTimestampMsSinceStart(_ value:Int64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.timestampMsSinceStart = value
         return self
       }
       @discardableResult
-      public func clearTimestampSinceStart() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasTimestampSinceStart = false
-           builderResult.timestampSinceStart = UInt64(0)
+      public func clearTimestampMsSinceStart() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasTimestampMsSinceStart = false
+           builderResult.timestampMsSinceStart = Int64(0)
            return self
       }
       public var hasField3:Bool {
@@ -7806,50 +7849,50 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField3(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField3(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field3 = value
         return self
       }
       @discardableResult
-      public func clearField3() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField3() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField3 = false
            builderResult.field3 = ""
            return self
       }
-      public var locationFix:Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix> {
+      public var locationUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate> {
            get {
-               return builderResult.locationFix
+               return builderResult.locationUpdates
            }
            set (value) {
-               builderResult.locationFix = value
+               builderResult.locationUpdates = value
            }
       }
       @discardableResult
-      public func setLocationFix(_ value:Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.locationFix = value
+      public func setLocationUpdates(_ value:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.locationUpdates = value
         return self
       }
       @discardableResult
-      public func clearLocationFix() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        builderResult.locationFix.removeAll(keepingCapacity: false)
+      public func clearLocationUpdates() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        builderResult.locationUpdates.removeAll(keepingCapacity: false)
         return self
       }
-      public var gpsInfo:Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo> {
+      public var androidGpsInfo:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo> {
            get {
-               return builderResult.gpsInfo
+               return builderResult.androidGpsInfo
            }
            set (value) {
-               builderResult.gpsInfo = value
+               builderResult.androidGpsInfo = value
            }
       }
       @discardableResult
-      public func setGpsInfo(_ value:Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.gpsInfo = value
+      public func setAndroidGpsInfo(_ value:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.androidGpsInfo = value
         return self
       }
       @discardableResult
-      public func clearGpsInfo() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        builderResult.gpsInfo.removeAll(keepingCapacity: false)
+      public func clearAndroidGpsInfo() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        builderResult.androidGpsInfo.removeAll(keepingCapacity: false)
         return self
       }
       public var field6:Array<Pogoprotos.Networking.Envelopes.UnknownMessage> {
@@ -7861,31 +7904,31 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField6(_ value:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField6(_ value:Array<Pogoprotos.Networking.Envelopes.UnknownMessage>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field6 = value
         return self
       }
       @discardableResult
-      public func clearField6() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func clearField6() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         builderResult.field6.removeAll(keepingCapacity: false)
         return self
       }
-      public var sensorInfo:Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo> {
+      public var sensorUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate> {
            get {
-               return builderResult.sensorInfo
+               return builderResult.sensorUpdates
            }
            set (value) {
-               builderResult.sensorInfo = value
+               builderResult.sensorUpdates = value
            }
       }
       @discardableResult
-      public func setSensorInfo(_ value:Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.sensorInfo = value
+      public func setSensorUpdates(_ value:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.sensorUpdates = value
         return self
       }
       @discardableResult
-      public func clearSensorInfo() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        builderResult.sensorInfo.removeAll(keepingCapacity: false)
+      public func clearSensorUpdates() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        builderResult.sensorUpdates.removeAll(keepingCapacity: false)
         return self
       }
       public var hasDeviceInfo:Bool {
@@ -7893,7 +7936,7 @@ public extension Pogoprotos.Networking.Envelopes {
                return builderResult.hasDeviceInfo
            }
       }
-      public var deviceInfo:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo! {
+      public var deviceInfo:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo! {
            get {
                if deviceInfoBuilder_ != nil {
                   builderResult.deviceInfo = deviceInfoBuilder_.getMessage()
@@ -7905,14 +7948,14 @@ public extension Pogoprotos.Networking.Envelopes {
                builderResult.deviceInfo = value
            }
       }
-      fileprivate var deviceInfoBuilder_:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder! {
+      fileprivate var deviceInfoBuilder_:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder! {
            didSet {
               builderResult.hasDeviceInfo = true
            }
       }
-      public func getDeviceInfoBuilder() -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder {
+      public func getDeviceInfoBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder {
         if deviceInfoBuilder_ == nil {
-           deviceInfoBuilder_ = Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder()
+           deviceInfoBuilder_ = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder()
            builderResult.deviceInfo = deviceInfoBuilder_.getMessage()
            if deviceInfo != nil {
               try! deviceInfoBuilder_.mergeFrom(other: deviceInfo)
@@ -7921,14 +7964,14 @@ public extension Pogoprotos.Networking.Envelopes {
         return deviceInfoBuilder_
       }
       @discardableResult
-      public func setDeviceInfo(_ value:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo!) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setDeviceInfo(_ value:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo!) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.deviceInfo = value
         return self
       }
       @discardableResult
-      public func mergeDeviceInfo(value:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func mergeDeviceInfo(value:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         if builderResult.hasDeviceInfo {
-          builderResult.deviceInfo = try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.builderWithPrototype(prototype:builderResult.deviceInfo).mergeFrom(other: value).buildPartial()
+          builderResult.deviceInfo = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.builderWithPrototype(prototype:builderResult.deviceInfo).mergeFrom(other: value).buildPartial()
         } else {
           builderResult.deviceInfo = value
         }
@@ -7936,89 +7979,89 @@ public extension Pogoprotos.Networking.Envelopes {
         return self
       }
       @discardableResult
-      public func clearDeviceInfo() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func clearDeviceInfo() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         deviceInfoBuilder_ = nil
         builderResult.hasDeviceInfo = false
         builderResult.deviceInfo = nil
         return self
       }
-      public var hasActivityStatus:Bool {
+      public var hasIosDeviceInfo:Bool {
            get {
-               return builderResult.hasActivityStatus
+               return builderResult.hasIosDeviceInfo
            }
       }
-      public var activityStatus:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus! {
+      public var iosDeviceInfo:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo! {
            get {
-               if activityStatusBuilder_ != nil {
-                  builderResult.activityStatus = activityStatusBuilder_.getMessage()
+               if iosDeviceInfoBuilder_ != nil {
+                  builderResult.iosDeviceInfo = iosDeviceInfoBuilder_.getMessage()
                }
-               return builderResult.activityStatus
+               return builderResult.iosDeviceInfo
            }
            set (value) {
-               builderResult.hasActivityStatus = true
-               builderResult.activityStatus = value
+               builderResult.hasIosDeviceInfo = true
+               builderResult.iosDeviceInfo = value
            }
       }
-      fileprivate var activityStatusBuilder_:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder! {
+      fileprivate var iosDeviceInfoBuilder_:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder! {
            didSet {
-              builderResult.hasActivityStatus = true
+              builderResult.hasIosDeviceInfo = true
            }
       }
-      public func getActivityStatusBuilder() -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder {
-        if activityStatusBuilder_ == nil {
-           activityStatusBuilder_ = Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder()
-           builderResult.activityStatus = activityStatusBuilder_.getMessage()
-           if activityStatus != nil {
-              try! activityStatusBuilder_.mergeFrom(other: activityStatus)
+      public func getIosDeviceInfoBuilder() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder {
+        if iosDeviceInfoBuilder_ == nil {
+           iosDeviceInfoBuilder_ = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder()
+           builderResult.iosDeviceInfo = iosDeviceInfoBuilder_.getMessage()
+           if iosDeviceInfo != nil {
+              try! iosDeviceInfoBuilder_.mergeFrom(other: iosDeviceInfo)
            }
         }
-        return activityStatusBuilder_
+        return iosDeviceInfoBuilder_
       }
       @discardableResult
-      public func setActivityStatus(_ value:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus!) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.activityStatus = value
+      public func setIosDeviceInfo(_ value:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo!) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.iosDeviceInfo = value
         return self
       }
       @discardableResult
-      public func mergeActivityStatus(value:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        if builderResult.hasActivityStatus {
-          builderResult.activityStatus = try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.builderWithPrototype(prototype:builderResult.activityStatus).mergeFrom(other: value).buildPartial()
+      public func mergeIosDeviceInfo(value:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        if builderResult.hasIosDeviceInfo {
+          builderResult.iosDeviceInfo = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.builderWithPrototype(prototype:builderResult.iosDeviceInfo).mergeFrom(other: value).buildPartial()
         } else {
-          builderResult.activityStatus = value
+          builderResult.iosDeviceInfo = value
         }
-        builderResult.hasActivityStatus = true
+        builderResult.hasIosDeviceInfo = true
         return self
       }
       @discardableResult
-      public func clearActivityStatus() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        activityStatusBuilder_ = nil
-        builderResult.hasActivityStatus = false
-        builderResult.activityStatus = nil
+      public func clearIosDeviceInfo() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        iosDeviceInfoBuilder_ = nil
+        builderResult.hasIosDeviceInfo = false
+        builderResult.iosDeviceInfo = nil
         return self
       }
-      public var hasLocationHash1:Bool {
+      public var hasLocationHashByTokenSeed:Bool {
            get {
-                return builderResult.hasLocationHash1
+                return builderResult.hasLocationHashByTokenSeed
            }
       }
-      public var locationHash1:UInt32 {
+      public var locationHashByTokenSeed:Int32 {
            get {
-                return builderResult.locationHash1
+                return builderResult.locationHashByTokenSeed
            }
            set (value) {
-               builderResult.hasLocationHash1 = true
-               builderResult.locationHash1 = value
+               builderResult.hasLocationHashByTokenSeed = true
+               builderResult.locationHashByTokenSeed = value
            }
       }
       @discardableResult
-      public func setLocationHash1(_ value:UInt32) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.locationHash1 = value
+      public func setLocationHashByTokenSeed(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.locationHashByTokenSeed = value
         return self
       }
       @discardableResult
-      public func clearLocationHash1() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasLocationHash1 = false
-           builderResult.locationHash1 = UInt32(0)
+      public func clearLocationHashByTokenSeed() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasLocationHashByTokenSeed = false
+           builderResult.locationHashByTokenSeed = Int32(0)
            return self
       }
       public var hasField11:Bool {
@@ -8036,12 +8079,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField11(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField11(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field11 = value
         return self
       }
       @discardableResult
-      public func clearField11() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField11() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField11 = false
            builderResult.field11 = false
            return self
@@ -8061,12 +8104,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField12(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField12(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field12 = value
         return self
       }
       @discardableResult
-      public func clearField12() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField12() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField12 = false
            builderResult.field12 = false
            return self
@@ -8086,12 +8129,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField13(_ value:Int32) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField13(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field13 = value
         return self
       }
       @discardableResult
-      public func clearField13() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField13() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField13 = false
            builderResult.field13 = Int32(0)
            return self
@@ -8111,12 +8154,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField14(_ value:Int32) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField14(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field14 = value
         return self
       }
       @discardableResult
-      public func clearField14() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField14() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField14 = false
            builderResult.field14 = Int32(0)
            return self
@@ -8136,12 +8179,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField15(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField15(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field15 = value
         return self
       }
       @discardableResult
-      public func clearField15() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField15() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField15 = false
            builderResult.field15 = ""
            return self
@@ -8161,12 +8204,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField16(_ value:Int32) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField16(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field16 = value
         return self
       }
       @discardableResult
-      public func clearField16() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField16() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField16 = false
            builderResult.field16 = Int32(0)
            return self
@@ -8186,12 +8229,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField17(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField17(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field17 = value
         return self
       }
       @discardableResult
-      public func clearField17() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField17() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField17 = false
            builderResult.field17 = ""
            return self
@@ -8211,12 +8254,12 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField18(_ value:String) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField18(_ value:String) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field18 = value
         return self
       }
       @discardableResult
-      public func clearField18() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField18() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField18 = false
            builderResult.field18 = ""
            return self
@@ -8236,39 +8279,39 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField19(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField19(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field19 = value
         return self
       }
       @discardableResult
-      public func clearField19() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField19() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField19 = false
            builderResult.field19 = false
            return self
       }
-      public var hasLocationHash2:Bool {
+      public var hasLocationHash:Bool {
            get {
-                return builderResult.hasLocationHash2
+                return builderResult.hasLocationHash
            }
       }
-      public var locationHash2:UInt32 {
+      public var locationHash:Int32 {
            get {
-                return builderResult.locationHash2
+                return builderResult.locationHash
            }
            set (value) {
-               builderResult.hasLocationHash2 = true
-               builderResult.locationHash2 = value
+               builderResult.hasLocationHash = true
+               builderResult.locationHash = value
            }
       }
       @discardableResult
-      public func setLocationHash2(_ value:UInt32) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.locationHash2 = value
+      public func setLocationHash(_ value:Int32) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.locationHash = value
         return self
       }
       @discardableResult
-      public func clearLocationHash2() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasLocationHash2 = false
-           builderResult.locationHash2 = UInt32(0)
+      public func clearLocationHash() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasLocationHash = false
+           builderResult.locationHash = Int32(0)
            return self
       }
       public var hasField21:Bool {
@@ -8286,107 +8329,107 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      public func setField21(_ value:Bool) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      public func setField21(_ value:Bool) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         self.field21 = value
         return self
       }
       @discardableResult
-      public func clearField21() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
+      public func clearField21() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
            builderResult.hasField21 = false
            builderResult.field21 = false
            return self
       }
-      public var hasSessionHash:Bool {
+      public var hasField22:Bool {
            get {
-                return builderResult.hasSessionHash
+                return builderResult.hasField22
            }
       }
-      public var sessionHash:Data {
+      public var field22:Data {
            get {
-                return builderResult.sessionHash
+                return builderResult.field22
            }
            set (value) {
-               builderResult.hasSessionHash = true
-               builderResult.sessionHash = value
+               builderResult.hasField22 = true
+               builderResult.field22 = value
            }
       }
       @discardableResult
-      public func setSessionHash(_ value:Data) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.sessionHash = value
+      public func setField22(_ value:Data) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.field22 = value
         return self
       }
       @discardableResult
-      public func clearSessionHash() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasSessionHash = false
-           builderResult.sessionHash = Data()
+      public func clearField22() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasField22 = false
+           builderResult.field22 = Data()
            return self
       }
-      public var hasTimestamp:Bool {
+      public var hasEpochTimestampMs:Bool {
            get {
-                return builderResult.hasTimestamp
+                return builderResult.hasEpochTimestampMs
            }
       }
-      public var timestamp:UInt64 {
+      public var epochTimestampMs:UInt64 {
            get {
-                return builderResult.timestamp
+                return builderResult.epochTimestampMs
            }
            set (value) {
-               builderResult.hasTimestamp = true
-               builderResult.timestamp = value
+               builderResult.hasEpochTimestampMs = true
+               builderResult.epochTimestampMs = value
            }
       }
       @discardableResult
-      public func setTimestamp(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.timestamp = value
+      public func setEpochTimestampMs(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.epochTimestampMs = value
         return self
       }
       @discardableResult
-      public func clearTimestamp() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasTimestamp = false
-           builderResult.timestamp = UInt64(0)
+      public func clearEpochTimestampMs() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasEpochTimestampMs = false
+           builderResult.epochTimestampMs = UInt64(0)
            return self
       }
-      public var requestHash:Array<UInt64> {
+      public var requestHashes:Array<Int64> {
            get {
-               return builderResult.requestHash
+               return builderResult.requestHashes
            }
            set (array) {
-               builderResult.requestHash = array
+               builderResult.requestHashes = array
            }
       }
       @discardableResult
-      public func setRequestHash(_ value:Array<UInt64>) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.requestHash = value
+      public func setRequestHashes(_ value:Array<Int64>) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.requestHashes = value
         return self
       }
       @discardableResult
-      public func clearRequestHash() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-         builderResult.requestHash.removeAll(keepingCapacity: false)
+      public func clearRequestHashes() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+         builderResult.requestHashes.removeAll(keepingCapacity: false)
          return self
       }
-      public var hasUnknown25:Bool {
+      public var hasField25:Bool {
            get {
-                return builderResult.hasUnknown25
+                return builderResult.hasField25
            }
       }
-      public var unknown25:Int64 {
+      public var field25:UInt64 {
            get {
-                return builderResult.unknown25
+                return builderResult.field25
            }
            set (value) {
-               builderResult.hasUnknown25 = true
-               builderResult.unknown25 = value
+               builderResult.hasField25 = true
+               builderResult.field25 = value
            }
       }
       @discardableResult
-      public func setUnknown25(_ value:Int64) -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        self.unknown25 = value
+      public func setField25(_ value:UInt64) -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        self.field25 = value
         return self
       }
       @discardableResult
-      public func clearUnknown25() -> Pogoprotos.Networking.Envelopes.Signature.Builder{
-           builderResult.hasUnknown25 = false
-           builderResult.unknown25 = Int64(0)
+      public func clearField25() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder{
+           builderResult.hasField25 = false
+           builderResult.field25 = UInt64(0)
            return self
       }
       override public var internalGetResult:GeneratedMessage {
@@ -8395,55 +8438,55 @@ public extension Pogoprotos.Networking.Envelopes {
            }
       }
       @discardableResult
-      override public func clear() -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        builderResult = Pogoprotos.Networking.Envelopes.Signature()
+      override public func clear() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        builderResult = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates()
         return self
       }
-      override public func clone() throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        return try Pogoprotos.Networking.Envelopes.Signature.builderWithPrototype(prototype:builderResult)
+      override public func clone() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.builderWithPrototype(prototype:builderResult)
       }
-      override public func build() throws -> Pogoprotos.Networking.Envelopes.Signature {
+      override public func build() throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
            try checkInitialized()
            return buildPartial()
       }
-      public func buildPartial() -> Pogoprotos.Networking.Envelopes.Signature {
-        let returnMe:Pogoprotos.Networking.Envelopes.Signature = builderResult
+      public func buildPartial() -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+        let returnMe:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates = builderResult
         return returnMe
       }
       @discardableResult
-      public func mergeFrom(other:Pogoprotos.Networking.Envelopes.Signature) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        if other == Pogoprotos.Networking.Envelopes.Signature() {
+      public func mergeFrom(other:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        if other == Pogoprotos.Networking.Envelopes.SignalAgglomUpdates() {
          return self
         }
         if !other.field1.isEmpty  {
            builderResult.field1 += other.field1
         }
-        if other.hasTimestampSinceStart {
-             timestampSinceStart = other.timestampSinceStart
+        if other.hasTimestampMsSinceStart {
+             timestampMsSinceStart = other.timestampMsSinceStart
         }
         if other.hasField3 {
              field3 = other.field3
         }
-        if !other.locationFix.isEmpty  {
-           builderResult.locationFix += other.locationFix
+        if !other.locationUpdates.isEmpty  {
+           builderResult.locationUpdates += other.locationUpdates
         }
-        if !other.gpsInfo.isEmpty  {
-           builderResult.gpsInfo += other.gpsInfo
+        if !other.androidGpsInfo.isEmpty  {
+           builderResult.androidGpsInfo += other.androidGpsInfo
         }
         if !other.field6.isEmpty  {
            builderResult.field6 += other.field6
         }
-        if !other.sensorInfo.isEmpty  {
-           builderResult.sensorInfo += other.sensorInfo
+        if !other.sensorUpdates.isEmpty  {
+           builderResult.sensorUpdates += other.sensorUpdates
         }
         if (other.hasDeviceInfo) {
             try mergeDeviceInfo(value: other.deviceInfo)
         }
-        if (other.hasActivityStatus) {
-            try mergeActivityStatus(value: other.activityStatus)
+        if (other.hasIosDeviceInfo) {
+            try mergeIosDeviceInfo(value: other.iosDeviceInfo)
         }
-        if other.hasLocationHash1 {
-             locationHash1 = other.locationHash1
+        if other.hasLocationHashByTokenSeed {
+             locationHashByTokenSeed = other.locationHashByTokenSeed
         }
         if other.hasField11 {
              field11 = other.field11
@@ -8472,33 +8515,33 @@ public extension Pogoprotos.Networking.Envelopes {
         if other.hasField19 {
              field19 = other.field19
         }
-        if other.hasLocationHash2 {
-             locationHash2 = other.locationHash2
+        if other.hasLocationHash {
+             locationHash = other.locationHash
         }
         if other.hasField21 {
              field21 = other.field21
         }
-        if other.hasSessionHash {
-             sessionHash = other.sessionHash
+        if other.hasField22 {
+             field22 = other.field22
         }
-        if other.hasTimestamp {
-             timestamp = other.timestamp
+        if other.hasEpochTimestampMs {
+             epochTimestampMs = other.epochTimestampMs
         }
-        if !other.requestHash.isEmpty {
-            builderResult.requestHash += other.requestHash
+        if !other.requestHashes.isEmpty {
+            builderResult.requestHashes += other.requestHashes
         }
-        if other.hasUnknown25 {
-             unknown25 = other.unknown25
+        if other.hasField25 {
+             field25 = other.field25
         }
         _ = try merge(unknownField: other.unknownFields)
         return self
       }
       @discardableResult
-      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      override public func mergeFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
            return try mergeFrom(codedInputStream: codedInputStream, extensionRegistry:ExtensionRegistry())
       }
       @discardableResult
-      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      override public func mergeFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         let unknownFieldsBuilder:UnknownFieldSet.Builder = try UnknownFieldSet.builderWithUnknownFields(copyFrom:self.unknownFields)
         while (true) {
           let protobufTag = try codedInputStream.readTag()
@@ -8513,20 +8556,20 @@ public extension Pogoprotos.Networking.Envelopes {
             field1.append(subBuilder.buildPartial())
 
           case 16:
-            timestampSinceStart = try codedInputStream.readUInt64()
+            timestampMsSinceStart = try codedInputStream.readInt64()
 
           case 26:
             field3 = try codedInputStream.readString()
 
           case 34:
-            let subBuilder = Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder()
+            let subBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder()
             try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
-            locationFix.append(subBuilder.buildPartial())
+            locationUpdates.append(subBuilder.buildPartial())
 
           case 42:
-            let subBuilder = Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder()
+            let subBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder()
             try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
-            gpsInfo.append(subBuilder.buildPartial())
+            androidGpsInfo.append(subBuilder.buildPartial())
 
           case 50:
             let subBuilder = Pogoprotos.Networking.Envelopes.UnknownMessage.Builder()
@@ -8534,12 +8577,12 @@ public extension Pogoprotos.Networking.Envelopes {
             field6.append(subBuilder.buildPartial())
 
           case 58:
-            let subBuilder = Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder()
+            let subBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder()
             try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
-            sensorInfo.append(subBuilder.buildPartial())
+            sensorUpdates.append(subBuilder.buildPartial())
 
           case 66:
-            let subBuilder:Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder = Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder()
+            let subBuilder:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder()
             if hasDeviceInfo {
               try subBuilder.mergeFrom(other: deviceInfo)
             }
@@ -8547,15 +8590,15 @@ public extension Pogoprotos.Networking.Envelopes {
             deviceInfo = subBuilder.buildPartial()
 
           case 74:
-            let subBuilder:Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder = Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder()
-            if hasActivityStatus {
-              try subBuilder.mergeFrom(other: activityStatus)
+            let subBuilder:Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder()
+            if hasIosDeviceInfo {
+              try subBuilder.mergeFrom(other: iosDeviceInfo)
             }
             try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
-            activityStatus = subBuilder.buildPartial()
+            iosDeviceInfo = subBuilder.buildPartial()
 
           case 80:
-            locationHash1 = try codedInputStream.readUInt32()
+            locationHashByTokenSeed = try codedInputStream.readInt32()
 
           case 88:
             field11 = try codedInputStream.readBool()
@@ -8585,27 +8628,27 @@ public extension Pogoprotos.Networking.Envelopes {
             field19 = try codedInputStream.readBool()
 
           case 160:
-            locationHash2 = try codedInputStream.readUInt32()
+            locationHash = try codedInputStream.readInt32()
 
           case 168:
             field21 = try codedInputStream.readBool()
 
           case 178:
-            sessionHash = try codedInputStream.readData()
+            field22 = try codedInputStream.readData()
 
           case 184:
-            timestamp = try codedInputStream.readUInt64()
+            epochTimestampMs = try codedInputStream.readUInt64()
 
           case 194:
             let length = Int(try codedInputStream.readRawVarint32())
             let limit = try codedInputStream.pushLimit(byteLimit: length)
             while (codedInputStream.bytesUntilLimit() > 0) {
-              builderResult.requestHash.append(try codedInputStream.readUInt64())
+              builderResult.requestHashes.append(try codedInputStream.readInt64())
             }
             codedInputStream.popLimit(oldLimit: limit)
 
           case 200:
-            unknown25 = try codedInputStream.readInt64()
+            field25 = try codedInputStream.readUInt64()
 
           default:
             if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
@@ -8615,8 +8658,8 @@ public extension Pogoprotos.Networking.Envelopes {
           }
         }
       }
-      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
-        let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.Signature.Builder()
+      class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
+        let resultDecodedBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder()
         if let jsonValueField1 = jsonMap["field1"] as? Array<Dictionary<String,Any>> {
           var jsonArrayField1:Array<Pogoprotos.Networking.Envelopes.UnknownMessage> = []
           for oneValueField1 in jsonValueField1 {
@@ -8626,29 +8669,29 @@ public extension Pogoprotos.Networking.Envelopes {
           }
           resultDecodedBuilder.field1 = jsonArrayField1
         }
-        if let jsonValueTimestampSinceStart = jsonMap["timestampSinceStart"] as? String {
-          resultDecodedBuilder.timestampSinceStart = UInt64(jsonValueTimestampSinceStart)!
+        if let jsonValueTimestampMsSinceStart = jsonMap["timestampMsSinceStart"] as? String {
+          resultDecodedBuilder.timestampMsSinceStart = Int64(jsonValueTimestampMsSinceStart)!
         }
         if let jsonValueField3 = jsonMap["field3"] as? String {
           resultDecodedBuilder.field3 = jsonValueField3
         }
-        if let jsonValueLocationFix = jsonMap["locationFix"] as? Array<Dictionary<String,Any>> {
-          var jsonArrayLocationFix:Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix> = []
-          for oneValueLocationFix in jsonValueLocationFix {
-            let messageFromStringLocationFix = try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder.decodeToBuilder(jsonMap:oneValueLocationFix).build()
+        if let jsonValueLocationUpdates = jsonMap["locationUpdates"] as? Array<Dictionary<String,Any>> {
+          var jsonArrayLocationUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate> = []
+          for oneValueLocationUpdates in jsonValueLocationUpdates {
+            let messageFromStringLocationUpdates = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder.decodeToBuilder(jsonMap:oneValueLocationUpdates).build()
 
-            jsonArrayLocationFix.append(messageFromStringLocationFix)
+            jsonArrayLocationUpdates.append(messageFromStringLocationUpdates)
           }
-          resultDecodedBuilder.locationFix = jsonArrayLocationFix
+          resultDecodedBuilder.locationUpdates = jsonArrayLocationUpdates
         }
-        if let jsonValueGpsInfo = jsonMap["gpsInfo"] as? Array<Dictionary<String,Any>> {
-          var jsonArrayGpsInfo:Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo> = []
-          for oneValueGpsInfo in jsonValueGpsInfo {
-            let messageFromStringGpsInfo = try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:oneValueGpsInfo).build()
+        if let jsonValueAndroidGpsInfo = jsonMap["androidGpsInfo"] as? Array<Dictionary<String,Any>> {
+          var jsonArrayAndroidGpsInfo:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo> = []
+          for oneValueAndroidGpsInfo in jsonValueAndroidGpsInfo {
+            let messageFromStringAndroidGpsInfo = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder.decodeToBuilder(jsonMap:oneValueAndroidGpsInfo).build()
 
-            jsonArrayGpsInfo.append(messageFromStringGpsInfo)
+            jsonArrayAndroidGpsInfo.append(messageFromStringAndroidGpsInfo)
           }
-          resultDecodedBuilder.gpsInfo = jsonArrayGpsInfo
+          resultDecodedBuilder.androidGpsInfo = jsonArrayAndroidGpsInfo
         }
         if let jsonValueField6 = jsonMap["field6"] as? Array<Dictionary<String,Any>> {
           var jsonArrayField6:Array<Pogoprotos.Networking.Envelopes.UnknownMessage> = []
@@ -8659,25 +8702,25 @@ public extension Pogoprotos.Networking.Envelopes {
           }
           resultDecodedBuilder.field6 = jsonArrayField6
         }
-        if let jsonValueSensorInfo = jsonMap["sensorInfo"] as? Array<Dictionary<String,Any>> {
-          var jsonArraySensorInfo:Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo> = []
-          for oneValueSensorInfo in jsonValueSensorInfo {
-            let messageFromStringSensorInfo = try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder.decodeToBuilder(jsonMap:oneValueSensorInfo).build()
+        if let jsonValueSensorUpdates = jsonMap["sensorUpdates"] as? Array<Dictionary<String,Any>> {
+          var jsonArraySensorUpdates:Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate> = []
+          for oneValueSensorUpdates in jsonValueSensorUpdates {
+            let messageFromStringSensorUpdates = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder.decodeToBuilder(jsonMap:oneValueSensorUpdates).build()
 
-            jsonArraySensorInfo.append(messageFromStringSensorInfo)
+            jsonArraySensorUpdates.append(messageFromStringSensorUpdates)
           }
-          resultDecodedBuilder.sensorInfo = jsonArraySensorInfo
+          resultDecodedBuilder.sensorUpdates = jsonArraySensorUpdates
         }
         if let jsonValueDeviceInfo = jsonMap["deviceInfo"] as? Dictionary<String,Any> {
-          resultDecodedBuilder.deviceInfo = try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsonValueDeviceInfo).build()
+          resultDecodedBuilder.deviceInfo = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder.decodeToBuilder(jsonMap:jsonValueDeviceInfo).build()
 
         }
-        if let jsonValueActivityStatus = jsonMap["activityStatus"] as? Dictionary<String,Any> {
-          resultDecodedBuilder.activityStatus = try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder.decodeToBuilder(jsonMap:jsonValueActivityStatus).build()
+        if let jsonValueIosDeviceInfo = jsonMap["iosDeviceInfo"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.iosDeviceInfo = try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder.decodeToBuilder(jsonMap:jsonValueIosDeviceInfo).build()
 
         }
-        if let jsonValueLocationHash1 = jsonMap["locationHash1"] as? UInt {
-          resultDecodedBuilder.locationHash1 = UInt32(jsonValueLocationHash1)
+        if let jsonValueLocationHashByTokenSeed = jsonMap["locationHashByTokenSeed"] as? Int {
+          resultDecodedBuilder.locationHashByTokenSeed = Int32(jsonValueLocationHashByTokenSeed)
         }
         if let jsonValueField11 = jsonMap["field11"] as? Bool {
           resultDecodedBuilder.field11 = jsonValueField11
@@ -8706,36 +8749,36 @@ public extension Pogoprotos.Networking.Envelopes {
         if let jsonValueField19 = jsonMap["field19"] as? Bool {
           resultDecodedBuilder.field19 = jsonValueField19
         }
-        if let jsonValueLocationHash2 = jsonMap["locationHash2"] as? UInt {
-          resultDecodedBuilder.locationHash2 = UInt32(jsonValueLocationHash2)
+        if let jsonValueLocationHash = jsonMap["locationHash"] as? Int {
+          resultDecodedBuilder.locationHash = Int32(jsonValueLocationHash)
         }
         if let jsonValueField21 = jsonMap["field21"] as? Bool {
           resultDecodedBuilder.field21 = jsonValueField21
         }
-        if let jsonValueSessionHash = jsonMap["sessionHash"] as? String {
-          resultDecodedBuilder.sessionHash = Data(base64Encoded:jsonValueSessionHash, options: Data.Base64DecodingOptions(rawValue:0))!
+        if let jsonValueField22 = jsonMap["field22"] as? String {
+          resultDecodedBuilder.field22 = Data(base64Encoded:jsonValueField22, options: Data.Base64DecodingOptions(rawValue:0))!
         }
-        if let jsonValueTimestamp = jsonMap["timestamp"] as? String {
-          resultDecodedBuilder.timestamp = UInt64(jsonValueTimestamp)!
+        if let jsonValueEpochTimestampMs = jsonMap["epochTimestampMs"] as? String {
+          resultDecodedBuilder.epochTimestampMs = UInt64(jsonValueEpochTimestampMs)!
         }
-        if let jsonValueRequestHash = jsonMap["requestHash"] as? Array<String> {
-          var jsonArrayRequestHash:Array<UInt64> = []
-          for oneValueRequestHash in jsonValueRequestHash {
-            jsonArrayRequestHash.append(UInt64(oneValueRequestHash)!)
+        if let jsonValueRequestHashes = jsonMap["requestHashes"] as? Array<String> {
+          var jsonArrayRequestHashes:Array<Int64> = []
+          for oneValueRequestHashes in jsonValueRequestHashes {
+            jsonArrayRequestHashes.append(Int64(oneValueRequestHashes)!)
           }
-          resultDecodedBuilder.requestHash = jsonArrayRequestHash
+          resultDecodedBuilder.requestHashes = jsonArrayRequestHashes
         }
-        if let jsonValueUnknown25 = jsonMap["unknown25"] as? String {
-          resultDecodedBuilder.unknown25 = Int64(jsonValueUnknown25)!
+        if let jsonValueField25 = jsonMap["field25"] as? String {
+          resultDecodedBuilder.field25 = UInt64(jsonValueField25)!
         }
         return resultDecodedBuilder
       }
-      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.Signature.Builder {
+      override class public func fromJSONToBuilder(data:Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder {
         let jsonData = try JSONSerialization.jsonObject(with:data, options: JSONSerialization.ReadingOptions(rawValue: 0))
         guard let jsDataCast = jsonData as? Dictionary<String,Any> else {
           throw ProtocolBuffersError.invalidProtocolBuffer("Invalid JSON data")
         }
-        return try Pogoprotos.Networking.Envelopes.Signature.Builder.decodeToBuilder(jsonMap:jsDataCast)
+        return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder.decodeToBuilder(jsonMap:jsDataCast)
       }
     }
 
@@ -9115,184 +9158,184 @@ extension Pogoprotos.Networking.Envelopes.ResponseEnvelope.PlatformResponse: Gen
     return try Pogoprotos.Networking.Envelopes.ResponseEnvelope.PlatformResponse.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature? {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature {
-    return try Pogoprotos.Networking.Envelopes.Signature.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature.LocationFix: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature.LocationFix>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix? {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.LocationFix {
-    return try Pogoprotos.Networking.Envelopes.Signature.LocationFix.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.LocationUpdate.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo? {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.AndroidGpsInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.IosdeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature.SensorInfo: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature.SensorInfo>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo? {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.SensorInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.SensorInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.SensorUpdate.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature.DeviceInfo: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature.DeviceInfo> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature.DeviceInfo>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo? {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.DeviceInfo {
-    return try Pogoprotos.Networking.Envelopes.Signature.DeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.DeviceInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
-extension Pogoprotos.Networking.Envelopes.Signature.ActivityStatus: GeneratedMessageProtocol {
-  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.Signature.ActivityStatus> {
-    var mergedArray = Array<Pogoprotos.Networking.Envelopes.Signature.ActivityStatus>()
+extension Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo: GeneratedMessageProtocol {
+  public class func parseArrayDelimitedFrom(inputStream: InputStream) throws -> Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo> {
+    var mergedArray = Array<Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo>()
     while let value = try parseDelimitedFrom(inputStream: inputStream) {
       mergedArray.append(value)
     }
     return mergedArray
   }
-  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus? {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
+  public class func parseDelimitedFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo? {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeDelimitedFrom(inputStream: inputStream)?.build()
   }
-  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
+  public class func parseFrom(data: Data) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(data: data, extensionRegistry:Pogoprotos.Networking.Envelopes.PogoprotosNetworkingEnvelopesRoot.default.extensionRegistry).build()
   }
-  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(data: Data, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(data: data, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(inputStream: inputStream).build()
+  public class func parseFrom(inputStream: InputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(inputStream: inputStream).build()
   }
-  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(inputStream: InputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(inputStream: inputStream, extensionRegistry:extensionRegistry).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(codedInputStream: codedInputStream).build()
+  public class func parseFrom(codedInputStream: CodedInputStream) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(codedInputStream: codedInputStream).build()
   }
-  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.Signature.ActivityStatus {
-    return try Pogoprotos.Networking.Envelopes.Signature.ActivityStatus.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
+  public class func parseFrom(codedInputStream: CodedInputStream, extensionRegistry:ExtensionRegistry) throws -> Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo {
+    return try Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.AndroidGpsInfo.Builder().mergeFrom(codedInputStream: codedInputStream, extensionRegistry:extensionRegistry).build()
   }
 }
 extension Pogoprotos.Networking.Envelopes.UnknownMessage: GeneratedMessageProtocol {

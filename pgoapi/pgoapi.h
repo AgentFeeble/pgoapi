@@ -15,4 +15,3 @@ FOUNDATION_EXPORT double pgoapiVersionNumber;
 FOUNDATION_EXPORT const unsigned char pgoapiVersionString[];
 
 #import <pgoapi/MCS2CellID.h>
-#import <pgoapi/hash.h>

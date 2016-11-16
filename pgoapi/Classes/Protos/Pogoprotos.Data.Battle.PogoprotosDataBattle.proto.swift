@@ -185,8 +185,8 @@ public extension Pogoprotos.Data.Battle {
       fieldCheck = fieldCheck && (lhs.hasActivePokemonId == rhs.hasActivePokemonId) && (!lhs.hasActivePokemonId || lhs.activePokemonId == rhs.activePokemonId)
       fieldCheck = fieldCheck && (lhs.hasPlayerJoined == rhs.hasPlayerJoined) && (!lhs.hasPlayerJoined || lhs.playerJoined == rhs.playerJoined)
       fieldCheck = fieldCheck && (lhs.hasBattleResults == rhs.hasBattleResults) && (!lhs.hasBattleResults || lhs.battleResults == rhs.battleResults)
-      fieldCheck = fieldCheck && (lhs.hasDamageWindowsStartTimestampMs == rhs.hasDamageWindowsStartTimestampMs) && (!lhs.hasDamageWindowsStartTimestampMs || lhs.damageWindowsStartTimestampMs == rhs.damageWindowsStartTimestampMs)
-      fieldCheck = fieldCheck && (lhs.hasDamageWindowsEndTimestampMs == rhs.hasDamageWindowsEndTimestampMs) && (!lhs.hasDamageWindowsEndTimestampMs || lhs.damageWindowsEndTimestampMs == rhs.damageWindowsEndTimestampMs)
+      fieldCheck = fieldCheck && (lhs.hasDamageWindowsStartTimestampMss == rhs.hasDamageWindowsStartTimestampMss) && (!lhs.hasDamageWindowsStartTimestampMss || lhs.damageWindowsStartTimestampMss == rhs.damageWindowsStartTimestampMss)
+      fieldCheck = fieldCheck && (lhs.hasDamageWindowsEndTimestampMss == rhs.hasDamageWindowsEndTimestampMss) && (!lhs.hasDamageWindowsEndTimestampMss || lhs.damageWindowsEndTimestampMss == rhs.damageWindowsEndTimestampMss)
       fieldCheck = fieldCheck && (lhs.hasPlayerLeft == rhs.hasPlayerLeft) && (!lhs.hasPlayerLeft || lhs.playerLeft == rhs.playerLeft)
       fieldCheck = fieldCheck && (lhs.hasTargetPokemonId == rhs.hasTargetPokemonId) && (!lhs.hasTargetPokemonId || lhs.targetPokemonId == rhs.targetPokemonId)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -217,11 +217,11 @@ public extension Pogoprotos.Data.Battle {
     public fileprivate(set) var hasPlayerJoined:Bool = false
     public fileprivate(set) var battleResults:Pogoprotos.Data.Battle.BattleResults!
     public fileprivate(set) var hasBattleResults:Bool = false
-    public fileprivate(set) var damageWindowsStartTimestampMs:Int64 = Int64(0)
-    public fileprivate(set) var hasDamageWindowsStartTimestampMs:Bool = false
+    public fileprivate(set) var damageWindowsStartTimestampMss:Int64 = Int64(0)
+    public fileprivate(set) var hasDamageWindowsStartTimestampMss:Bool = false
 
-    public fileprivate(set) var damageWindowsEndTimestampMs:Int64 = Int64(0)
-    public fileprivate(set) var hasDamageWindowsEndTimestampMs:Bool = false
+    public fileprivate(set) var damageWindowsEndTimestampMss:Int64 = Int64(0)
+    public fileprivate(set) var hasDamageWindowsEndTimestampMss:Bool = false
 
     public fileprivate(set) var playerLeft:Pogoprotos.Data.Battle.BattleParticipant!
     public fileprivate(set) var hasPlayerLeft:Bool = false
@@ -262,11 +262,11 @@ public extension Pogoprotos.Data.Battle {
       if hasBattleResults {
         try codedOutputStream.writeMessage(fieldNumber: 10, value:battleResults)
       }
-      if hasDamageWindowsStartTimestampMs {
-        try codedOutputStream.writeInt64(fieldNumber: 11, value:damageWindowsStartTimestampMs)
+      if hasDamageWindowsStartTimestampMss {
+        try codedOutputStream.writeInt64(fieldNumber: 11, value:damageWindowsStartTimestampMss)
       }
-      if hasDamageWindowsEndTimestampMs {
-        try codedOutputStream.writeInt64(fieldNumber: 12, value:damageWindowsEndTimestampMs)
+      if hasDamageWindowsEndTimestampMss {
+        try codedOutputStream.writeInt64(fieldNumber: 12, value:damageWindowsEndTimestampMss)
       }
       if hasPlayerLeft {
         try codedOutputStream.writeMessage(fieldNumber: 13, value:playerLeft)
@@ -314,11 +314,11 @@ public extension Pogoprotos.Data.Battle {
               serialize_size += varSizebattleResults
           }
       }
-      if hasDamageWindowsStartTimestampMs {
-        serialize_size += damageWindowsStartTimestampMs.computeInt64Size(fieldNumber: 11)
+      if hasDamageWindowsStartTimestampMss {
+        serialize_size += damageWindowsStartTimestampMss.computeInt64Size(fieldNumber: 11)
       }
-      if hasDamageWindowsEndTimestampMs {
-        serialize_size += damageWindowsEndTimestampMs.computeInt64Size(fieldNumber: 12)
+      if hasDamageWindowsEndTimestampMss {
+        serialize_size += damageWindowsEndTimestampMss.computeInt64Size(fieldNumber: 12)
       }
       if hasPlayerLeft {
           if let varSizeplayerLeft = playerLeft?.computeMessageSize(fieldNumber: 13) {
@@ -357,7 +357,7 @@ public extension Pogoprotos.Data.Battle {
 
       var jsonMap:Dictionary<String,Any> = Dictionary<String,Any>()
       if hasType {
-        jsonMap["type"] = type.toString()
+        jsonMap["Type"] = type.toString()
       }
       if hasActionStartMs {
         jsonMap["actionStartMs"] = "\(actionStartMs)"
@@ -383,11 +383,11 @@ public extension Pogoprotos.Data.Battle {
       if hasBattleResults {
         jsonMap["battleResults"] = try battleResults.encode()
       }
-      if hasDamageWindowsStartTimestampMs {
-        jsonMap["damageWindowsStartTimestampMs"] = "\(damageWindowsStartTimestampMs)"
+      if hasDamageWindowsStartTimestampMss {
+        jsonMap["damageWindowsStartTimestampMss"] = "\(damageWindowsStartTimestampMss)"
       }
-      if hasDamageWindowsEndTimestampMs {
-        jsonMap["damageWindowsEndTimestampMs"] = "\(damageWindowsEndTimestampMs)"
+      if hasDamageWindowsEndTimestampMss {
+        jsonMap["damageWindowsEndTimestampMss"] = "\(damageWindowsEndTimestampMss)"
       }
       if hasPlayerLeft {
         jsonMap["playerLeft"] = try playerLeft.encode()
@@ -440,11 +440,11 @@ public extension Pogoprotos.Data.Battle {
         }
         output += "\(indent) }\n"
       }
-      if hasDamageWindowsStartTimestampMs {
-        output += "\(indent) damageWindowsStartTimestampMs: \(damageWindowsStartTimestampMs) \n"
+      if hasDamageWindowsStartTimestampMss {
+        output += "\(indent) damageWindowsStartTimestampMss: \(damageWindowsStartTimestampMss) \n"
       }
-      if hasDamageWindowsEndTimestampMs {
-        output += "\(indent) damageWindowsEndTimestampMs: \(damageWindowsEndTimestampMs) \n"
+      if hasDamageWindowsEndTimestampMss {
+        output += "\(indent) damageWindowsEndTimestampMss: \(damageWindowsEndTimestampMss) \n"
       }
       if hasPlayerLeft {
         output += "\(indent) playerLeft {\n"
@@ -493,11 +493,11 @@ public extension Pogoprotos.Data.Battle {
                     hashCode = (hashCode &* 31) &+ hashValuebattleResults
                 }
             }
-            if hasDamageWindowsStartTimestampMs {
-               hashCode = (hashCode &* 31) &+ damageWindowsStartTimestampMs.hashValue
+            if hasDamageWindowsStartTimestampMss {
+               hashCode = (hashCode &* 31) &+ damageWindowsStartTimestampMss.hashValue
             }
-            if hasDamageWindowsEndTimestampMs {
-               hashCode = (hashCode &* 31) &+ damageWindowsEndTimestampMs.hashValue
+            if hasDamageWindowsEndTimestampMss {
+               hashCode = (hashCode &* 31) &+ damageWindowsEndTimestampMss.hashValue
             }
             if hasPlayerLeft {
                 if let hashValueplayerLeft = playerLeft?.hashValue {
@@ -815,54 +815,54 @@ public extension Pogoprotos.Data.Battle {
         builderResult.battleResults = nil
         return self
       }
-      public var hasDamageWindowsStartTimestampMs:Bool {
+      public var hasDamageWindowsStartTimestampMss:Bool {
            get {
-                return builderResult.hasDamageWindowsStartTimestampMs
+                return builderResult.hasDamageWindowsStartTimestampMss
            }
       }
-      public var damageWindowsStartTimestampMs:Int64 {
+      public var damageWindowsStartTimestampMss:Int64 {
            get {
-                return builderResult.damageWindowsStartTimestampMs
+                return builderResult.damageWindowsStartTimestampMss
            }
            set (value) {
-               builderResult.hasDamageWindowsStartTimestampMs = true
-               builderResult.damageWindowsStartTimestampMs = value
+               builderResult.hasDamageWindowsStartTimestampMss = true
+               builderResult.damageWindowsStartTimestampMss = value
            }
       }
       @discardableResult
-      public func setDamageWindowsStartTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        self.damageWindowsStartTimestampMs = value
+      public func setDamageWindowsStartTimestampMss(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        self.damageWindowsStartTimestampMss = value
         return self
       }
       @discardableResult
-      public func clearDamageWindowsStartTimestampMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
-           builderResult.hasDamageWindowsStartTimestampMs = false
-           builderResult.damageWindowsStartTimestampMs = Int64(0)
+      public func clearDamageWindowsStartTimestampMss() -> Pogoprotos.Data.Battle.BattleAction.Builder{
+           builderResult.hasDamageWindowsStartTimestampMss = false
+           builderResult.damageWindowsStartTimestampMss = Int64(0)
            return self
       }
-      public var hasDamageWindowsEndTimestampMs:Bool {
+      public var hasDamageWindowsEndTimestampMss:Bool {
            get {
-                return builderResult.hasDamageWindowsEndTimestampMs
+                return builderResult.hasDamageWindowsEndTimestampMss
            }
       }
-      public var damageWindowsEndTimestampMs:Int64 {
+      public var damageWindowsEndTimestampMss:Int64 {
            get {
-                return builderResult.damageWindowsEndTimestampMs
+                return builderResult.damageWindowsEndTimestampMss
            }
            set (value) {
-               builderResult.hasDamageWindowsEndTimestampMs = true
-               builderResult.damageWindowsEndTimestampMs = value
+               builderResult.hasDamageWindowsEndTimestampMss = true
+               builderResult.damageWindowsEndTimestampMss = value
            }
       }
       @discardableResult
-      public func setDamageWindowsEndTimestampMs(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        self.damageWindowsEndTimestampMs = value
+      public func setDamageWindowsEndTimestampMss(_ value:Int64) -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        self.damageWindowsEndTimestampMss = value
         return self
       }
       @discardableResult
-      public func clearDamageWindowsEndTimestampMs() -> Pogoprotos.Data.Battle.BattleAction.Builder{
-           builderResult.hasDamageWindowsEndTimestampMs = false
-           builderResult.damageWindowsEndTimestampMs = Int64(0)
+      public func clearDamageWindowsEndTimestampMss() -> Pogoprotos.Data.Battle.BattleAction.Builder{
+           builderResult.hasDamageWindowsEndTimestampMss = false
+           builderResult.damageWindowsEndTimestampMss = Int64(0)
            return self
       }
       public var hasPlayerLeft:Bool {
@@ -997,11 +997,11 @@ public extension Pogoprotos.Data.Battle {
         if (other.hasBattleResults) {
             try mergeBattleResults(value: other.battleResults)
         }
-        if other.hasDamageWindowsStartTimestampMs {
-             damageWindowsStartTimestampMs = other.damageWindowsStartTimestampMs
+        if other.hasDamageWindowsStartTimestampMss {
+             damageWindowsStartTimestampMss = other.damageWindowsStartTimestampMss
         }
-        if other.hasDamageWindowsEndTimestampMs {
-             damageWindowsEndTimestampMs = other.damageWindowsEndTimestampMs
+        if other.hasDamageWindowsEndTimestampMss {
+             damageWindowsEndTimestampMss = other.damageWindowsEndTimestampMss
         }
         if (other.hasPlayerLeft) {
             try mergePlayerLeft(value: other.playerLeft)
@@ -1069,10 +1069,10 @@ public extension Pogoprotos.Data.Battle {
             battleResults = subBuilder.buildPartial()
 
           case 88:
-            damageWindowsStartTimestampMs = try codedInputStream.readInt64()
+            damageWindowsStartTimestampMss = try codedInputStream.readInt64()
 
           case 96:
-            damageWindowsEndTimestampMs = try codedInputStream.readInt64()
+            damageWindowsEndTimestampMss = try codedInputStream.readInt64()
 
           case 106:
             let subBuilder:Pogoprotos.Data.Battle.BattleParticipant.Builder = Pogoprotos.Data.Battle.BattleParticipant.Builder()
@@ -1095,7 +1095,7 @@ public extension Pogoprotos.Data.Battle {
       }
       class public func decodeToBuilder(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Data.Battle.BattleAction.Builder {
         let resultDecodedBuilder = Pogoprotos.Data.Battle.BattleAction.Builder()
-        if let jsonValueType = jsonMap["type"] as? String {
+        if let jsonValueType = jsonMap["Type"] as? String {
           resultDecodedBuilder.type = try Pogoprotos.Data.Battle.BattleActionType.fromString(str: jsonValueType)
         }
         if let jsonValueActionStartMs = jsonMap["actionStartMs"] as? String {
@@ -1124,11 +1124,11 @@ public extension Pogoprotos.Data.Battle {
           resultDecodedBuilder.battleResults = try Pogoprotos.Data.Battle.BattleResults.Builder.decodeToBuilder(jsonMap:jsonValueBattleResults).build()
 
         }
-        if let jsonValueDamageWindowsStartTimestampMs = jsonMap["damageWindowsStartTimestampMs"] as? String {
-          resultDecodedBuilder.damageWindowsStartTimestampMs = Int64(jsonValueDamageWindowsStartTimestampMs)!
+        if let jsonValueDamageWindowsStartTimestampMss = jsonMap["damageWindowsStartTimestampMss"] as? String {
+          resultDecodedBuilder.damageWindowsStartTimestampMss = Int64(jsonValueDamageWindowsStartTimestampMss)!
         }
-        if let jsonValueDamageWindowsEndTimestampMs = jsonMap["damageWindowsEndTimestampMs"] as? String {
-          resultDecodedBuilder.damageWindowsEndTimestampMs = Int64(jsonValueDamageWindowsEndTimestampMs)!
+        if let jsonValueDamageWindowsEndTimestampMss = jsonMap["damageWindowsEndTimestampMss"] as? String {
+          resultDecodedBuilder.damageWindowsEndTimestampMss = Int64(jsonValueDamageWindowsEndTimestampMss)!
         }
         if let jsonValuePlayerLeft = jsonMap["playerLeft"] as? Dictionary<String,Any> {
           resultDecodedBuilder.playerLeft = try Pogoprotos.Data.Battle.BattleParticipant.Builder.decodeToBuilder(jsonMap:jsonValuePlayerLeft).build()

@@ -178,11 +178,7 @@ public extension Pogoprotos.Networking.Requests {
 
     // Implemented [R & M]
     case setContactSettings = 151
-
-    // Implemented [R & M]
     case setBuddyPokemon = 152
-
-    // Implemented [R & M]
     case getBuddyWalked = 153
 
     // Implemented [R & M]
@@ -194,10 +190,10 @@ public extension Pogoprotos.Networking.Requests {
     // Implemented [R & M]
     case getSuggestedCodenames = 401
 
-    // Implemented [R & M]
+    // Implemented [R & M] TEST RESPONSE
     case checkCodenameAvailable = 402
 
-    // Implemented [R & M]
+    // Implemented [R & M] TEST RESPONSE
     case claimCodename = 403
 
     // Implemented [R & M]
@@ -211,11 +207,7 @@ public extension Pogoprotos.Networking.Requests {
 
     // Can't find this one
     case loadSpawnPoints = 500
-
-    // Implemented [R & M]
     case checkChallenge = 600
-
-    // Implemented [R & M]
     case verifyChallenge = 601
 
     // Implemented [R & M]

@@ -63,6 +63,7 @@ public struct Pogoprotos
         {
             public struct Item {}
             public struct Pokemon {}
+            public struct Quest {}
         }
     }
 }

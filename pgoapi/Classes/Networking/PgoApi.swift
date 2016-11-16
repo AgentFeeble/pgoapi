@@ -47,7 +47,7 @@ open class PgoApi: Synchronizable
     open let network: Network
     fileprivate let authToken: AuthToken
     
-    fileprivate var requestId: UInt64?
+    fileprivate var requestId: UInt64 = 0
     fileprivate var sessionStartTime: UInt64?
     fileprivate var authTicket: AuthTicket?
     fileprivate var apiEndpoint: String?
@@ -122,22 +122,25 @@ open class PgoApi: Synchronizable
             })
         })
     }
-    
+
     // This method is not thread safe. Only invoke from within a thread safe context
     fileprivate func getRequestId() -> UInt64
     {
-        if let requestId = requestId
+        let rand: UInt64
+        if requestId == 0
         {
-            let newId = requestId + 1
-            self.requestId = newId
-            return newId
+            rand = 0x000041A7
+        }
+        else
+        {
+            rand = UInt64(arc4random())
         }
         
-        let rDouble = Double(arc4random()) / Double(UInt32.max) // range [0.0, 1.0]
-        let newId = UInt64(rDouble * pow(10, 18)) // random 18 digit number
-        self.requestId = newId
+        requestId += 1
+        let count = requestId
+        let id = ((rand | ((count & 0xFFFFFFFF) >> 31)) << 32)
         
-        return newId
+        return id
     }
     
     // This method is not thread safe. Only invoke from within a thread safe context
@@ -213,36 +216,37 @@ public extension PgoApi.Builder
     public func getPlayer() -> PgoApi.Builder
     {
         let responseType = Pogoprotos.Networking.Responses.GetPlayerResponse.self
-        let messageBuilder = responseType.Builder()
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetPlayerMessage.Builder()
         return addMessage(try! messageBuilder.build(), type: .getPlayer, responseType: responseType)
     }
 
     func getHatchedEggs() -> PgoApi.Builder
     {
         let responseType = Pogoprotos.Networking.Responses.GetHatchedEggsResponse.self
-        let messageBuilder = responseType.Builder()
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetHatchedEggsMessage.Builder()
         return addMessage(try! messageBuilder.build(), type: .getHatchedEggs, responseType: responseType)
     }
 
     func getInventory() -> PgoApi.Builder
     {
         let responseType = Pogoprotos.Networking.Responses.GetInventoryResponse.self
-        let messageBuilder = responseType.Builder()
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.GetInventoryMessage.Builder()
         return addMessage(try! messageBuilder.build(), type: .getInventory, responseType: responseType)
     }
     
     func checkAwardedBadges() -> PgoApi.Builder
     {
         let responseType = Pogoprotos.Networking.Responses.CheckAwardedBadgesResponse.self
-        let messageBuilder = responseType.Builder()
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.CheckAwardedBadgesMessage.Builder()
         return addMessage(try! messageBuilder.build(), type: .checkAwardedBadges, responseType: responseType)
     }
     
     func downloadSettings() -> PgoApi.Builder
     {
         let responseType = Pogoprotos.Networking.Responses.DownloadSettingsResponse.self
-        let messageBuilder = responseType.Builder()
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.DownloadSettingsMessage.Builder()
         messageBuilder.hash = Constant.SettingsHash
+        
         return addMessage(try! messageBuilder.build(), type: .downloadSettings, responseType: responseType)
     }
     

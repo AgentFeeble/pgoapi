@@ -410,7 +410,7 @@ public extension Pogoprotos.Networking.Requests.Messages {
       fieldCheck = fieldCheck && (lhs.hasGymId == rhs.hasGymId) && (!lhs.hasGymId || lhs.gymId == rhs.gymId)
       fieldCheck = fieldCheck && (lhs.hasBattleId == rhs.hasBattleId) && (!lhs.hasBattleId || lhs.battleId == rhs.battleId)
       fieldCheck = fieldCheck && (lhs.attackActions == rhs.attackActions)
-      fieldCheck = fieldCheck && (lhs.hasLastRetrievedAction == rhs.hasLastRetrievedAction) && (!lhs.hasLastRetrievedAction || lhs.lastRetrievedAction == rhs.lastRetrievedAction)
+      fieldCheck = fieldCheck && (lhs.hasLastRetrievedActions == rhs.hasLastRetrievedActions) && (!lhs.hasLastRetrievedActions || lhs.lastRetrievedActions == rhs.lastRetrievedActions)
       fieldCheck = fieldCheck && (lhs.hasPlayerLatitude == rhs.hasPlayerLatitude) && (!lhs.hasPlayerLatitude || lhs.playerLatitude == rhs.playerLatitude)
       fieldCheck = fieldCheck && (lhs.hasPlayerLongitude == rhs.hasPlayerLongitude) && (!lhs.hasPlayerLongitude || lhs.playerLongitude == rhs.playerLongitude)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
@@ -424,8 +424,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
     public fileprivate(set) var hasBattleId:Bool = false
 
     public fileprivate(set) var attackActions:Array<Pogoprotos.Data.Battle.BattleAction>  = Array<Pogoprotos.Data.Battle.BattleAction>()
-    public fileprivate(set) var lastRetrievedAction:Pogoprotos.Data.Battle.BattleAction!
-    public fileprivate(set) var hasLastRetrievedAction:Bool = false
+    public fileprivate(set) var lastRetrievedActions:Pogoprotos.Data.Battle.BattleAction!
+    public fileprivate(set) var hasLastRetrievedActions:Bool = false
     public fileprivate(set) var playerLatitude:Double = Double(0)
     public fileprivate(set) var hasPlayerLatitude:Bool = false
 
@@ -448,8 +448,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
       for oneElementAttackActions in attackActions {
           try codedOutputStream.writeMessage(fieldNumber: 3, value:oneElementAttackActions)
       }
-      if hasLastRetrievedAction {
-        try codedOutputStream.writeMessage(fieldNumber: 4, value:lastRetrievedAction)
+      if hasLastRetrievedActions {
+        try codedOutputStream.writeMessage(fieldNumber: 4, value:lastRetrievedActions)
       }
       if hasPlayerLatitude {
         try codedOutputStream.writeDouble(fieldNumber: 5, value:playerLatitude)
@@ -475,9 +475,9 @@ public extension Pogoprotos.Networking.Requests.Messages {
       for oneElementAttackActions in attackActions {
           serialize_size += oneElementAttackActions.computeMessageSize(fieldNumber: 3)
       }
-      if hasLastRetrievedAction {
-          if let varSizelastRetrievedAction = lastRetrievedAction?.computeMessageSize(fieldNumber: 4) {
-              serialize_size += varSizelastRetrievedAction
+      if hasLastRetrievedActions {
+          if let varSizelastRetrievedActions = lastRetrievedActions?.computeMessageSize(fieldNumber: 4) {
+              serialize_size += varSizelastRetrievedActions
           }
       }
       if hasPlayerLatitude {
@@ -528,8 +528,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
           }
         jsonMap["attackActions"] = jsonArrayAttackActions
       }
-      if hasLastRetrievedAction {
-        jsonMap["lastRetrievedAction"] = try lastRetrievedAction.encode()
+      if hasLastRetrievedActions {
+        jsonMap["lastRetrievedActions"] = try lastRetrievedActions.encode()
       }
       if hasPlayerLatitude {
         jsonMap["playerLatitude"] = Double(playerLatitude)
@@ -560,10 +560,10 @@ public extension Pogoprotos.Networking.Requests.Messages {
           output += "\(indent)}\n"
           attackActionsElementIndex += 1
       }
-      if hasLastRetrievedAction {
-        output += "\(indent) lastRetrievedAction {\n"
-        if let outDescLastRetrievedAction = lastRetrievedAction {
-          output += try outDescLastRetrievedAction.getDescription(indent: "\(indent)  ")
+      if hasLastRetrievedActions {
+        output += "\(indent) lastRetrievedActions {\n"
+        if let outDescLastRetrievedActions = lastRetrievedActions {
+          output += try outDescLastRetrievedActions.getDescription(indent: "\(indent)  ")
         }
         output += "\(indent) }\n"
       }
@@ -588,9 +588,9 @@ public extension Pogoprotos.Networking.Requests.Messages {
             for oneElementAttackActions in attackActions {
                 hashCode = (hashCode &* 31) &+ oneElementAttackActions.hashValue
             }
-            if hasLastRetrievedAction {
-                if let hashValuelastRetrievedAction = lastRetrievedAction?.hashValue {
-                    hashCode = (hashCode &* 31) &+ hashValuelastRetrievedAction
+            if hasLastRetrievedActions {
+                if let hashValuelastRetrievedActions = lastRetrievedActions?.hashValue {
+                    hashCode = (hashCode &* 31) &+ hashValuelastRetrievedActions
                 }
             }
             if hasPlayerLatitude {
@@ -692,58 +692,58 @@ public extension Pogoprotos.Networking.Requests.Messages {
         builderResult.attackActions.removeAll(keepingCapacity: false)
         return self
       }
-      public var hasLastRetrievedAction:Bool {
+      public var hasLastRetrievedActions:Bool {
            get {
-               return builderResult.hasLastRetrievedAction
+               return builderResult.hasLastRetrievedActions
            }
       }
-      public var lastRetrievedAction:Pogoprotos.Data.Battle.BattleAction! {
+      public var lastRetrievedActions:Pogoprotos.Data.Battle.BattleAction! {
            get {
-               if lastRetrievedActionBuilder_ != nil {
-                  builderResult.lastRetrievedAction = lastRetrievedActionBuilder_.getMessage()
+               if lastRetrievedActionsBuilder_ != nil {
+                  builderResult.lastRetrievedActions = lastRetrievedActionsBuilder_.getMessage()
                }
-               return builderResult.lastRetrievedAction
+               return builderResult.lastRetrievedActions
            }
            set (value) {
-               builderResult.hasLastRetrievedAction = true
-               builderResult.lastRetrievedAction = value
+               builderResult.hasLastRetrievedActions = true
+               builderResult.lastRetrievedActions = value
            }
       }
-      fileprivate var lastRetrievedActionBuilder_:Pogoprotos.Data.Battle.BattleAction.Builder! {
+      fileprivate var lastRetrievedActionsBuilder_:Pogoprotos.Data.Battle.BattleAction.Builder! {
            didSet {
-              builderResult.hasLastRetrievedAction = true
+              builderResult.hasLastRetrievedActions = true
            }
       }
-      public func getLastRetrievedActionBuilder() -> Pogoprotos.Data.Battle.BattleAction.Builder {
-        if lastRetrievedActionBuilder_ == nil {
-           lastRetrievedActionBuilder_ = Pogoprotos.Data.Battle.BattleAction.Builder()
-           builderResult.lastRetrievedAction = lastRetrievedActionBuilder_.getMessage()
-           if lastRetrievedAction != nil {
-              try! lastRetrievedActionBuilder_.mergeFrom(other: lastRetrievedAction)
+      public func getLastRetrievedActionsBuilder() -> Pogoprotos.Data.Battle.BattleAction.Builder {
+        if lastRetrievedActionsBuilder_ == nil {
+           lastRetrievedActionsBuilder_ = Pogoprotos.Data.Battle.BattleAction.Builder()
+           builderResult.lastRetrievedActions = lastRetrievedActionsBuilder_.getMessage()
+           if lastRetrievedActions != nil {
+              try! lastRetrievedActionsBuilder_.mergeFrom(other: lastRetrievedActions)
            }
         }
-        return lastRetrievedActionBuilder_
+        return lastRetrievedActionsBuilder_
       }
       @discardableResult
-      public func setLastRetrievedAction(_ value:Pogoprotos.Data.Battle.BattleAction!) -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
-        self.lastRetrievedAction = value
+      public func setLastRetrievedActions(_ value:Pogoprotos.Data.Battle.BattleAction!) -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
+        self.lastRetrievedActions = value
         return self
       }
       @discardableResult
-      public func mergeLastRetrievedAction(value:Pogoprotos.Data.Battle.BattleAction) throws -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
-        if builderResult.hasLastRetrievedAction {
-          builderResult.lastRetrievedAction = try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(prototype:builderResult.lastRetrievedAction).mergeFrom(other: value).buildPartial()
+      public func mergeLastRetrievedActions(value:Pogoprotos.Data.Battle.BattleAction) throws -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
+        if builderResult.hasLastRetrievedActions {
+          builderResult.lastRetrievedActions = try Pogoprotos.Data.Battle.BattleAction.builderWithPrototype(prototype:builderResult.lastRetrievedActions).mergeFrom(other: value).buildPartial()
         } else {
-          builderResult.lastRetrievedAction = value
+          builderResult.lastRetrievedActions = value
         }
-        builderResult.hasLastRetrievedAction = true
+        builderResult.hasLastRetrievedActions = true
         return self
       }
       @discardableResult
-      public func clearLastRetrievedAction() -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
-        lastRetrievedActionBuilder_ = nil
-        builderResult.hasLastRetrievedAction = false
-        builderResult.lastRetrievedAction = nil
+      public func clearLastRetrievedActions() -> Pogoprotos.Networking.Requests.Messages.AttackGymMessage.Builder {
+        lastRetrievedActionsBuilder_ = nil
+        builderResult.hasLastRetrievedActions = false
+        builderResult.lastRetrievedActions = nil
         return self
       }
       public var hasPlayerLatitude:Bool {
@@ -831,8 +831,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
         if !other.attackActions.isEmpty  {
            builderResult.attackActions += other.attackActions
         }
-        if (other.hasLastRetrievedAction) {
-            try mergeLastRetrievedAction(value: other.lastRetrievedAction)
+        if (other.hasLastRetrievedActions) {
+            try mergeLastRetrievedActions(value: other.lastRetrievedActions)
         }
         if other.hasPlayerLatitude {
              playerLatitude = other.playerLatitude
@@ -870,11 +870,11 @@ public extension Pogoprotos.Networking.Requests.Messages {
 
           case 34:
             let subBuilder:Pogoprotos.Data.Battle.BattleAction.Builder = Pogoprotos.Data.Battle.BattleAction.Builder()
-            if hasLastRetrievedAction {
-              try subBuilder.mergeFrom(other: lastRetrievedAction)
+            if hasLastRetrievedActions {
+              try subBuilder.mergeFrom(other: lastRetrievedActions)
             }
             try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
-            lastRetrievedAction = subBuilder.buildPartial()
+            lastRetrievedActions = subBuilder.buildPartial()
 
           case 41:
             playerLatitude = try codedInputStream.readDouble()
@@ -907,8 +907,8 @@ public extension Pogoprotos.Networking.Requests.Messages {
           }
           resultDecodedBuilder.attackActions = jsonArrayAttackActions
         }
-        if let jsonValueLastRetrievedAction = jsonMap["lastRetrievedAction"] as? Dictionary<String,Any> {
-          resultDecodedBuilder.lastRetrievedAction = try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap:jsonValueLastRetrievedAction).build()
+        if let jsonValueLastRetrievedActions = jsonMap["lastRetrievedActions"] as? Dictionary<String,Any> {
+          resultDecodedBuilder.lastRetrievedActions = try Pogoprotos.Data.Battle.BattleAction.Builder.decodeToBuilder(jsonMap:jsonValueLastRetrievedActions).build()
 
         }
         if let jsonValuePlayerLatitude = jsonMap["playerLatitude"] as? Double {

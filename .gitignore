@@ -20,4 +20,8 @@ build/*
 xcuserdata
 
 # copyrighted content
-encrypt.c
+*/Encrypt/encrypt.c
+*/Encrypt/shuffle2.c
+*/Encrypt/unshuffle.c
+*/Encrypt/unshuffle2.c
+*/Encrypt/hash.c

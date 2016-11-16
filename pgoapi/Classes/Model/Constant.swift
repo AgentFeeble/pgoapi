@@ -10,7 +10,7 @@ import Foundation
 
 struct Constant
 {
-    static let SettingsHash = "05daf51635c82611d1aac95c0b051d3ec088a930"
+    static let SettingsHash = "54b359c97e46900f87211ef6e6dd0b7f2a3ea1f5"
     
     static let defaultRequestId: UInt64 = 2
     static let unknown6RequestId: Int32 = 6

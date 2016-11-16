@@ -14,7 +14,6 @@ public extension Pogoprotos.Settings.Master {
       extensionRegistry = ExtensionRegistry()
       registerAllExtensions(registry: extensionRegistry)
       Pogoprotos.Enums.PogoprotosEnumsRoot.default.registerAllExtensions(registry: extensionRegistry)
-      Pogoprotos.Data.Badge.PogoprotosDataBadgeRoot.default.registerAllExtensions(registry: extensionRegistry)
       Pogoprotos.Inventory.Item.PogoprotosInventoryItemRoot.default.registerAllExtensions(registry: extensionRegistry)
       Pogoprotos.Settings.Master.Item.PogoprotosSettingsMasterItemRoot.default.registerAllExtensions(registry: extensionRegistry)
       Pogoprotos.Settings.Master.Pokemon.PogoprotosSettingsMasterPokemonRoot.default.registerAllExtensions(registry: extensionRegistry)
@@ -33,7 +32,6 @@ public extension Pogoprotos.Settings.Master {
       fieldCheck = fieldCheck && (lhs.hasBadgeType == rhs.hasBadgeType) && (!lhs.hasBadgeType || lhs.badgeType == rhs.badgeType)
       fieldCheck = fieldCheck && (lhs.hasBadgeRank == rhs.hasBadgeRank) && (!lhs.hasBadgeRank || lhs.badgeRank == rhs.badgeRank)
       fieldCheck = fieldCheck && (lhs.targets == rhs.targets)
-      fieldCheck = fieldCheck && (lhs.captureReward == rhs.captureReward)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
       return fieldCheck
     }
@@ -45,7 +43,6 @@ public extension Pogoprotos.Settings.Master {
 
     public fileprivate(set) var targets:Array<Int32> = Array<Int32>()
     private var targetsMemoizedSerializedSize:Int32 = -1
-    public fileprivate(set) var captureReward:Array<Pogoprotos.Data.Badge.BadgeCaptureReward>  = Array<Pogoprotos.Data.Badge.BadgeCaptureReward>()
     required public init() {
          super.init()
     }
@@ -65,9 +62,6 @@ public extension Pogoprotos.Settings.Master {
         for oneValuetargets in targets {
           try codedOutputStream.writeInt32NoTag(value: oneValuetargets)
         }
-      }
-      for oneElementCaptureReward in captureReward {
-          try codedOutputStream.writeMessage(fieldNumber: 4, value:oneElementCaptureReward)
       }
       try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -94,9 +88,6 @@ public extension Pogoprotos.Settings.Master {
         serialize_size += dataSizeTargets.computeInt32SizeNoTag()
       }
       targetsMemoizedSerializedSize = dataSizeTargets
-      for oneElementCaptureReward in captureReward {
-          serialize_size += oneElementCaptureReward.computeMessageSize(fieldNumber: 4)
-      }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -138,14 +129,6 @@ public extension Pogoprotos.Settings.Master {
           }
         jsonMap["targets"] = jsonArrayTargets
       }
-      if !captureReward.isEmpty {
-        var jsonArrayCaptureReward:Array<Dictionary<String,Any>> = []
-          for oneValueCaptureReward in captureReward {
-            let ecodedMessageCaptureReward = try oneValueCaptureReward.encode()
-            jsonArrayCaptureReward.append(ecodedMessageCaptureReward)
-          }
-        jsonMap["captureReward"] = jsonArrayCaptureReward
-      }
       return jsonMap
     }
     override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Settings.Master.BadgeSettings {
@@ -167,13 +150,6 @@ public extension Pogoprotos.Settings.Master {
           output += "\(indent) targets[\(targetsElementIndex)]: \(oneValueTargets)\n"
           targetsElementIndex += 1
       }
-      var captureRewardElementIndex:Int = 0
-      for oneElementCaptureReward in captureReward {
-          output += "\(indent) captureReward[\(captureRewardElementIndex)] {\n"
-          output += try oneElementCaptureReward.getDescription(indent: "\(indent)  ")
-          output += "\(indent)}\n"
-          captureRewardElementIndex += 1
-      }
       output += unknownFields.getDescription(indent: indent)
       return output
     }
@@ -188,9 +164,6 @@ public extension Pogoprotos.Settings.Master {
             }
             for oneValueTargets in targets {
                 hashCode = (hashCode &* 31) &+ oneValueTargets.hashValue
-            }
-            for oneElementCaptureReward in captureReward {
-                hashCode = (hashCode &* 31) &+ oneElementCaptureReward.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -285,24 +258,6 @@ public extension Pogoprotos.Settings.Master {
          builderResult.targets.removeAll(keepingCapacity: false)
          return self
       }
-      public var captureReward:Array<Pogoprotos.Data.Badge.BadgeCaptureReward> {
-           get {
-               return builderResult.captureReward
-           }
-           set (value) {
-               builderResult.captureReward = value
-           }
-      }
-      @discardableResult
-      public func setCaptureReward(_ value:Array<Pogoprotos.Data.Badge.BadgeCaptureReward>) -> Pogoprotos.Settings.Master.BadgeSettings.Builder {
-        self.captureReward = value
-        return self
-      }
-      @discardableResult
-      public func clearCaptureReward() -> Pogoprotos.Settings.Master.BadgeSettings.Builder {
-        builderResult.captureReward.removeAll(keepingCapacity: false)
-        return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -337,9 +292,6 @@ public extension Pogoprotos.Settings.Master {
         }
         if !other.targets.isEmpty {
             builderResult.targets += other.targets
-        }
-        if !other.captureReward.isEmpty  {
-           builderResult.captureReward += other.captureReward
         }
         _ = try merge(unknownField: other.unknownFields)
         return self
@@ -377,11 +329,6 @@ public extension Pogoprotos.Settings.Master {
             }
             codedInputStream.popLimit(oldLimit: limit)
 
-          case 34:
-            let subBuilder = Pogoprotos.Data.Badge.BadgeCaptureReward.Builder()
-            try codedInputStream.readMessage(builder: subBuilder,extensionRegistry:extensionRegistry)
-            captureReward.append(subBuilder.buildPartial())
-
           default:
             if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -404,15 +351,6 @@ public extension Pogoprotos.Settings.Master {
             jsonArrayTargets.append(Int32(oneValueTargets))
           }
           resultDecodedBuilder.targets = jsonArrayTargets
-        }
-        if let jsonValueCaptureReward = jsonMap["captureReward"] as? Array<Dictionary<String,Any>> {
-          var jsonArrayCaptureReward:Array<Pogoprotos.Data.Badge.BadgeCaptureReward> = []
-          for oneValueCaptureReward in jsonValueCaptureReward {
-            let messageFromStringCaptureReward = try Pogoprotos.Data.Badge.BadgeCaptureReward.Builder.decodeToBuilder(jsonMap:oneValueCaptureReward).build()
-
-            jsonArrayCaptureReward.append(messageFromStringCaptureReward)
-          }
-          resultDecodedBuilder.captureReward = jsonArrayCaptureReward
         }
         return resultDecodedBuilder
       }

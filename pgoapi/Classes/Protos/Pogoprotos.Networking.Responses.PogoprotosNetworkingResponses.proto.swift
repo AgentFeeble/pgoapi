@@ -998,7 +998,6 @@ public extension Pogoprotos.Networking.Responses {
       fieldCheck = fieldCheck && (lhs.hasMissPercent == rhs.hasMissPercent) && (!lhs.hasMissPercent || lhs.missPercent == rhs.missPercent)
       fieldCheck = fieldCheck && (lhs.hasCapturedPokemonId == rhs.hasCapturedPokemonId) && (!lhs.hasCapturedPokemonId || lhs.capturedPokemonId == rhs.capturedPokemonId)
       fieldCheck = fieldCheck && (lhs.hasCaptureAward == rhs.hasCaptureAward) && (!lhs.hasCaptureAward || lhs.captureAward == rhs.captureAward)
-      fieldCheck = fieldCheck && (lhs.hasCaptureReason == rhs.hasCaptureReason) && (!lhs.hasCaptureReason || lhs.captureReason == rhs.captureReason)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
       return fieldCheck
     }
@@ -1047,42 +1046,6 @@ public extension Pogoprotos.Networking.Responses {
 
       //Enum type declaration end 
 
-
-
-      //Enum type declaration start 
-
-      public enum CaptureReason:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-        case unset = 0
-        case `default` = 1
-        case elementalBadge = 2
-        public func toString() -> String {
-          switch self {
-          case .unset: return "UNSET"
-          case .`default`: return "DEFAULT"
-          case .elementalBadge: return "ELEMENTAL_BADGE"
-          }
-        }
-        public static func fromString(str:String) throws -> Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason {
-          switch str {
-          case "UNSET":  return .unset
-          case "DEFAULT":  return .`default`
-          case "ELEMENTAL_BADGE":  return .elementalBadge
-          default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
-          }
-        }
-        public var debugDescription:String { return getDescription() }
-        public var description:String { return getDescription() }
-        private func getDescription() -> String { 
-          switch self {
-          case .unset: return ".unset"
-          case .`default`: return ".`default`"
-          case .elementalBadge: return ".elementalBadge"
-          }
-        }
-      }
-
-      //Enum type declaration end 
-
     public fileprivate(set) var status:Pogoprotos.Networking.Responses.CatchPokemonResponse.CatchStatus = Pogoprotos.Networking.Responses.CatchPokemonResponse.CatchStatus.catchError
     public fileprivate(set) var hasStatus:Bool = false
     public fileprivate(set) var missPercent:Double = Double(0)
@@ -1093,8 +1056,6 @@ public extension Pogoprotos.Networking.Responses {
 
     public fileprivate(set) var captureAward:Pogoprotos.Data.Capture.CaptureAward!
     public fileprivate(set) var hasCaptureAward:Bool = false
-    public fileprivate(set) var captureReason:Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason = Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason.unset
-    public fileprivate(set) var hasCaptureReason:Bool = false
     required public init() {
          super.init()
     }
@@ -1113,9 +1074,6 @@ public extension Pogoprotos.Networking.Responses {
       }
       if hasCaptureAward {
         try codedOutputStream.writeMessage(fieldNumber: 4, value:captureAward)
-      }
-      if hasCaptureReason {
-        try codedOutputStream.writeEnum(fieldNumber: 5, value:captureReason.rawValue)
       }
       try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -1139,9 +1097,6 @@ public extension Pogoprotos.Networking.Responses {
           if let varSizecaptureAward = captureAward?.computeMessageSize(fieldNumber: 4) {
               serialize_size += varSizecaptureAward
           }
-      }
-      if (hasCaptureReason) {
-        serialize_size += captureReason.rawValue.computeEnumSize(fieldNumber: 5)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -1183,9 +1138,6 @@ public extension Pogoprotos.Networking.Responses {
       if hasCaptureAward {
         jsonMap["captureAward"] = try captureAward.encode()
       }
-      if hasCaptureReason {
-        jsonMap["captureReason"] = captureReason.toString()
-      }
       return jsonMap
     }
     override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Responses.CatchPokemonResponse {
@@ -1212,9 +1164,6 @@ public extension Pogoprotos.Networking.Responses {
         }
         output += "\(indent) }\n"
       }
-      if (hasCaptureReason) {
-        output += "\(indent) captureReason: \(captureReason.description)\n"
-      }
       output += unknownFields.getDescription(indent: indent)
       return output
     }
@@ -1234,9 +1183,6 @@ public extension Pogoprotos.Networking.Responses {
                 if let hashValuecaptureAward = captureAward?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValuecaptureAward
                 }
-            }
-            if hasCaptureReason {
-               hashCode = (hashCode &* 31) &+ Int(captureReason.rawValue)
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -1392,31 +1338,6 @@ public extension Pogoprotos.Networking.Responses {
         builderResult.captureAward = nil
         return self
       }
-        public var hasCaptureReason:Bool{
-            get {
-                return builderResult.hasCaptureReason
-            }
-        }
-        public var captureReason:Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason {
-            get {
-                return builderResult.captureReason
-            }
-            set (value) {
-                builderResult.hasCaptureReason = true
-                builderResult.captureReason = value
-            }
-        }
-      @discardableResult
-        public func setCaptureReason(_ value:Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason) -> Pogoprotos.Networking.Responses.CatchPokemonResponse.Builder {
-          self.captureReason = value
-          return self
-        }
-      @discardableResult
-        public func clearCaptureReason() -> Pogoprotos.Networking.Responses.CatchPokemonResponse.Builder {
-           builderResult.hasCaptureReason = false
-           builderResult.captureReason = .unset
-           return self
-        }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -1454,9 +1375,6 @@ public extension Pogoprotos.Networking.Responses {
         }
         if (other.hasCaptureAward) {
             try mergeCaptureAward(value: other.captureAward)
-        }
-        if other.hasCaptureReason {
-             captureReason = other.captureReason
         }
         _ = try merge(unknownField: other.unknownFields)
         return self
@@ -1497,14 +1415,6 @@ public extension Pogoprotos.Networking.Responses {
             try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             captureAward = subBuilder.buildPartial()
 
-          case 40:
-            let valueIntcaptureReason = try codedInputStream.readEnum()
-            if let enumscaptureReason = Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason(rawValue:valueIntcaptureReason){
-                 captureReason = enumscaptureReason
-            } else {
-                 _ = try unknownFieldsBuilder.mergeVarintField(fieldNumber: 5, value:Int64(valueIntcaptureReason))
-            }
-
           default:
             if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -1527,9 +1437,6 @@ public extension Pogoprotos.Networking.Responses {
         if let jsonValueCaptureAward = jsonMap["captureAward"] as? Dictionary<String,Any> {
           resultDecodedBuilder.captureAward = try Pogoprotos.Data.Capture.CaptureAward.Builder.decodeToBuilder(jsonMap:jsonValueCaptureAward).build()
 
-        }
-        if let jsonValueCaptureReason = jsonMap["captureReason"] as? String {
-          resultDecodedBuilder.captureReason = try Pogoprotos.Networking.Responses.CatchPokemonResponse.CaptureReason.fromString(str: jsonValueCaptureReason)
         }
         return resultDecodedBuilder
       }
@@ -12843,7 +12750,6 @@ public extension Pogoprotos.Networking.Responses {
       fieldCheck = fieldCheck && (lhs.experienceAwarded == rhs.experienceAwarded)
       fieldCheck = fieldCheck && (lhs.candyAwarded == rhs.candyAwarded)
       fieldCheck = fieldCheck && (lhs.stardustAwarded == rhs.stardustAwarded)
-      fieldCheck = fieldCheck && (lhs.eggKmWalked == rhs.eggKmWalked)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
       return fieldCheck
     }
@@ -12859,8 +12765,6 @@ public extension Pogoprotos.Networking.Responses {
     private var candyAwardedMemoizedSerializedSize:Int32 = -1
     public fileprivate(set) var stardustAwarded:Array<Int32> = Array<Int32>()
     private var stardustAwardedMemoizedSerializedSize:Int32 = -1
-    public fileprivate(set) var eggKmWalked:Array<Float> = Array<Float>()
-    private var eggKmWalkedMemoizedSerializedSize:Int32 = -1
     required public init() {
          super.init()
     }
@@ -12897,13 +12801,6 @@ public extension Pogoprotos.Networking.Responses {
         try codedOutputStream.writeRawVarint32(value: stardustAwardedMemoizedSerializedSize)
         for oneValuestardustAwarded in stardustAwarded {
           try codedOutputStream.writeInt32NoTag(value: oneValuestardustAwarded)
-        }
-      }
-      if !eggKmWalked.isEmpty {
-        try codedOutputStream.writeRawVarint32(value: 50)
-        try codedOutputStream.writeRawVarint32(value: eggKmWalkedMemoizedSerializedSize)
-        for oneValueeggKmWalked in eggKmWalked {
-          try codedOutputStream.writeFloatNoTag(value: oneValueeggKmWalked)
         }
       }
       try unknownFields.writeTo(codedOutputStream: codedOutputStream)
@@ -12956,14 +12853,6 @@ public extension Pogoprotos.Networking.Responses {
         serialize_size += dataSizeStardustAwarded.computeInt32SizeNoTag()
       }
       stardustAwardedMemoizedSerializedSize = dataSizeStardustAwarded
-      var dataSizeEggKmWalked:Int32 = 0
-      dataSizeEggKmWalked = 4 * Int32(eggKmWalked.count)
-      serialize_size += dataSizeEggKmWalked
-      if !eggKmWalked.isEmpty {
-        serialize_size += 1
-        serialize_size += dataSizeEggKmWalked.computeInt32SizeNoTag()
-      }
-      eggKmWalkedMemoizedSerializedSize = dataSizeEggKmWalked
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
       return serialize_size
@@ -13023,13 +12912,6 @@ public extension Pogoprotos.Networking.Responses {
           }
         jsonMap["stardustAwarded"] = jsonArrayStardustAwarded
       }
-      if !eggKmWalked.isEmpty {
-        var jsonArrayEggKmWalked:Array<Float> = []
-          for oneValueEggKmWalked in eggKmWalked {
-            jsonArrayEggKmWalked.append(Float(oneValueEggKmWalked))
-          }
-        jsonMap["eggKmWalked"] = jsonArrayEggKmWalked
-      }
       return jsonMap
     }
     override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Responses.GetHatchedEggsResponse {
@@ -13063,11 +12945,6 @@ public extension Pogoprotos.Networking.Responses {
           output += "\(indent) stardustAwarded[\(stardustAwardedElementIndex)]: \(oneValueStardustAwarded)\n"
           stardustAwardedElementIndex += 1
       }
-      var eggKmWalkedElementIndex:Int = 0
-      for oneValueEggKmWalked in eggKmWalked  {
-          output += "\(indent) eggKmWalked[\(eggKmWalkedElementIndex)]: \(oneValueEggKmWalked)\n"
-          eggKmWalkedElementIndex += 1
-      }
       output += unknownFields.getDescription(indent: indent)
       return output
     }
@@ -13088,9 +12965,6 @@ public extension Pogoprotos.Networking.Responses {
             }
             for oneValueStardustAwarded in stardustAwarded {
                 hashCode = (hashCode &* 31) &+ oneValueStardustAwarded.hashValue
-            }
-            for oneValueEggKmWalked in eggKmWalked {
-                hashCode = (hashCode &* 31) &+ oneValueEggKmWalked.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -13214,24 +13088,6 @@ public extension Pogoprotos.Networking.Responses {
          builderResult.stardustAwarded.removeAll(keepingCapacity: false)
          return self
       }
-      public var eggKmWalked:Array<Float> {
-           get {
-               return builderResult.eggKmWalked
-           }
-           set (array) {
-               builderResult.eggKmWalked = array
-           }
-      }
-      @discardableResult
-      public func setEggKmWalked(_ value:Array<Float>) -> Pogoprotos.Networking.Responses.GetHatchedEggsResponse.Builder {
-        self.eggKmWalked = value
-        return self
-      }
-      @discardableResult
-      public func clearEggKmWalked() -> Pogoprotos.Networking.Responses.GetHatchedEggsResponse.Builder {
-         builderResult.eggKmWalked.removeAll(keepingCapacity: false)
-         return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -13272,9 +13128,6 @@ public extension Pogoprotos.Networking.Responses {
         }
         if !other.stardustAwarded.isEmpty {
             builderResult.stardustAwarded += other.stardustAwarded
-        }
-        if !other.eggKmWalked.isEmpty {
-            builderResult.eggKmWalked += other.eggKmWalked
         }
         _ = try merge(unknownField: other.unknownFields)
         return self
@@ -13328,14 +13181,6 @@ public extension Pogoprotos.Networking.Responses {
             }
             codedInputStream.popLimit(oldLimit: limit)
 
-          case 50:
-            let length = Int(try codedInputStream.readRawVarint32())
-            let limit = try codedInputStream.pushLimit(byteLimit: length)
-            while (codedInputStream.bytesUntilLimit() > 0) {
-              builderResult.eggKmWalked.append(try codedInputStream.readFloat())
-            }
-            codedInputStream.popLimit(oldLimit: limit)
-
           default:
             if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -13376,13 +13221,6 @@ public extension Pogoprotos.Networking.Responses {
             jsonArrayStardustAwarded.append(Int32(oneValueStardustAwarded))
           }
           resultDecodedBuilder.stardustAwarded = jsonArrayStardustAwarded
-        }
-        if let jsonValueEggKmWalked = jsonMap["eggKmWalked"] as? Array<Float> {
-          var jsonArrayEggKmWalked:Array<Float> = []
-          for oneValueEggKmWalked in jsonValueEggKmWalked {
-            jsonArrayEggKmWalked.append(Float(oneValueEggKmWalked))
-          }
-          resultDecodedBuilder.eggKmWalked = jsonArrayEggKmWalked
         }
         return resultDecodedBuilder
       }
@@ -14938,8 +14776,6 @@ public extension Pogoprotos.Networking.Responses {
       var fieldCheck:Bool = (lhs.hashValue == rhs.hashValue)
       fieldCheck = fieldCheck && (lhs.hasSuccess == rhs.hasSuccess) && (!lhs.hasSuccess || lhs.success == rhs.success)
       fieldCheck = fieldCheck && (lhs.hasPlayerData == rhs.hasPlayerData) && (!lhs.hasPlayerData || lhs.playerData == rhs.playerData)
-      fieldCheck = fieldCheck && (lhs.hasBanned == rhs.hasBanned) && (!lhs.hasBanned || lhs.banned == rhs.banned)
-      fieldCheck = fieldCheck && (lhs.hasWarn == rhs.hasWarn) && (!lhs.hasWarn || lhs.warn == rhs.warn)
       fieldCheck = (fieldCheck && (lhs.unknownFields == rhs.unknownFields))
       return fieldCheck
     }
@@ -14949,12 +14785,6 @@ public extension Pogoprotos.Networking.Responses {
 
     public fileprivate(set) var playerData:Pogoprotos.Data.PlayerData!
     public fileprivate(set) var hasPlayerData:Bool = false
-    public fileprivate(set) var banned:Bool = false
-    public fileprivate(set) var hasBanned:Bool = false
-
-    public fileprivate(set) var warn:Bool = false
-    public fileprivate(set) var hasWarn:Bool = false
-
     required public init() {
          super.init()
     }
@@ -14967,12 +14797,6 @@ public extension Pogoprotos.Networking.Responses {
       }
       if hasPlayerData {
         try codedOutputStream.writeMessage(fieldNumber: 2, value:playerData)
-      }
-      if hasBanned {
-        try codedOutputStream.writeBool(fieldNumber: 3, value:banned)
-      }
-      if hasWarn {
-        try codedOutputStream.writeBool(fieldNumber: 4, value:warn)
       }
       try unknownFields.writeTo(codedOutputStream: codedOutputStream)
     }
@@ -14990,12 +14814,6 @@ public extension Pogoprotos.Networking.Responses {
           if let varSizeplayerData = playerData?.computeMessageSize(fieldNumber: 2) {
               serialize_size += varSizeplayerData
           }
-      }
-      if hasBanned {
-        serialize_size += banned.computeBoolSize(fieldNumber: 3)
-      }
-      if hasWarn {
-        serialize_size += warn.computeBoolSize(fieldNumber: 4)
       }
       serialize_size += unknownFields.serializedSize()
       memoizedSerializedSize = serialize_size
@@ -15031,12 +14849,6 @@ public extension Pogoprotos.Networking.Responses {
       if hasPlayerData {
         jsonMap["playerData"] = try playerData.encode()
       }
-      if hasBanned {
-        jsonMap["banned"] = banned
-      }
-      if hasWarn {
-        jsonMap["warn"] = warn
-      }
       return jsonMap
     }
     override class public func decode(jsonMap:Dictionary<String,Any>) throws -> Pogoprotos.Networking.Responses.GetPlayerResponse {
@@ -15057,12 +14869,6 @@ public extension Pogoprotos.Networking.Responses {
         }
         output += "\(indent) }\n"
       }
-      if hasBanned {
-        output += "\(indent) banned: \(banned) \n"
-      }
-      if hasWarn {
-        output += "\(indent) warn: \(warn) \n"
-      }
       output += unknownFields.getDescription(indent: indent)
       return output
     }
@@ -15076,12 +14882,6 @@ public extension Pogoprotos.Networking.Responses {
                 if let hashValueplayerData = playerData?.hashValue {
                     hashCode = (hashCode &* 31) &+ hashValueplayerData
                 }
-            }
-            if hasBanned {
-               hashCode = (hashCode &* 31) &+ banned.hashValue
-            }
-            if hasWarn {
-               hashCode = (hashCode &* 31) &+ warn.hashValue
             }
             hashCode = (hashCode &* 31) &+  unknownFields.hashValue
             return hashCode
@@ -15187,56 +14987,6 @@ public extension Pogoprotos.Networking.Responses {
         builderResult.playerData = nil
         return self
       }
-      public var hasBanned:Bool {
-           get {
-                return builderResult.hasBanned
-           }
-      }
-      public var banned:Bool {
-           get {
-                return builderResult.banned
-           }
-           set (value) {
-               builderResult.hasBanned = true
-               builderResult.banned = value
-           }
-      }
-      @discardableResult
-      public func setBanned(_ value:Bool) -> Pogoprotos.Networking.Responses.GetPlayerResponse.Builder {
-        self.banned = value
-        return self
-      }
-      @discardableResult
-      public func clearBanned() -> Pogoprotos.Networking.Responses.GetPlayerResponse.Builder{
-           builderResult.hasBanned = false
-           builderResult.banned = false
-           return self
-      }
-      public var hasWarn:Bool {
-           get {
-                return builderResult.hasWarn
-           }
-      }
-      public var warn:Bool {
-           get {
-                return builderResult.warn
-           }
-           set (value) {
-               builderResult.hasWarn = true
-               builderResult.warn = value
-           }
-      }
-      @discardableResult
-      public func setWarn(_ value:Bool) -> Pogoprotos.Networking.Responses.GetPlayerResponse.Builder {
-        self.warn = value
-        return self
-      }
-      @discardableResult
-      public func clearWarn() -> Pogoprotos.Networking.Responses.GetPlayerResponse.Builder{
-           builderResult.hasWarn = false
-           builderResult.warn = false
-           return self
-      }
       override public var internalGetResult:GeneratedMessage {
            get {
               return builderResult
@@ -15269,12 +15019,6 @@ public extension Pogoprotos.Networking.Responses {
         if (other.hasPlayerData) {
             try mergePlayerData(value: other.playerData)
         }
-        if other.hasBanned {
-             banned = other.banned
-        }
-        if other.hasWarn {
-             warn = other.warn
-        }
         _ = try merge(unknownField: other.unknownFields)
         return self
       }
@@ -15303,12 +15047,6 @@ public extension Pogoprotos.Networking.Responses {
             try codedInputStream.readMessage(builder: subBuilder, extensionRegistry:extensionRegistry)
             playerData = subBuilder.buildPartial()
 
-          case 24:
-            banned = try codedInputStream.readBool()
-
-          case 32:
-            warn = try codedInputStream.readBool()
-
           default:
             if (!(try parse(codedInputStream:codedInputStream, unknownFields:unknownFieldsBuilder, extensionRegistry:extensionRegistry, tag:protobufTag))) {
                unknownFields = try unknownFieldsBuilder.build()
@@ -15325,12 +15063,6 @@ public extension Pogoprotos.Networking.Responses {
         if let jsonValuePlayerData = jsonMap["playerData"] as? Dictionary<String,Any> {
           resultDecodedBuilder.playerData = try Pogoprotos.Data.PlayerData.Builder.decodeToBuilder(jsonMap:jsonValuePlayerData).build()
 
-        }
-        if let jsonValueBanned = jsonMap["banned"] as? Bool {
-          resultDecodedBuilder.banned = jsonValueBanned
-        }
-        if let jsonValueWarn = jsonMap["warn"] as? Bool {
-          resultDecodedBuilder.warn = jsonValueWarn
         }
         return resultDecodedBuilder
       }

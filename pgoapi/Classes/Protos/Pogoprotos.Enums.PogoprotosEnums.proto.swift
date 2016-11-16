@@ -47,9 +47,6 @@ public extension Pogoprotos.Enums {
     case activityHatchEggLargeBonus = 21
     case activityDefeatGymDefender = 22
     case activityDefeatGymLeader = 23
-    case activityCatchFirstCatchStreakBonus = 24
-    case activitySearchFortFirstOfTheDay = 25
-    case activitySearchFortStreakBonus = 26
     public func toString() -> String {
       switch self {
       case .activityUnknown: return "ACTIVITY_UNKNOWN"
@@ -76,9 +73,6 @@ public extension Pogoprotos.Enums {
       case .activityHatchEggLargeBonus: return "ACTIVITY_HATCH_EGG_LARGE_BONUS"
       case .activityDefeatGymDefender: return "ACTIVITY_DEFEAT_GYM_DEFENDER"
       case .activityDefeatGymLeader: return "ACTIVITY_DEFEAT_GYM_LEADER"
-      case .activityCatchFirstCatchStreakBonus: return "ACTIVITY_CATCH_FIRST_CATCH_STREAK_BONUS"
-      case .activitySearchFortFirstOfTheDay: return "ACTIVITY_SEARCH_FORT_FIRST_OF_THE_DAY"
-      case .activitySearchFortStreakBonus: return "ACTIVITY_SEARCH_FORT_STREAK_BONUS"
       }
     }
     public static func fromString(str:String) throws -> Pogoprotos.Enums.ActivityType {
@@ -107,9 +101,6 @@ public extension Pogoprotos.Enums {
       case "ACTIVITY_HATCH_EGG_LARGE_BONUS":  return .activityHatchEggLargeBonus
       case "ACTIVITY_DEFEAT_GYM_DEFENDER":  return .activityDefeatGymDefender
       case "ACTIVITY_DEFEAT_GYM_LEADER":  return .activityDefeatGymLeader
-      case "ACTIVITY_CATCH_FIRST_CATCH_STREAK_BONUS":  return .activityCatchFirstCatchStreakBonus
-      case "ACTIVITY_SEARCH_FORT_FIRST_OF_THE_DAY":  return .activitySearchFortFirstOfTheDay
-      case "ACTIVITY_SEARCH_FORT_STREAK_BONUS":  return .activitySearchFortStreakBonus
       default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
       }
     }
@@ -141,9 +132,6 @@ public extension Pogoprotos.Enums {
       case .activityHatchEggLargeBonus: return ".activityHatchEggLargeBonus"
       case .activityDefeatGymDefender: return ".activityDefeatGymDefender"
       case .activityDefeatGymLeader: return ".activityDefeatGymLeader"
-      case .activityCatchFirstCatchStreakBonus: return ".activityCatchFirstCatchStreakBonus"
-      case .activitySearchFortFirstOfTheDay: return ".activitySearchFortFirstOfTheDay"
-      case .activitySearchFortStreakBonus: return ".activitySearchFortStreakBonus"
       }
     }
   }
@@ -444,42 +432,6 @@ public extension Pogoprotos.Enums {
       case .camTargetShoulderAttackerDefender: return ".camTargetShoulderAttackerDefender"
       case .camTargetShoulderAttackerDefenderMirror: return ".camTargetShoulderAttackerDefenderMirror"
       case .camTargetAttackerDefenderWorld: return ".camTargetAttackerDefenderWorld"
-      }
-    }
-  }
-
-  //Enum type declaration end 
-
-
-
-  //Enum type declaration start 
-
-  public enum EncounterType:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case spawnPoint = 0
-    case incense = 1
-    case disk = 2
-    public func toString() -> String {
-      switch self {
-      case .spawnPoint: return "SPAWN_POINT"
-      case .incense: return "INCENSE"
-      case .disk: return "DISK"
-      }
-    }
-    public static func fromString(str:String) throws -> Pogoprotos.Enums.EncounterType {
-      switch str {
-      case "SPAWN_POINT":  return .spawnPoint
-      case "INCENSE":  return .incense
-      case "DISK":  return .disk
-      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
-      }
-    }
-    public var debugDescription:String { return getDescription() }
-    public var description:String { return getDescription() }
-    private func getDescription() -> String { 
-      switch self {
-      case .spawnPoint: return ".spawnPoint"
-      case .incense: return ".incense"
-      case .disk: return ".disk"
       }
     }
   }
@@ -2668,42 +2620,6 @@ public extension Pogoprotos.Enums {
       case .pokemonTypeDragon: return ".pokemonTypeDragon"
       case .pokemonTypeDark: return ".pokemonTypeDark"
       case .pokemonTypeFairy: return ".pokemonTypeFairy"
-      }
-    }
-  }
-
-  //Enum type declaration end 
-
-
-
-  //Enum type declaration start 
-
-  public enum QuestType:Int32, CustomDebugStringConvertible, CustomStringConvertible {
-    case questUnknownType = 0
-    case questFirstCatchOfTheDay = 1
-    case questFirstPokestopOfTheDay = 2
-    public func toString() -> String {
-      switch self {
-      case .questUnknownType: return "QUEST_UNKNOWN_TYPE"
-      case .questFirstCatchOfTheDay: return "QUEST_FIRST_CATCH_OF_THE_DAY"
-      case .questFirstPokestopOfTheDay: return "QUEST_FIRST_POKESTOP_OF_THE_DAY"
-      }
-    }
-    public static func fromString(str:String) throws -> Pogoprotos.Enums.QuestType {
-      switch str {
-      case "QUEST_UNKNOWN_TYPE":  return .questUnknownType
-      case "QUEST_FIRST_CATCH_OF_THE_DAY":  return .questFirstCatchOfTheDay
-      case "QUEST_FIRST_POKESTOP_OF_THE_DAY":  return .questFirstPokestopOfTheDay
-      default: throw ProtocolBuffersError.invalidProtocolBuffer("Conversion String to Enum has failed.")
-      }
-    }
-    public var debugDescription:String { return getDescription() }
-    public var description:String { return getDescription() }
-    private func getDescription() -> String { 
-      switch self {
-      case .questUnknownType: return ".questUnknownType"
-      case .questFirstCatchOfTheDay: return ".questFirstCatchOfTheDay"
-      case .questFirstPokestopOfTheDay: return ".questFirstPokestopOfTheDay"
       }
     }
   }

@@ -38,7 +38,7 @@ public struct RequestArgs
     }
 }
 
-// Provide an object conforming to this to provide access to the network. Remember to set "niantic" as the user agent
+// Provide an object conforming to this to provide access to the network. Remember to set "Niantic App" as the user agent
 public protocol Network
 {
     var processingExecutor: Executor { get }
