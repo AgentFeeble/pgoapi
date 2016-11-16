@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "pgoapi"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "A Pokèmon Go API written in swift."
   s.description  = <<-DESC
   This is still a work in progress. The only working function at the moment is login via PTC, and downloading the following data:
