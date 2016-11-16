@@ -210,7 +210,7 @@ class RpcRequest
         senBuilder.status = 3
         
         // Do this + device_info
-        sigBuilder.field25 =  UInt64(bitPattern: -8408506833887075802)
+        sigBuilder.field25 =  16892874496697272497
         
         let deviceInfoBuilder = sigBuilder.getIosDeviceInfoBuilder()
         deviceInfoBuilder.bool5 = true

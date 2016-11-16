@@ -8,7 +8,7 @@
 
 import Foundation
 
-private let kHashSeed: UInt32 = 0x61247FBF
+private let kHashSeed: UInt32 = 0x46E945F8
 
 struct HashGenerator
 {

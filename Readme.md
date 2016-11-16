@@ -1,6 +1,6 @@
 # Swift Pokemon GO API
 
-![Pokemon GO API](https://img.shields.io/badge/API-v0.43.0-brightgreen.svg)
+![Pokemon GO API](https://img.shields.io/badge/API-v0.45.0-brightgreen.svg)
 ![Swift Version](https://img.shields.io/badge/Swift-3.0.x-orange.svg)
 
 This is still a work in progress. The only working function at the moment is login via PTC, and downloading the following data:
