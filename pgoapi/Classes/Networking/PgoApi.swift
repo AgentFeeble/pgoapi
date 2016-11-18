@@ -250,6 +250,7 @@ public extension PgoApi.Builder
         return addMessage(try! messageBuilder.build(), type: .downloadSettings, responseType: responseType)
     }
     
+    /// This API request requires the location to be set
     func getMapObjects() -> PgoApi.Builder
     {
         guard let location = location else
@@ -267,6 +268,25 @@ public extension PgoApi.Builder
         messageBuilder.longitude = location.longitude
         
         return addMessage(try! messageBuilder.build(), type: .getMapObjects, responseType: responseType)
+    }
+    
+    /// This API request requires the location to be set
+    func encounterPokemon(encounterId: UInt64, spawnPointId: String) -> PgoApi.Builder
+    {
+        guard let location = location else
+        {
+            fatalError("location must be set to encounter a pokemon")
+        }
+        
+        let responseType = Pogoprotos.Networking.Responses.EncounterResponse.self
+        let messageBuilder = Pogoprotos.Networking.Requests.Messages.EncounterMessage.Builder()
+        
+        messageBuilder.encounterId = encounterId
+        messageBuilder.spawnPointId = spawnPointId
+        messageBuilder.playerLatitude = location.latitude
+        messageBuilder.playerLongitude = location.longitude
+        
+        return addMessage(try! messageBuilder.build(), type: .encounter, responseType: responseType)
     }
     
     fileprivate func addMessage<T: GeneratedMessage>
