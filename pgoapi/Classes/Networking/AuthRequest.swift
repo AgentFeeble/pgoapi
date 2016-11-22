@@ -1,5 +1,5 @@
 //
-//  Auth.swift
+//  AuthRequest.swift
 //  pgoapi
 //
 //  Created by Rayman Rosevear on 2016/07/25.
@@ -31,7 +31,7 @@ private class AuthID: Synchronizable
     }
 }
 
-public class Auth
+public class AuthRequest
 {
     public enum AuthError: Error
     {

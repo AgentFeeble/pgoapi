@@ -20,7 +20,7 @@ class ViewController: UIViewController
         super.viewDidLoad()
         
         let network = self.network
-        Auth(network: network).login("username", password: "password")
+        AuthRequest(network: network).login("username", password: "password")
         .continueOnSuccessWith(.mainThread)
         {
             result in
