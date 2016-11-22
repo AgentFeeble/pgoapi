@@ -12,9 +12,9 @@ import BoltsSwift
 
 open class AlamoFireNetwork: Network, Synchronizable
 {
-    fileprivate let defaultManager: SessionManager
-    fileprivate var isolatedManagerMap: [String: SessionManager] = [:] // maps sessionID to manager
-    fileprivate let callbackQueue = DispatchQueue(label: "AlamoFire Network Callback Queue", attributes: DispatchQueue.Attributes.concurrent)
+    private let defaultManager: SessionManager
+    private var isolatedManagerMap: [String: SessionManager] = [:] // maps sessionID to manager
+    private let callbackQueue = DispatchQueue(label: "AlamoFire Network Callback Queue", attributes: DispatchQueue.Attributes.concurrent)
     
     let synchronizationLock: DispatchQueue = DispatchQueue(label: "AlamoFireNetwork Synchronization", attributes: [])
     
@@ -65,7 +65,7 @@ open class AlamoFireNetwork: Network, Synchronizable
         return self.request(.post, endPoint: endPoint, args: args, responseMethod: responseMethod)
     }
     
-    fileprivate func request<T>(_ method: HTTPMethod,
+    private func request<T>(_ method: HTTPMethod,
                             endPoint: String,
                             args: RequestArgs?,
                             responseMethod: ResponseMethod<T>) -> Task<NetworkResponse<T>>
@@ -95,7 +95,7 @@ open class AlamoFireNetwork: Network, Synchronizable
         return taskSource.task
     }
     
-    fileprivate func encodingFor(args: RequestArgs?) -> ParameterEncoding
+    private func encodingFor(args: RequestArgs?) -> ParameterEncoding
     {
         if let body = args?.body
         {
@@ -104,7 +104,7 @@ open class AlamoFireNetwork: Network, Synchronizable
         return URLEncoding(destination: .methodDependent)
     }
     
-    fileprivate func managerFor(_ args: RequestArgs?) -> SessionManager
+    private func managerFor(_ args: RequestArgs?) -> SessionManager
     {
         guard let sessionId = args?.sessionId else
         {

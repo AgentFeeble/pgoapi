@@ -16,7 +16,7 @@ struct ApiResponseDataConverter: DataConverter
     
     struct Builder
     {
-        fileprivate var subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)] = []
+        private var subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)] = []
         
         mutating func addSubResponseConverter(_ type: ApiResponse.RequestType, converter: SubResponseConverter)
         {
@@ -29,7 +29,7 @@ struct ApiResponseDataConverter: DataConverter
         }
     }
     
-    fileprivate let subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)]
+    private let subResponseConverters: [(ApiResponse.RequestType, SubResponseConverter)]
     
     func convert(_ data: Data) throws -> ApiResponse
     {
@@ -38,7 +38,7 @@ struct ApiResponseDataConverter: DataConverter
         return ApiResponse(response: response, subresponses: subresponses)
     }
     
-    fileprivate func parseSubResponses(_ response: Pogoprotos.Networking.Envelopes.ResponseEnvelope) throws -> [ApiResponse.RequestType : GeneratedMessage]
+    private func parseSubResponses(_ response: Pogoprotos.Networking.Envelopes.ResponseEnvelope) throws -> [ApiResponse.RequestType : GeneratedMessage]
     {
         let subresponseCount = min(subResponseConverters.count, response.returns.count)
         var subresponses: [ApiResponse.RequestType : GeneratedMessage] = [:]

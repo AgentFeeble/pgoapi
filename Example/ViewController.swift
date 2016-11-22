@@ -13,7 +13,7 @@ import BoltsSwift
 
 class ViewController: UIViewController
 {
-    fileprivate let network: Network = AlamoFireNetwork.defaultFireNetwork()
+    private let network: Network = AlamoFireNetwork.defaultFireNetwork()
     
     override func viewDidLoad()
     {

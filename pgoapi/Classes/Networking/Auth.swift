@@ -11,17 +11,17 @@ import BoltsSwift
 
 private class AuthID: Synchronizable
 {
-    fileprivate var id: Int = 0
+    private var id: Int = 0
     let synchronizationLock: Lockable = SpinLock()
     
-    fileprivate static let globalAuthId = AuthID()
+    private static let globalAuthId = AuthID()
 
     static func newAuthId() -> Int
     {
         return globalAuthId.newId()
     }
     
-    fileprivate func newId() -> Int
+    private func newId() -> Int
     {
         return sync
         {
@@ -31,7 +31,7 @@ private class AuthID: Synchronizable
     }
 }
 
-open class Auth
+public class Auth
 {
     public enum AuthError: Error
     {
@@ -39,15 +39,15 @@ open class Auth
         case clientError(String)
     }
     
-    fileprivate let network: Network
-    fileprivate let sessionId = "Auth Session \(AuthID.newAuthId())"
+    private let network: Network
+    private let sessionId = "Auth Session \(AuthID.newAuthId())"
     
     public init(network: Network)
     {
         self.network = network
     }
     
-    open func login(_ username: String, password: String) -> Task<AuthToken>
+    public func login(_ username: String, password: String) -> Task<AuthToken>
     {
         // Note: self is captured strongly to keep a strong reference to self
         // during the API calls
@@ -75,7 +75,7 @@ open class Auth
         })
     }
 
-    fileprivate func getTicket(response: NetworkResponse<Any>, username: String, password: String) throws -> Task<String>
+    private func getTicket(response: NetworkResponse<Any>, username: String, password: String) throws -> Task<String>
     {
         
         guard let json = response.response as? NSDictionary,
@@ -109,7 +109,7 @@ open class Auth
         })
     }
     
-    fileprivate func loginViaOauth(ticket: String) throws -> Task<AuthToken>
+    private func loginViaOauth(ticket: String) throws -> Task<AuthToken>
     {
         if ticket.characters.count == 0
         {
@@ -164,7 +164,7 @@ open class Auth
         })
     }
     
-    fileprivate func getDate<T>(fromResponse response: NetworkResponse<T>) -> Date
+    private func getDate<T>(fromResponse response: NetworkResponse<T>) -> Date
     {
         let formatter = DateFormatter()
         
@@ -177,7 +177,7 @@ open class Auth
         return Date()
     }
     
-    fileprivate func getError(forInvalidTicketResponse response: NetworkResponse<Data>) -> AuthError
+    private func getError(forInvalidTicketResponse response: NetworkResponse<Data>) -> AuthError
     {
         if let responseData = response.response,
         let json = (try? JSONSerialization.jsonObject(with: responseData, options: JSONSerialization.ReadingOptions())) as? NSDictionary,

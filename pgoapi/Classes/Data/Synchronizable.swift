@@ -59,7 +59,7 @@ extension Synchronizable where LockType == Lockable
 
 class SpinLock: Lockable
 {
-    fileprivate var spinLock: OSSpinLock = OS_SPINLOCK_INIT
+    private var spinLock: OSSpinLock = OS_SPINLOCK_INIT
     
     func lock()
     {

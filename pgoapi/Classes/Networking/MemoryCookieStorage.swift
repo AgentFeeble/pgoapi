@@ -10,7 +10,7 @@ import Foundation
 
 final class MemoryCookieStorage: HTTPCookieStorage, Synchronizable
 {
-    fileprivate var internalCookies: [HTTPCookie] = []
+    private var internalCookies: [HTTPCookie] = []
     let synchronizationLock: DispatchQueue = DispatchQueue(label: "MemoryCookieStorage Synchronization", attributes: [])
     
     override func setCookie(_ cookie: HTTPCookie)
@@ -150,7 +150,7 @@ final class MemoryCookieStorage: HTTPCookieStorage, Synchronizable
     }
     
     // Precondition: must be called within a sync() closure
-    fileprivate func indexOf(cookie: HTTPCookie) -> Int?
+    private func indexOf(cookie: HTTPCookie) -> Int?
     {
         return internalCookies.index(
         where: {
@@ -162,7 +162,7 @@ final class MemoryCookieStorage: HTTPCookieStorage, Synchronizable
         })
     }
     
-    fileprivate func setCookieUnsynchronized(cookie: HTTPCookie)
+    private func setCookieUnsynchronized(cookie: HTTPCookie)
     {
         if cookieAcceptPolicy != .never
         {

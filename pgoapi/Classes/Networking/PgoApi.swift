@@ -10,7 +10,7 @@ import Foundation
 import BoltsSwift
 import ProtocolBuffers
 
-open class PgoApi: Synchronizable
+public class PgoApi: Synchronizable
 {
     public enum ApiError: Error
     {
@@ -44,13 +44,13 @@ open class PgoApi: Synchronizable
         }
     }
     
-    open let network: Network
+    public let network: Network
     fileprivate let authToken: AuthToken
     
-    fileprivate var requestId: UInt64 = 0
-    fileprivate var sessionStartTime: UInt64?
-    fileprivate var authTicket: AuthTicket?
-    fileprivate var apiEndpoint: String?
+    private var requestId: UInt64 = 0
+    private var sessionStartTime: UInt64?
+    private var authTicket: AuthTicket?
+    private var apiEndpoint: String?
     
     let synchronizationLock: Lockable = SpinLock()
     
@@ -60,13 +60,13 @@ open class PgoApi: Synchronizable
         self.authToken = authToken
     }
     
-    open func builder(_ location: Location? = nil) -> Builder
+    public func builder(_ location: Location? = nil) -> Builder
     {
         return Builder(api: self, location: location)
     }
     
     /// This function isn't needed anymore before other API calls can be made
-    open func login() -> Task<(PgoApi, ApiResponse)>
+    public  func login() -> Task<(PgoApi, ApiResponse)>
     {
         // Capture self strongly, so that the instance stays alive until the login call finishes
         return executeInternal(builder: getLoginBuilder(), redirectsAllowed: 3)
@@ -77,7 +77,7 @@ open class PgoApi: Synchronizable
         }
     }
     
-    open func execute(_ builder: Builder) -> Task<ApiResponse>
+    public func execute(_ builder: Builder) -> Task<ApiResponse>
     {
         let endPoint = sync { return apiEndpoint } ?? EndPoint.Rpc
         let redirectsAllowed = 3
@@ -85,7 +85,7 @@ open class PgoApi: Synchronizable
         return executeInternal(endPoint, builder: builder, redirectsAllowed: redirectsAllowed)
     }
     
-    fileprivate func executeInternal(_ endPoint: String = EndPoint.Rpc, builder: Builder, redirectsAllowed: Int) -> Task<ApiResponse>
+    private func executeInternal(_ endPoint: String = EndPoint.Rpc, builder: Builder, redirectsAllowed: Int) -> Task<ApiResponse>
     {
         let network = self.network
         let builderCopy = Builder(builder: builder)
@@ -124,7 +124,7 @@ open class PgoApi: Synchronizable
     }
 
     // This method is not thread safe. Only invoke from within a thread safe context
-    fileprivate func getRequestId() -> UInt64
+    private func getRequestId() -> UInt64
     {
         let rand: UInt64
         if requestId == 0
@@ -144,7 +144,7 @@ open class PgoApi: Synchronizable
     }
     
     // This method is not thread safe. Only invoke from within a thread safe context
-    fileprivate func getSessionStartTime() -> UInt64
+    private func getSessionStartTime() -> UInt64
     {
         if let startTime = sessionStartTime
         {
@@ -156,7 +156,7 @@ open class PgoApi: Synchronizable
         return startTime
     }
     
-    fileprivate func getLoginBuilder() -> Builder
+    private func getLoginBuilder() -> Builder
     {
         return builder()
               .getPlayer()
@@ -166,7 +166,7 @@ open class PgoApi: Synchronizable
               .downloadSettings()
     }
     
-    fileprivate func extractAuthTicket(_ response: ApiResponse)
+    private func extractAuthTicket(_ response: ApiResponse)
     {
         if !response.response.hasAuthTicket
         {
@@ -182,7 +182,7 @@ open class PgoApi: Synchronizable
         }
     }
     
-    fileprivate func processRedirect(_ response: ApiResponse)
+    private func processRedirect(_ response: ApiResponse)
     {
         if response.response.hasApiUrl
         {
@@ -209,7 +209,7 @@ private extension PgoApi.Builder
 // This extensions adds all the methods to build up the response
 public extension PgoApi.Builder
 {
-    fileprivate typealias RequestType = Pogoprotos.Networking.Requests.RequestType
+    private typealias RequestType = Pogoprotos.Networking.Requests.RequestType
     
     /// Force unwrap all building. It should be a runtime error for a builder not to build
     
@@ -289,7 +289,7 @@ public extension PgoApi.Builder
         return addMessage(try! messageBuilder.build(), type: .encounter, responseType: responseType)
     }
     
-    fileprivate func addMessage<T: GeneratedMessage>
+    private func addMessage<T: GeneratedMessage>
                            (_ message: GeneratedMessage, type: RequestType, responseType: T.Type) -> PgoApi.Builder where T: GeneratedMessageProtocol
     {
         let requestMessage = RequestMessage(type: type, message: message)

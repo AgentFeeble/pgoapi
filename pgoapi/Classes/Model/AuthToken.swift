@@ -8,10 +8,10 @@
 
 import Foundation
 
-open class AuthToken
+public struct AuthToken
 {
-    open let token: String
-    open let expiry: Date
+    let token: String
+    let expiry: Date
     
     public init(token: String, expiry: Date)
     {

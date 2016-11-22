@@ -9,9 +9,9 @@
 import Foundation
 
 /// This is basically a generic concrete wrapper around the DataConverter protocol
-struct Decoder<T, C: DataConverter> where C.OutputType == T
+struct Decoder<T, Converter: DataConverter> where Converter.OutputType == T
 {
-    let converter: C
+    let converter: Converter
     
     func decode(_ data: Data) throws -> T
     {
