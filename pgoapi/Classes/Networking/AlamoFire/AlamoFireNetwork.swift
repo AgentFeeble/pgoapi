@@ -75,7 +75,7 @@ open class AlamoFireNetwork: Network, Synchronizable
         let taskSource = TaskCompletionSource<NetworkResponse<T>>()
         let encoding = encodingFor(args: args)
         
-        let request = manager.request(endPoint, method: method, parameters: args?.params, encoding: encoding)
+        let request = manager.request(endPoint, method: method, parameters: args?.params, encoding: encoding, headers: args?.headers)
         responseMethod.invocation(request, callbackQueue)
         {
             (response: DataResponse<T>) in
