@@ -160,6 +160,8 @@
 		6DE866AB1D4B5F2900FB4CDA /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */; };
 		6DE866AF1D4B603D00FB4CDA /* ApiResponseDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */; };
 		6DE866B11D4B60D000FB4CDA /* ProtoBufDataConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */; };
+		6DFC70511E193C5A005251DA /* NativeHashGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC70501E193C5A005251DA /* NativeHashGenerator.swift */; };
+		6DFC70531E19502B005251DA /* PgoApiConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFC70521E19502B005251DA /* PgoApiConfig.swift */; };
 		6DFE599C1D58674A008A20CF /* Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE599B1D58674A008A20CF /* Hex.swift */; };
 		6DFE59BE1D58A978008A20CF /* AuthTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE59BD1D58A978008A20CF /* AuthTicket.swift */; };
 		6DFE5A131D594192008A20CF /* PgoEncryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DFE5A121D594192008A20CF /* PgoEncryption.swift */; };
@@ -368,6 +370,8 @@
 		6DE866AA1D4B5F2900FB4CDA /* Decoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
 		6DE866AE1D4B603D00FB4CDA /* ApiResponseDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseDataConverter.swift; sourceTree = "<group>"; };
 		6DE866B01D4B60D000FB4CDA /* ProtoBufDataConverter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtoBufDataConverter.swift; sourceTree = "<group>"; };
+		6DFC70501E193C5A005251DA /* NativeHashGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NativeHashGenerator.swift; sourceTree = "<group>"; };
+		6DFC70521E19502B005251DA /* PgoApiConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PgoApiConfig.swift; sourceTree = "<group>"; };
 		6DFE599B1D58674A008A20CF /* Hex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hex.swift; sourceTree = "<group>"; };
 		6DFE59BD1D58A978008A20CF /* AuthTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthTicket.swift; sourceTree = "<group>"; };
 		6DFE5A121D594192008A20CF /* PgoEncryption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PgoEncryption.swift; sourceTree = "<group>"; };
@@ -663,6 +667,7 @@
 				6DE6C8111D4695CE00A91011 /* Network.swift */,
 				6DE8665C1D49736500FB4CDA /* NetworkError.swift */,
 				6DE866641D49788900FB4CDA /* PgoApi.swift */,
+				6DFC70521E19502B005251DA /* PgoApiConfig.swift */,
 				6DE866511D4963B700FB4CDA /* RpcRequest.swift */,
 			);
 			path = Networking;
@@ -746,6 +751,7 @@
 			isa = PBXGroup;
 			children = (
 				6DAAEF531DD60CEC00756460 /* HashGenerator.swift */,
+				6DFC70501E193C5A005251DA /* NativeHashGenerator.swift */,
 				6DFE599B1D58674A008A20CF /* Hex.swift */,
 				6DFE5A121D594192008A20CF /* PgoEncryption.swift */,
 				6D4021881DDB159800C30CF2 /* Random.swift */,
@@ -1120,6 +1126,7 @@
 				6DE866B11D4B60D000FB4CDA /* ProtoBufDataConverter.swift in Sources */,
 				6DE866631D4976A300FB4CDA /* RpcParams.swift in Sources */,
 				6DE866611D49766200FB4CDA /* Location.swift in Sources */,
+				6DFC70531E19502B005251DA /* PgoApiConfig.swift in Sources */,
 				6D2182F51DDC472F00E6B226 /* Pogoprotos.Settings.PogoprotosSettings.proto.swift in Sources */,
 				6DE866561D4964FB00FB4CDA /* RequestMessage.swift in Sources */,
 				6D2182F01DDC472F00E6B226 /* Pogoprotos.Networking.Requests.PogoprotosNetworkingRequests.proto.swift in Sources */,
@@ -1150,6 +1157,7 @@
 				6D2182F11DDC472F00E6B226 /* Pogoprotos.Networking.Responses.PogoprotosNetworkingResponses.proto.swift in Sources */,
 				6D1512F51D5330E00035D6E6 /* Synchronizable.swift in Sources */,
 				6D2182EE1DDC472F00E6B226 /* Pogoprotos.Networking.Platform.Responses.PogoprotosNetworkingPlatformResponses.proto.swift in Sources */,
+				6DFC70511E193C5A005251DA /* NativeHashGenerator.swift in Sources */,
 				6DE8666B1D49E1FF00FB4CDA /* ApiResponse.swift in Sources */,
 				6D2182E81DDC472F00E6B226 /* Pogoprotos.Map.Fort.PogoprotosMapFort.proto.swift in Sources */,
 				6D2182E71DDC472F00E6B226 /* Pogoprotos.Inventory.PogoprotosInventory.proto.swift in Sources */,

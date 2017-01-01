@@ -16,33 +16,33 @@ class RpcRequest
     let params: RpcParams
     
     var encryptFunc: PgoEncryption.EncryptFunction!
-    var hashFunc: PgoEncryption.HashFunction!
+    let hasher: HashGenerator
     
     private typealias RequestBuilder = Pogoprotos.Networking.Envelopes.RequestEnvelope.Builder
     
-    init(network: Network, params: RpcParams, messages: [RequestMessage])
+    init(network: Network, hasher: HashGenerator, params: RpcParams, messages: [RequestMessage])
     {
         precondition(messages.count > 0)
         
         self.network = network
+        self.hasher = hasher
         self.messages = messages
         self.params = params
     }
     
     func execute<T, C>(_ endPoint: String, decoder: Decoder<T, C>) -> Task<T>
     {
-        guard let hashFunc = PgoEncryption.hash, let encryptFunc = PgoEncryption.encrypt else
+        guard let encryptFunc = PgoEncryption.encrypt else
         {
             return Task(error: PgoApi.ApiError.noEncryptionFuncProvided)
         }
-        self.hashFunc = hashFunc
         self.encryptFunc = encryptFunc
         
         // Note: self is captured strongly to keep the instance alive
         // for the duration of the API call
-        return Task(network.processingExecutor, closure:
+        return Task.executeWithTask(network.processingExecutor, closure:
         {
-            return self.buildRequestEnvelope().data()
+            return self.buildRequestEnvelope()
         })
         .continueOnSuccessWithTask(continuation:
         {
@@ -64,7 +64,7 @@ class RpcRequest
         return Random.choice(choices)
     }
     
-    private func buildRequestEnvelope() -> Pogoprotos.Networking.Envelopes.RequestEnvelope
+    private func buildRequestEnvelope() -> Task<Data>
     {
         let requestBuilder = RequestBuilder()
         requestBuilder.statusCode = 2
@@ -102,10 +102,13 @@ class RpcRequest
             ticketData = requestBuilder.authInfo.data()
         }
         
-        signRequestBuilder(authData: ticketData, requestBuilder: requestBuilder, altitude: params.location?.altitude)
         requestBuilder.msSinceLastLocationfix = Int64(Random.triangular(min: 300, max: 30000, mode: 10000))
-        
-        return try! requestBuilder.build()
+        return signRequestBuilder(authData: ticketData, requestBuilder: requestBuilder, altitude: params.location?.altitude)
+        .continueOnSuccessWith(network.processingExecutor)
+        {
+            (builder: RpcRequest.RequestBuilder) -> Data in
+            return try! requestBuilder.build().data()
+        }
     }
     
     private func buildMessagesFor(request: Pogoprotos.Networking.Envelopes.RequestEnvelope.Builder) throws
@@ -119,24 +122,9 @@ class RpcRequest
         }
     }
     
-    private func signRequestBuilder(authData: Data, requestBuilder: RequestBuilder, altitude: Double?)
+    private func signRequestBuilder(authData: Data, requestBuilder: RequestBuilder, altitude: Double?) -> Task<RequestBuilder>
     {
         let sigBuilder = Pogoprotos.Networking.Envelopes.SignalAgglomUpdates.Builder()
-        let hashGen = HashGenerator(hashFunction: hashFunc)
-        
-        sigBuilder.locationHashByTokenSeed = hashGen.generateLocationHashBySeed(authTicket: authData,
-                                                                                lat: requestBuilder.latitude,
-                                                                                lng: requestBuilder.longitude,
-                                                                                acc: requestBuilder.accuracy)
-        sigBuilder.locationHash = hashGen.generateLocationHash(lat: requestBuilder.latitude,
-                                                               lng: requestBuilder.longitude,
-                                                               acc: requestBuilder.accuracy)
-        
-        for request in requestBuilder.requests
-        {
-            let hash = hashGen.generateRequestHash(authTicket: authData, request: request.data())
-            sigBuilder.requestHashes.append(Int64(bitPattern: hash))
-        }
         
         sigBuilder.field22 = Random.randomBytes(length: 16)
         sigBuilder.epochTimestampMs = UInt64(Date().timeIntervalSince1970 * 1000.0)
@@ -209,7 +197,6 @@ class RpcRequest
         senBuilder.gravityZ = Random.triangular(min: -1.0, max: 0.7, mode: -0.8)
         senBuilder.status = 3
         
-        // Do this + device_info
         sigBuilder.field25 =  16892874496697272497
         
         let deviceInfoBuilder = sigBuilder.getIosDeviceInfoBuilder()
@@ -218,14 +205,34 @@ class RpcRequest
         sigBuilder.locationUpdates.append(try! locBuilder.build())
         sigBuilder.sensorUpdates.append(try! senBuilder.build())
         
-        let sigRequestBuilder = Pogoprotos.Networking.Platform.Requests.SendEncryptedSignatureRequest.Builder()
-        let platformRequestBuilder = Pogoprotos.Networking.Envelopes.RequestEnvelope.PlatformRequest.Builder()
-        
-        sigRequestBuilder.encryptedSignature = generateSignatureData(try! sigBuilder.build())
-        platformRequestBuilder.type = .sendEncryptedSignature
-        platformRequestBuilder.requestMessage = try! sigRequestBuilder.build().data()
-        
-        requestBuilder.platformRequests.append(try! platformRequestBuilder.build())
+        return hasher.generateHash(timestamp: sigBuilder.epochTimestampMs,
+                                   latitude: requestBuilder.latitude,
+                                   longitude: requestBuilder.longitude,
+                                   altitude: requestBuilder.accuracy,
+                                   authTicket: authData,
+                                   sessionData: sigBuilder.field22,
+                                   requests: requestBuilder.requests.map({ $0.data() }))
+        .continueOnSuccessWith(network.processingExecutor)
+        {
+            (result: HashResult) -> RequestBuilder in
+            
+            let sigRequestBuilder = Pogoprotos.Networking.Platform.Requests.SendEncryptedSignatureRequest.Builder()
+            let platformRequestBuilder = Pogoprotos.Networking.Envelopes.RequestEnvelope.PlatformRequest.Builder()
+            
+            let signedRequestHashes = result.requestHashes.map({ Int64(bitPattern: $0) })
+            
+            sigBuilder.locationHashByTokenSeed = result.locationAuthHash
+            sigBuilder.locationHash = result.locationHash
+            sigBuilder.requestHashes.append(contentsOf: signedRequestHashes)
+            
+            requestBuilder.platformRequests.append(try! platformRequestBuilder.build())
+            
+            sigRequestBuilder.encryptedSignature = self.generateSignatureData(try! sigBuilder.build())
+            platformRequestBuilder.type = .sendEncryptedSignature
+            platformRequestBuilder.requestMessage = try! sigRequestBuilder.build().data()
+            
+            return requestBuilder
+        }
     }
     
     private func generateSignatureData(_ signature: Pogoprotos.Networking.Envelopes.SignalAgglomUpdates) -> Data

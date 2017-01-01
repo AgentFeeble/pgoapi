@@ -44,7 +44,7 @@ public class PgoApi: Synchronizable
         }
     }
     
-    public let network: Network
+    public let config: PgoApiConfig
     fileprivate let authToken: AuthToken
     
     private var requestId: UInt64 = 0
@@ -54,9 +54,9 @@ public class PgoApi: Synchronizable
     
     let synchronizationLock: Lockable = SpinLock()
     
-    public init(network: Network, authToken: AuthToken)
+    public init(config: PgoApiConfig, authToken: AuthToken)
     {
-        self.network = network
+        self.config = config
         self.authToken = authToken
     }
     
@@ -70,7 +70,7 @@ public class PgoApi: Synchronizable
     {
         // Capture self strongly, so that the instance stays alive until the login call finishes
         return executeInternal(builder: getLoginBuilder(), redirectsAllowed: 3)
-        .continueOnSuccessWith(network.processingExecutor)
+        .continueOnSuccessWith(config.network.processingExecutor)
         {
             response in
             return (self, response)
@@ -87,7 +87,7 @@ public class PgoApi: Synchronizable
     
     private func executeInternal(_ endPoint: String = EndPoint.Rpc, builder: Builder, redirectsAllowed: Int) -> Task<ApiResponse>
     {
-        let network = self.network
+        let network = self.config.network
         let builderCopy = Builder(builder: builder)
         
         return Task.executeWithTask(network.processingExecutor, closure:
@@ -199,7 +199,7 @@ private extension PgoApi.Builder
     func build(_ requestId: UInt64, sessionStartTime: UInt64, ticket: AuthTicket?) -> (request: RpcRequest, decoder: Decoder<ApiResponse, ApiResponseDataConverter>)
     {
         let params = RpcParams(authToken: api.authToken, requestId: requestId, sessionStartTime: sessionStartTime, authTicket: ticket, location: location)
-        let request = RpcRequest(network: api.network, params: params, messages: messages)
+        let request = RpcRequest(network: api.config.network, hasher: api.config.hasher, params: params, messages: messages)
         let decoder = Decoder(converter: responseConverterBuilder.build())
         
         return (request: request, decoder: decoder)
