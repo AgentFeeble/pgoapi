@@ -11,10 +11,13 @@ import Foundation
 
 private let kHashSeed: UInt32 = 0x46E945F8
 
+// For API 0.45.0
 public struct NativeHashGenerator: HashGenerator
 {
     public typealias HashFunction = (_ in: UnsafePointer<UInt8>, _ len: UInt32) -> UInt64
     public let hashFunction: HashFunction
+    
+    public let unknown25: UInt64 = UInt64(bitPattern: -1553869577012279119)
     
     public init(hashFunction: @escaping HashFunction)
     {

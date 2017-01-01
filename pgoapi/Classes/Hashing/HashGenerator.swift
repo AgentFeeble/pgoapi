@@ -7,7 +7,7 @@
 //
 
 import BoltsSwift
-import UIKit
+import Foundation
 
 public struct HashResult
 {
@@ -18,6 +18,7 @@ public struct HashResult
 
 public protocol HashGenerator
 {
+    var unknown25: UInt64 { get }
     func generateHash(timestamp: UInt64,
                       latitude: Double,
                       longitude: Double,

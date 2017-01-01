@@ -197,7 +197,7 @@ class RpcRequest
         senBuilder.gravityZ = Random.triangular(min: -1.0, max: 0.7, mode: -0.8)
         senBuilder.status = 3
         
-        sigBuilder.field25 =  16892874496697272497
+        sigBuilder.field25 =  hasher.unknown25
         
         let deviceInfoBuilder = sigBuilder.getIosDeviceInfoBuilder()
         deviceInfoBuilder.bool5 = true

@@ -18,7 +18,6 @@ typealias EncounterResponse = Pogoprotos.Networking.Responses.EncounterResponse
 class ViewController: UIViewController
 {
     private let network: Network = AlamoFireNetwork.defaultFireNetwork()
-    private let hasher = NativeHashGenerator(hashFunction: compute_hash)
     
     override func viewDidLoad()
     {
@@ -29,8 +28,10 @@ class ViewController: UIViewController
         var api: PgoApi!
         
         let network = self.network
-        let hasher = self.hasher
-        AuthRequest(network: network).login("username", password: "password")
+//        let hasher = NativeHashGenerator(hashFunction: compute_hash)
+        let hasher = PokeFarmerHashGenerator(network: network, apiKey: "Hash Server API Key")
+        
+        AuthRequest(network: network).login("spamflip", password: "hoboman")
         .continueOnSuccessWith(.mainThread)
         {
             result in
